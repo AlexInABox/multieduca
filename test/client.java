@@ -7,7 +7,7 @@ public class client {
 
         Socket s = new Socket("cloud.alexinabox.de", 4000);
 
-        System.out.println("Connection established");
+        System.out.println("Connection established with: " + s.getInetAddress().getHostAddress() + ":" + s.getPort());
 
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
