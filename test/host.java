@@ -7,16 +7,19 @@ public class host {
         ServerSocket ss = new ServerSocket(4000);
         Socket s = ss.accept();
 
-        System.out.println("Connection established");
-
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
 
+        System.out.println("Connection established");
+
         System.out.println("Waiting for client to send message");
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        while (true) {
 
+        while (true) {
             String str = bf.readLine();
+            if (str == null)
+                break;
+
             handleMessage(str);
             respondToClient(pr);
 
