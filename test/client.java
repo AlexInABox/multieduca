@@ -22,6 +22,8 @@ public class client {
         while (true) {
 
             String str = bf.readLine();
+            if (str == null)
+                break;
             handleMessage(str);
             //wait 5 seconds
             try {
