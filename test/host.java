@@ -3,7 +3,23 @@ import java.io.*;
 
 public class host {
 
+    private static final int PORT = 2594;
+
     public static void main(String[] args) throws IOException {
+        initServer(PORT);
+    }
+
+    public static void initServer(int port) throws IOException {
+        System.out.println("Starting server on: " + port);
+        ServerSocket ss = new ServerSocket(port);
+        Socket s = ss.accept();
+
+        RunnableThread t1 = new RunnableThread("myThread", s);
+        t1.start();
+
+    }
+
+    public static void maini(String[] args) throws IOException {
         ServerSocket ss = new ServerSocket(4000);
         Socket s = ss.accept();
 
