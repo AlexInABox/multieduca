@@ -1,7 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-class ClientHander extends host{
+class ClientHander extends Thread{
     private Socket clientSocket;
 
     public ClientHandeler(Socket socket){
