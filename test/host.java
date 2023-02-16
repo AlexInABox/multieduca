@@ -2,6 +2,12 @@ import java.net.*;
 import java.io.*;
 
 public class host {
+	private static int counter = 0;
+	private static ServerSocket ss;
+	
+	private static RunnableThread[] threadList = new RunnableThread[20];
+	
+	public static boolean isStarted = false;
 
     private static final int PORT = 2594;
 
@@ -11,13 +17,24 @@ public class host {
 
     public static void initServer(int port) throws IOException {
         System.out.println("Starting server on: " + port);
-        ServerSocket ss = new ServerSocket(port);
-        Socket s = ss.accept();
+        ss = new ServerSocket(port);
 
-        RunnableThread t1 = new RunnableThread("myThread", s);
-        t1.start();
+		 createThread();
+		
 
     }
+    
+    public static void createThread(){
+		RunnableThread t = new RunnableThread(Integer.toString(counter) , ss);
+		counter += 1;
+		try{
+			threadList[counter] = t;
+		}catch (Exception e) {
+			System.out.println("No more people please thanks!!!" + e);
+			}
+		t.start();
+	}
+		
 
     public static void maini(String[] args) throws IOException {
         ServerSocket ss = new ServerSocket(4000);
@@ -42,7 +59,13 @@ public class host {
         }
 
     }
-
+    
+    public static void startGame(){
+	isStarted = true;
+	threadList[counter].close();	
+	}
+		
+	
     public static void handleMessage(String msg) {
         System.out.println("client: " + msg.toString());
     }

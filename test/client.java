@@ -2,6 +2,7 @@ import java.net.*;
 import java.io.*;
 
 public class client {
+    private static PrintWriter pr;
 
     public static void main(String[] args) throws IOException {
 
@@ -12,7 +13,7 @@ public class client {
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
 
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
+        pr = new PrintWriter(s.getOutputStream());
         System.out.println("Sending name to host");
         pr.println("Alex");
         pr.flush();
@@ -35,11 +36,11 @@ public class client {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        respondToHost("My Answer is: fancy!");
+        sendMessage("My Answer is: fancy!");
     }
 
-    public static void respondToHost(PrintWriter pr) {
-        pr.println("Hello Host, I received your message!");
+    public static void sendMessage(String msg) {
+        pr.println(msg);
         pr.flush();
     }
 }
