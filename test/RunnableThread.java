@@ -10,7 +10,7 @@ class RunnableThread implements Runnable {
     private static String ip;
     private static String name;
 
-	public static int punktezahl;
+    public static int punktezahl;
 
     RunnableThread(String name, ServerSocket ss) {
         threadName = name;
@@ -20,27 +20,25 @@ class RunnableThread implements Runnable {
 
     public void run() {
         try {
-			s = ss.accept();
-			System.out.println("Connection established");
-			host.createThread();
-			
-			
+            s = ss.accept();
+            System.out.println("Connection established");
+            host.createThread();
+
             InputStreamReader in = new InputStreamReader(s.getInputStream());
-            BufferedReader bf = new BufferedReader(in);            
+            BufferedReader bf = new BufferedReader(in);
 
             PrintWriter pr = new PrintWriter(s.getOutputStream());
 
             name = bf.readLine();
 
             regClient(s);
-            
-            while(host.isStarted){
-			
-				System.out.println("Round started, thread" + name);
-				
-		    }
-            
-           
+
+            while (host.isStarted) {
+
+                System.out.println("Round started, thread" + name);
+
+            }
+
         } catch (Exception e) {
             System.out.println("Error! Upsie! Here: " + e);
         }
