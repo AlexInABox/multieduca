@@ -34,30 +34,6 @@ public class host {
         t.start();
     }
 
-    public static void maini(String[] args) throws IOException {
-        ServerSocket ss = new ServerSocket(4000);
-        Socket s = ss.accept();
-
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        BufferedReader bf = new BufferedReader(in);
-
-        System.out.println("Connection established");
-
-        System.out.println("Waiting for client to send message");
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-
-        while (true) {
-            String str = bf.readLine();
-            if (str == null)
-                break;
-
-            handleMessage(str);
-            respondToClient(pr);
-
-        }
-
-    }
-
     public static void startGame() {
         isStarted = true;
         // stop the last running thread

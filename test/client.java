@@ -1,6 +1,14 @@
 import java.net.*;
 import java.io.*;
 
+/**
+ * Autor: Alexander Betke
+ * Datum: 2022-02-18
+ *
+ * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet
+ * und
+ * mit ihm über das Netzwerk kommuniziert.
+ */
 public class client {
     // dev variables
     private static final String IP = "localhost";
@@ -26,11 +34,15 @@ public class client {
     // end of game related variables
 
     public static void main(String[] args) { // dev function
-        run(IP);
+        run(IP, "Max Mustermann");
     }
 
-    public static void run(String ip) {
+    // Startet den Client und führt ihn aus
+    public static void run(String ip, String nickname) {
         try {
+            // set the nickname
+            nick = nickname;
+
             establishConnection(ip);
             registerClient();
 
@@ -72,6 +84,7 @@ public class client {
 
     }
 
+    // Stellt die Verbindung zum Server her
     private static void establishConnection(String ip) throws Exception {
         s = new Socket(ip, PORT);
         pr = new PrintWriter(s.getOutputStream());
@@ -79,6 +92,7 @@ public class client {
         bf = new BufferedReader(in);
     }
 
+    // Registriert den Client beim Server mit dem Nickname
     private static void registerClient() throws Exception {
         // send the nickname
         pr.println(nick);
