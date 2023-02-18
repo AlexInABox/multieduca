@@ -60,7 +60,8 @@ public class host {
 
     public static void startGame() {
         isStarted = true;
-        threadList[counter].close();
+        // stop the last running thread
+        threadList[counter].allowedToRun = false;
     }
 
     public static void handleMessage(String msg) {
