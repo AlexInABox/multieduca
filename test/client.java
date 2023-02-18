@@ -5,6 +5,7 @@ public class client {
     // dev variables
     private static final String IP = "localhost";
     // end of dev variables
+
     // pre defined variables
     private static final int PORT = 2594;
     // end of pre defined variables
@@ -24,7 +25,7 @@ public class client {
     private static boolean result;
     // end of game related variables
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // dev function
         run(IP);
     }
 
@@ -64,9 +65,11 @@ public class client {
             // once the loop is broken, the client will close the connection
             s.close();
             System.out.println("Connection closed");
+
         } catch (Exception e) {
-            System.out.println("OhNo, an error occured: " + e);
+            dummy.errorOccured(e);
         }
+
     }
 
     private static void establishConnection(String ip) throws Exception {

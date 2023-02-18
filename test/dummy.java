@@ -19,4 +19,10 @@ public class dummy {
         System.out.println("Result: " + result);
         System.out.println("Points: " + points);
     }
+
+    public static void errorOccured(Exception error) {
+        System.out.println("Error Occured");
+        System.out.println("Error: " + error);
+        // add some kind of popup window here signaling the error to the user
+    }
 }
