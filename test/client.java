@@ -25,10 +25,10 @@ public class client {
     // end of game related variables
 
     public static void main(String[] args) {
-        connectToHost(IP);
+        run(IP);
     }
 
-    public static void connectToHost(String ip) {
+    public static void run(String ip) {
         try {
             establishConnection(ip);
             registerClient();
