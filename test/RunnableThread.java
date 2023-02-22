@@ -88,12 +88,12 @@ class RunnableThread implements Runnable {
         System.out.println("Client bekommt: " + ergebnis + " als Ergebnis");
         pr.println("RESULT");
         pr.println(ergebnis);
-        pr.flush();
         pr.println(punkte);
         pr.flush();
     }
 
     public void endGame() {
         pr.println("END GAME");
+        pr.flush();
     }
 }
