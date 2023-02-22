@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class host {
-    private static ServerSocket ss;
+    private static ServerSocket ss; 
 
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
 
@@ -11,6 +11,13 @@ public class host {
 
     public static void main(String[] args) throws IOException {
         initServer(PORT);
+        try{
+        Thread.sleep(10000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        startGame();
+        startRound();
     }
 
     public static void initServer(int port) throws IOException {
