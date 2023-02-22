@@ -31,6 +31,7 @@ public class client {
     private static String question; // the question and the answer are both provided in the JSON format
     private static int answer = 0;
     private static boolean result;
+    private static double time = 0;
     // end of game related variables
 
     public static void main(String[] args) { // dev function
@@ -60,6 +61,8 @@ public class client {
                     // send the answer
                     pr.println(answer);
                     pr.flush();
+                    pr.println(time);
+                    pr.flush();
                 } else if (bf.readLine().equals("RESULT")) {
                     // receive the result
                     result = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True") returns true.
@@ -79,9 +82,8 @@ public class client {
             System.out.println("Connection closed");
 
         } catch (Exception e) {
-            dummy.errorOccured(e);
+            dummy.errorOccured(e);  
         }
-
     }
 
     // Stellt die Verbindung zum Server her
