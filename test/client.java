@@ -34,6 +34,8 @@ public class client {
     private static double time = 0;
     // end of game related variables
 
+    private static String receivedMessage;
+
     public static void main(String[] args) { // dev function
         run(IP, "Max Mustermann");
     }
@@ -53,8 +55,8 @@ public class client {
                 // question
                 // if the host send the end signal, the client will break the loop and end the
 
-                String receivedMessage = bf.readLine();
-                
+                receivedMessage = bf.readLine();
+
                 if (receivedMessage.equals("START ROUND")) {
                     // receive the question
                     question = bf.readLine();
