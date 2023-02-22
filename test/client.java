@@ -53,7 +53,9 @@ public class client {
                 // question
                 // if the host send the end signal, the client will break the loop and end the
 
-                if (bf.readLine().equals("START ROUND")) {
+                String receivedMessage = bf.readLine();
+                
+                if (receivedMessage.equals("START ROUND")) {
                     // receive the question
                     question = bf.readLine();
                     // give the question to the function that will **eventually return the answer**
@@ -63,7 +65,7 @@ public class client {
                     pr.flush();
                     pr.println(time);
                     pr.flush();
-                } else if (bf.readLine().equals("RESULT")) {
+                } else if (receivedMessage.equals("RESULT")) {
                     System.out.println("Result received");
                     // receive the result
                     result = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True") returns true.
@@ -74,7 +76,7 @@ public class client {
                     // give the result and the points to the function that will handle those
                     dummy.roundEnded(result, score);
 
-                } else if (bf.readLine().equals("END GAME")) {
+                } else if (receivedMessage.equals("END GAME")) {
                     break;
                 }
             }
