@@ -64,6 +64,7 @@ public class client {
                     pr.println(time);
                     pr.flush();
                 } else if (bf.readLine().equals("RESULT")) {
+                    System.out.println("Result received");
                     // receive the result
                     result = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True") returns true.
                                                                   // Example: Boolean.parseBoolean("yes") returns false.
