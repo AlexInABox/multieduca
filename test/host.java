@@ -1,13 +1,11 @@
 import java.net.*;
+import java.util.ArrayList;
 import java.io.*;
 
 public class host {
-    private static int counter = 0;
     private static ServerSocket ss;
 
-    private static RunnableThread[] threadList = new RunnableThread[20];
-
-    public static boolean isStarted = false;
+    private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
 
     private static final int PORT = 2594;
 
@@ -16,37 +14,34 @@ public class host {
     }
 
     public static void initServer(int port) throws IOException {
-        System.out.println("Starting server on: " + port);
         ss = new ServerSocket(port);
 
         createThread();
-
     }
 
     public static void createThread() {
-        RunnableThread t = new RunnableThread(Integer.toString(counter), ss);
-        counter += 1;
+        RunnableThread t = new RunnableThread(ss);
         try {
-            threadList[counter] = t;
+            threadList.add(t);
         } catch (Exception e) {
-            System.out.println("No more people please thanks!!!" + e);
+            e.printStackTrace();
         }
         t.start();
     }
 
     public static void startGame() {
-        isStarted = true;
         // stop the last running thread
-        threadList[counter].allowedToRun = false;
+        threadList.get(threadList.size()-1).allowedToRun = false;
     }
 
-    public static void handleMessage(String msg) {
-        System.out.println("client: " + msg.toString());
+    public static void startRound() {
+        //
+        try{
+        for (RunnableThread thread : threadList) {
+            thread.sendQuestion("coole Frage");
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    public static void respondToClient(PrintWriter pr) {
-        pr.println("Hello Client, I received your message!");
-        pr.flush();
-    }
-
 }

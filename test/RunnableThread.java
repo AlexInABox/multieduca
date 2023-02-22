@@ -5,29 +5,33 @@ class RunnableThread implements Runnable {
     public boolean allowedToRun = true; // this is the variable that will be used to stop the thread
 
     private Thread t;
-    private String threadName;
     private ServerSocket ss;
     private Socket s;
 
     private static String ip;
     private static String nick;
 
-    public static int punktezahl;
+    public static int punkte;
+    private static int antwort;
+    private static boolean ergebnis;
+    private static double zeit;
 
-    RunnableThread(String name, ServerSocket ss) {
-        threadName = name;
+    private InputStreamReader in;
+    private BufferedReader bf;
+    private PrintWriter pr;
+
+    RunnableThread(ServerSocket ss) {
         this.ss = ss;
-        System.out.println("Creating " + threadName);
     }
 
     public void run() {
         try {
             s = ss.accept();
 
-            InputStreamReader in = new InputStreamReader(s.getInputStream());
-            BufferedReader bf = new BufferedReader(in);
+            in = new InputStreamReader(s.getInputStream());
+            bf = new BufferedReader(in);
 
-            PrintWriter pr = new PrintWriter(s.getOutputStream());
+            pr = new PrintWriter(s.getOutputStream());
 
             if (allowedToRun) {
 
@@ -40,17 +44,12 @@ class RunnableThread implements Runnable {
 
                 regClient(s);
 
-                while (host.isStarted) {
-
-                    System.out.println("Round started, thread" + nick);
-
-                }
             } else {
 
                 pr.println("Game has started, you are not allowed to connect anymore");
                 pr.flush();
                 s.close();
-                System.out.println("Thread " + threadName + " does not accept any more connections");
+                System.out.println("Thread does not accept any more connections");
             }
         } catch (Exception e) {
             System.out.println("Error! Upsie! Here: " + e);
@@ -63,10 +62,32 @@ class RunnableThread implements Runnable {
     }
 
     public void start() {
-        System.out.println("Starting " + threadName);
+        System.out.println("Starting new Thread");
         if (t == null) {
-            t = new Thread(this, threadName);
+            t = new Thread(this);
             t.start();
         }
     }
+
+    public void sendQuestion(String question) throws IOException {
+        pr.println("START ROUND");
+        pr.println(question);
+        pr.flush();
+        antwort = Integer.parseInt(bf.readLine());
+        zeit = Double.parseDouble(bf.readLine());
+    }
+
+    public void sendResult() {
+        punkte = dummy.getResult(antwort, 2);
+        ergebnis = punkte > 0;
+        pr.println("RESULT");
+        pr.println(ergebnis);
+        pr.println(punkte);
+    }
+
+    public void endGame() {
+        pr.println("END GAME");
+    }
+
+
 }

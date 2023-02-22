@@ -25,4 +25,8 @@ public class dummy {
         System.out.println("Error: " + error);
         // add some kind of popup window here signaling the error to the user
     }
+
+    public static int getResult(int r, double z) {
+        return 1234;
+    }
 }
