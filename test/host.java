@@ -39,6 +39,7 @@ public class host {
     public static void startGame() {
         // stop the last running thread
         threadList.get(threadList.size()-1).allowedToRun = false;
+        threadList.remove(threadList.size()-1);
     }
 
     public static void startRound() {
