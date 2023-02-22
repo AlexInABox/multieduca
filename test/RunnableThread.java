@@ -74,12 +74,18 @@ class RunnableThread implements Runnable {
         pr.println(question);
         pr.flush();
         antwort = Integer.parseInt(bf.readLine());
+        System.out.println(antwort);
         zeit = Double.parseDouble(bf.readLine());
+        System.out.println(zeit);
+
+        sendResult();
     }
 
     public void sendResult() {
         punkte = dummy.getResult(antwort, 2);
+        System.out.println("Client bekommt: " + punkte + " Punkte");
         ergebnis = punkte > 0;
+        System.out.println("Client bekommt: " + ergebnis + " als Ergebnis");
         pr.println("RESULT");
         pr.println(ergebnis);
         pr.println(punkte);
@@ -88,6 +94,4 @@ class RunnableThread implements Runnable {
     public void endGame() {
         pr.println("END GAME");
     }
-
-
 }
