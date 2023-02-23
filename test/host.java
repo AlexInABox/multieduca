@@ -1,75 +1,55 @@
 import java.net.*;
+import java.util.ArrayList;
 import java.io.*;
 
 public class host {
-    private static int counter = 0;
-    private static ServerSocket ss;
+    private static ServerSocket ss; 
 
-    private static RunnableThread[] threadList = new RunnableThread[20];
-
-    public static boolean isStarted = false;
+    private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
 
     private static final int PORT = 2594;
 
     public static void main(String[] args) throws IOException {
         initServer(PORT);
+        try{
+        Thread.sleep(10000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        startGame();
+        startRound();
     }
 
     public static void initServer(int port) throws IOException {
-        System.out.println("Starting server on: " + port);
         ss = new ServerSocket(port);
 
         createThread();
-
     }
 
     public static void createThread() {
-        RunnableThread t = new RunnableThread(Integer.toString(counter), ss);
-        counter += 1;
+        RunnableThread t = new RunnableThread(ss);
         try {
-            threadList[counter] = t;
+            threadList.add(t);
         } catch (Exception e) {
-            System.out.println("No more people please thanks!!!" + e);
+            e.printStackTrace();
         }
         t.start();
     }
 
-    public static void maini(String[] args) throws IOException {
-        ServerSocket ss = new ServerSocket(4000);
-        Socket s = ss.accept();
-
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        BufferedReader bf = new BufferedReader(in);
-
-        System.out.println("Connection established");
-
-        System.out.println("Waiting for client to send message");
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-
-        while (true) {
-            String str = bf.readLine();
-            if (str == null)
-                break;
-
-            handleMessage(str);
-            respondToClient(pr);
-
-        }
-
-    }
-
     public static void startGame() {
-        isStarted = true;
-        threadList[counter].close();
+        // stop the last running thread
+        threadList.get(threadList.size()-1).allowedToRun = false;
+        threadList.remove(threadList.size()-1);
     }
 
-    public static void handleMessage(String msg) {
-        System.out.println("client: " + msg.toString());
+    public static void startRound() {
+        //
+        try{
+        for (RunnableThread thread : threadList) {
+            thread.sendQuestion("coole Frage");
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    public static void respondToClient(PrintWriter pr) {
-        pr.println("Hello Client, I received your message!");
-        pr.flush();
-    }
-
 }
