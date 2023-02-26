@@ -1,10 +1,12 @@
 import java.net.*;
-import java.io.*;
 
 import org.json.JSONObject;
 
+import java.io.*;
+
 /**
  * Autor: Alexander Betke
+ * Ueberarbeitet: Niklas Bamberg
  * Datum: 2022-02-18
  *
  * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet
@@ -13,30 +15,23 @@ import org.json.JSONObject;
  */
 public class client {
     // dev variables
-    private static final String IP = "10.16.111.109";
+    private static final String IP = "localhost";
     // end of dev variables
-
-    // pre defined variables
-    private static final int PORT = 2594;
-    // end of pre defined variables
 
     // networking related variables
     private static Socket s;
     private static PrintWriter pr;
-    private static InputStreamReader in;
     private static BufferedReader bf;
     // end of networking related variables
 
     // game related variables
-    private static String nick = "Lorem Ipsum";
+    private static String nick;
     private static int score = 0;
     private static JSONObject question;
     private static int answer = 0;
     private static boolean result;
     private static double time = 0;
     // end of game related variables
-
-    private static String receivedMessage;
 
     public static void main(String[] args) { // dev function
         run(IP, "Max Mustermann");
@@ -49,7 +44,9 @@ public class client {
             nick = nickname;
 
             establishConnection(ip);
-            registerClient();
+            //send nickname
+            pr.println(nick);
+            pr.flush();
 
             while (true) {
                 // wait for the round to start
@@ -57,16 +54,15 @@ public class client {
                 // question
                 // if the host send the end signal, the client will break the loop and end the
 
-                receivedMessage = bf.readLine();
+                String receivedMessage = bf.readLine();
 
                 if (receivedMessage.equals("START ROUND")) {
                     // receive the question
                     question = new JSONObject(bf.readLine());
                     // give the question to the function that will **eventually return the answer**
-                    answer = dummy.roundStarted(question);
+                    answer = 3;
                     // send the answer
                     pr.println(answer);
-                    pr.flush();
                     pr.println(time);
                     pr.flush();
                 } else if (receivedMessage.equals("RESULT")) {
@@ -77,8 +73,7 @@ public class client {
                     // receive the points
                     score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
 
-                    // give the result and the points to the function that will handle those
-                    dummy.roundEnded(result, score);
+                    // give the result and the points to the function that will handle those+
 
                 } else if (receivedMessage.equals("END GAME")) {
                     break;
@@ -95,16 +90,9 @@ public class client {
 
     // Stellt die Verbindung zum Server her
     private static void establishConnection(String ip) throws Exception {
-        s = new Socket(ip, PORT);
+        s = new Socket(ip, 2594);
         pr = new PrintWriter(s.getOutputStream());
-        in = new InputStreamReader(s.getInputStream());
+        InputStreamReader in = new InputStreamReader(s.getInputStream());
         bf = new BufferedReader(in);
-    }
-
-    // Registriert den Client beim Server mit dem Nickname
-    private static void registerClient() throws Exception {
-        // send the nickname
-        pr.println(nick);
-        pr.flush();
     }
 }

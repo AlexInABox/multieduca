@@ -3,92 +3,74 @@ import java.io.*;
 
 import org.json.JSONObject;
 
+/*
+* Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+* Datum: 2022-02-16
+* 
+* ...
+*/
+
 class RunnableThread implements Runnable {
-    public boolean allowedToRun = true; // this is the variable that will be used to stop the thread
 
-    private Thread t;
-    private ServerSocket ss;
-    private Socket s;
+    private static ServerSocket ss;
+    private static Socket s;
 
-    private static String ip;
     private static String nick;
 
     public static int punkte;
-    private static int antwort;
-    private static boolean ergebnis;
-    private static double zeit;
-    private static JSONObject frage;
 
-    private InputStreamReader in;
+    private Quiz quiz;
+
     private BufferedReader bf;
     private PrintWriter pr;
 
-    RunnableThread(ServerSocket ss) {
-        this.ss = ss;
+    RunnableThread(ServerSocket server, Quiz quiz) {
+        ss = server;
+        this.quiz = quiz;
     }
 
     public void run() {
         try {
             s = ss.accept();
-
-            in = new InputStreamReader(s.getInputStream());
+            host.initServer();
+            InputStreamReader in = new InputStreamReader(s.getInputStream());
             bf = new BufferedReader(in);
-
             pr = new PrintWriter(s.getOutputStream());
+            System.out.println("Connection established");
+            System.out.println("Creating a new thread");
 
-            if (allowedToRun) {
+            nick = bf.readLine(); // the first message is the name of the player
 
-                System.out.println("Connection established");
-                System.out.println("Creating a new thread");
-
-                host.createThread();
-
-                nick = bf.readLine(); // the first message is the name of the player
-
-                regClient(s);
-
-            } else {
-
-                pr.println("Game has started, you are not allowed to connect anymore");
-                pr.flush();
-                s.close();
-                System.out.println("Thread does not accept any more connections");
-            }
+            regClient(s);
         } catch (Exception e) {
-            System.out.println("Error! Upsie! Here: " + e);
+            e.printStackTrace();
         }
     }
 
     private static void regClient(Socket s) {
-        ip = s.getInetAddress().toString();
+        String ip = s.getInetAddress().toString();
         System.out.println(ip + " " + nick);
     }
 
     public void start() {
         System.out.println("Starting new Thread");
-        if (t == null) {
-            t = new Thread(this);
-            t.start();
-        }
+        Thread t = new Thread(this);
+        t.start(); 
     }
 
-    public void sendQuestion(String question) throws IOException {
-        frage = new JSONObject(question);
+    public void sendQuestion(int index) throws IOException {
+        JSONObject frage = quiz.getFrage(index);
         pr.println("START ROUND");
-        pr.println(question);
+        pr.println(frage.toString());
         pr.flush();
-        antwort = Integer.parseInt(bf.readLine());
+        int antwort = Integer.parseInt(bf.readLine());
         System.out.println(antwort);
-        zeit = Double.parseDouble(bf.readLine());
+        double zeit = Double.parseDouble(bf.readLine());
         System.out.println(zeit);
 
-        sendResult();
-    }
-
-    public void sendResult() {
         punkte = genPunkte(frage, antwort, zeit);
         System.out.println("Client bekommt: " + punkte + " Punkte");
-        ergebnis = punkte > 0;
+        boolean ergebnis = punkte > 0;
         System.out.println("Client bekommt: " + ergebnis + " als Ergebnis");
         pr.println("RESULT");
         pr.println(ergebnis);

@@ -16,32 +16,32 @@ public class Quiz {
 
     public Quiz(File quizDatei) {
         try {
-			String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
-            
+            String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
+
             fragen = new JSONArray(JSONtext);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void addFrage(String text, String [] antworten, int loesung, int zeit) {
+    public void addFrage(String text, String[] antworten, int loesung, int zeit) {
         JSONObject frage = new JSONObject();
         frage.put("text", text);
-		frage.put("antworten", antworten);
-		frage.put("loesung", loesung);
-		frage.put("zeit", zeit);
+        frage.put("antworten", antworten);
+        frage.put("loesung", loesung);
+        frage.put("zeit", zeit);
         fragen.put(frage);
     }
-    
+
     public void save(File file) {
-		try {
-            FileWriter fileWriter = new FileWriter(file);            
-			fragen.write(fileWriter);
-		    fileWriter.close(); 
-		} catch (IOException e) { 
-		    e.printStackTrace();
-		}
-	}
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fragen.write(fileWriter);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public JSONObject getFrage(int index) {
         return (JSONObject) fragen.get(index);

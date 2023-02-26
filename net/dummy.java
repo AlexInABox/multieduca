@@ -1,3 +1,5 @@
+import org.json.*;
+
 public class dummy {
 
     public static void startGame() {
@@ -8,7 +10,7 @@ public class dummy {
         System.out.println("Game Ended");
     }
 
-    public static int roundStarted(String question) {
+    public static int roundStarted(JSONObject question) {
         System.out.println("Round Started");
         System.out.println("Question: " + question);
         return 3; // this can be a value between 1 and 4
@@ -27,6 +29,6 @@ public class dummy {
     }
 
     public static int getResult(int r, double z) {
-        return Math.random() * 1234;
+        return (int) (Math.random() * 1234);
     }
 }
