@@ -55,7 +55,7 @@ class RunnableThread implements Runnable {
     public void start() {
         System.out.println("Starting new Thread");
         Thread t = new Thread(this);
-        t.start(); 
+        t.start();
     }
 
     public void sendQuestion(int index) throws IOException {
@@ -84,12 +84,12 @@ class RunnableThread implements Runnable {
     }
 
     private static int genPunkte(JSONObject frage, int antwort, double antwortZeit) {
-		double output = 0;
-		int loesung = frage.getInt("loesung");
-		int maxZeit = frage.getInt("zeit");
-		if (loesung == antwort) {
-			 output = 100-(Math.pow(antwortZeit, 2)/Math.pow(maxZeit, 2)*50); 
-		}
-		return (int) output;
-	}
+        double output = 0;
+        int loesung = frage.getInt("loesung");
+        int maxZeit = frage.getInt("zeit");
+        if (loesung == antwort) {
+            output = 100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50);
+        }
+        return (int) output;
+    }
 }

@@ -19,7 +19,7 @@ public class host {
         ss = new ServerSocket(2594);
         initServer();
         Thread.sleep(10000);
-        threadList.remove(threadList.size()-1);
+        threadList.remove(threadList.size() - 1);
         startRound();
         endGame();
     }
@@ -31,7 +31,7 @@ public class host {
     }
 
     public static void startRound() {
-        try{
+        try {
             for (RunnableThread thread : threadList) {
                 thread.sendQuestion(0);
             }
@@ -41,7 +41,7 @@ public class host {
     }
 
     public static void endGame() {
-        try{
+        try {
             for (RunnableThread thread : threadList) {
                 thread.endGame();
             }

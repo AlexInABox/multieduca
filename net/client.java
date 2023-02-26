@@ -1,6 +1,8 @@
+
 import java.net.*;
 
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.*;
 
@@ -44,7 +46,7 @@ public class client {
             nick = nickname;
 
             establishConnection(ip);
-            //send nickname
+            // send nickname
             pr.println(nick);
             pr.flush();
 
@@ -84,7 +86,7 @@ public class client {
             System.out.println("Connection closed");
 
         } catch (Exception e) {
-            dummy.errorOccured(e);  
+            dummy.errorOccured(e);
         }
     }
 
