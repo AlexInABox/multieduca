@@ -1,9 +1,8 @@
 
 import java.net.*;
+import java.util.UUID;
 
 import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import java.io.*;
 
 /**
@@ -36,7 +35,7 @@ public class client {
     // end of game related variables
 
     public static void main(String[] args) { // dev function
-        run(IP, "Max Mustermann");
+        run(IP, UUID.randomUUID().toString().substring(0, 6));
     }
 
     // Startet den Client und führt ihn aus
@@ -61,7 +60,14 @@ public class client {
                 if (receivedMessage.equals("START ROUND")) {
                     // receive the question
                     question = new JSONObject(bf.readLine());
+                    System.out.println("Das ist die erhaltene Frage: " + question);
+
                     // give the question to the function that will **eventually return the answer**
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     answer = 3;
                     // send the answer
                     pr.println(answer);
