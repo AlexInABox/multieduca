@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ListView layoutX="100.0" layoutY="116.0" prefHeight="229.0" prefWidth="400.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;" />
+      <Label alignment="CENTER" layoutX="175.0" layoutY="29.0" prefHeight="61.0" prefWidth="255.0" text="Ranking" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="64.0" />
+         </font>
+      </Label>
+      <Button layoutX="254.0" layoutY="353.0" mnemonicParsing="false" stylesheets="@../css/redButton.css" text="Beenden" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="272.0" layoutY="122.0" text="Punkte" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="413.0" layoutY="122.0" text="Zeit" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="122.0" text="Spieler" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
