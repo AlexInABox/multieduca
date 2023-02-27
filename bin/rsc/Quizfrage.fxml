@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StartscreenController">
+   <children>
+      <Pane layoutX="16.0" layoutY="138.0" prefHeight="211.0" prefWidth="569.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="262.0" stylesheets="@../css/greenButton.css" text="&lt;Antwort A&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="293.0" layoutY="14.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="262.0" stylesheets="@../css/greenButton.css" text="&lt;Antwort B&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="115.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="262.0" stylesheets="@../css/greenButton.css" text="&lt;Antwort C&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="293.0" layoutY="115.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="262.0" stylesheets="@../css/greenButton.css" text="&lt;Antwort D&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ProgressBar layoutX="14.0" layoutY="366.0" prefHeight="20.0" prefWidth="569.0" progress="0.23" style="-fx-background-color: #1C82AD;" />
+      <Label layoutX="16.0" layoutY="14.0" text="&lt;HIER STEHT EINE FRAGE&gt;" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <ProgressIndicator layoutX="554.0" layoutY="14.0" progress="0.32" />
+   </children>
+</AnchorPane>

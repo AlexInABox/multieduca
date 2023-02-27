@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielWartenController">
+   <children>
+      <Label layoutX="35.0" layoutY="36.0" text="Verbunden mit:" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="333.0" layoutY="44.0" text="255.255.255.255" textFill="#03c988" underline="true">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="104.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToStartpage" stylesheets="@../css/redButton.css" text="Verlassen" textFill="WHITE" />
+      <Pane layoutX="35.0" layoutY="94.0" prefHeight="235.0" prefWidth="209.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="67.0" layoutY="14.0" text="Spieler:" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="274.0" layoutY="94.0" text="*Q U I Z  N A M E*" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font>
+      </Label>
+      <ProgressIndicator layoutX="521.0" layoutY="318.0" />
+      <Label layoutX="300.0" layoutY="334.0" text="Wartet auf weitere Spieler" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
