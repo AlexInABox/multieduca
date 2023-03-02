@@ -74,7 +74,7 @@
             </TextField>
          </children>
       </VBox>
-      <Button layoutX="254.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" stylesheets="@../css/greenButton.css" text="Hinzufügen" textFill="WHITE" />
+      <Button layoutX="254.0" layoutY="328.0" mnemonicParsing="false" onAction="#addFrage" prefHeight="25.0" prefWidth="92.0" stylesheets="@../css/greenButton.css" text="Hinzufügen" textFill="WHITE" />
       <Text fill="WHITE" layoutX="201.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Füge eine Frage hinzu.">
          <font>
             <Font size="20.0" />

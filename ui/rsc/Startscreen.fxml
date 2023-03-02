@@ -44,7 +44,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../css/greenButton.css" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLoginButtonClick" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
             <Label layoutX="554.0" layoutY="378.0" prefHeight="17.0" prefWidth="79.0" text="v. 2023.01.24" textFill="WHITE" />
             <Label layoutX="141.0" layoutY="89.0" prefHeight="111.0" prefWidth="377.0" text="Q u i z Game" textFill="#03c988">
                <font>
