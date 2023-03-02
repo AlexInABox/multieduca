@@ -44,7 +44,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../css/greenButton.css" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLoginButtonClick" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
             <Label layoutX="554.0" layoutY="378.0" prefHeight="17.0" prefWidth="79.0" text="v. 2023.01.24" textFill="WHITE" />
             <Label layoutX="141.0" layoutY="89.0" prefHeight="111.0" prefWidth="377.0" text="Q u i z Game" textFill="#03c988">
                <font>
@@ -53,21 +53,26 @@
             </Label>
             <Pane layoutX="223.0" layoutY="190.0" prefHeight="129.0" prefWidth="194.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
                <children>
-                  <TextField focusTraversable="false" layoutX="17.0" layoutY="14.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="17.0" layoutY="14.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font></TextField>
-                  <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#switchToSpielWarten" prefHeight="26.0" prefWidth="160.0" stylesheets="@../css/greenButton.css" text="Beitreten" textFill="WHITE">
+                  <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" stylesheets="@../css/greenButton.css" text="Beitreten" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font></Button>
-                  <TextField focusTraversable="false" layoutX="17.0" layoutY="52.0" promptText="Anzeigename" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <TextField fx:id="userName" focusTraversable="false" layoutX="17.0" layoutY="52.0" promptText="Anzeigename" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
                      <font>
                         <Font name="Arial" size="13.0" />
                      </font>
                   </TextField>
                </children>
             </Pane>
+            <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="337.0" prefHeight="16.0" prefWidth="640.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>
