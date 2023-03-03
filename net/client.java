@@ -5,6 +5,8 @@ import java.util.UUID;
 import org.json.JSONObject;
 import java.io.*;
 
+import java.util.ArrayList;
+
 /**
  * Autor: Alexander Betke
  * Ueberarbeitet: Niklas Bamberg
@@ -13,6 +15,10 @@ import java.io.*;
  * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet
  * und
  * mit ihm über das Netzwerk kommuniziert.
+ * 
+ * 03.03.2021: Funktionalität für kommunikation von Spielerlisten und
+ * Punktelisten hinzugefügt.
+ * (Alexander Betke)
  */
 public class client {
     // dev variables
@@ -30,8 +36,10 @@ public class client {
     private static int score = 0;
     private static JSONObject question;
     private static int answer = 0;
-    private static boolean result;
+    private static boolean answeredRight;
     private static double time = 0;
+    private static ArrayList<String> playerList = new ArrayList<String>();
+    private static ArrayList<String> playerPoints = new ArrayList<String>();
     // end of game related variables
 
     public static void main(String[] args) { // dev function
@@ -76,13 +84,42 @@ public class client {
                 } else if (receivedMessage.equals("RESULT")) {
                     System.out.println("Result received");
                     // receive the result
-                    result = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True") returns true.
-                                                                  // Example: Boolean.parseBoolean("yes") returns false.
+                    answeredRight = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True")
+                                                                         // returns true.
+                    // Example: Boolean.parseBoolean("yes") returns false.
                     // receive the points
                     score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
 
                     // give the result and the points to the function that will handle those+
 
+                } else if (receivedMessage.equals("PLAYER LIST")) {
+                    // receive the player list
+                    String playerListString = bf.readLine();
+
+                    // split the player list string into an array
+                    String[] playerListArray = playerListString.split(",");
+
+                    // clear the player list
+                    playerList.clear();
+
+                    // add the players to the player list
+                    for (String player : playerListArray) {
+                        playerList.add(player);
+                    }
+                } else if (receivedMessage.equals("PLAYER POINTS")) {
+                    // receive the player points
+                    String playerPointsString = bf.readLine();
+
+                    // split the player points string into an array
+                    String[] playerPointsArray = playerPointsString.split(",");
+
+                    // clear the player points
+                    playerPoints.clear();
+
+                    // add the players to the player points
+                    for (String player : playerPointsArray) {
+                        playerPoints.add(player);
+                    }
                 } else if (receivedMessage.equals("END GAME")) {
                     break;
                 }
@@ -102,5 +139,23 @@ public class client {
         pr = new PrintWriter(s.getOutputStream());
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         bf = new BufferedReader(in);
+    }
+
+    // Gibt die Liste aller aktiven Spieler zurück
+    public static ArrayList getPlayerList() {
+        return playerList;
+    }
+
+    // Gibt die Liste mit den Punkten aller aktiven Spieler zurück
+    public static ArrayList getPlayerPoints() {
+        return playerPoints;
+    }
+
+    public static JSONObject getQuestion() {
+        return question;
+    }
+
+    public static boolean answeredRight() {
+        return answeredRight;
     }
 }

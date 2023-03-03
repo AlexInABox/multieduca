@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizspiel2.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielStartenHostController">
    <children>
-      <Label alignment="CENTER" layoutX="161.0" layoutY="40.0" text="IP-Adresse: 123.456.789.10" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="ipLabel" alignment="CENTER" layoutX="161.0" layoutY="40.0" text="IP-Adresse: 123.456.789.10" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="254.0" layoutY="76.0" text="Spiel Name" textFill="WHITE">
+      <Label fx:id="nameLabel" layoutX="254.0" layoutY="76.0" text="Spiel Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="258.0" layoutY="331.0" mnemonicParsing="false" onAction="#switchToSpielLaeuftHost" prefHeight="30.0" prefWidth="100.0" stylesheets="@../css/greenButton.css" text="Spiel Starten" textFill="WHITE">
+      <Button layoutX="258.0" layoutY="331.0" mnemonicParsing="false" onAction="#spielStarten" prefHeight="30.0" prefWidth="100.0" stylesheets="@../css/greenButton.css" text="Spiel Starten" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>
