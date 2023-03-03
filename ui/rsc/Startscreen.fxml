@@ -42,37 +42,45 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StartscreenController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../css/greenButton.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" stylesheets="@../../../multieduca/ui/css/greenButton.css" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
-            <Label layoutX="554.0" layoutY="378.0" prefHeight="17.0" prefWidth="79.0" text="v. 2023.01.24" textFill="WHITE" />
-            <Label layoutX="141.0" layoutY="89.0" prefHeight="111.0" prefWidth="377.0" text="Q u i z Game" textFill="#03c988">
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Spiel Hosten" textFill="#13005a" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="1.0" layoutY="89.0" prefHeight="111.0" prefWidth="800.0" text="Q u i z Game" textAlignment="CENTER" textFill="#03c988">
                <font>
                   <Font name="Arial Bold" size="60.0" />
                </font>
             </Label>
-            <Pane layoutX="223.0" layoutY="190.0" prefHeight="129.0" prefWidth="194.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+            <Pane layoutX="275.0" layoutY="213.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="213.0">
                <children>
-                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="17.0" layoutY="14.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <Button layoutX="45.0" layoutY="131.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Beitreten" textFill="#00337c">
                      <font>
-                        <Font name="Arial" size="13.0" />
-                     </font></TextField>
-                  <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" stylesheets="@../css/greenButton.css" text="Beitreten" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Arial Bold" size="16.0" />
                      </font></Button>
-                  <TextField fx:id="userName" focusTraversable="false" layoutX="17.0" layoutY="52.0" promptText="Anzeigename" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <TextField fx:id="userName" focusTraversable="false" layoutX="25.0" layoutY="39.0" promptText="Name" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
                      <font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="25.0" layoutY="85.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
+                     <font>
+                        <Font name="Arial" size="16.0" />
                      </font>
                   </TextField>
                </children>
             </Pane>
-            <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="337.0" prefHeight="16.0" prefWidth="640.0" textAlignment="CENTER">
+            <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutY="388.0" prefHeight="16.0" prefWidth="800.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
+            <Button layoutX="15.0" layoutY="504.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;" styleClass="info-button" stylesheets="@../../../multieduca/ui/css/button.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
   </children>

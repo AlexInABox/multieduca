@@ -13,7 +13,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="241.0" layoutY="321.0" mnemonicParsing="false" onAction="#switchToHostscreen" prefHeight="40.0" prefWidth="110.0" stylesheets="@../css/redButton.css" text="Spiel Beenden" textFill="WHITE" />
+      <Button layoutX="245.0" layoutY="321.0" mnemonicParsing="false" onAction="#startRound" prefHeight="40.0" prefWidth="110.0" stylesheets="@../css/greenButton.css" text="Next" textFill="WHITE" />
       <Pane layoutX="196.0" layoutY="174.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;">
          <children>
             <Text fill="WHITE" layoutX="17.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frage 1/10" textAlignment="CENTER" wrappingWidth="166.5">
