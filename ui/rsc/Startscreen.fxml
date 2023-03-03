@@ -76,7 +76,7 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="15.0" layoutY="504.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;" styleClass="info-button" stylesheets="@../../../multieduca/ui/css/button.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+            <Button layoutX="15.0" layoutY="504.0" mnemonicParsing="false" onAction="#switchToSpielInfo" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;" styleClass="info-button" stylesheets="@../../../multieduca/ui/css/button.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>

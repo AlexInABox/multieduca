@@ -151,7 +151,16 @@ public class StartscreenController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();   
+        stage.show(); 
+	}  
+
+	public void switchToSpielInfo(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../rsc/info.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+	} 
 
 //    in onLoginButtonClick eingebaut. ~basim 02.03.2023 22:53    
 //    public void switchToSpielWarten(ActionEvent event) throws IOException{
@@ -161,5 +170,5 @@ public class StartscreenController {
 //        stage.setScene(scene);
 //        stage.show();
 
-    }
+//    }
 }
