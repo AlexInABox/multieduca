@@ -1,5 +1,5 @@
 /*
- * Basim Bennaji
+ * Autor: Basim Bennaji
  * Thema: Autoren des Programms (Credits).
  * Erstellungsdatum: 03.03.2023
  * Letzte Aenderung: 04.03.2023 01:20

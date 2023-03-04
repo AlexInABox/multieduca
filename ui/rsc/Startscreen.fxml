@@ -13,7 +13,6 @@
          -Info-Button hinzugefuegt
          -Generelle Design aenderungen
 -->
-
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -60,7 +59,7 @@
   <children>
     <AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" stylesheets="@../../../multieduca/ui/css/greenButton.css" VBox.vgrow="ALWAYS">
       <children>
-            <Pane layoutX="270.0" layoutY="208.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;">
+            <Pane layoutX="270.0" layoutY="208.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
                <effect>
                   <BoxBlur height="255.0" iterations="3" width="255.0" />
                </effect>
