@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.QuizController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.QuizfrageController">
    <children>
       <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
          <effect>
@@ -28,25 +28,30 @@
          </font>
       </Label>
       <ProgressBar fx:id="progbarFragen" layoutX="15.0" layoutY="518.0" prefHeight="20.0" prefWidth="500.0" progress="0.11" stylesheets="@../css/progbar.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <Button fx:id="antC" alignment="CENTER" layoutX="25.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort C" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antC" alignment="CENTER" layoutX="25.0" layoutY="388.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort C" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="antA" alignment="CENTER" layoutX="25.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort A" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antA" alignment="CENTER" layoutX="25.0" layoutY="275.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort A" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="antB" alignment="CENTER" layoutX="405.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort B" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antB" alignment="CENTER" layoutX="405.0" layoutY="275.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort B" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="AntD" alignment="CENTER" layoutX="405.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort D" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antD" alignment="CENTER" layoutX="405.0" layoutY="388.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort D" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="antGeg" alignment="CENTER" layoutY="233.0" prefHeight="35.0" prefWidth="800.0" text="Antwort gesichert. Warten auf andere Spieler/Host" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold Italic" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

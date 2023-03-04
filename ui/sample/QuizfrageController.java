@@ -10,12 +10,16 @@
  *      - Beim Auswaehlen einer Antwort werden die Antwortbuttons deaktiviert und es wird auf die weiteren Spieler/Host gewartet
  *      - Vorlaeufige Methode fuer timer hinzugefuegt. 04.03.2023 20:45
  *      - Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt. 04.03.2023 20:51
+ *      - Antwortbuttons und Frage werden deaktiviert nach Auswahl einer Antwort. Es erscheint eine Bestaetigungsnachricht ueber den Buttons. 04.03.2023 21:20
  */
 
 package sample;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,6 +44,9 @@ public class QuizfrageController {
 
     @FXML
     private Button antC;
+
+    @FXML
+    private Label antGeg;
 
     @FXML
     private Label frageText;
@@ -78,10 +85,20 @@ public class QuizfrageController {
         frageText.setText("");
     }
 
+    // Methode zum deaktivieren der Antwortbuttons nach der Auswahl einer Antwort.
+    public void disableAntButtons (ActionEvent event) throws IOException {
+        antA.setDisable(true);
+        antB.setDisable(true);
+        antC.setDisable(true);
+        antD.setDisable(true);
+        antGeg.setVisible(true);
+        frageText.setDisable(true);
+    }
+
     @FXML
     void initialize() {
         // Hier werden die verschiedenen Antwortbuttons, die Frage und Zeit initialisiert.
-        setFrage();
-        setAntButtons();
+//        setFrage();
+//        setAntButtons();
     }
 }
