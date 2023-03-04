@@ -1,12 +1,14 @@
 /*
  * Basim Bennaji
  * Thema: Autoren des Programms (Credits).
- * Erstellungsdatum: 26.02.2023
- * Letzte Aenderung: 26.02.2023 01:20
+ * Erstellungsdatum: 03.03.2023
+ * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * Namen der Autoren wurden hinzugefuegt. Markierung mit einem '*' fuer Schueler der Fichtenberg-Oberschule wurden hinzugefuegt. 26.02.2023
+ *  -Funktion switchToHome hinzugefuegt
+ *  -Labels werden mit den Namen der Autoren initializiert
  */
+ package sample;
 
  import java.io.IOException;
 
@@ -34,8 +36,8 @@
      @FXML
      private Label people2;
      
-     public void switchtoHome (ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+     public void switchToHome (ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
          stage = (Stage)((Node)event.getSource()).getScene().getWindow();
          scene = new Scene(root);
          stage.setScene(scene);
@@ -45,8 +47,8 @@
      
      @FXML
      void initialize() {
-         people2.setText("Basim Bennaji \n Till Dietrich \n Emil Habermann \n Alexander Horns* \n Moritz Oehme* \n Felix Trautwein*");
-         people1.setText("Niklas Bamberg \n Alexander Betke \n Maximilian Gombala \n Samuel Hoffleit* \n Jonas Lossin \n Rosan Sharma*");
+         people2.setText("Basim Bennaji \n Till Dietrich \n Emil Habermann \n Alexander Horns \n Moritz Oehme \n Felix Trautwein");
+         people1.setText("Niklas Bamberg \n Alexander Betke \n Maximilian Gombala \n Samuel Hoffleit \n Jonas Lossin \n Rosan Sharma");
  
      }
  
