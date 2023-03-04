@@ -94,7 +94,7 @@ public class StartscreenController {
             			userName.setStyle(sucessStyle);
             			new animatefx.animation.Shake(ipAdress).play();	
         		  } //else
-          			// Host konnte nicht gefunden werden. Kommt noch!
+          			// TODO:Host konnte nicht gefunden werden. Kommt noch!
           			  //if(!ipMoeglich(ipAdress.getText())) {
           				  //ipAdress.setStyle(errorStyle);
           				  //logInfo.setText("IP-Adresse nicht gültig!");

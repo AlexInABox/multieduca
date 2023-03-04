@@ -80,7 +80,7 @@
             <ProgressIndicator layoutX="99.0" layoutY="96.0" />
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="4.0" layoutY="22.0" prefHeight="23.0" prefWidth="793.0" text="Spiel beitreten" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="4.0" layoutY="22.0" prefHeight="23.0" prefWidth="793.0" text="Spiel beitreten" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="22.0">
          <font>
             <Font name="Arial Bold" size="40.0" />
          </font>
