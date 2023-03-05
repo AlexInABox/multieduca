@@ -3,8 +3,10 @@ package sample;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,7 +20,8 @@ public class Quiz {
 
     public Quiz(File quizDatei) {
         try {
-            String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
+            // String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
+            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getName())), StandardCharsets.UTF_8);
 
             fragen = new JSONArray(JSONtext);
         } catch (IOException e) {
@@ -53,15 +56,15 @@ public class Quiz {
         return fragen.length();
     }
 
-    //wird von andere Klasse aus aufgerufen
+    // wird von andere Klasse aus aufgerufen
     public static int genPunkte(JSONObject frage, int antwort, double antwortZeit) {
         double output = 0;
         int loesung = frage.getInt("loesung");
         int maxZeit = frage.getInt("zeit");
         if (loesung == antwort) {
-        output = 100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50);
+            output = 100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50);
         }
         return (int) output;
     }
-     
+
 }
