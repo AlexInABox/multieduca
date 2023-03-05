@@ -27,10 +27,14 @@ public class SpielStartenHostController {
     private static ServerSocket ss;
 
     @FXML
-    private static Label ipLabel, nameLabel;
+    private Label ipLabel, nameLabel;
 
-    public SpielStartenHostController() throws IOException {
-
+    public SpielStartenHostController(String quizName) throws IOException {
+        quiz = HostscreenController.getQuiz();
+        ipLabel.setText("IP-Adresse: " + "");
+        nameLabel.setText(quizName);
+        ss = new ServerSocket(2594);
+        initServer();
     }
 
     //Button-FUnktion um zu Fragen-Screen zu wechseln
@@ -41,24 +45,7 @@ public class SpielStartenHostController {
         stage.setScene(scene);
         stage.show();
         threadList.remove(threadList.size() - 1);
-        SpielLaeuftHostController.start();
-    }
-
-    public static void start(String quizName) {
-        quiz = HostscreenController.getQuiz();
-        //das klappt irgendwie nicht:
-        //ipLabel.setText("IP-Adresse: test");
-        //nameLabel.setText(quizName);
-        try {
-            ss = new ServerSocket(2594);
-            initServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<RunnableThread> getThreads() {
-        return threadList;
+        SpielLaeuftHostController controller = new SpielLaeuftHostController(threadList);
     }
 
     public static void initServer() throws IOException {

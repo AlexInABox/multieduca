@@ -20,12 +20,8 @@ public class SpielLaeuftHostController {
     private static ArrayList<RunnableThread> threadList;
     private static int roundIndex = 0;
 
-    public SpielLaeuftHostController() throws IOException {
-
-    }
-
-    public static void start() {
-        threadList = SpielStartenHostController.getThreads();
+    public SpielLaeuftHostController(ArrayList<RunnableThread> threads) throws IOException {
+        threadList = threads;
     }
 
     //Networking-methode (wird durch Buttonclick aufgerufen)
