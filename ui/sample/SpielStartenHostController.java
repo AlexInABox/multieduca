@@ -14,7 +14,7 @@ import java.net.ServerSocket;
 import java.util.ArrayList;
 
 //aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//-arbeiten an verbindung der Teile: Nila Bamberg -02.03.2023
 
 public class SpielStartenHostController {
 
@@ -22,30 +22,29 @@ public class SpielStartenHostController {
     private Scene scene;
     private static Quiz quiz;
 
-    //Networking-Variablen
+    // Networking-Variablen
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
     private static ServerSocket ss;
 
     @FXML
     private Label ipLabel, nameLabel;
 
-    public SpielStartenHostController(String quizName) throws IOException {
+    public SpielStartenHostController() throws IOException {
         quiz = HostscreenController.getQuiz();
-        ipLabel.setText("IP-Adresse: " + "");
-        nameLabel.setText(quizName);
+        // ipLabel.setText("IP-Adresse: " + "");
+        // nameLabel.setText(quizName);
         ss = new ServerSocket(2594);
         initServer();
     }
 
-    //Button-FUnktion um zu Fragen-Screen zu wechseln
+    // Button-FUnktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         threadList.remove(threadList.size() - 1);
-        SpielLaeuftHostController controller = new SpielLaeuftHostController(threadList);
     }
 
     public static void initServer() throws IOException {
@@ -54,4 +53,7 @@ public class SpielStartenHostController {
         t.start();
     }
 
+    public static ArrayList<RunnableThread> getThreadList() {
+        return threadList;
+    }
 }

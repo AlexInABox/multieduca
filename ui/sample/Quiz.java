@@ -20,11 +20,12 @@ public class Quiz {
 
     public Quiz(File quizDatei) {
         try {
-            // String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
-            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getName())), StandardCharsets.UTF_8);
+
+            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getPath())), StandardCharsets.UTF_8);
 
             fragen = new JSONArray(JSONtext);
         } catch (IOException e) {
+            System.out.println("Fehler beim Laden der Quizdatei");
             e.printStackTrace();
         }
     }

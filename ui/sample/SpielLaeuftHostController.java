@@ -20,11 +20,11 @@ public class SpielLaeuftHostController {
     private static ArrayList<RunnableThread> threadList;
     private static int roundIndex = 0;
 
-    public SpielLaeuftHostController(ArrayList<RunnableThread> threads) throws IOException {
-        threadList = threads;
+    public SpielLaeuftHostController() throws IOException {
+        threadList = SpielStartenHostController.getThreadList();
     }
 
-    //Networking-methode (wird durch Buttonclick aufgerufen)
+    // Networking-methode (wird durch Buttonclick aufgerufen)
     public void startRound(ActionEvent event) {
         try {
             if (roundIndex < HostscreenController.getQuiz().getLength()) {
@@ -39,13 +39,14 @@ public class SpielLaeuftHostController {
             }
             roundIndex++;
         } catch (Exception e) {
+            System.out.println("Fehler beim Senden der Frage");
             e.printStackTrace();
         }
     }
 
-    public void switchToHostscreen(ActionEvent event) throws IOException{
+    public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
