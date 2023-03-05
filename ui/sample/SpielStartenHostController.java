@@ -5,7 +5,7 @@
  * Letzte Aenderung: 04.03.2023 23:51
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51
+ *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51 ~basim
  */
 package sample;
 

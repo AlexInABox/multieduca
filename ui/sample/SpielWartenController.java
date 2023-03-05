@@ -5,8 +5,8 @@
  * Letzte Aenderung: 04.03.2023 19:13
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      Methode zum nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden.
- *      Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert.
+ *      Methode zum nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden. 04.03.2023 ~basim
+ *      Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
  */
 
 package sample;
