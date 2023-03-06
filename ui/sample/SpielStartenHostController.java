@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
 
 public class SpielStartenHostController {
 
@@ -88,7 +89,6 @@ public class SpielStartenHostController {
         stage.setScene(scene);
         stage.show();
     }
-
 
     public static ArrayList<RunnableThread> getThreadList() {
         return threadList;

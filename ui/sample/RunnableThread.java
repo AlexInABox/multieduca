@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 * Datum: 2022-02-16
 * 
 * ...
+*Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
 */
 
 class RunnableThread implements Runnable {

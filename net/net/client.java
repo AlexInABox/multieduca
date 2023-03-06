@@ -11,15 +11,17 @@ import java.util.ArrayList;
 /**
  * Autor: Alexander Betke
  * Ueberarbeitet: Niklas Bamberg
- * Datum: 2022-02-18
+ * Datum: 2023-02-18
  *
  * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet
  * und
  * mit ihm über das Netzwerk kommuniziert.
  * 
- * 03.03.2021: Funktionalität für kommunikation von Spielerlisten und
+ * 03.03.2023: Funktionalität für kommunikation von Spielerlisten und
  * Punktelisten hinzugefügt.
  * (Alexander Betke)
+ * 
+ * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
  */
 public class client {
     // dev variables
