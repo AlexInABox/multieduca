@@ -43,9 +43,6 @@ public class HostscreenController {
 
         // umschalten auf Beitritts-screen
         switchScreen("../rsc/SpielStartenHost.fxml", event);
-
-        // SpielStartenHostController controller = new
-        // SpielStartenHostController(quizName);
     }
 
     public static Quiz getQuiz() {

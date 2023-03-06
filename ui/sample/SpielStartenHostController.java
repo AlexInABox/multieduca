@@ -29,7 +29,8 @@ public class SpielStartenHostController {
     @FXML
     private Label ipLabel, nameLabel;
 
-    public SpielStartenHostController() throws IOException {
+    @FXML
+    protected void initialize() throws IOException {
         quiz = HostscreenController.getQuiz();
         // ipLabel.setText("IP-Adresse: " + "");
         // nameLabel.setText(quizName);
