@@ -29,11 +29,11 @@ public class Quiz {
         }
     }
 
-    public void addFrage(String text, String[] antworten, int loesung, int zeit) {
+    public void addFrage(String text, String[] antworten, int[] loesungen, int zeit) {
         JSONObject frage = new JSONObject();
         frage.put("text", text);
         frage.put("antworten", antworten);
-        frage.put("loesung", loesung);
+        frage.put("loesungen", loesungen);
         frage.put("zeit", zeit);
         fragen.put(frage);
     }
@@ -66,5 +66,34 @@ public class Quiz {
         }
         return (int) output;
     }
+    /* 
+    public static int gen(JSONObject frage, int [] eingaben, double antwortZeit) {
+    	double output = 0;
+    	int maxZeit = frage.getInt("zeit");
+    	int nAntworten = frage.getJSONArray("antworten").length();
+    	int nLoesungen = frage.getJSONArray("loesungen").length();
+    	Integer[] loesungen = (Integer[]) frage.getJSONArray("loesungen").toList().toArray();
+    	for (int i = 0; i < nAntworten; i++) {
+    		
+    		boolean istRichtig = false;
+    		for (int j = 0; j < nLoesungen; j++) {
+    			if (i == loesungen[j].intValue()) {
+    				istRichtig = true;
+    			}
+    		}
+    		
+    		boolean wurdeAusgewaehlt = false;
+    		for (int j = 0; j < eingaben.length; j++) {
+    			if (i == eingaben [j]) {
+    				wurdeAusgewaehlt = true;
+    			}
+    		}
+    		
+    		if ((istRichtig & wurdeAusgewaehlt) || (!istRichtig & !wurdeAusgewaehlt)) {
+    			output += (100-(Math.pow(antwortZeit, 2)/Math.pow(maxZeit, 2)*50))/nAntworten; 
+    		}
+    	}
+    	return (int) output;
+    }*/
 
 }

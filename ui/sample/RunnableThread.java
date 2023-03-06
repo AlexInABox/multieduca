@@ -5,6 +5,8 @@ import java.io.*;
 
 import org.json.JSONObject;
 
+import javafx.scene.control.ListView;
+
 /*
 * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
 * Datum: 2022-02-16
@@ -18,6 +20,8 @@ class RunnableThread implements Runnable {
     private static Socket s;
 
     private static String nick;
+    //UI-Element
+    private ListView<String> playerList;
 
     public static int punkte;
 
@@ -26,15 +30,16 @@ class RunnableThread implements Runnable {
     private BufferedReader bf;
     private PrintWriter pr;
 
-    RunnableThread(ServerSocket server, Quiz quiz) {
+    RunnableThread(ServerSocket server, Quiz quiz, ListView<String> playerList) {
         ss = server;
         this.quiz = quiz;
+        this.playerList = playerList;
     }
 
     public void run() {
         try {
             s = ss.accept();
-            SpielStartenHostController.initServer();
+            SpielStartenHostController.initServer(playerList);
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             bf = new BufferedReader(in);
             pr = new PrintWriter(s.getOutputStream());
@@ -42,6 +47,7 @@ class RunnableThread implements Runnable {
             System.out.println("Creating a new thread");
 
             nick = bf.readLine(); // the first message is the name of the player
+            playerList.getItems().add(nick);
 
             regClient(s);
         } catch (Exception e) {

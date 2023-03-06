@@ -37,7 +37,7 @@ public class SpielStartenHostController {
     private Button playButton;
 
     @FXML
-    private ListView<?> playerList;
+    private ListView<String> playerList;
 
     @FXML
     private Label quizFragenAnz;
@@ -60,7 +60,7 @@ public class SpielStartenHostController {
         quizName.setText(HostscreenController.getName());
         quizFragenAnz.setText(""+HostscreenController.getQuiz().getLength());
         ss = new ServerSocket(2594);
-        initServer();
+        initServer(playerList);
     }
 
     // Button-FUnktion um zu Fragen-Screen zu wechseln
@@ -73,8 +73,9 @@ public class SpielStartenHostController {
         threadList.remove(threadList.size() - 1);
     }
 
-    public static void initServer() throws IOException {
-        RunnableThread t = new RunnableThread(ss, quiz);
+    public static void initServer(ListView<String> player) throws IOException {
+        //dem RunnableThread wird die Playerliste uebergeben, damit er den Playernamen dort hinzufuegen kann
+        RunnableThread t = new RunnableThread(ss, quiz, player);
         threadList.add(t);
         t.start();
     }
