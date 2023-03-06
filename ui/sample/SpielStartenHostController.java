@@ -26,7 +26,7 @@ import java.net.ServerSocket;
 import java.util.ArrayList;
 
 //aenderungen:
-//-arbeiten an verbindung der Teile: Nila Bamberg -02.03.2023
+//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 
 public class SpielStartenHostController {
 
@@ -54,13 +54,11 @@ public class SpielStartenHostController {
     private static ServerSocket ss;
 
     @FXML
-    private Label ipLabel, nameLabel;
-
-    @FXML
     protected void initialize() throws IOException {
         quiz = HostscreenController.getQuiz();
-        ipLabel.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
-        nameLabel.setText(HostscreenController.getName());
+        hostIPAdresse.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
+        quizName.setText(HostscreenController.getName());
+        quizFragenAnz.setText(""+HostscreenController.getQuiz().getLength());
         ss = new ServerSocket(2594);
         initServer();
     }
