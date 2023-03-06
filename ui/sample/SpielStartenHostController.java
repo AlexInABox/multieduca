@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
@@ -32,8 +33,8 @@ public class SpielStartenHostController {
     @FXML
     protected void initialize() throws IOException {
         quiz = HostscreenController.getQuiz();
-        // ipLabel.setText("IP-Adresse: " + "");
-        // nameLabel.setText(quizName);
+        ipLabel.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
+        nameLabel.setText(HostscreenController.getName());
         ss = new ServerSocket(2594);
         initServer();
     }

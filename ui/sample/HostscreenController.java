@@ -37,9 +37,10 @@ public class HostscreenController {
         // Quiz-Objekt aus Datei laden:
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Quiz Öffnen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
         File quizDatei = fileChooser.showOpenDialog(stage);
         quiz = new Quiz(quizDatei);
-        quizName = quizDatei.getName();
+        quizName = quizDatei.getName().replaceAll(".json", "");
 
         // umschalten auf Beitritts-screen
         switchScreen("../rsc/SpielStartenHost.fxml", event);

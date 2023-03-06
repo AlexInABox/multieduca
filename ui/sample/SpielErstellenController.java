@@ -11,8 +11,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -105,6 +103,7 @@ public class SpielErstellenController {
     public void saveGame(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Quiz Speichern");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
         File file = fileChooser.showSaveDialog(stage);
         quiz.save(file);
         switchToHostscreen(event);
