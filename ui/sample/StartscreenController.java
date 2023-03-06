@@ -2,13 +2,15 @@
  * Autoren: Moritz Oehme, Samuel Hoffleit, Basim Bennaji
  * Thema: Methoden des Startscreens.
  * Erstellungsdatum: 23.02.2023 (?)
- * Letzte Aenderung: 02.03.2023 23:14
+ * Letzte Aenderung: 05.03.2023
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt ~basim:
+ * 		Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt ~basim:
  *      Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander. ~basim 23.02.2023
  *      Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt. ~basim 24.02.2023 16:16
  *      Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt. ~basim 25.02.2023
+ * 
+ * 		JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
  */
 
 package sample;

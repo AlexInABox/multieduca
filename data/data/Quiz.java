@@ -1,8 +1,11 @@
+package data;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,7 +19,8 @@ public class Quiz {
 
     public Quiz(File quizDatei) {
         try {
-            String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
+            // String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
+            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getName())), StandardCharsets.UTF_8);
 
             fragen = new JSONArray(JSONtext);
         } catch (IOException e) {

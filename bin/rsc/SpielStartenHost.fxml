@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielStartenHostController">
    <children>
       <Pane layoutX="270.0" layoutY="66.0" prefHeight="418.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">

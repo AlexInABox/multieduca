@@ -12,18 +12,19 @@ import java.io.File;
 import java.io.IOException;
 
 //aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//-arbeiten an verbindung der Teile: Nikas Bamerg -02.03.2023
 
 public class HostscreenController {
 
     private Stage stage;
     private Scene scene;
     private static Quiz quiz;
+    private static String quizName;
 
     public HostscreenController() throws IOException {
 
     }
-    
+
     public void switchToStartpage(ActionEvent event) throws IOException {
         switchScreen("../rsc/Startscreen.fxml", event);
     }
@@ -33,26 +34,30 @@ public class HostscreenController {
     }
 
     public void openFile(ActionEvent event) throws IOException {
-        //Quiz-Objekt aus Datei laden:
+        // Quiz-Objekt aus Datei laden:
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Quiz Öffnen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
         File quizDatei = fileChooser.showOpenDialog(stage);
         quiz = new Quiz(quizDatei);
-        String quizName = quizDatei.getName();
+        quizName = quizDatei.getName().replaceAll(".json", "");
 
-        //umschalten auf Beitritts-screen
+        // umschalten auf Beitritts-screen
         switchScreen("../rsc/SpielStartenHost.fxml", event);
-        SpielStartenHostController.start(quizName);
     }
 
     public static Quiz getQuiz() {
         return quiz;
     }
 
-    //hilfsmethode fuer screenwechsel:
+    public static String getName() {
+        return quizName;
+    }
+
+    // hilfsmethode fuer screenwechsel:
     void switchScreen(String fxmlName, ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlName));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

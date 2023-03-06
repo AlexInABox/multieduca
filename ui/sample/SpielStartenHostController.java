@@ -21,11 +21,12 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
 //aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//-arbeiten an verbindung der Teile: Nila Bamberg -02.03.2023
 
 public class SpielStartenHostController {
 
@@ -48,36 +49,30 @@ public class SpielStartenHostController {
     private Scene scene;
     private static Quiz quiz;
 
-    //Networking-Variablen
+    // Networking-Variablen
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
     private static ServerSocket ss;
 
-    //Button-FUnktion um zu Fragen-Screen zu wechseln
+    @FXML
+    private Label ipLabel, nameLabel;
+
+    @FXML
+    protected void initialize() throws IOException {
+        quiz = HostscreenController.getQuiz();
+        ipLabel.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
+        nameLabel.setText(HostscreenController.getName());
+        ss = new ServerSocket(2594);
+        initServer();
+    }
+
+    // Button-FUnktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         threadList.remove(threadList.size() - 1);
-        SpielLaeuftHostController.start();
-    }
-
-    public static void start(String quizName) {
-        quiz = HostscreenController.getQuiz();
-        //das klappt irgendwie nicht:
-        //ipLabel.setText("IP-Adresse: test");
-        //nameLabel.setText(quizName);
-        try {
-            ss = new ServerSocket(2594);
-            initServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<RunnableThread> getThreads() {
-        return threadList;
     }
 
     public static void initServer() throws IOException {
@@ -93,6 +88,11 @@ public class SpielStartenHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    public static ArrayList<RunnableThread> getThreadList() {
+        return threadList;
     }
 
 }
