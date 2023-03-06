@@ -5,25 +5,6 @@
     "version": "0.0.1",
     "configurations": [
         {
-            "type": "java",
-            "name": "client",
-            "request": "launch",
-            "mainClass": "net.client",
-            "projectName": "multieduca_d45f5f1e"
-        },
-        {
-            "type": "java",
-            "name": "host",
-            "request": "launch",
-            "mainClass": "host",
-            "projectName": "multieduca_d45f5f1e"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "sample.Main",
-            "projectName": "multieduca_d45f5f1e"
         }
     ]
 }

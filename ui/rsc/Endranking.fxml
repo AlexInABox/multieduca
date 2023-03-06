@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EndrankingController">
    <children>
-      <ListView layoutX="100.0" layoutY="116.0" prefHeight="229.0" prefWidth="400.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;" />
-      <Label alignment="CENTER" layoutX="175.0" layoutY="29.0" prefHeight="61.0" prefWidth="255.0" text="Ranking" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="4.0" layoutY="22.0" prefHeight="23.0" prefWidth="793.0" text="Ranking" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="22.0">
          <font>
-            <Font name="Arial Bold" size="64.0" />
+            <Font name="Arial Bold" size="40.0" />
          </font>
       </Label>
-      <Button layoutX="254.0" layoutY="353.0" mnemonicParsing="false" stylesheets="@../css/redButton.css" text="Beenden" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="272.0" layoutY="122.0" text="Punkte" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="413.0" layoutY="122.0" text="Zeit" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="143.0" layoutY="122.0" text="Spieler" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Label>
+      <Pane layoutX="290.0" layoutY="10.0" prefHeight="418.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Button fx:id="homeButton" layoutX="385.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToHome" prefHeight="30.0" prefWidth="30.0" styleClass="home-button" stylesheets="@../css/button.css" AnchorPane.bottomAnchor="15.0" />
+      <TableView fx:id="tab" layoutX="50.0" layoutY="89.0" prefHeight="400.0" prefWidth="700.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="90.0">
+        <columns>
+          <TableColumn fx:id="spielerTab" prefWidth="350.0" resizable="false" text="Spieler" />
+          <TableColumn fx:id="punkteTab" minWidth="0.0" prefWidth="330.0" resizable="false" text="Punkte" />
+        </columns>
+         <styleClass>
+            <String fx:value="column-header-background" />
+            <String fx:value="text" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@../css/grid.css" />
+            <URL value="@../css/list.css" />
+         </stylesheets>
+      </TableView>
+      <SVGPath content="M456,128a40,40,0,0,0-37.23,54.6L334.6,266.77a39.86,39.86,0,0,0-29.2,0L245.23,206.6a40,40,0,1,0-74.46,0L70.6,306.77A40,40,0,1,0,93.23,329.4L193.4,229.23a39.86,39.86,0,0,0,29.2,0l60.17,60.17a40,40,0,1,0,74.46,0l84.17-84.17A40,40,0,1,0,456,128Z" fill="WHITE" layoutX="32.0" layoutY="-211.0" scaleX="0.1" scaleY="0.1" scaleZ="0.1" />
    </children>
 </AnchorPane>

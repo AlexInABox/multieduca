@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: Startscreen
+   Erstellungsdatum: 03.03.2023
+   Letzte Aenderung: 04.03.2023 14:02
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Startscreens:
+         -Groessres Fenster
+         -SVG-Grafik hinzugefuegt
+         -Info-Button hinzugefuegt
+         -Generelle Design aenderungen
+-->
+<!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
 
@@ -35,44 +48,64 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StartscreenController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../css/greenButton.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" stylesheets="@../../../multieduca/ui/css/greenButton.css" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" stylesheets="@../css/greenButton.css" text="Spiel Hosten" textFill="WHITE" />
-            <Label layoutX="554.0" layoutY="378.0" prefHeight="17.0" prefWidth="79.0" text="v. 2023.01.24" textFill="WHITE" />
-            <Label layoutX="141.0" layoutY="89.0" prefHeight="111.0" prefWidth="377.0" text="Q u i z Game" textFill="#03c988">
+            <Pane layoutX="270.0" layoutY="208.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+               <effect>
+                  <BoxBlur height="255.0" iterations="3" width="255.0" />
+               </effect>
+            </Pane>
+            <SVGPath content="M328.85 156.79A26.69 26.69 0 10347.73 164.6 26.6 26.6 0 00328.85 156.79ZM477.44 50.06A.29.29 0 01477.44 49.97 20.4 20.4 0 00462.31 34.67C432.51 27.4 385.63 35.15 333.68 55.95 281.32 76.95 232.26 107.95 199.1 141.17A320.7 320.7 0 00169.55 175C147.22 174 127.55 177.18 110.98 184.41 53.24 209.82 36.75 274.85 32.36 301.55A25 25 0 0059.55 330.55H59.68L124 323.53C124.08 324.35 124.17 325.1 124.24 325.79A34.36 34.36 0 00134.14 346.51L165.53 377.92A34.27 34.27 0 00186.24 387.83L188.39 388.06 181.39 452.3S181.39 452.38 181.39 452.43A25 25 0 00206 480 25.25 25.25 0 00210.15 479.66C237 475.34 302 459.05 327.34 401 334.51 384.54 337.68 364.95 336.79 342.66A314.78 314.78 0 00370.74 313.11C404.17 279.85 435.27 231.19 456.05 179.59 476.74 128.23 484.53 81 477.44 50.06ZM370.38 224.94A58.77 58.77 0 11370.38 141.87 58.3 58.3 0 01370.38 224.94ZM161.93 386.44A16 16 0 00150.93 389.11C144.54 393.48 138.12 397.8 131.64 402.01 118.53 410.53 102.85 395.57 110.64 382.01L122.79 361.01A16 16 0 00107.63 336.1 61.25 61.25 0 0072 353.56C68.34 357.23 57.21 368.37 51.22 410.82A357.94 357.94 0 0048 447.59 16 16 0 0064 464H64.4A359.87 359.87 0 00101.2 460.8C143.67 454.8 154.81 443.66 158.47 440A60.49 60.49 0 00175.86 404.26 16 16 0 00161.93 386.44Z" fill="#015f8559" layoutX="144.0" layoutY="-132.0" scaleX="0.35" scaleY="0.35" scaleZ="0.35">
+               <effect>
+                  <BoxBlur height="30.0" iterations="3" width="30.0" />
+               </effect>
+            </SVGPath>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielHost" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Spiel Hosten" textFill="#13005a" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                <font>
-                  <Font name="Arial Bold" size="60.0" />
-               </font>
-            </Label>
-            <Pane layoutX="223.0" layoutY="190.0" prefHeight="129.0" prefWidth="194.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+                  <Font name="Arial Bold" size="16.0" />
+               </font></Button>
+            <Pane layoutX="275.0" layoutY="213.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="213.0">
                <children>
-                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="17.0" layoutY="14.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <Button layoutX="45.0" layoutY="131.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Beitreten" textFill="#00337c">
                      <font>
-                        <Font name="Arial" size="13.0" />
-                     </font></TextField>
-                  <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" stylesheets="@../css/greenButton.css" text="Beitreten" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Arial Bold" size="16.0" />
                      </font></Button>
-                  <TextField fx:id="userName" focusTraversable="false" layoutX="17.0" layoutY="52.0" promptText="Anzeigename" style="-fx-background-color: #1C82AD; -fx-background-radius: 10;">
+                  <TextField fx:id="userName" focusTraversable="false" layoutX="25.0" layoutY="39.0" promptText="Name" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
                      <font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="25.0" layoutY="85.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
+                     <font>
+                        <Font name="Arial" size="16.0" />
                      </font>
                   </TextField>
                </children>
             </Pane>
-            <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="337.0" prefHeight="16.0" prefWidth="640.0" textAlignment="CENTER">
+            <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutY="388.0" prefHeight="16.0" prefWidth="800.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
+            <Button layoutX="15.0" layoutY="504.0" mnemonicParsing="false" onAction="#switchToSpielInfo" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;" styleClass="info-button" stylesheets="@../../../multieduca/ui/css/button.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Button>
+            <SVGPath content="M328.85 156.79A26.69 26.69 0 10347.73 164.6 26.6 26.6 0 00328.85 156.79ZM477.44 50.06A.29.29 0 01477.44 49.97 20.4 20.4 0 00462.31 34.67C432.51 27.4 385.63 35.15 333.68 55.95 281.32 76.95 232.26 107.95 199.1 141.17A320.7 320.7 0 00169.55 175C147.22 174 127.55 177.18 110.98 184.41 53.24 209.82 36.75 274.85 32.36 301.55A25 25 0 0059.55 330.55H59.68L124 323.53C124.08 324.35 124.17 325.1 124.24 325.79A34.36 34.36 0 00134.14 346.51L165.53 377.92A34.27 34.27 0 00186.24 387.83L188.39 388.06 181.39 452.3S181.39 452.38 181.39 452.43A25 25 0 00206 480 25.25 25.25 0 00210.15 479.66C237 475.34 302 459.05 327.34 401 334.51 384.54 337.68 364.95 336.79 342.66A314.78 314.78 0 00370.74 313.11C404.17 279.85 435.27 231.19 456.05 179.59 476.74 128.23 484.53 81 477.44 50.06ZM370.38 224.94A58.77 58.77 0 11370.38 141.87 58.3 58.3 0 01370.38 224.94ZM161.93 386.44A16 16 0 00150.93 389.11C144.54 393.48 138.12 397.8 131.64 402.01 118.53 410.53 102.85 395.57 110.64 382.01L122.79 361.01A16 16 0 00107.63 336.1 61.25 61.25 0 0072 353.56C68.34 357.23 57.21 368.37 51.22 410.82A357.94 357.94 0 0048 447.59 16 16 0 0064 464H64.4A359.87 359.87 0 00101.2 460.8C143.67 454.8 154.81 443.66 158.47 440A60.49 60.49 0 00175.86 404.26 16 16 0 00161.93 386.44Z" fill="#03c988" layoutX="144.0" layoutY="-132.0" scaleX="0.3" scaleY="0.3" scaleZ="0.3">
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </SVGPath>
       </children>
     </AnchorPane>
   </children>

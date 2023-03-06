@@ -1,35 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: Hostscreen
+   Erstellungsdatum: 04.03.2023
+   Letzte Aenderung: 04.03.2023 18:31
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Hostscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Buttongroesse aneinander angepasst
+         -Generelle Design aenderungen
+-->
+
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HostscreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HostscreenController">
    <children>
-      <Pane layoutX="242.0" layoutY="178.0" prefHeight="114.0" prefWidth="158.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Button layoutX="25.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToStartpage" prefHeight="30.0" prefWidth="30.0" styleClass="back-button" stylesheets="@../css/button.css" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Pane layoutX="285.0" layoutY="223.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="213.0">
          <children>
-            <Button layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSpielErstellen" stylesheets="@../css/greenButton.css" text="Spiel erstellen" textFill="WHITE">
+            <Button layoutX="25.0" layoutY="115.0" mnemonicParsing="false" onAction="#openFile" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 30;" stylesheets="@../css/greenButton.css" text="Spiel laden" textFill="#00337c">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#openFile" prefHeight="35.0" prefWidth="129.0" stylesheets="@../css/greenButton.css" text="Spiel laden" textFill="WHITE">
+            <Button layoutX="25.0" layoutY="41.0" mnemonicParsing="false" onAction="#switchToSpielErstellen" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 30;" stylesheets="@../css/greenButton.css" text="Spiel erstellen" textFill="#00337c">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToStartpage" prefHeight="27.0" prefWidth="73.0" stylesheets="@../css/redButton.css" text="Zurück" textFill="WHITE">
+      <Label alignment="CENTER" layoutY="103.0" prefHeight="86.0" prefWidth="800.0" text="HOST" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Text fill="WHITE" layoutX="221.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOST">
-         <font>
-            <Font name="Arial Bold" size="72.0" />
+            <Font name="Arial Bold" size="75.0" />
          </font>
-      </Text>
+      </Label>
    </children>
 </AnchorPane>

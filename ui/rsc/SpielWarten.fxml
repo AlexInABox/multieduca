@@ -1,44 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: Warteraum fuer Spieler
+   Erstellungsdatum: 04.03.2023
+   Letzte Aenderung: 04.03.2023 19:09
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Startscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Generelle Designsprache harmonischer gestaltet.
+         -Generelle Design aenderungen
+-->
+
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielWartenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielWartenController">
    <children>
-      <Label layoutX="35.0" layoutY="36.0" text="Verbunden mit:" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="333.0" layoutY="44.0" text="255.255.255.255" textFill="#03c988" underline="true">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="104.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToStartpage" stylesheets="@../css/redButton.css" text="Verlassen" textFill="WHITE" />
-      <Pane layoutX="35.0" layoutY="94.0" prefHeight="235.0" prefWidth="209.0" style="-fx-background-color: #00337C; -fx-background-radius: 30;">
+      <Pane layoutX="280.0" prefHeight="418.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Pane layoutX="38.0" layoutY="85.0" prefHeight="430.0" prefWidth="450.0" style="-fx-background-color: #0B518F; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0">
          <children>
-            <Label layoutX="67.0" layoutY="14.0" text="Spieler:" textFill="WHITE">
+            <Label fx:id="hostIPAdresse" alignment="CENTER" layoutY="14.0" prefHeight="20.0" prefWidth="450.0" text="Verbunden mit IP-Adresse: xxx.xxx.xxx.xxx" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="playerList" focusTraversable="false" layoutX="20.0" layoutY="65.0" pickOnBounds="false" prefHeight="340.0" prefWidth="410.0" stylesheets="@../css/list.css">
+               <styleClass>
+                  <String fx:value="list-cell" />
+                  <String fx:value="list-view" />
+               </styleClass>
+            </ListView>
+         </children>
+      </Pane>
+      <Pane layoutX="513.0" layoutY="85.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="264.0" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="35.0">
+         <children>
+            <Label alignment="CENTER" layoutY="28.0" prefHeight="23.0" prefWidth="250.0" text="Quiz" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="quizName" alignment="CENTER" layoutY="59.0" prefHeight="23.0" prefWidth="250.0" text="Physik Q1: Gravitation" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="120.0" prefHeight="23.0" prefWidth="250.0" text="Fragen" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="quizFragenAnz" alignment="CENTER" layoutY="151.0" prefHeight="23.0" prefWidth="250.0" text="26" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="274.0" layoutY="94.0" text="*Q U I Z  N A M E*" textFill="WHITE">
+      <Pane layoutX="515.0" layoutY="315.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337c; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="35.0">
+         <children>
+            <Label alignment="CENTER" layoutY="52.0" prefHeight="23.0" prefWidth="250.0" text="Warten auf Host" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <ProgressIndicator layoutX="99.0" layoutY="96.0" />
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="4.0" layoutY="22.0" prefHeight="23.0" prefWidth="793.0" text="Spiel beitreten" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="22.0">
          <font>
-            <Font name="Arial" size="36.0" />
+            <Font name="Arial Bold" size="40.0" />
          </font>
       </Label>
-      <ProgressIndicator layoutX="521.0" layoutY="318.0" />
-      <Label layoutX="300.0" layoutY="334.0" text="Wartet auf weitere Spieler" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Label>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToStart" prefHeight="30.0" prefWidth="30.0" styleClass="back-button" stylesheets="@../css/button.css" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
    </children>
 </AnchorPane>

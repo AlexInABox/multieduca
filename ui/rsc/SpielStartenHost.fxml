@@ -1,78 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielStartenHostController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielStartenHostController">
    <children>
-      <Label fx:id="ipLabel" alignment="CENTER" layoutX="161.0" layoutY="40.0" text="IP-Adresse: 123.456.789.10" textAlignment="CENTER" textFill="WHITE">
+      <Pane layoutX="270.0" layoutY="66.0" prefHeight="418.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Label alignment="CENTER" layoutX="4.0" layoutY="32.0" prefHeight="23.0" prefWidth="793.0" text="Spiel starten" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="22.0">
          <font>
-            <Font size="25.0" />
+            <Font name="Arial Bold" size="40.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" layoutX="254.0" layoutY="76.0" text="Spiel Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Button layoutX="258.0" layoutY="331.0" mnemonicParsing="false" onAction="#spielStarten" prefHeight="30.0" prefWidth="100.0" stylesheets="@../css/greenButton.css" text="Spiel Starten" textFill="WHITE">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Button>
-      <Pane layoutX="64.0" layoutY="119.0" prefHeight="200.0" prefWidth="245.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;">
+      <Pane layoutX="523.0" layoutY="95.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="85.0">
          <children>
-            <VBox layoutX="14.0" layoutY="6.0" prefHeight="189.0" prefWidth="100.0" spacing="2.0">
-               <children>
-                  <Label text="Spieler 1:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 2:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 3:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 4:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 5:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 6" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 7:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Spieler 8:" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
+            <Label alignment="CENTER" layoutY="28.0" prefHeight="23.0" prefWidth="250.0" text="Quiz" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="quizName" alignment="CENTER" layoutY="59.0" prefHeight="23.0" prefWidth="250.0" text="Physik Q1: Gravitation" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutY="120.0" prefHeight="23.0" prefWidth="250.0" text="Fragen" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="quizFragenAnz" alignment="CENTER" layoutY="151.0" prefHeight="23.0" prefWidth="250.0" text="26" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <ProgressIndicator layoutX="430.0" layoutY="166.0" />
+      <Pane layoutX="48.0" layoutY="95.0" prefHeight="430.0" prefWidth="450.0" style="-fx-background-color: #0B518F; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Label fx:id="hostIPAdresse" alignment="CENTER" layoutY="14.0" prefHeight="20.0" prefWidth="450.0" text="Ihre IP Adresse: xxx.xxx.xxx.xxx" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="playerList" focusTraversable="false" layoutX="20.0" layoutY="65.0" pickOnBounds="false" prefHeight="340.0" prefWidth="410.0" stylesheets="@../css/list.css">
+               <styleClass>
+                  <String fx:value="list-cell" />
+                  <String fx:value="list-view" />
+               </styleClass>
+            </ListView>
+         </children>
+      </Pane>
+      <Pane layoutX="515.0" layoutY="318.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337c; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="35.0">
+         <children>
+            <Label alignment="CENTER" layoutY="33.0" prefHeight="23.0" prefWidth="250.0" text="Spiel starten" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="playButton" layoutX="95.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#spielStarten" prefHeight="60.0" prefWidth="60.0" styleClass="play-button" stylesheets="@../css/button.css" />
+         </children>
+      </Pane>
+      <Button fx:id="backButton" layoutX="9.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToHost" prefHeight="30.0" prefWidth="30.0" styleClass="back-button" stylesheets="@../css/button.css" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
    </children>
 </AnchorPane>
