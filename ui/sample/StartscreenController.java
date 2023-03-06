@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import net.client;
 
 import java.io.IOException;
 
@@ -41,9 +42,13 @@ public class StartscreenController {
 	@FXML
 	private Label logInfo;
 
-	@FXML
 	// Methode wird beim klicken ausgefuehrt. Diese ueberprueft die Gueltigkeit der
 	// Eingaben.
+
+	//Networking-variable:
+	private static client client;
+
+	@FXML
 	protected void onLoginButtonClick(ActionEvent event) throws InterruptedException, IOException {
 
 		// Formatierung fuer falsche und korrekte Eingaben
@@ -114,11 +119,14 @@ public class StartscreenController {
 			logInfo.setStyle(sucessMessage);
 			userName.setStyle(sucessStyle);
 			ipAdress.setStyle(sucessStyle);
+
 			Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielWarten.fxml"));
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+
+			client = new client(ipAdress.getText(), userName.getText());
 		}
 	}
 
@@ -166,6 +174,10 @@ public class StartscreenController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+
+	public static client getClient() {
+		return client;
 	}
 
 	// in onLoginButtonClick eingebaut. ~basim 02.03.2023 22:53

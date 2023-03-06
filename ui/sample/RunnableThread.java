@@ -90,6 +90,13 @@ class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    public void sendQuizData() {
+        pr.println("QUIZ DATA");
+        pr.println(quiz.getLength());
+        pr.println(HostscreenController.getName());
+        pr.flush();
+    }
+
     public void endGame() {
         pr.println("END GAME");
         pr.flush();

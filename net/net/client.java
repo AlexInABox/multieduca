@@ -1,9 +1,9 @@
 package net;
 
 import java.net.*;
-import java.util.UUID;
 
 import org.json.JSONObject;
+
 import java.io.*;
 
 import java.util.ArrayList;
@@ -43,8 +43,12 @@ public class client {
     private static ArrayList<String> playerPoints = new ArrayList<String>();
     // end of game related variables
 
-    public static void main(String[] args) { // dev function
+    /*public static void main(String[] args) { // dev function
         run(IP, UUID.randomUUID().toString().substring(0, 6));
+    }*/
+
+    public client (String ip, String nickname) {
+        run(ip, nickname);
     }
 
     // Startet den Client und führt ihn aus
@@ -53,11 +57,21 @@ public class client {
             // set the nickname
             nick = nickname;
 
-            establishConnection(ip);
+            s = new Socket(ip, 2594);
+            pr = new PrintWriter(s.getOutputStream());
+            InputStreamReader in = new InputStreamReader(s.getInputStream());
+            bf = new BufferedReader(in);
             // send nickname
             pr.println(nick);
             pr.flush();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void istmiregal() {
+        try {
             while (true) {
                 // wait for the round to start
                 // if the host send the start signal, the client will prepare to receive the
@@ -134,12 +148,8 @@ public class client {
         }
     }
 
-    // Stellt die Verbindung zum Server her
-    private static void establishConnection(String ip) throws Exception {
-        s = new Socket(ip, 2594);
-        pr = new PrintWriter(s.getOutputStream());
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        bf = new BufferedReader(in);
+    public static String getIP() {
+        return s.getInetAddress().getHostAddress();
     }
 
     // Gibt die Liste aller aktiven Spieler zurück

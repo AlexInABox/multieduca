@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import net.client;
 
 public class SpielWartenController {
 
@@ -44,18 +45,20 @@ public class SpielWartenController {
     @FXML
     private Label quizName;
 
+    private client client;
+
     public void switchToStart(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
     void initialize() {
-        // Die Liste soll mit den Namen der bereits beigetretenen Spieler gefuellt werden. 
+        client = StartscreenController.getClient();
+        hostIPAdresse.setText(client.getIP());
     }
 
 }
