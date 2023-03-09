@@ -45,11 +45,13 @@ public class client {
     private static ArrayList<String> playerPoints = new ArrayList<String>();
     // end of game related variables
 
-    /*public static void main(String[] args) { // dev function
-        run(IP, UUID.randomUUID().toString().substring(0, 6));
-    }*/
+    /*
+     * public static void main(String[] args) { // dev function
+     * run(IP, UUID.randomUUID().toString().substring(0, 6));
+     * }
+     */
 
-    public client (String ip, String nickname) {
+    public client(String ip, String nickname) {
         run(ip, nickname);
     }
 
@@ -72,7 +74,7 @@ public class client {
         }
     }
 
-    public static void istmiregal() {
+    public static void listen() {
         try {
             while (true) {
                 // wait for the round to start
@@ -98,6 +100,8 @@ public class client {
                     pr.println(answer);
                     pr.println(time);
                     pr.flush();
+
+                    break;
                 } else if (receivedMessage.equals("RESULT")) {
                     System.out.println("Result received");
                     // receive the result
@@ -108,6 +112,7 @@ public class client {
                     score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
 
                     // give the result and the points to the function that will handle those+
+                    break;
 
                 } else if (receivedMessage.equals("PLAYER LIST")) {
                     // receive the player list
@@ -123,6 +128,8 @@ public class client {
                     for (String player : playerListArray) {
                         playerList.add(player);
                     }
+
+                    break;
                 } else if (receivedMessage.equals("PLAYER POINTS")) {
                     // receive the player points
                     String playerPointsString = bf.readLine();
@@ -137,6 +144,7 @@ public class client {
                     for (String player : playerPointsArray) {
                         playerPoints.add(player);
                     }
+                    break;
                 } else if (receivedMessage.equals("END GAME")) {
                     break;
                 }
