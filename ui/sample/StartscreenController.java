@@ -105,15 +105,7 @@ public class StartscreenController {
 			logInfo.setStyle(errorMessage);
 			userName.setStyle(sucessStyle);
 			new animatefx.animation.Shake(ipAdress).play();
-		} // else
-			// TODO: Host konnte nicht gefunden werden. Kommt noch!
-			// if(!ipMoeglich(ipAdress.getText())) {
-			// ipAdress.setStyle(errorStyle);
-			// logInfo.setText("IP-Adresse nicht gültig!");
-			// logInfo.setStyle(errorMessage);
-			// userName.setStyle(sucessStyle);
-			// new animatefx.animation.Shake(ipAdress).play();}
-		else {
+		} else {
 			// Keine Felher.
 			client = new client();
 			if(client.run(ipAdress.getText(), userName.getText())){
@@ -127,11 +119,13 @@ public class StartscreenController {
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-			}else{
-				//client = new client();
+			} else{
+				// Host konnte nicht gefunden werden.
+				//client = new client(); 
 				ipAdress.setStyle(errorStyle);
-				logInfo.setText("IP Adresse existiert nicht.");
+				logInfo.setText("Host konnte nicht gefunden werden!");
 				logInfo.setStyle(errorMessage);
+				new animatefx.animation.Shake(ipAdress).play();
 			}
 		}
 	}
