@@ -58,9 +58,24 @@ public class SpielWartenController {
     @FXML
     void initialize() {
         client = StartscreenController.getClient();
-        hostIPAdresse.setText(net.client.getIP());
-        quizFragenAnz.setText(net.client.getQuizLength());
-        quizName.setText(net.client.getQuizName());
+        hostIPAdresse.setText(client.getIP());
+        quizFragenAnz.setText(client.getQuizLength());
+        quizName.setText(client.getQuizName());
+
+        int EVENT;
+        do {
+            EVENT = net.client.waitForGameStart();
+            if (EVENT == 0) { //PLAYER LIST
+                //refresh player list
+            } else if (EVENT == 1) { // GAME START
+                //switch to game window
+                break;
+            } else if (EVENT == 2) { // GAME END
+                //switch to startscreen
+                break;
+            }
+        } while (EVENT == 0);
+
     }
 
 }

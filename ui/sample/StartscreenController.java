@@ -108,7 +108,7 @@ public class StartscreenController {
 		} else {
 			// Keine Felher.
 			client = new client();
-			if(client.run(ipAdress.getText(), userName.getText())){
+			if (client.establishConnection(ipAdress.getText(), userName.getText())) {
 				logInfo.setText("Erfolgreich angemeldet!");
 				logInfo.setStyle(sucessMessage);
 				userName.setStyle(sucessStyle);
@@ -119,7 +119,7 @@ public class StartscreenController {
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-			} else{
+			} else {
 				// Host konnte nicht gefunden werden.
 				//client = new client(); 
 				ipAdress.setStyle(errorStyle);

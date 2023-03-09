@@ -25,6 +25,8 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
+import net.*;
+
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 //-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
@@ -48,20 +50,16 @@ public class SpielStartenHostController {
 
     private Stage stage;
     private Scene scene;
-    private static Quiz quiz;
 
     // Networking-Variablen
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
-    private static ServerSocket ss;
 
     @FXML
     protected void initialize() throws IOException {
-        quiz = HostscreenController.getQuiz();
         hostIPAdresse.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
         quizName.setText(HostscreenController.getName());
-        quizFragenAnz.setText(""+HostscreenController.getQuiz().getLength());
-        ss = new ServerSocket(2594);
-        initServer(playerList);
+        quizFragenAnz.setText("" + HostscreenController.getQuiz().getLength());
+        host.initServer(playerList, HostscreenController.getQuiz());
     }
 
     // Button-FUnktion um zu Fragen-Screen zu wechseln
@@ -71,20 +69,13 @@ public class SpielStartenHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        threadList.remove(threadList.size() - 1);
-    }
-
-    public static void initServer(ListView<String> player) throws IOException {
-        //dem RunnableThread wird die Playerliste uebergeben, damit er den Playernamen dort hinzufuegen kann
-        RunnableThread t = new RunnableThread(ss, quiz, player);
-        threadList.add(t);
-        t.start();
+        host.startGame();
     }
 
     // Methode um zum Hostscreen zurueck zukehren
-    public void switchToHost (ActionEvent event) throws IOException {
+    public void switchToHost(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

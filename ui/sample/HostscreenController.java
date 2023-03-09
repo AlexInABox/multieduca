@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import data.Quiz;
+
 //aenderungen:
 //-arbeiten an verbindung der Teile: Nikas Bamerg -02.03.2023
 

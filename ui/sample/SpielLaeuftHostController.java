@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.RunnableThread;
+import net.host;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,24 +19,18 @@ public class SpielLaeuftHostController {
 
     private Stage stage;
     private Scene scene;
-    private static ArrayList<RunnableThread> threadList;
     private static int roundIndex = 0;
 
     public SpielLaeuftHostController() throws IOException {
-        threadList = SpielStartenHostController.getThreadList();
     }
 
     // Networking-methode (wird durch Buttonclick aufgerufen)
     public void startRound(ActionEvent event) {
         try {
             if (roundIndex < HostscreenController.getQuiz().getLength()) {
-                for (RunnableThread thread : threadList) {
-                    thread.sendQuestion(roundIndex);
-                }
+                host.startRound();
             } else {
-                for (RunnableThread thread : threadList) {
-                    thread.endGame();
-                }
+                host.endGame();
                 switchToHostscreen(event);
             }
             roundIndex++;
