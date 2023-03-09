@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 * 
 * ...
 *Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
+*Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
 */
 
 class RunnableThread implements Runnable {
@@ -72,12 +73,17 @@ class RunnableThread implements Runnable {
         pr.println("START ROUND");
         pr.println(frage.toString());
         pr.flush();
-        int antwort = Integer.parseInt(bf.readLine());
-        System.out.println(nick + " hat die Antwort " + antwort + " gewählt");
+        //Auslesen des Antwort-Arrays
+        String[] antwortString = bf.readLine().split(" ");
+        int[] antwort = new int[antwortString.length];
+        for (int i = 0; i < antwort.length; i++) {
+            antwort[i] = Integer.parseInt(antwortString[i]);
+        }
+
         double zeit = Double.parseDouble(bf.readLine());
         System.out.println(nick + " hat " + zeit + " Sekunden gebraucht");
 
-        punkte = Quiz.genPunkte(frage, antwort, zeit);
+        punkte += Quiz.genPunkte(frage, antwort, zeit);
         System.out.println(nick + " bekommt: " + punkte + " Punkte");
         boolean ergebnis = punkte > 0;
         if (ergebnis) {
