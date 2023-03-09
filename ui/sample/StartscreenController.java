@@ -45,8 +45,8 @@ public class StartscreenController {
 	// Methode wird beim klicken ausgefuehrt. Diese ueberprueft die Gueltigkeit der
 	// Eingaben.
 
-	//Networking-variable:
-	private static client client;
+	// Networking-variable:
+	public static client client;
 
 	@FXML
 	protected void onLoginButtonClick(ActionEvent event) throws InterruptedException, IOException {
