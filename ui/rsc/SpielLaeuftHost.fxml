@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielLaeuftHostController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="WHITE" layoutX="196.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quiz Name">
-         <font>
-            <Font name="System Bold" size="40.0" />
-         </font>
-      </Text>
-      <Button layoutX="245.0" layoutY="321.0" mnemonicParsing="false" onAction="#startRound" prefHeight="40.0" prefWidth="110.0" stylesheets="@../css/greenButton.css" text="Next" textFill="WHITE" />
-      <Pane layoutX="196.0" layoutY="174.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;">
-         <children>
-            <Text fill="WHITE" layoutX="17.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frage 1/10" textAlignment="CENTER" wrappingWidth="166.5">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Text>
-         </children>
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
       </Pane>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#00337a" height="80.0" layoutX="203.0" layoutY="250.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" AnchorPane.bottomAnchor="214.0" AnchorPane.topAnchor="250.0" />
+      <Label fx:id="frageText" layoutX="344.0" layoutY="277.0" text="Frage 1/10" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="quizName" layoutX="318.0" layoutY="47.0" text="Quiz xxx" textFill="WHITE" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font name="Arial Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="115.0" text="Spiel läuft" textFill="WHITE">
+         <font>
+            <Font name="Arial Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="nextButton" layoutX="318.0" layoutY="475.0" mnemonicParsing="false" stylesheets="@../css/greenButton.css" text="Nächste Frage" textFill="#6b1919">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
