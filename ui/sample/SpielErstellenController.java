@@ -11,6 +11,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -27,8 +29,7 @@ public class SpielErstellenController {
 
     @FXML
     TextField frage, antwortA, antwortB, antwortC, antwortD, zeit;
-    // private List <Integer> richtigeAntworten = new ArrayList<>();
-    private int antwort;
+    private List <Integer> richtigeAntworten = new ArrayList<>();
 
     // Informationen für .json Datei
     public String getFrage() {
@@ -44,14 +45,12 @@ public class SpielErstellenController {
         return array;
     }
 
-    /*
-     * public int[] getRichtigeAntworten() {
-     * int [] array = new int[4];
-     * for(int i = 0; i < richtigeAntworten.size(); i++) array[i] =
-     * richtigeAntworten.get(i);
-     * return array;
-     * }
-     */
+    public int[] getRichtigeAntworten() {
+        int [] array = new int[richtigeAntworten.size()];
+        for(int i = 0; i < richtigeAntworten.size(); i++) array[i] = richtigeAntworten.get(i);
+        return array;
+    }
+    
     public int getZeit() {
         return Integer.parseInt(zeit.getText());
     }
@@ -59,31 +58,27 @@ public class SpielErstellenController {
     // Button-Funktionen: richtige Antwort setzen
     public void setA() {
         // A = true;
-        // if(antwortA.getText() != "") richtigeAntworten.add(0);
-        antwort = 0;
+        if(antwortA.getText() != "") richtigeAntworten.add(0);
     }
 
     public void setB() {
         // B = true;
-        // if(antwortB.getText() != "") richtigeAntworten.add(1);
-        antwort = 1;
+        if(antwortB.getText() != "") richtigeAntworten.add(1);
     }
 
     public void setC() {
         // C = true;
-        // if(antwortC.getText() != "") richtigeAntworten.add(2);
-        antwort = 2;
+        if(antwortC.getText() != "") richtigeAntworten.add(2);
     }
 
     public void setD() {
         // D = true;
-        // if(antwortD.getText() != "") richtigeAntworten.add(3);
-        antwort = 3;
+        if(antwortD.getText() != "") richtigeAntworten.add(3);
     }
 
     // eingetragene Fragendaten werden dem Quiz-Objekt hinzugefuegt
     public void addFrage() {
-        quiz.addFrage(getFrage(), getAntworten(), antwort, getZeit());
+        quiz.addFrage(getFrage(), getAntworten(), getRichtigeAntworten(), getZeit());
         frage.setText("");
         antwortA.setText("");
         antwortB.setText("");

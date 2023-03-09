@@ -59,6 +59,7 @@ class RunnableThread implements Runnable {
         }
     }
 
+    //ueberfluessig
     private static void regClient(Socket s) {
         String ip = s.getInetAddress().toString();
         System.out.println("Client \"" + nick + "\" connected from " + ip);
