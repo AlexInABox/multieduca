@@ -19,20 +19,21 @@ public class Quiz {
 
     public Quiz(File quizDatei) {
         try {
-            // String JSONtext = Files.readString(Path.of(quizDatei.getPath()));
-            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getName())), StandardCharsets.UTF_8);
+
+            String JSONtext = new String(Files.readAllBytes(Paths.get(quizDatei.getPath())), StandardCharsets.UTF_8);
 
             fragen = new JSONArray(JSONtext);
         } catch (IOException e) {
+            System.out.println("Fehler beim Laden der Quizdatei");
             e.printStackTrace();
         }
     }
 
-    public void addFrage(String text, String[] antworten, int loesung, int zeit) {
+    public void addFrage(String text, String[] antworten, int[] loesungen, int zeit) {
         JSONObject frage = new JSONObject();
         frage.put("text", text);
-        frage.put("antworten", antworten);
-        frage.put("loesung", loesung);
+        frage.put("antworten", new JSONArray(antworten));
+        frage.put("loesungen", new JSONArray(loesungen));
         frage.put("zeit", zeit);
         fragen.put(frage);
     }
@@ -54,4 +55,36 @@ public class Quiz {
     public int getLength() {
         return fragen.length();
     }
+
+    //funktion zur Punktberechnung
+    //Erstellt von Felix 06-03
+    public static int genPunkte(JSONObject frage, int[] eingaben, double antwortZeit) {
+        double output = 0;
+        int maxZeit = frage.getInt("zeit");
+        int nAntworten = frage.getJSONArray("antworten").length();
+        JSONArray loesungen = frage.getJSONArray("loesungen");
+        double punkteProRichtigeAntwort = (100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50)) / nAntworten;
+        for (int i = 0; i < nAntworten; i++) {
+
+            boolean istRichtig = false;
+            for (Object loesung : loesungen) {
+                if (i == (int) loesung) {
+                    istRichtig = true;
+                }
+            }
+
+            boolean wurdeAusgewaehlt = false;
+            for (int j = 0; j < eingaben.length; j++) {
+                if (i == eingaben[j]) {
+                    wurdeAusgewaehlt = true;
+                }
+            }
+
+            if ((istRichtig & wurdeAusgewaehlt) || (!istRichtig & !wurdeAusgewaehlt)) {
+                output += punkteProRichtigeAntwort;
+            }
+        }
+        return (int) output;
+    }
+
 }

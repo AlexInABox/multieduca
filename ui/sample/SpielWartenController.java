@@ -58,9 +58,9 @@ public class SpielWartenController {
     @FXML
     void initialize() {
         client = StartscreenController.getClient();
-        hostIPAdresse.setText(net.client.getIP());
-        quizFragenAnz.setText(net.client.getQuizLength());
-        quizName.setText(net.client.getQuizName());
+        hostIPAdresse.setText(client.getIP());
+        quizFragenAnz.setText(client.getQuizLength());
+        quizName.setText(client.getQuizName());
     }
 
 }

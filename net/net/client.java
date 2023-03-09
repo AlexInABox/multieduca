@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class client {
     // dev variables
-    private static final String IP = "localhost";
+    // private static final String IP = "localhost";
     // end of dev variables
 
     // networking related variables
@@ -54,60 +54,87 @@ public class client {
      */
 
     public client() {
-        
     }
 
     // Startet den Client und führt ihn aus
-    public static boolean run(String ip, String nickname) {
+    public boolean establishConnection(String ip, String nickname) {
         try {
             // set the nickname
             nick = nickname;
-            
+
             s = new Socket();
-            s.connect(new InetSocketAddress(ip, 2594), 1000);
-            if (!s.isConnected()) {
-                try{
+
+            s.connect(new InetSocketAddress(ip, 2594), 1000); // 1000ms timeout -> throws exception if timeout is exceeded
+
+            if (s.isConnected()) { // if the connection was established
+                pr = new PrintWriter(s.getOutputStream());
+                InputStreamReader in = new InputStreamReader(s.getInputStream());
+                bf = new BufferedReader(in);
+
+                // send nickname
+                pr.println(nick);
+                pr.flush();
+
+                getQuizData();
+
+                return true;
+            } else { // if the connection could not be established
+                try {
                     s.close();
-                }catch(Exception e){
-                   System.out.println("Thread konnte nicht geschlossen werden.");
+                } catch (Exception e) {
+                    System.out.println("Socket konnte nicht geschlossen werden.");
                 }
                 return false;
             }
-            pr = new PrintWriter(s.getOutputStream());
-            InputStreamReader in = new InputStreamReader(s.getInputStream());
-            bf = new BufferedReader(in);
-
-            // send nickname
-            pr.println(nick);
-            pr.flush();
-            setQuizData();
-            return true;
-            
         } catch (Exception e) {
-            System.out.println("!!!Es konnte keine Verbindung hergestellt werden!!!");
+            System.out.println("Es konnte keine Verbindung hergestellt werden!");
             return false;
         }
     }
 
-    public static void setQuizData(){
+    public static int waitForGameStart() {
         try {
-            if(bf.readLine().equals("QUIZ DATA")){
-                quizLength  = bf.readLine();
-                quizName    = bf.readLine();
+            while (true) {
+                String receivedMessage = bf.readLine();
+
+                //while waiting for the round to start the host can send either one of the following messages
+                //PLAYER LIST
+                //or
+                //START ROUND
+                //or
+                //END GAME
+
+                //if the host sends the PLAYER LIST signal the client will handle the incomming messages and return 0 to indicate that the client is still waiting for the game to start
+                //if the host sends the START ROUND signal the client will handle the incomming messages and return 1 to indicate that the game has started
+                //if the host sends the END GAME signal the client will handle the incomming messages and return 2 to indicate that the game has ended
+                if (receivedMessage.equals("PLAYER LIST")) {
+                    //receive the player list
+                    String playerListString = bf.readLine();
+
+                    //split the player list string into an array
+                    String[] playerListArray = playerListString.split(",");
+
+                    //clear the player list
+                    playerList.clear();
+
+                    //add the players to the player list
+                    for (String player : playerListArray) {
+                        playerList.add(player);
+                    }
+                    return 0;
+                } else if (receivedMessage.equals("START GAME")) {
+                    return 1;
+                } else if (receivedMessage.equals("END GAME")) {
+                    return 2;
+                }
             }
         } catch (Exception e) {
-            System.out.println("Konnte QUIZ DATA nicht lesen.");
-        } 
-    }
-    public static String getQuizLength(){
-        return quizLength;
-    }
-    public static String getQuizName(){
-        return quizName;
+            System.out.println("Fehler beim Warten auf Spielstart");
+            return 3;
+        }
     }
 
-
-    public static void listen() {
+    public static void listenForEvent() {
         try {
             while (true) {
                 // wait for the round to start
@@ -140,8 +167,8 @@ public class client {
                     // receive the result
                     answeredRight = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True")
                                                                          // returns true.
-                    // Example: Boolean.parseBoolean("yes") returns false.
-                    // receive the points
+                                                                         // Example: Boolean.parseBoolean("yes") returns false.
+                                                                         // receive the points
                     score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
 
                     // give the result and the points to the function that will handle those+
@@ -191,25 +218,48 @@ public class client {
         }
     }
 
-    public static String getIP() {
+    //Empfängt alle Metadaten des Quiz
+    private static void getQuizData() {
+        try {
+            if (bf.readLine().equals("QUIZ DATA")) {
+                quizLength = bf.readLine();
+                quizName = bf.readLine();
+            }
+        } catch (Exception e) {
+            System.out.println("QUIZ DATA konnte nicht gelesen werden.");
+        }
+    }
+
+    // Gibt die Anzahl der Fragen im Quiz zurück
+    public String getQuizLength() {
+        return quizLength;
+    }
+
+    // Gibt den Namen des Quiz zurück
+    public String getQuizName() {
+        return quizName;
+    }
+
+    // Gibt die IP des Servers zurück
+    public String getIP() {
         return s.getInetAddress().getHostAddress();
     }
 
     // Gibt die Liste aller aktiven Spieler zurück
-    public static ArrayList getPlayerList() {
+    public ArrayList getPlayerList() {
         return playerList;
     }
 
     // Gibt die Liste mit den Punkten aller aktiven Spieler zurück
-    public static ArrayList getPlayerPoints() {
+    public ArrayList getPlayerPoints() {
         return playerPoints;
     }
 
-    public static JSONObject getQuestion() {
+    public JSONObject getQuestion() {
         return question;
     }
 
-    public static boolean answeredRight() {
+    public boolean answeredRight() {
         return answeredRight;
     }
 }

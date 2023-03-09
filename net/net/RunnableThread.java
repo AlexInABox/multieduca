@@ -1,26 +1,32 @@
 package net;
 
+import data.*;
+import data.Quiz;
+import sample.*;
 import java.net.*;
 import java.io.*;
 
 import org.json.JSONObject;
 
-import data.PunkteTest;
-import data.Quiz;
+import javafx.scene.control.ListView;
 
 /*
 * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
 * Datum: 2022-02-16
 * 
 * ...
+*Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
+*Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
 */
 
-class RunnableThread implements Runnable {
+public class RunnableThread implements Runnable {
 
     private static ServerSocket ss;
     private static Socket s;
 
     private static String nick;
+    //UI-Element
+    private ListView<String> playerList;
 
     public static int punkte;
 
@@ -29,15 +35,17 @@ class RunnableThread implements Runnable {
     private BufferedReader bf;
     private PrintWriter pr;
 
-    RunnableThread(ServerSocket server, Quiz quiz) {
+    RunnableThread(ServerSocket server, Quiz quiz, ListView<String> playerList) {
         ss = server;
         this.quiz = quiz;
+        this.playerList = playerList;
     }
 
     public void run() {
         try {
             s = ss.accept();
-            host.initServer();
+            host.createNewThread(playerList);
+
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             bf = new BufferedReader(in);
             pr = new PrintWriter(s.getOutputStream());
@@ -45,6 +53,8 @@ class RunnableThread implements Runnable {
             System.out.println("Creating a new thread");
 
             nick = bf.readLine(); // the first message is the name of the player
+            playerList.getItems().add(nick);
+            sendQuizData();
 
             regClient(s);
         } catch (Exception e) {
@@ -52,6 +62,7 @@ class RunnableThread implements Runnable {
         }
     }
 
+    //ueberfluessig
     private static void regClient(Socket s) {
         String ip = s.getInetAddress().toString();
         System.out.println("Client \"" + nick + "\" connected from " + ip);
@@ -68,12 +79,17 @@ class RunnableThread implements Runnable {
         pr.println("START ROUND");
         pr.println(frage.toString());
         pr.flush();
-        int antwort = Integer.parseInt(bf.readLine());
-        System.out.println(nick + " hat die Antwort " + antwort + " gewählt");
+        //Auslesen des Antwort-Arrays
+        String[] antwortString = bf.readLine().split(" ");
+        int[] antwort = new int[antwortString.length];
+        for (int i = 0; i < antwort.length; i++) {
+            antwort[i] = Integer.parseInt(antwortString[i]);
+        }
+
         double zeit = Double.parseDouble(bf.readLine());
         System.out.println(nick + " hat " + zeit + " Sekunden gebraucht");
 
-        punkte = PunkteTest.genPunkte(frage, antwort, zeit);
+        punkte += Quiz.genPunkte(frage, antwort, zeit);
         System.out.println(nick + " bekommt: " + punkte + " Punkte");
         boolean ergebnis = punkte > 0;
         if (ergebnis) {
@@ -87,21 +103,27 @@ class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    public void sendQuizData() {
+        pr.println("QUIZ DATA");
+        pr.println(quiz.getLength());
+        pr.println(sample.HostscreenController.getName());
+        pr.flush();
+    }
+
     public void endGame() {
         pr.println("END GAME");
         pr.flush();
     }
 
-    /*
-     * private static int genPunkte(JSONObject frage, int antwort, double
-     * antwortZeit) {
-     * double output = 0;
-     * int loesung = frage.getInt("loesung");
-     * int maxZeit = frage.getInt("zeit");
-     * if (loesung == antwort) {
-     * output = 100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50);
-     * }
-     * return (int) output;
-     * }
-     */
+    public void startGame() {
+        pr.println("START GAME");
+        pr.flush();
+    }
+
+    public void refreshPlayerList(ListView<String> playerList) {
+        this.playerList = playerList;
+        pr.println("PLAYER LIST");
+        pr.println(playerList.getItems().toString());
+        pr.flush();
+    }
 }
