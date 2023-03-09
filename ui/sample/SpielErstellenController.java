@@ -14,6 +14,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Autor: Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
+
 public class SpielErstellenController {
 
     private Stage stage;

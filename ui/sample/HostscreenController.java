@@ -11,6 +11,14 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
+ 
 public class HostscreenController {
 
     private Stage stage;

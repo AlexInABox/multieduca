@@ -6,6 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
+
 public class Main extends Application {
 
     @Override
@@ -19,6 +27,7 @@ public class Main extends Application {
         stage.setOnCloseRequest(event -> beenden(stage));
     }
 
+    //Pop-Up Fenster zum Bestätigen, wenn Spiel über x beendet wird
     public void beenden(Stage stage){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Beenden");
