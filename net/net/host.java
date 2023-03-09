@@ -23,7 +23,7 @@ public class host {
     private static int roundIndex = 0;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-
+        
         ss = new ServerSocket(2594);
         initServer();
         try {
