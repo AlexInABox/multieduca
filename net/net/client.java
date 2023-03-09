@@ -61,20 +61,29 @@ public class client {
         try {
             // set the nickname
             nick = nickname;
-
-            s = new Socket(ip, 2594);
+            
+            s = new Socket();
+            s.connect(new InetSocketAddress(ip, 2594), 1000);
+            if (!s.isConnected()) {
+                try{
+                    s.close();
+                }catch(Exception e){
+                   System.out.println("Thread konnte nicht geschlossen werden.");
+                }
+                return false;
+            }
             pr = new PrintWriter(s.getOutputStream());
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             bf = new BufferedReader(in);
+
             // send nickname
             pr.println(nick);
             pr.flush();
-            System.out.println("true");
+            
             return true;
-
+            
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("false");
+            System.out.println("!!!Es konnte keine Verbindung hergestellt werden!!!");
             return false;
         }
     }

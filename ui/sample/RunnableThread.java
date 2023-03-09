@@ -48,7 +48,9 @@ class RunnableThread implements Runnable {
             System.out.println("New connection established");
             System.out.println("Creating a new thread");
 
+
             nick = bf.readLine(); // the first message is the name of the player
+            pr.println("CONFIRMED");
             playerList.getItems().add(nick);
 
             regClient(s);
