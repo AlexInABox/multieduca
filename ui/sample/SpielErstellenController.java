@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,9 +27,12 @@ public class SpielErstellenController {
     public SpielErstellenController() throws IOException {
 
     }
-
     @FXML
     TextField frage, antwortA, antwortB, antwortC, antwortD, zeit;
+
+    @FXML
+    CheckBox boxA, boxB, boxC, boxD;
+
     private List <Integer> richtigeAntworten = new ArrayList<>();
 
     // Informationen für .json Datei
@@ -57,33 +61,43 @@ public class SpielErstellenController {
 
     // Button-Funktionen: richtige Antwort setzen
     public void setA() {
-        // A = true;
-        if(antwortA.getText() != "") richtigeAntworten.add(0);
+        //hier stand noch antwortA.getText() != "" zusaetzlich in der if, allerings finde ich,
+        //dass man auch eine richtige Antwort setzen koennen sollte, ohne eine Antwort eingegeben zu haben.
+        if(boxA.isSelected()) richtigeAntworten.add(0);
+        else richtigeAntworten.remove((Integer) 0);
     }
 
     public void setB() {
-        // B = true;
-        if(antwortB.getText() != "") richtigeAntworten.add(1);
+        if(boxB.isSelected()) richtigeAntworten.add(1);
+        else richtigeAntworten.remove((Integer) 1);
     }
 
     public void setC() {
-        // C = true;
-        if(antwortC.getText() != "") richtigeAntworten.add(2);
+        if(boxC.isSelected()) richtigeAntworten.add(2);
+        else richtigeAntworten.remove((Integer) 2);
     }
 
     public void setD() {
-        // D = true;
-        if(antwortD.getText() != "") richtigeAntworten.add(3);
+        if(boxD.isSelected()) richtigeAntworten.add(3);
+        else richtigeAntworten.remove((Integer) 3);
     }
 
     // eingetragene Fragendaten werden dem Quiz-Objekt hinzugefuegt
     public void addFrage() {
+        //eigentliches Hinzufuegen der Frage
         quiz.addFrage(getFrage(), getAntworten(), getRichtigeAntworten(), getZeit());
+
+        //UI und Variablen zuruecksetzen:
         frage.setText("");
         antwortA.setText("");
         antwortB.setText("");
         antwortC.setText("");
         antwortD.setText("");
+        boxA.setSelected(false);
+        boxB.setSelected(false);
+        boxC.setSelected(false);
+        boxD.setSelected(false);
+        richtigeAntworten.clear();
     }
 
     public void switchToHostscreen(ActionEvent event) throws IOException {

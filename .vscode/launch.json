@@ -9,7 +9,19 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "sample.Main",
+<<<<<<< HEAD
+            "projectName": "multieduca_3b28da10",
+            "vmArgs": "--module-path \"lib/javafx-sdk-19.0.2.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "sample.Main",
+            "projectName": "multieduca_3bf9185d",
+=======
             "projectName": "multieduca_acc1788",
+>>>>>>> 441ce674dffc015743f286f1994c4a1a08dbf659
             "vmArgs": "--module-path \"lib/javafx-sdk-19.0.2.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
