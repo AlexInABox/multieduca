@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: Spiel-Laeuft-Screen
+   Erstellungsdatum: 09.03.2023
+   Letzte Aenderung: 09.03.2023 19:52
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Startscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Generelle Designsprache harmonischer gestaltet.
+         -Generelle Design aenderungen
+-->
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.BoxBlur?>

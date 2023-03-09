@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Emil Habermann.
+   Thema: Endranking
+   Erstellungsdatum: 07.03.2023
+   Letzte Aenderung: 07.03.2023 16:54
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Hostscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Fehlendes Listen-Element eingebaut
+         -Generelle Design aenderungen
+-->
+
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
