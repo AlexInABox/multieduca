@@ -40,7 +40,7 @@ public class SpielStartenHostController {
     private Button playButton;
 
     @FXML
-    private static ListView<String> playerList;
+    private ListView<String> playerList;
 
     @FXML
     private Label quizFragenAnz;
@@ -85,7 +85,4 @@ public class SpielStartenHostController {
         return threadList;
     }
 
-    public static void refreshPlayerList(ListView<String> pList) {
-        playerList = pList;
-    }
 }

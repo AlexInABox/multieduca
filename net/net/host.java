@@ -92,7 +92,6 @@ public class host {
         for (RunnableThread thread : threadList) {
             thread.refreshPlayerList(playerList);
         }
-        sample.SpielStartenHostController.refreshPlayerList(playerList);
     }
 
     public static void endGame() {
