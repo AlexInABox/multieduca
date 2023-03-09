@@ -9,6 +9,6 @@ public class punkte {
         q.addFrage("null", antworten, loesungen, 20);
 
         int[] antworten2 = {3,2};
-        System.out.println(Quiz.gen(q.getFrage(0), antworten2, 3));
+        System.out.println(Quiz.genPunkte(q.getFrage(0), antworten2, 3));
     }
 }

@@ -58,7 +58,7 @@ public class Quiz {
 
     //funktion zur Punktberechnung
     //Erstellt von Felix 06-03
-    public static int gen(JSONObject frage, int [] eingaben, double antwortZeit) {
+    public static int genPunkte(JSONObject frage, int [] eingaben, double antwortZeit) {
     	double output = 0;
     	int maxZeit = frage.getInt("zeit");
     	int nAntworten = frage.getJSONArray("antworten").length();
