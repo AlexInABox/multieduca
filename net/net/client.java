@@ -35,7 +35,8 @@ public class client {
     // end of networking related variables
 
     // game related variables
-    public static boolean connectAble;
+    private static String quizLength;
+    private static String quizName;
     private static String nick;
     private static int score = 0;
     private static JSONObject question;
@@ -79,7 +80,7 @@ public class client {
             // send nickname
             pr.println(nick);
             pr.flush();
-            
+            setQuizData();
             return true;
             
         } catch (Exception e) {
@@ -87,6 +88,24 @@ public class client {
             return false;
         }
     }
+
+    public static void setQuizData(){
+        try {
+            if(bf.readLine().equals("QUIZ DATA")){
+                quizLength  = bf.readLine();
+                quizName    = bf.readLine();
+            }
+        } catch (Exception e) {
+            System.out.println("Konnte QUIZ DATA nicht lesen.");
+        } 
+    }
+    public static String getQuizLength(){
+        return quizLength;
+    }
+    public static String getQuizName(){
+        return quizName;
+    }
+
 
     public static void listen() {
         try {

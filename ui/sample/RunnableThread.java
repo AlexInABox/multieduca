@@ -50,8 +50,8 @@ class RunnableThread implements Runnable {
 
 
             nick = bf.readLine(); // the first message is the name of the player
-            pr.println("CONFIRMED");
             playerList.getItems().add(nick);
+            sendQuizData();
 
             regClient(s);
         } catch (Exception e) {
