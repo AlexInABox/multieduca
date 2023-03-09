@@ -115,18 +115,24 @@ public class StartscreenController {
 			// new animatefx.animation.Shake(ipAdress).play();}
 		else {
 			// Keine Felher.
-			logInfo.setText("Erfolgreich angemeldet!");
-			logInfo.setStyle(sucessMessage);
-			userName.setStyle(sucessStyle);
-			ipAdress.setStyle(sucessStyle);
+			client = new client();
+			if(client.run(ipAdress.getText(), userName.getText())){
+				logInfo.setText("Erfolgreich angemeldet!");
+				logInfo.setStyle(sucessMessage);
+				userName.setStyle(sucessStyle);
+				ipAdress.setStyle(sucessStyle);
 
-			Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielWarten.fxml"));
-			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-
-			client = new client(ipAdress.getText(), userName.getText());
+				Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielWarten.fxml"));
+				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}else{
+				//client = new client();
+				ipAdress.setStyle(errorStyle);
+				logInfo.setText("IP Adresse existiert nicht.");
+				logInfo.setStyle(errorMessage);
+			}
 		}
 	}
 

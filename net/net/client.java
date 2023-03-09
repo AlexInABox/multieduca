@@ -35,6 +35,7 @@ public class client {
     // end of networking related variables
 
     // game related variables
+    public static boolean connectAble;
     private static String nick;
     private static int score = 0;
     private static JSONObject question;
@@ -51,12 +52,12 @@ public class client {
      * }
      */
 
-    public client(String ip, String nickname) {
-        run(ip, nickname);
+    public client() {
+        
     }
 
     // Startet den Client und führt ihn aus
-    public static void run(String ip, String nickname) {
+    public static boolean run(String ip, String nickname) {
         try {
             // set the nickname
             nick = nickname;
@@ -68,9 +69,13 @@ public class client {
             // send nickname
             pr.println(nick);
             pr.flush();
+            System.out.println("true");
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("false");
+            return false;
         }
     }
 
