@@ -101,12 +101,14 @@ public class SpielErstellenController {
 
     // Quiz wird als Datei gespeichert
     public void saveGame(ActionEvent event) throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Quiz Speichern");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
-        File file = fileChooser.showSaveDialog(stage);
-        quiz.save(file);
-        switchToHostscreen(event);
+        if(quiz.getLength() != 0){
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Quiz Speichern");
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
+            File file = fileChooser.showSaveDialog(stage);
+            quiz.save(file);
+            switchToHostscreen(event);
+        }
     }
 
 }
