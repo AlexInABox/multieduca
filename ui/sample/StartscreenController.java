@@ -9,8 +9,8 @@
  *      Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander. ~basim 23.02.2023
  *      Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt. ~basim 24.02.2023 16:16
  *      Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt. ~basim 25.02.2023
- * 
  * 		JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
+ * 		Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
  */
 
 package sample;
@@ -105,15 +105,7 @@ public class StartscreenController {
 			logInfo.setStyle(errorMessage);
 			userName.setStyle(sucessStyle);
 			new animatefx.animation.Shake(ipAdress).play();
-		} // else
-			// TODO: Host konnte nicht gefunden werden. Kommt noch!
-			// if(!ipMoeglich(ipAdress.getText())) {
-			// ipAdress.setStyle(errorStyle);
-			// logInfo.setText("IP-Adresse nicht gültig!");
-			// logInfo.setStyle(errorMessage);
-			// userName.setStyle(sucessStyle);
-			// new animatefx.animation.Shake(ipAdress).play();}
-		else {
+		} else {
 			// Keine Felher.
 			client = new client();
 			if(client.run(ipAdress.getText(), userName.getText())){
@@ -127,11 +119,13 @@ public class StartscreenController {
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-			}else{
-				//client = new client();
+			} else{
+				// Host konnte nicht gefunden werden.
+				//client = new client(); 
 				ipAdress.setStyle(errorStyle);
-				logInfo.setText("IP Adresse existiert nicht.");
+				logInfo.setText("Host konnte nicht gefunden werden!");
 				logInfo.setStyle(errorMessage);
+				new animatefx.animation.Shake(ipAdress).play();
 			}
 		}
 	}
