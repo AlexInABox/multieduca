@@ -66,13 +66,14 @@ public class Quiz {
         }
         return (int) output;
     }
-    /* 
+
     public static int gen(JSONObject frage, int [] eingaben, double antwortZeit) {
     	double output = 0;
     	int maxZeit = frage.getInt("zeit");
     	int nAntworten = frage.getJSONArray("antworten").length();
     	int nLoesungen = frage.getJSONArray("loesungen").length();
     	Integer[] loesungen = (Integer[]) frage.getJSONArray("loesungen").toList().toArray();
+        double punkteProRichtigeAntwort = (100-(Math.pow(antwortZeit, 2)/Math.pow(maxZeit, 2)*50))/nAntworten;
     	for (int i = 0; i < nAntworten; i++) {
     		
     		boolean istRichtig = false;
@@ -90,10 +91,10 @@ public class Quiz {
     		}
     		
     		if ((istRichtig & wurdeAusgewaehlt) || (!istRichtig & !wurdeAusgewaehlt)) {
-    			output += (100-(Math.pow(antwortZeit, 2)/Math.pow(maxZeit, 2)*50))/nAntworten; 
+    			output += punkteProRichtigeAntwort; 
     		}
     	}
     	return (int) output;
-    }*/
+    }
 
 }
