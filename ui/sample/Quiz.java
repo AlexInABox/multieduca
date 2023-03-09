@@ -32,8 +32,8 @@ public class Quiz {
     public void addFrage(String text, String[] antworten, int[] loesungen, int zeit) {
         JSONObject frage = new JSONObject();
         frage.put("text", text);
-        frage.put("antworten", antworten);
-        frage.put("loesungen", loesungen);
+        frage.put("antworten", new JSONArray(antworten));
+        frage.put("loesungen", new JSONArray(loesungen));
         frage.put("zeit", zeit);
         fragen.put(frage);
     }
@@ -56,29 +56,19 @@ public class Quiz {
         return fragen.length();
     }
 
-    // wird von andere Klasse aus aufgerufen
-    public static int genPunkte(JSONObject frage, int antwort, double antwortZeit) {
-        double output = 0;
-        int loesung = frage.getInt("loesung");
-        int maxZeit = frage.getInt("zeit");
-        if (loesung == antwort) {
-            output = 100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50);
-        }
-        return (int) output;
-    }
-
+    //funktion zur Punktberechnung
+    //Erstellt von Felix 06-03
     public static int gen(JSONObject frage, int [] eingaben, double antwortZeit) {
     	double output = 0;
     	int maxZeit = frage.getInt("zeit");
     	int nAntworten = frage.getJSONArray("antworten").length();
-    	int nLoesungen = frage.getJSONArray("loesungen").length();
-    	Integer[] loesungen = (Integer[]) frage.getJSONArray("loesungen").toList().toArray();
+    	JSONArray loesungen = frage.getJSONArray("loesungen");
         double punkteProRichtigeAntwort = (100-(Math.pow(antwortZeit, 2)/Math.pow(maxZeit, 2)*50))/nAntworten;
     	for (int i = 0; i < nAntworten; i++) {
     		
     		boolean istRichtig = false;
-    		for (int j = 0; j < nLoesungen; j++) {
-    			if (i == loesungen[j].intValue()) {
+    		for (Object loesung : loesungen) {
+    			if (i == (int) loesung) {
     				istRichtig = true;
     			}
     		}
