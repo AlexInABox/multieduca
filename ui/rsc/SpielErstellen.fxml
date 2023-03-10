@@ -1,90 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: SpielErstellenscreen
+   Erstellungsdatum: 10.03.2023
+   Letzte Aenderung: 10.03.2023 2010
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Startscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Generelle Designsprache harmonischer gestaltet.
+         -Generelle Design aenderungen
+-->
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13005A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielErstellenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielErstellenController">
    <children>
-      <Text fill="WHITE" layoutX="141.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spiel erstellen">
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Label alignment="CENTER" layoutY="30.0" prefHeight="47.0" prefWidth="800.0" text="Quiz erstellen" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="50.0" />
+            <Font name="Arial Bold" size="40.0" />
          </font>
-      </Text>
-      <VBox layoutX="160.0" layoutY="134.0" prefHeight="181.0" prefWidth="73.0" spacing="16.0" style="-fx-background-color: #13005A; -fx-background-radius: 30;">
-         <children>
-            <Label text="Frage:" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></Label>
-            <Label text="Antwort A:" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></Label>
-            <Label text="Antwort B:" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></Label>
-            <Label text="Antwort C:" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></Label>
-            <Label text="Antwort D:" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></Label>
-            <Label text="Zeit (sek):" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox fx:id="" layoutX="278.0" layoutY="134.0" prefHeight="162.0" prefWidth="156.0" spacing="5.0" style="-fx-background-color: #13005A;">
-         <children>
-            <TextField fx:id="frage" promptText="Frage" stylesheets="@../css/textfield.css">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="antwortA" promptText="A" stylesheets="@../css/textfield.css">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="antwortB" promptText="B" stylesheets="@../css/textfield.css">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="antwortC" promptText="C" stylesheets="@../css/textfield.css">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="antwortD" promptText="D" stylesheets="@../css/textfield.css">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="zeit" prefHeight="25.0" prefWidth="101.0" promptText="Sekunden" stylesheets="@../css/textfield.css" text="20">
-               <font>
-                  <Font name="Arial" size="13.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-      <Button layoutX="254.0" layoutY="328.0" mnemonicParsing="false" onAction="#addFrage" prefHeight="25.0" prefWidth="92.0" stylesheets="@../css/greenButton.css" text="Hinzufügen" textFill="WHITE" />
-      <Text fill="WHITE" layoutX="201.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Füge eine Frage hinzu.">
+      </Label>
+      <Button layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToHostscreen" prefHeight="30.0" prefWidth="30.0" styleClass="back-button" stylesheets="@../css/button.css" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <TextField fx:id="frage" alignment="CENTER" focusTraversable="false" layoutX="100.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Frage" stylesheets="@../css/textfield.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="128.0">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial" size="18.0" />
          </font>
-      </Text>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHostscreen" prefHeight="25.0" prefWidth="73.0" stylesheets="@../css/redButton.css" text="Zurück" textFill="WHITE" />
-      <Button layoutX="494.0" layoutY="354.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="32.0" prefWidth="92.0" stylesheets="@../css/greenButton.css" text="Speichern" textFill="WHITE" />
-      <CheckBox fx:id="boxA" layoutX="443.0" layoutY="168.0" mnemonicParsing="false" onAction="#setA" />
-      <CheckBox fx:id="boxB" layoutX="443.0" layoutY="198.0" mnemonicParsing="false" onAction="#setB" />
-      <CheckBox fx:id="boxC" layoutX="443.0" layoutY="228.0" mnemonicParsing="false" onAction="#setC" />
-      <CheckBox fx:id="boxD" layoutX="443.0" layoutY="258.0" mnemonicParsing="false" onAction="#setD" />
+      </TextField>
+      <TextField fx:id="antwortA" alignment="CENTER" layoutX="100.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Antwort A" stylesheets="@../css/textfield.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="198.0">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="antwortB" alignment="CENTER" layoutX="100.0" layoutY="248.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Antwort B" stylesheets="@../css/textfield.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="248.0">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="antwortC" alignment="CENTER" layoutX="100.0" layoutY="298.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Antwort C" stylesheets="@../css/textfield.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="298.0">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="antwortD" alignment="CENTER" layoutX="100.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Antwort D" stylesheets="@../css/textfield.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="348.0">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <CheckBox fx:id="boxA" layoutX="625.0" layoutY="209.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="boxB" layoutX="625.0" layoutY="259.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="boxC" layoutX="625.0" layoutY="309.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="boxD" layoutX="625.0" layoutY="359.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="208.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addFrage" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/greenButton.css" text="Frage hinzufügen" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="400.0" layoutY="502.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveGame" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/greenButton.css" text="Quiz speichern" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="210.0">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="zeit" alignment="CENTER" layoutX="100.0" layoutY="398.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Zeit in Sekunden" stylesheets="@../css/textfield.css" text="20">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <SVGPath content="M256,48C141.12,48,48,141.12,48,256s93.12,208,208,208,208-93.12,208-208S370.88,48,256,48ZM173.67,162.34l105,71a32.5,32.5,0,0,1-37.25,53.26,33.21,33.21,0,0,1-8-8l-71-105a8.13,8.13,0,0,1,11.32-11.32ZM256,432C159,432,80,353.05,80,256a174.55,174.55,0,0,1,53.87-126.72,14.15,14.15,0,1,1,19.64,20.37A146.53,146.53,0,0,0,108.3,256c0,81.44,66.26,147.7,147.7,147.7S403.7,337.44,403.7,256c0-76.67-58.72-139.88-133.55-147V164a14.15,14.15,0,1,1-28.3,0V94.15A14.15,14.15,0,0,1,256,80C353.05,80,432,159,432,256S353.05,432,256,432Z" fill="WHITE" layoutX="379.0" layoutY="162.0" scaleX="0.07" scaleY="0.07" scaleZ="0.07" />
+      <Label layoutX="663.0" layoutY="410.0" text="Zeit" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="msg" layoutX="289.0" layoutY="457.0" text="Frage erfolgreich gespeichert!" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

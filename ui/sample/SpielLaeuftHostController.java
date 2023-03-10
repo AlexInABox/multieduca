@@ -1,10 +1,13 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import net.RunnableThread;
 import net.host;
@@ -20,6 +23,15 @@ public class SpielLaeuftHostController {
     private Stage stage;
     private Scene scene;
     private static int roundIndex = 0;
+
+    @FXML
+    private Label frageText;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
+    private Label quizName;
 
     public SpielLaeuftHostController() throws IOException {
     }
@@ -46,6 +58,11 @@ public class SpielLaeuftHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void initialize() {
+        quizName.setText("Quiz: " + HostscreenController.getName());
     }
 
 }

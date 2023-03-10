@@ -1,19 +1,26 @@
 package sample;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import javafx.util.Duration;
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -24,16 +31,47 @@ public class SpielErstellenController {
     private Scene scene;
     private Quiz quiz = new Quiz();
 
-    public SpielErstellenController() throws IOException {
-
-    }
     @FXML
-    TextField frage, antwortA, antwortB, antwortC, antwortD, zeit;
+    private ResourceBundle resources;
 
     @FXML
-    CheckBox boxA, boxB, boxC, boxD;
+    private URL location;
 
-    private List <Integer> richtigeAntworten = new ArrayList<>();
+    @FXML
+    private TextField antwortA;
+
+    @FXML
+    private TextField antwortB;
+
+    @FXML
+    private TextField antwortC;
+
+    @FXML
+    private TextField antwortD;
+
+    @FXML
+    private CheckBox boxA;
+
+    @FXML
+    private CheckBox boxB;
+
+    @FXML
+    private CheckBox boxC;
+
+    @FXML
+    private CheckBox boxD;
+
+    @FXML
+    private TextField frage;
+
+    @FXML
+    private Label msg;
+
+
+    @FXML
+    private TextField zeit;
+
+private List <Integer> richtigeAntworten = new ArrayList<>();
 
     // Informationen für .json Datei
     public String getFrage() {
@@ -82,9 +120,9 @@ public class SpielErstellenController {
         else richtigeAntworten.remove((Integer) 3);
     }
 
-    // eingetragene Fragendaten werden dem Quiz-Objekt hinzugefuegt
-    public void addFrage() {
-        //eigentliches Hinzufuegen der Frage
+    @FXML
+    void addFrage() {
+       //eigentliches Hinzufuegen der Frage
         quiz.addFrage(getFrage(), getAntworten(), getRichtigeAntworten(), getZeit());
 
         //UI und Variablen zuruecksetzen:
@@ -98,17 +136,15 @@ public class SpielErstellenController {
         boxC.setSelected(false);
         boxD.setSelected(false);
         richtigeAntworten.clear();
+
+        // ~basim 10.03.2023
+        msg.setVisible(true);
+        new animatefx.animation.FadeIn(msg).play();
+        new animatefx.animation.FadeOut(msg).play();
+
     }
 
-    public void switchToHostscreen(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    // Quiz wird als Datei gespeichert
+    @FXML
     public void saveGame(ActionEvent event) throws IOException {
         if(quiz.getLength() != 0){
             FileChooser fileChooser = new FileChooser();
@@ -118,6 +154,21 @@ public class SpielErstellenController {
             quiz.save(file);
             switchToHostscreen(event);
         }
+    }
+
+    @FXML
+    public void switchToHostscreen(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void initialize() {
+
+
     }
 
 }

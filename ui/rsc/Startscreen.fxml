@@ -13,7 +13,6 @@
          -Info-Button hinzugefuegt
          -Generelle Design aenderungen
 -->
-
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -76,20 +75,20 @@
                </font></Button>
             <Pane layoutX="275.0" layoutY="213.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337C; -fx-background-radius: 20;" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="213.0">
                <children>
-                  <Button layoutX="45.0" layoutY="131.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Beitreten" textFill="#00337c">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font></Button>
                   <TextField fx:id="userName" focusTraversable="false" layoutX="25.0" layoutY="39.0" promptText="Name" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="ipAdress" focusTraversable="false" layoutX="25.0" layoutY="85.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
+                  <TextField fx:id="ipAdress" layoutX="25.0" layoutY="85.0" promptText="IP-Adresse" style="-fx-background-color: #1C82AD; -fx-background-radius: 20;">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </TextField>
+                  <Button layoutX="45.0" layoutY="131.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="160.0" style="-fx-background-radius: 20;" stylesheets="@../../../multieduca/ui/css/greenButton.css" text="Beitreten" textFill="#00337c">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font></Button>
                </children>
             </Pane>
             <Label fx:id="logInfo" alignment="CENTER" contentDisplay="CENTER" layoutY="388.0" prefHeight="16.0" prefWidth="800.0" textAlignment="CENTER">

@@ -1,5 +1,6 @@
-.text-field
-{
--fx-background-color: #1C82AD;
--fx-background-radius: 10;
+.text-field {
+-fx-background-color: #00337C;
+-fx-background-radius: 20;
+-fx-prompt-text-fill: #808080;
+-fx-text-fill: #FFFFFF;
 }

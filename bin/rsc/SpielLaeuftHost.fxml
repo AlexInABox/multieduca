@@ -22,8 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpielLaeuftHostController">
    <children>
       <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
          <effect>
@@ -36,7 +35,7 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="quizName" layoutX="318.0" layoutY="47.0" text="Quiz xxx" textFill="WHITE" AnchorPane.topAnchor="47.0">
+      <Label fx:id="quizName" alignment="CENTER" layoutY="47.0" prefHeight="47.0" prefWidth="800.0" text="Quiz xxx" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="47.0">
          <font>
             <Font name="Arial Bold" size="40.0" />
          </font>
@@ -46,7 +45,7 @@
             <Font name="Arial Italic" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="nextButton" layoutX="318.0" layoutY="475.0" mnemonicParsing="false" stylesheets="@../css/greenButton.css" text="Nächste Frage" textFill="#6b1919">
+      <Button fx:id="nextButton" layoutX="318.0" layoutY="475.0" mnemonicParsing="false" onAction="#startRound" stylesheets="@../css/greenButton.css" text="Nächste Frage" textFill="#6b1919">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>

@@ -106,7 +106,7 @@ public class StartscreenController {
 			userName.setStyle(sucessStyle);
 			new animatefx.animation.Shake(ipAdress).play();
 		} else {
-			// Keine Felher.
+			// Keine Fehler.
 			client = new client();
 			if (client.establishConnection(ipAdress.getText(), userName.getText())) {
 				logInfo.setText("Erfolgreich angemeldet!");
