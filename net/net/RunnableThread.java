@@ -93,7 +93,7 @@ public class RunnableThread implements Runnable {
         String[] antwortString = bf.readLine().split(" ");
         int[] antworten = new int[antwortString.length];
         for (int i = 0; i < antworten.length; i++) {   
-            if (antwortString[i].equals("")) antworten[i] = Integer.parseInt(antwortString[i]);
+            if (!antwortString[i].equals("")) antworten[i] = Integer.parseInt(antwortString[i]);
             else antworten[i] = -1;
         }
         double zeit = Double.parseDouble(bf.readLine());
