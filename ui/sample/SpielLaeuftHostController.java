@@ -37,11 +37,10 @@ public class SpielLaeuftHostController {
     public SpielLaeuftHostController() throws IOException {
     }
 
-    // Networking-methode (wird durch Buttonclick aufgerufen)
     public void startRound(ActionEvent event) {
-
         try {
             if (roundIndex < HostscreenController.getQuiz().getLength()) {
+                frageText.setText("Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
                 host.startRound();
             } else {
                 host.endGame();

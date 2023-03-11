@@ -38,16 +38,10 @@ public class SpielWartenController {
     private Button backButton;
 
     @FXML
-    private Label hostIPAdresse;
+    private Label hostIPAdresse, quizFragenAnz, quizName;
 
     @FXML
     private ListView<String> playerList;
-
-    @FXML
-    private Label quizFragenAnz;
-
-    @FXML
-    private Label quizName;
 
     private client client;
 
@@ -87,7 +81,7 @@ public class SpielWartenController {
                 System.out.println("Thread started");
                 int EVENT;
                 do {
-                    EVENT = net.client.waitForGameStart();
+                    EVENT = client.waitForGameStart();
                     System.out.println("Event: " + EVENT);
                     switch (EVENT) {
                         case 0:

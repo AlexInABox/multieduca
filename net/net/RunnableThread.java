@@ -19,6 +19,7 @@ import javafx.scene.control.ListView;
 *Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
 *Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
 *Diverse Fehlerbehebungen, Alexander Betke - 11.03
+*kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
 */
 
 public class RunnableThread implements Runnable {
@@ -89,26 +90,16 @@ public class RunnableThread implements Runnable {
     public void getAnswer(int roundIndex) throws IOException, JSONException, InterruptedException {
         JSONObject frage = quiz.getFrage(roundIndex);
         //Auslesen des Antwort-Arrays
-
-        int rundenPunkte = 0;
-        //gibt es eine antwort wird diese ausgewertet
-        if (bf.ready()) {
-            String[] antwortString = bf.readLine().split(" ");
-            int[] antwort = new int[antwortString.length];
-            for (int i = 0; i < antwort.length; i++) {
-                antwort[i] = Integer.parseInt(antwortString[i]);
-            }
-
-            double zeit = Double.parseDouble(bf.readLine());
-            rundenPunkte = Quiz.genPunkte(frage, antwort, zeit);
+        String[] antwortString = bf.readLine().split(" ");
+        int[] antworten = new int[antwortString.length];
+        for (int i = 0; i < antworten.length; i++) {   
+            if (antwortString[i].equals("")) antworten[i] = Integer.parseInt(antwortString[i]);
+            else antworten[i] = -1;
         }
+        double zeit = Double.parseDouble(bf.readLine());
+        int rundenPunkte = Quiz.genPunkte(frage, antworten, zeit);
         punkte += rundenPunkte;
-        boolean ergebnis = punkte > 0;
-        if (ergebnis) {
-            System.out.println(nick + " hat die Frage RICHTIG beantwortet");
-        } else {
-            System.out.println(nick + " hat die Frage FALSCH beantwortet");
-        }
+        boolean ergebnis = rundenPunkte > 0;
         pr.println("RESULT");
         pr.println(ergebnis);
         pr.println(punkte);

@@ -24,6 +24,7 @@ import java.util.ArrayList;
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
  * 
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
+ * 11.03 erstellen einer sendAnswer() Methode, Niklas Bamberg
  */
 public class client {
     // dev variables
@@ -42,7 +43,6 @@ public class client {
     private static String nick;
     private static int score = 0;
     private static JSONObject question;
-    private static int answer = 0;
     private static boolean answeredRight;
     private static double time = 0;
     private static String[] playerList;
@@ -94,105 +94,89 @@ public class client {
         }
     }
 
-    public static int waitForGameStart() {
+    public  int waitForGameStart() {
         try {
-            while (true) {
-                String receivedMessage = bf.readLine();
+            String receivedMessage = bf.readLine();
 
-                //while waiting for the round to start the host can send either one of the following messages
-                //PLAYER LIST
-                //or
-                //START ROUND
-                //or
-                //END GAME
+            //while waiting for the round to start the host can send either one of the following messages
+            //PLAYER LIST
+            //or
+            //START ROUND
+            //or
+            //END GAME
+            //if the host sends the PLAYER LIST signal the client will handle the incomming messages and return 0 to indicate that the client is still waiting for the game to start
+            //if the host sends the START ROUND signal the client will handle the incomming messages and return 1 to indicate that the game has started
+            //if the host sends the END GAME signal the client will handle the incomming messages and return 2 to indicate that the game has ended
 
-                //if the host sends the PLAYER LIST signal the client will handle the incomming messages and return 0 to indicate that the client is still waiting for the game to start
-                //if the host sends the START ROUND signal the client will handle the incomming messages and return 1 to indicate that the game has started
-                //if the host sends the END GAME signal the client will handle the incomming messages and return 2 to indicate that the game has ended
-                if (receivedMessage.equals("PLAYER LIST")) {
-                    //receive the player list
-                    String playerListString = bf.readLine();
-
-                    //split the player list string into an array
-                    playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
-                    return 0;
-                } else if (receivedMessage.equals("START GAME")) {
-                    return 1;
-                } else if (receivedMessage.equals("END GAME")) {
-                    return 2;
-                }
+            if (receivedMessage.equals("PLAYER LIST")) {
+                //receive the player list
+                String playerListString = bf.readLine();
+                //split the player list string into an array
+                playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
+                return 0;
+            } else if (receivedMessage.equals("START GAME")) {
+                return 1;
+            } else if (receivedMessage.equals("END GAME")) {
+                return 2;
             }
         } catch (Exception e) {
             System.out.println("Fehler beim Warten auf Spielstart");
-            return 3;
         }
+        return 3;
     }
 
-    public static void listenForEvent() {
+    public int listenForEvent() {
         try {
-            while (true) {
-                // wait for the round to start
-                // if the host send the start signal, the client will prepare to receive the
-                // question
-                // if the host send the end signal, the client will break the loop and end the
+            // wait for the round to start
+            // if the host send the start signal, the client will prepare to receive the
+            // question
+            // if the host send the end signal, the client will break the loop and end the
 
-                String receivedMessage = bf.readLine();
+            String receivedMessage = bf.readLine();
 
-                if (receivedMessage.equals("START ROUND")) {
-                    // receive the question
-                    question = new JSONObject(bf.readLine());
-                    System.out.println("Das ist die erhaltene Frage: " + question);
-
-                    // give the question to the function that will **eventually return the answer**
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    answer = 3;
-                    // send the answer
-                    pr.println(answer);
-                    pr.println(time);
-                    pr.flush();
-
-                    break;
-                } else if (receivedMessage.equals("RESULT")) {
-                    System.out.println("Result received");
-                    // receive the result
-                    answeredRight = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True")
-                                                                         // returns true.
-                                                                         // Example: Boolean.parseBoolean("yes") returns false.
-                                                                         // receive the points
-                    score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
-
-                    // give the result and the points to the function that will handle those+
-                    break;
-
-                } else if (receivedMessage.equals("PLAYER LIST")) {
-                    // receive the player list
-                    String playerListString = bf.readLine();
-
-                    // split the player list string into an array
-                    playerList = playerListString.split(",");
-
-                    break;
-                } else if (receivedMessage.equals("PLAYER POINTS")) {
-                    // receive the player points
-                    String playerPointsString = bf.readLine();
-
-                    // split the player points string into an array
-                    playerPoints = playerPointsString.split(",");
-                    break;
-                } else if (receivedMessage.equals("END GAME")) {
-                    break;
-                }
+            if (receivedMessage.equals("START ROUND")) {
+                // receive the question
+                question = new JSONObject(bf.readLine());
+                return 0;
+            } else if (receivedMessage.equals("RESULT")) {
+                System.out.println("Result received");
+                // receive the result
+                answeredRight = Boolean.parseBoolean(bf.readLine()); // Example: Boolean.parseBoolean("True") and Boolean.parseBoolean("correct") returns false.
+                // receive the points
+                score = Integer.parseInt(bf.readLine()); // Example: Integer.parseInt("123") returns 123.
+                return 1;
+            }  
+            //hier war mal eine else-if fuer "PLAYER LIST", ich glaube allerdings, dass diese in dieser Phase gar nicht mehr gesendet wird
+            else if (receivedMessage.equals("PLAYER POINTS")) {
+                // receive the player points
+                String playerPointsString = bf.readLine();
+                // split the player points string into an array
+                playerPoints = playerPointsString.split(",");
+                return 2;
+            } else if (receivedMessage.equals("END GAME")) {
+                s.close();
+                System.out.println("Connection closed");
+                return 3;
             }
-            // once the loop is broken, the client will close the connection
-            s.close();
-            System.out.println("Connection closed");
-
         } catch (Exception e) {
-            dummy.errorOccured(e);
+            e.printStackTrace();
+        }
+        return 4;
+    }
+
+    public void sendAnswer(ArrayList<Integer> antworten, double gebrauchteZeit) {
+        try {
+            // send the answer
+            String antwortenString = "";
+            for (int i = 0; i < antworten.size(); i++) {
+                if (i < (antworten.size()-1)) antwortenString += antworten.get(i).intValue() + " ";
+                else antwortenString += antworten.get(i).intValue();
+            }
+            pr.println(antwortenString);
+            pr.println(gebrauchteZeit);
+            pr.flush();
+        } catch (Exception e) {
+            System.out.println("Fehler beim Senden der Antwort");
         }
     }
 

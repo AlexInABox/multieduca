@@ -84,8 +84,8 @@ public class host {
             }
 
             //wartet solange, bis die Zeit abgelaufen ist
-            Thread.sleep(frage.getInt("zeit") * 1000);
-
+            //Thread.sleep(frage.getInt("zeit") * 1000);
+            
             for (RunnableThread thread : threadList) {
                 thread.getAnswer(roundIndex);
             }
