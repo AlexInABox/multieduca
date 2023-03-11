@@ -38,31 +38,10 @@ public class SpielErstellenController {
     private URL location;
 
     @FXML
-    private TextField antwortA;
+    private TextField frage, antwortA, antwortB, antwortC, antwortD;
 
     @FXML
-    private TextField antwortB;
-
-    @FXML
-    private TextField antwortC;
-
-    @FXML
-    private TextField antwortD;
-
-    @FXML
-    private CheckBox boxA;
-
-    @FXML
-    private CheckBox boxB;
-
-    @FXML
-    private CheckBox boxC;
-
-    @FXML
-    private CheckBox boxD;
-
-    @FXML
-    private TextField frage;
+    private CheckBox boxA, boxB, boxC, boxD;
 
     @FXML
     private Label msg;
@@ -141,7 +120,6 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
         msg.setVisible(true);
         new animatefx.animation.FadeIn(msg).play();
         new animatefx.animation.FadeOut(msg).play();
-
     }
 
     @FXML

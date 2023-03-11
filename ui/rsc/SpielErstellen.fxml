@@ -62,22 +62,22 @@
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <CheckBox fx:id="boxA" layoutX="625.0" layoutY="209.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <CheckBox fx:id="boxA" onAction="#setA" layoutX="625.0" layoutY="209.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="boxB" layoutX="625.0" layoutY="259.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <CheckBox fx:id="boxB" onAction="#setB" layoutX="625.0" layoutY="259.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="boxC" layoutX="625.0" layoutY="309.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <CheckBox fx:id="boxC" onAction="#setC" layoutX="625.0" layoutY="309.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="boxD" layoutX="625.0" layoutY="359.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <CheckBox fx:id="boxD" onAction="#setD" layoutX="625.0" layoutY="359.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="75.0" text="Lösung" textFill="WHITE" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
