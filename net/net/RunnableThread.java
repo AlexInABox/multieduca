@@ -53,10 +53,13 @@ public class RunnableThread implements Runnable {
             System.out.println("Creating a new thread");
 
             nick = bf.readLine(); // the first message is the name of the player
+            System.out.println("Trying to add " + nick + " to the player list");
             playerList.getItems().add(nick);
+            System.out.println("Added " + nick + " to the player list");
             sendQuizData();
 
             regClient(s);
+            host.refreshPlayerList(playerList);
         } catch (Exception e) {
             e.printStackTrace();
         }

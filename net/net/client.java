@@ -112,7 +112,7 @@ public class client {
                     String playerListString = bf.readLine();
 
                     //split the player list string into an array
-                    playerList = playerListString.split(",");
+                    playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
                     return 0;
                 } else if (receivedMessage.equals("START GAME")) {
                     return 1;

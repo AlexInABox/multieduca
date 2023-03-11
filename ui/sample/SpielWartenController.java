@@ -37,7 +37,7 @@ public class SpielWartenController {
     private Label hostIPAdresse;
 
     @FXML
-    private ListView<?> playerList;
+    private ListView<String> playerList;
 
     @FXML
     private Label quizFragenAnz;
@@ -62,24 +62,32 @@ public class SpielWartenController {
         quizFragenAnz.setText(client.getQuizLength());
         quizName.setText(client.getQuizName());
 
-        int EVENT;
-        /* 
-        do {
-            EVENT = net.client.waitForGameStart();
-            switch(EVENT) {
-                case 0:
-                    //refresh player list
-                    break;
-                case 1:
-                    //switch to game window
-                    break;
-                case 2:
-                    //switch to startscreen
-                    break;
-            }
-        } while (EVENT == 0);
-        */
+        new Thread(() -> {
+
+            System.out.println("Thread started");
+
+            int EVENT;
+            do {
+                EVENT = net.client.waitForGameStart();
+                System.out.println("Event: " + EVENT);
+                switch (EVENT) {
+                    case 0:
+                        System.out.println("Playerlist updated");
+                        String[] playerListArray = client.getPlayerList();
+                        playerList.getItems().clear();
+                        for (int i = 0; i < playerListArray.length; i++) {
+                            playerList.getItems().add(playerListArray[i]);
+                        }
+                        break;
+                    case 1:
+                        //switch to game window
+                        break;
+                    case 2:
+                        //switch to startscreen
+                        break;
+                }
+            } while (EVENT == 0);
+        }).start();
 
     }
-
 }
