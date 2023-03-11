@@ -22,6 +22,8 @@ import java.util.ArrayList;
  * (Alexander Betke)
  * 
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
+ * 
+ * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
  */
 public class client {
     // dev variables

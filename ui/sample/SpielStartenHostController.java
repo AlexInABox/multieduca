@@ -6,6 +6,7 @@
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51 ~basim
+ *      - Verbund von Netzwerk und UI. 04.03.2023 23:51 ~Alexander Betke
  */
 package sample;
 
@@ -79,6 +80,7 @@ public class SpielStartenHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        host.endGame();
     }
 
     public static ArrayList<RunnableThread> getThreadList() {

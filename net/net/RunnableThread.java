@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 * ...
 *Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
 *Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
+*Diverse Fehlerbehebungen, Alexander Betke - 11.03
 */
 
 public class RunnableThread implements Runnable {
