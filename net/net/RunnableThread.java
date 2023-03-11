@@ -6,6 +6,7 @@ import sample.*;
 import java.net.*;
 import java.io.*;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javafx.scene.control.ListView;
@@ -78,23 +79,27 @@ public class RunnableThread implements Runnable {
         t.start();
     }
 
-    public void sendQuestion(int roundIndex) throws IOException {
+    public void sendQuestion(int roundIndex) throws IOException, JSONException, InterruptedException {
         JSONObject frage = quiz.getFrage(roundIndex);
         pr.println("START ROUND");
         pr.println(frage.toString());
         pr.flush();
         //Auslesen des Antwort-Arrays
-        String[] antwortString = bf.readLine().split(" ");
-        int[] antwort = new int[antwortString.length];
-        for (int i = 0; i < antwort.length; i++) {
-            antwort[i] = Integer.parseInt(antwortString[i]);
+        //wartet solange, bis die Zeit abgelaufen ist
+        Thread.sleep(frage.getInt("zeit") * 1000);
+        int rundenPunkte = 0;
+        //gibt es eine antwort wird diese ausgewertet
+        if (bf.ready()) {
+            String[] antwortString = bf.readLine().split(" ");
+            int[] antwort = new int[antwortString.length];
+            for (int i = 0; i < antwort.length; i++) {
+                antwort[i] = Integer.parseInt(antwortString[i]);
+            }
+
+            double zeit = Double.parseDouble(bf.readLine());
+            rundenPunkte = Quiz.genPunkte(frage, antwort, zeit);
         }
-
-        double zeit = Double.parseDouble(bf.readLine());
-        System.out.println(nick + " hat " + zeit + " Sekunden gebraucht");
-
-        punkte += Quiz.genPunkte(frage, antwort, zeit);
-        System.out.println(nick + " bekommt: " + punkte + " Punkte");
+        punkte += rundenPunkte;
         boolean ergebnis = punkte > 0;
         if (ergebnis) {
             System.out.println(nick + " hat die Frage RICHTIG beantwortet");
