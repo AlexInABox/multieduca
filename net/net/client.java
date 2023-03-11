@@ -5,7 +5,7 @@ import java.net.*;
 import org.json.JSONObject;
 
 import java.io.*;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -43,8 +43,8 @@ public class client {
     private static int answer = 0;
     private static boolean answeredRight;
     private static double time = 0;
-    private static ArrayList<String> playerList = new ArrayList<String>();
-    private static ArrayList<String> playerPoints = new ArrayList<String>();
+    private static String[] playerList;
+    private static String[] playerPoints;
     // end of game related variables
 
     /*
@@ -112,15 +112,7 @@ public class client {
                     String playerListString = bf.readLine();
 
                     //split the player list string into an array
-                    String[] playerListArray = playerListString.split(",");
-
-                    //clear the player list
-                    playerList.clear();
-
-                    //add the players to the player list
-                    for (String player : playerListArray) {
-                        playerList.add(player);
-                    }
+                    playerList = playerListString.split(",");
                     return 0;
                 } else if (receivedMessage.equals("START GAME")) {
                     return 1;
@@ -179,15 +171,7 @@ public class client {
                     String playerListString = bf.readLine();
 
                     // split the player list string into an array
-                    String[] playerListArray = playerListString.split(",");
-
-                    // clear the player list
-                    playerList.clear();
-
-                    // add the players to the player list
-                    for (String player : playerListArray) {
-                        playerList.add(player);
-                    }
+                    playerList = playerListString.split(",");
 
                     break;
                 } else if (receivedMessage.equals("PLAYER POINTS")) {
@@ -195,15 +179,7 @@ public class client {
                     String playerPointsString = bf.readLine();
 
                     // split the player points string into an array
-                    String[] playerPointsArray = playerPointsString.split(",");
-
-                    // clear the player points
-                    playerPoints.clear();
-
-                    // add the players to the player points
-                    for (String player : playerPointsArray) {
-                        playerPoints.add(player);
-                    }
+                    playerPoints = playerPointsString.split(",");
                     break;
                 } else if (receivedMessage.equals("END GAME")) {
                     break;
@@ -246,12 +222,12 @@ public class client {
     }
 
     // Gibt die Liste aller aktiven Spieler zurück
-    public ArrayList getPlayerList() {
+    public String[] getPlayerList() {
         return playerList;
     }
 
     // Gibt die Liste mit den Punkten aller aktiven Spieler zurück
-    public ArrayList getPlayerPoints() {
+    public String[] getPlayerPoints() {
         return playerPoints;
     }
 
