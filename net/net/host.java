@@ -3,6 +3,8 @@ package net;
 import java.net.*;
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 import data.Quiz;
 import javafx.scene.control.ListView;
 
@@ -73,6 +75,7 @@ public class host {
     }
 
     public static void startRound() {
+        JSONObject frage = quiz.getFrage(roundIndex);
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
         try {
@@ -80,6 +83,13 @@ public class host {
                 thread.sendQuestion(roundIndex);
             }
             roundIndex++;
+
+            //wartet solange, bis die Zeit abgelaufen ist
+            Thread.sleep(frage.getInt("zeit") * 1000);
+
+            for (RunnableThread thread : threadList) {
+                thread.getAnswer(roundIndex);
+            }
         } catch (Exception e) {
             System.out.println("Error while starting round");
             e.printStackTrace();

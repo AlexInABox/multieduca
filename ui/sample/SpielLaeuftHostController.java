@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ public class SpielLaeuftHostController {
 
     // Networking-methode (wird durch Buttonclick aufgerufen)
     public void startRound(ActionEvent event) {
+
         try {
             if (roundIndex < HostscreenController.getQuiz().getLength()) {
                 host.startRound();

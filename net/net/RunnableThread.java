@@ -84,9 +84,12 @@ public class RunnableThread implements Runnable {
         pr.println("START ROUND");
         pr.println(frage.toString());
         pr.flush();
+    }
+
+    public void getAnswer(int roundIndex) throws IOException, JSONException, InterruptedException {
+        JSONObject frage = quiz.getFrage(roundIndex);
         //Auslesen des Antwort-Arrays
-        //wartet solange, bis die Zeit abgelaufen ist
-        Thread.sleep(frage.getInt("zeit") * 1000);
+
         int rundenPunkte = 0;
         //gibt es eine antwort wird diese ausgewertet
         if (bf.ready()) {
