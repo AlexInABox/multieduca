@@ -82,7 +82,6 @@ public class host {
             for (RunnableThread thread : threadList) {
                 thread.sendQuestion(roundIndex);
             }
-            roundIndex++;
 
             //wartet solange, bis die Zeit abgelaufen ist
             Thread.sleep(frage.getInt("zeit") * 1000);
@@ -90,6 +89,7 @@ public class host {
             for (RunnableThread thread : threadList) {
                 thread.getAnswer(roundIndex);
             }
+            roundIndex++;
         } catch (Exception e) {
             System.out.println("Error while starting round");
             e.printStackTrace();
