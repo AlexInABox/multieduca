@@ -148,6 +148,7 @@ public class client {
                 //erstellen der SpielerPunkteMap
                 String spielerPunkteString = bf.readLine();
                 String[] spielerPunkteArray = spielerPunkteString.split(" ");
+                spielerPunkteMap.clear();
                 for (String spielerPunkte : spielerPunkteArray) {
                     String[] spielerPunkteSplitted = spielerPunkte.split(",");
                     spielerPunkteMap.put(spielerPunkteSplitted[0], Integer.parseInt(spielerPunkteSplitted[1]));
