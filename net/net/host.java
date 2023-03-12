@@ -2,6 +2,7 @@ package net;
 
 import java.net.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONObject;
 
@@ -14,7 +15,7 @@ import java.io.*;
  * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
  * Datum: 2022-02-13
  * 
- * ...
+ * hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
  */
 
 public class host {
@@ -79,15 +80,19 @@ public class host {
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
         try {
+            //senden der Fragen an alle Spieler
             for (RunnableThread thread : threadList) {
                 thread.sendQuestion(roundIndex);
             }
-
-            //wartet solange, bis die Zeit abgelaufen ist
-            //Thread.sleep(frage.getInt("zeit") * 1000);
-            
+            //auslesen von Antworten und erstellen einer nickname, punkte map
+            HashMap<String, Integer> punkteMap = new HashMap<String, Integer>();
             for (RunnableThread thread : threadList) {
                 thread.getAnswer(roundIndex);
+                punkteMap.put(thread.getNick(), thread.getPunkte());
+            }
+            //senden der erstellten Map an alle Spieler
+            for (RunnableThread thread : threadList) {
+                thread.sendPunkteMap(punkteMap);
             }
             roundIndex++;
         } catch (Exception e) {

@@ -4,6 +4,7 @@ import data.*;
 import data.Quiz;
 import sample.*;
 import java.net.*;
+import java.util.HashMap;
 import java.io.*;
 
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import javafx.scene.control.ListView;
 *Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
 *Diverse Fehlerbehebungen, Alexander Betke - 11.03
 *kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
+*hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
 */
 
 public class RunnableThread implements Runnable {
@@ -31,7 +33,7 @@ public class RunnableThread implements Runnable {
     //UI-Element
     private ListView<String> playerList;
 
-    public static int punkte;
+    public int punkte;
 
     private Quiz quiz;
 
@@ -100,9 +102,22 @@ public class RunnableThread implements Runnable {
         int rundenPunkte = Quiz.genPunkte(frage, antworten, zeit);
         punkte += rundenPunkte;
         boolean ergebnis = rundenPunkte > 0;
+
+        //hier werden die Ergebnisse der aktuellen Runde an die Spieler gesendet
         pr.println("RESULT");
         pr.println(ergebnis);
-        pr.println(punkte);
+        pr.println(rundenPunkte);
+        pr.flush();
+    }
+
+    //hier wird der Spielstand des gesamten Spiels, in Form einer Bestenliste, an die Spieler gesendet
+    public void sendPunkteMap(HashMap<String, Integer> punkteMap) {
+        //Umwandlung der HashMap in einen String, der Art: "Name1,Punkte1 Name2,Punkte2 ..."
+        String mapString = "";
+        for (String key : punkteMap.keySet()) {
+            mapString += key + "," + punkteMap.get(key) + " ";
+        }
+        pr.println(mapString.strip()); //strip() entfernt hier das letzte Leerzeichen
         pr.flush();
     }
 
@@ -128,5 +143,13 @@ public class RunnableThread implements Runnable {
         pr.println("PLAYER LIST");
         pr.println(playerList.getItems().toString());
         pr.flush();
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public int getPunkte() {
+        return punkte;
     }
 }
