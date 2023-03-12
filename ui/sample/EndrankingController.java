@@ -12,6 +12,7 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import net.client;
 
 public class EndrankingController {
 
@@ -50,7 +52,10 @@ public class EndrankingController {
 
     @FXML
     void initialize() {
-
+        client c = StartscreenController.getClient();
+        HashMap<String, Integer> spielerPunkteMap = c.getSpielerPunkteMap();
+        HashMap<Integer, String> bestenliste = c.getBestenliste();
+        
     }
 
     // Methode aus InfoController
