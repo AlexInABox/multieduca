@@ -22,8 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import net.client;
 
@@ -42,7 +41,7 @@ public class EndrankingController {
     private Button homeButton;
 
     @FXML
-    private ListView<?> playerList;
+    private ListView<String> playerList;
 
     @FXML
     void initialize() {
