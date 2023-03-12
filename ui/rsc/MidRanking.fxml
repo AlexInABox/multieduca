@@ -43,9 +43,45 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Pane layoutX="60.0" layoutY="191.0" prefHeight="239.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;" />
-            <Pane layoutX="175.0" layoutY="102.0" prefHeight="328.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;" />
-            <Pane layoutX="290.0" layoutY="267.0" prefHeight="163.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;" />
+            <Pane layoutX="60.0" layoutY="191.0" prefHeight="239.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte2" alignment="TOP_CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="20.0" prefWidth="106.0" text="p_p_2" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane layoutX="175.0" layoutY="102.0" prefHeight="328.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte1" alignment="TOP_CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="20.0" prefWidth="106.0" text="p_p_1" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane layoutX="290.0" layoutY="267.0" prefHeight="163.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte3" alignment="TOP_CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="20.0" prefWidth="106.0" text="p_p_3" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Label fx:id="player1" alignment="TOP_CENTER" layoutX="159.0" layoutY="82.0" prefHeight="20.0" prefWidth="130.0" text="player_1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="player2" alignment="TOP_CENTER" layoutX="48.0" layoutY="171.0" prefHeight="20.0" prefWidth="130.0" text="player_2" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="player3" alignment="TOP_CENTER" layoutX="275.0" layoutY="246.0" prefHeight="20.0" prefWidth="130.0" text="player_3" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="ergebnisPane" layoutX="515.0" layoutY="85.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #03c988; -fx-background-radius: 20;" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="85.0">
