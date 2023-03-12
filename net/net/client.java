@@ -149,7 +149,7 @@ public class client {
                 String spielerPunkteString = bf.readLine();
                 String[] spielerPunkteArray = spielerPunkteString.split(" ");
                 for (String spielerPunkte : spielerPunkteArray) {
-                    String[] spielerPunkteSplitted = spielerPunkte.split(":");
+                    String[] spielerPunkteSplitted = spielerPunkte.split(",");
                     spielerPunkteMap.put(spielerPunkteSplitted[0], Integer.parseInt(spielerPunkteSplitted[1]));
                 }
                 return 1;
