@@ -48,7 +48,9 @@ public class EndrankingController {
         client c = StartscreenController.getClient();
         HashMap<String, Integer> spielerPunkteMap = c.getSpielerPunkteMap();
         HashMap<Integer, String> bestenliste = c.getBestenliste();
-        
+        for (Integer i : bestenliste.keySet()) {
+            playerList.getItems().add(i + ". " + bestenliste.get(i) + " " + spielerPunkteMap.get(bestenliste.get(i)));
+        }
     }
 
     // Methode aus InfoController
