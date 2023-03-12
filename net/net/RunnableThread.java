@@ -121,8 +121,10 @@ public class RunnableThread implements Runnable {
         for (int key : bestenliste.keySet())
             bestenlistenString += key + "," + bestenliste.get(key) + " ";
         System.out.println(mapString);
-        pr.println(mapString.strip()); //strip() entfernt hier das letzte Leerzeichen //strip() existiert erst ab Java 11
-        pr.println(bestenlistenString.strip());
+        //pr.println(mapString.strip()); 
+        //pr.println(bestenlistenString.strip());
+        pr.println(mapString.substring(0, mapString.length() - 1)); //strip() entfernt hier das letzte Leerzeichen  //strip() ersetzt durch substring()
+        pr.println(bestenlistenString.substring(0, bestenlistenString.length() - 1));
         pr.flush();
     }
 
