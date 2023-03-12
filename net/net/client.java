@@ -49,6 +49,7 @@ public class client {
     private static String[] playerList;
     private static String[] playerPoints;
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
+    private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
     // end of game related variables
 
     /*
@@ -141,18 +142,11 @@ public class client {
                 question = new JSONObject(bf.readLine());
                 return 0;
             } else if (receivedMessage.equals("RESULT")) {
-                System.out.println("Result received");
                 //hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
                 answeredRight = Boolean.parseBoolean(bf.readLine());
                 rundenPunkte = Integer.parseInt(bf.readLine());
-                //erstellen der SpielerPunkteMap
-                String spielerPunkteString = bf.readLine();
-                String[] spielerPunkteArray = spielerPunkteString.split(" ");
-                spielerPunkteMap.clear();
-                for (String spielerPunkte : spielerPunkteArray) {
-                    String[] spielerPunkteSplitted = spielerPunkte.split(",");
-                    spielerPunkteMap.put(spielerPunkteSplitted[0], Integer.parseInt(spielerPunkteSplitted[1]));
-                }
+                //erstellen der SpielerPunkteMap und der bestenliste
+                leseBestenliste();
                 return 1;
             }  
             //hier war mal eine else-if fuer "PLAYER LIST", ich glaube allerdings, dass diese in dieser Phase gar nicht mehr gesendet wird
@@ -163,14 +157,29 @@ public class client {
                 playerPoints = playerPointsString.split(",");
                 return 2;
             } else if (receivedMessage.equals("END GAME")) {
+                leseBestenliste();
                 s.close();
-                System.out.println("Connection closed");
                 return 3;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 4;
+    }
+
+    public void leseBestenliste() throws IOException {
+        String[] spielerPunkteArray = bf.readLine().split(" ");
+        String[] bestenListenArray = bf.readLine().split(" ");
+        spielerPunkteMap.clear();
+        bestenliste.clear();
+        for (String spielerPunkteEintrag : spielerPunkteArray) {
+            String[] spielerPunkteEintragSplitted = spielerPunkteEintrag.split(",");
+            spielerPunkteMap.put(spielerPunkteEintragSplitted[0], Integer.parseInt(spielerPunkteEintragSplitted[1]));
+        }
+        for (String bestenListenEintrag : bestenListenArray) {
+            String[] bestenListenEintragSplitted = bestenListenEintrag.split(",");
+            bestenliste.put(Integer.parseInt(bestenListenEintragSplitted[0]), bestenListenEintragSplitted[1]);
+        }
     }
 
     public void sendAnswer(ArrayList<Integer> antworten, double gebrauchteZeit) {
@@ -240,5 +249,13 @@ public class client {
 
     public HashMap<String, Integer> getSpielerPunkteMap() {
         return spielerPunkteMap;
+    }
+
+    public HashMap<Integer, String> getBestenliste() {
+        return bestenliste;
+    }
+
+    public String getName() {
+        return nick;
     }
 }

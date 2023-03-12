@@ -10,6 +10,7 @@ import java.io.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javafx.application.Platform;
 import javafx.scene.control.ListView;
 
 /*
@@ -29,7 +30,7 @@ public class RunnableThread implements Runnable {
     private static ServerSocket ss;
     private static Socket s;
 
-    private static String nick;
+    private String nick;
     //UI-Element
     private ListView<String> playerList;
 
@@ -58,9 +59,7 @@ public class RunnableThread implements Runnable {
             System.out.println("Creating a new thread");
 
             nick = bf.readLine(); // the first message is the name of the player
-            System.out.println("Trying to add " + nick + " to the player list");
-            playerList.getItems().add(nick);
-            System.out.println("Added " + nick + " to the player list");
+            Platform.runLater(() -> playerList.getItems().add(nick));
             sendQuizData();
 
             regClient(s);
@@ -71,7 +70,7 @@ public class RunnableThread implements Runnable {
     }
 
     //ueberfluessig
-    private static void regClient(Socket s) {
+    private void regClient(Socket s) {
         String ip = s.getInetAddress().toString();
         System.out.println("Client \"" + nick + "\" connected from " + ip);
     }
@@ -94,9 +93,11 @@ public class RunnableThread implements Runnable {
         //Auslesen des Antwort-Arrays
         String[] antwortString = bf.readLine().split(" ");
         int[] antworten = new int[antwortString.length];
-        for (int i = 0; i < antworten.length; i++) {   
-            if (!antwortString[i].equals("")) antworten[i] = Integer.parseInt(antwortString[i]);
-            else antworten[i] = -1;
+        for (int i = 0; i < antworten.length; i++) {
+            if (!antwortString[i].equals(""))
+                antworten[i] = Integer.parseInt(antwortString[i]);
+            else
+                antworten[i] = -1;
         }
         double zeit = Double.parseDouble(bf.readLine());
         int rundenPunkte = Quiz.genPunkte(frage, antworten, zeit);
@@ -111,13 +112,19 @@ public class RunnableThread implements Runnable {
     }
 
     //hier wird der Spielstand des gesamten Spiels, in Form einer Bestenliste, an die Spieler gesendet
-    public void sendPunkteMap(HashMap<String, Integer> punkteMap) {
+    public void sendBestenliste(HashMap<String, Integer> punkteMap, HashMap<Integer, String> bestenliste) {
         //Umwandlung der HashMap in einen String, der Art: "Name1,Punkte1 Name2,Punkte2 ..."
         String mapString = "";
-        for (String key : punkteMap.keySet()) {
+        String bestenlistenString = "";
+        for (String key : punkteMap.keySet())
             mapString += key + "," + punkteMap.get(key) + " ";
-        }
-        pr.println(mapString.strip()); //strip() entfernt hier das letzte Leerzeichen
+        for (int key : bestenliste.keySet())
+            bestenlistenString += key + "," + bestenliste.get(key) + " ";
+        System.out.println(mapString);
+        //pr.println(mapString.strip()); 
+        //pr.println(bestenlistenString.strip());
+        pr.println(mapString.substring(0, mapString.length() - 1)); //strip() entfernt hier das letzte Leerzeichen  //strip() ersetzt durch substring()
+        pr.println(bestenlistenString.substring(0, bestenlistenString.length() - 1));
         pr.flush();
     }
 
@@ -128,8 +135,9 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
-    public void endGame() {
+    public void endGame(HashMap<String, Integer> punkMap, HashMap<Integer, String> bestenliste) {
         pr.println("END GAME");
+        sendBestenliste(punkMap, bestenliste);
         pr.flush();
     }
 

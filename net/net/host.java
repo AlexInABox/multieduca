@@ -3,6 +3,7 @@ package net;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONObject;
 
@@ -23,6 +24,8 @@ public class host {
     private static ServerSocket ss;
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
     private static Quiz quiz;
+    private static HashMap<String, Integer> punkteMap = new HashMap<String, Integer>();
+    private static HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
 
     private static int roundIndex = 0;
 
@@ -76,7 +79,6 @@ public class host {
     }
 
     public static void startRound() {
-        JSONObject frage = quiz.getFrage(roundIndex);
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
         try {
@@ -85,22 +87,19 @@ public class host {
                 thread.sendQuestion(roundIndex);
             }
             //auslesen von Antworten und erstellen einer nickname, punkte map
-            HashMap<String, Integer> punkteMap = new HashMap<String, Integer>();
+            punkteMap.clear();
             for (RunnableThread thread : threadList) {
                 thread.getAnswer(roundIndex);
                 punkteMap.put(thread.getNick(), thread.getPunkte());
             }
-            //senden der erstellten Map an alle Spieler
+            bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
             for (RunnableThread thread : threadList) {
-                thread.sendPunkteMap(punkteMap);
+                thread.sendBestenliste(punkteMap, bestenliste);
             }
             roundIndex++;
         } catch (Exception e) {
-            System.out.println("Error while starting round");
             e.printStackTrace();
         }
-        System.out.println("");
-        System.out.println("Round started");
     }
 
     public static void refreshPlayerList(ListView<String> playerList) {
@@ -112,17 +111,31 @@ public class host {
     public static void endGame() {
         try {
             for (RunnableThread thread : threadList) {
-                thread.endGame();
+                thread.endGame(punkteMap, bestenliste);
             }
         } catch (Exception e) {
-            System.out.println("Error while ending game");
             e.printStackTrace();
         }
-        System.out.println("");
-        System.out.println("Game ended. All players disconnected ");
     }
 
     public static ArrayList<RunnableThread> getThreadList() {
         return threadList;
+    }
+
+    static HashMap<Integer, String> generiereBestenliste(HashMap<String, Integer> spielerPunkteMap) {
+        HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
+        int i = 1;
+        while (spielerPunkteMap.size() > 0) {
+            Map.Entry<String, Integer> maxEntry = null;
+            for (Map.Entry<String, Integer> entry : spielerPunkteMap.entrySet()) {
+                if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
+                    maxEntry = entry;
+                }
+            }
+            bestenliste.put(i, maxEntry.getKey());
+            spielerPunkteMap.remove(maxEntry.getKey());
+            i++;
+        }
+        return bestenliste;
     }
 }
