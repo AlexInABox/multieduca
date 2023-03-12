@@ -40,13 +40,7 @@ public class EndrankingController {
     private Button homeButton;
 
     @FXML
-    private TableColumn<Spieler, Integer> punkteTab;
-
-    @FXML
-    private TableColumn<Spieler, String> spielerTab;
-
-    @FXML
-    private TableView<?> tab;
+    private ListView<?> playerList;
 
     @FXML
     void initialize() {
