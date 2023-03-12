@@ -6,7 +6,7 @@
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  *      - Methode zum Wechsel zum Startscreens hinzugefuegt. 05.03.2023 ~basim
- *      - TODO: Methoden zum befuellen der Tabelle hinzugefuegt. 05.03.2023 ~basim
+ *      - TODO: Methoden zum befuellen der Liste hinzugefuegt. 05.03.2023 ~basim
  */
 package sample;
 
