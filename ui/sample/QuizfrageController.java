@@ -112,7 +112,7 @@ import net.client;
             case 1:
                 Platform.runLater(new Runnable() {
                     public void run() {
-                        switchScreen("../rsc/Startscreen.fxml"); //hier muss statt zum Startscreen zum zwischenrankingscreen gewechselt werden
+                        switchScreen("../rsc/MidRanking.fxml"); //hier muss statt zum Startscreen zum zwischenrankingscreen gewechselt werden
                     }
                 });
                 break;
