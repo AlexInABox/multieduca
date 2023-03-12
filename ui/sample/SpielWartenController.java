@@ -85,6 +85,7 @@ public class SpielWartenController {
                     System.out.println("Event: " + EVENT);
                     switch (EVENT) {
                         case 0:
+                            System.out.println("Updating player list");
                             Platform.runLater(new Runnable() {
                                 public void run() {
                                     String[] playerListArray = client.getPlayerList();
@@ -94,7 +95,7 @@ public class SpielWartenController {
                                     }
                                 }
                             });
-                            
+
                             break;
                         case 1:
                             //switch to game window
