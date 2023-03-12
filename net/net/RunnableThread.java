@@ -93,9 +93,11 @@ public class RunnableThread implements Runnable {
         //Auslesen des Antwort-Arrays
         String[] antwortString = bf.readLine().split(" ");
         int[] antworten = new int[antwortString.length];
-        for (int i = 0; i < antworten.length; i++) {   
-            if (!antwortString[i].equals("")) antworten[i] = Integer.parseInt(antwortString[i]);
-            else antworten[i] = -1;
+        for (int i = 0; i < antworten.length; i++) {
+            if (!antwortString[i].equals(""))
+                antworten[i] = Integer.parseInt(antwortString[i]);
+            else
+                antworten[i] = -1;
         }
         double zeit = Double.parseDouble(bf.readLine());
         int rundenPunkte = Quiz.genPunkte(frage, antworten, zeit);
@@ -114,14 +116,16 @@ public class RunnableThread implements Runnable {
         //Umwandlung der HashMap in einen String, der Art: "Name1,Punkte1 Name2,Punkte2 ..."
         String mapString = "";
         String bestenlistenString = "";
-        for (String key : punkteMap.keySet()) mapString += key + "," + punkteMap.get(key) + " ";
-        for (int key : bestenliste.keySet()) bestenlistenString += key + "," + bestenliste.get(key) + " ";
+        for (String key : punkteMap.keySet())
+            mapString += key + "," + punkteMap.get(key) + " ";
+        for (int key : bestenliste.keySet())
+            bestenlistenString += key + "," + bestenliste.get(key) + " ";
         System.out.println(mapString);
-        pr.println(mapString.strip()); //strip() entfernt hier das letzte Leerzeichen
+        pr.println(mapString.strip()); //strip() entfernt hier das letzte Leerzeichen //strip() existiert erst ab Java 11
         pr.println(bestenlistenString.strip());
         pr.flush();
     }
-    
+
     public void sendQuizData() {
         pr.println("QUIZ DATA");
         pr.println(quiz.getLength());
@@ -129,7 +133,7 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
-    public void endGame(HashMap<String,Integer> punkMap, HashMap<Integer,String> bestenliste) {
+    public void endGame(HashMap<String, Integer> punkMap, HashMap<Integer, String> bestenliste) {
         pr.println("END GAME");
         sendBestenliste(punkMap, bestenliste);
         pr.flush();

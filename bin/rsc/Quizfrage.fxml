@@ -42,22 +42,22 @@
          </font>
       </Label>
       <ProgressBar fx:id="progbarFragen" layoutX="15.0" layoutY="518.0" prefHeight="20.0" prefWidth="500.0" progress="0.11" stylesheets="@../css/progbar.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-      <Button fx:id="antC" alignment="CENTER" layoutX="25.0" layoutY="388.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort C" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antC" onAction="#chooseC" alignment="CENTER" layoutX="25.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort C" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="antA" alignment="CENTER" layoutX="25.0" layoutY="275.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort A" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antA" onAction="#chooseA" alignment="CENTER" layoutX="25.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort A" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="antB" alignment="CENTER" layoutX="405.0" layoutY="275.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort B" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antB" onAction="#chooseB" alignment="CENTER" layoutX="405.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort B" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="antD" alignment="CENTER" layoutX="405.0" layoutY="388.0" mnemonicParsing="false" onAction="#disableAntButtons" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort D" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="antD" onAction="#chooseD" alignment="CENTER" layoutX="405.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort D" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
