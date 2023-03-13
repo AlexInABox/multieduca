@@ -78,6 +78,16 @@ public class host {
         }
     }
 
+    public static void endZwischenRanking() {
+        try {
+            for (RunnableThread thread : threadList) {
+                thread.endZwischenRanking();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void refreshPlayerList(ListView<String> playerList) {
         for (RunnableThread thread : threadList) {
             thread.refreshPlayerList(playerList);

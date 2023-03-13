@@ -143,6 +143,11 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    public void endZwischenRanking() {
+        pr.println("END ZWISCHENRANKING");
+        pr.flush();
+    }
+
     public void refreshPlayerList(ListView<String> playerList) {
         this.playerList = playerList;
         pr.println("PLAYER LIST");

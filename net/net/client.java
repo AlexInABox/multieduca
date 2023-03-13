@@ -118,6 +118,8 @@ public class client {
                 leseBestenliste();
                 s.close();
                 return 4;
+            } else if (receivedMessage.equals("END ZWISCHENRANKING")) {
+                return 5;
             }
         } catch (Exception e) {
             e.printStackTrace();

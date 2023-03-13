@@ -46,30 +46,26 @@ public class MidRanking {
         }
         position.setText(bestenliste.entrySet().stream().filter(entry -> entry.getValue().equals(c.getName())).map(Map.Entry::getKey).findFirst().get().toString());
         punkte.setText(spielerPunkteMap.get(c.getName()).toString());
-        Platform.runLater(new Runnable() {
-            public void run() {
-                starteNaechsteRunde();
-            }
-        }); 
-    }
-
-    //warten bis host die naechste Runde startet
-    void starteNaechsteRunde() {
-        Thread t = new Thread(new Runnable() {
-            public void run() {
-                    Platform.runLater(new Runnable() {
-                        public void run() {
-                            switchToQuizfrage();
-                        }
+        new Thread(() -> {
+            int event = c.listenForEvent();
+            switch(event) {
+                case 5:
+                    Platform.runLater(() -> {
+                        switchScreen("../rsc/Quizfrage.fxml");
                     });
+                    break;
+                case 4:
+                    Platform.runLater(() -> {
+                        switchScreen("../rsc/Endranking.fxml");
+                    });
+                    break;
             }
-        });
-        t.start();
+        }).start();
     }
 
-    void switchToQuizfrage() {
+    void switchScreen(String fxml) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../rsc/Quizfrage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(fxml));
             Stage stage = (Stage) player1.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

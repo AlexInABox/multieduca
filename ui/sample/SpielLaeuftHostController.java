@@ -42,6 +42,7 @@ public class SpielLaeuftHostController {
         try {
             if (roundIndex < HostscreenController.getQuiz().getLength()) {
                 frageText.setText("Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
+                host.endZwischenRanking();
                 host.startRound();
             } else {
                 host.endGame();
