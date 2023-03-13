@@ -19,6 +19,7 @@ import java.util.ArrayList;
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 //kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
+//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
 
 public class SpielLaeuftHostController {
 
@@ -39,20 +40,41 @@ public class SpielLaeuftHostController {
     }
 
     public void startRound(ActionEvent event) {
-        try {
-            if (roundIndex < HostscreenController.getQuiz().getLength()) {
-                frageText.setText("Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
-                host.endZwischenRanking();
-                host.startRound();
-            } else {
-                host.endGame();
-                switchToHostscreen(event);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (roundIndex < HostscreenController.getQuiz().getLength()) {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                frageText.setText(
+                                        "Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
+                            }
+                        });
+                        host.endZwischenRanking();
+                        host.startRound();
+                    } else {
+                        host.endGame();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    switchToHostscreen(event);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+                    roundIndex++;
+                } catch (Exception e) {
+                    System.out.println("Fehler beim Senden der Frage");
+                    e.printStackTrace();
+                }
             }
-            roundIndex++;
-        } catch (Exception e) {
-            System.out.println("Fehler beim Senden der Frage");
-            e.printStackTrace();
-        }
+        });
+        thread.start();
     }
 
     public void switchToHostscreen(ActionEvent event) throws IOException {
@@ -66,7 +88,7 @@ public class SpielLaeuftHostController {
     @FXML
     void initialize() {
         quizName.setText("Quiz: " + HostscreenController.getName());
-        frageText.setText("Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
+        frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
     }
 
 }

@@ -32,6 +32,7 @@ import net.*;
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 //-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
 //-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
+//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
 
 public class SpielStartenHostController {
 
@@ -65,8 +66,14 @@ public class SpielStartenHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        host.startGame();
-        host.startRound();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                host.startGame();
+                host.startRound();
+            }
+        });
+        thread.start();
     }
 
     // Methode um zum Hostscreen zurueck zukehren
