@@ -12,6 +12,7 @@
  *      - Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt. 04.03.2023 20:51 ~basim
  *      - Antwortbuttons und Frage werden deaktiviert nach Auswahl einer Antwort. Es erscheint eine Bestaetigungsnachricht ueber den Buttons. 04.03.2023 21:20 ~basim
  *      - Entfernen von unnoetigen Teilen, Fehlerbehebungen und einfuegen der eigentlichen Logik dieses Screens, Niklas Bamberg 11.03.2023 
+ *      - Anpassungen in warteAufEvent() 13.03.2023 ~Niklas Bamberg
  */
 
  package sample;
@@ -93,7 +94,7 @@ import net.client;
     public void warteAufEvent() {
         int event = c.listenForEvent();
         switch(event) {
-            case 0:
+            case 2:
                 rundenStartZeit = System.currentTimeMillis();
                 Thread zeitThread = new Thread(new Runnable() {
                     public void run() {
@@ -109,17 +110,14 @@ import net.client;
                 antC.setText(antworten.getString(2));
                 antD.setText(antworten.getString(3));
                 break;
-            case 1:
+            case 3:
                 Platform.runLater(new Runnable() {
                     public void run() {
                         switchScreen("../rsc/MidRanking.fxml"); //hier muss statt zum Startscreen zum zwischenrankingscreen gewechselt werden
                     }
                 });
                 break;
-            case 2:
-                //noch unklar
-                break;
-            case 3:
+            case 4:
                 Platform.runLater(new Runnable() {
                     public void run() {
                         switchScreen("../rsc/Endranking.fxml");

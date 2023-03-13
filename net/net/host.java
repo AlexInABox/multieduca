@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
-
 import data.Quiz;
 import javafx.scene.control.ListView;
 
@@ -17,6 +15,7 @@ import java.io.*;
  * Datum: 2022-02-13
  * 
  * hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
+ * kleinere Kuerzungen, Niklas Bamberg - 13.03
  */
 
 public class host {
@@ -28,24 +27,6 @@ public class host {
     private static HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
 
     private static int roundIndex = 0;
-
-    /*public static void main(String[] args) throws IOException, InterruptedException {
-    
-        ss = new ServerSocket(2594);
-        initServer();
-        try {
-            Thread.sleep(10000);
-            startGame();
-            startRound();
-            Thread.sleep(5000);
-            startRound();
-            Thread.sleep(5000);
-            endGame();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    */
 
     public static void initServer(ListView<String> playerList, Quiz quizArg) throws IOException {
         //dem RunnableThread wird die Playerliste uebergeben, damit er den Playernamen dort hinzufuegen kann
@@ -64,18 +45,13 @@ public class host {
 
     public static void startGame() {
         threadList.remove(threadList.size() - 1);
-        System.out.println("Starting game with " + threadList.size() + " players");
-
         try {
             for (RunnableThread thread : threadList) {
                 thread.startGame();
             }
         } catch (Exception e) {
-            System.out.println("Error while starting game");
             e.printStackTrace();
         }
-        System.out.println("");
-        System.out.println("Game started");
     }
 
     public static void startRound() {

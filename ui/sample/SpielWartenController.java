@@ -10,6 +10,7 @@
  *      Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
  * 
  *      Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize. 11.03.2023 ~Alexander Betke
+ *      Anpassung in initialize(). 13.03.2023 ~Niklas Bamberg
  */
 
 package sample;
@@ -52,7 +53,7 @@ public class SpielWartenController {
         stage.setScene(scene);
         stage.show();
     }
-
+    
     private void switchToStart() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
@@ -81,7 +82,7 @@ public class SpielWartenController {
                 System.out.println("Thread started");
                 int EVENT;
                 do {
-                    EVENT = client.waitForGameStart();
+                    EVENT = client.listenForEvent();
                     System.out.println("Event: " + EVENT);
                     switch (EVENT) {
                         case 0:
@@ -100,19 +101,17 @@ public class SpielWartenController {
                         case 1:
                             //switch to game window
                             Platform.runLater(new Runnable() {
-                                @Override
                                 public void run() {
                                     // Update UI here.
                                     try {
                                         switchToGame();
                                     } catch (IOException e) {
-                                        // TODO Auto-generated catch block
                                         e.printStackTrace();
                                     }
                                 }
                             });
                             break;
-                        case 2:
+                        case 4:
                             //switch to startscreen
                             Platform.runLater(new Runnable() {
                                 @Override
@@ -121,7 +120,6 @@ public class SpielWartenController {
                                     try {
                                         switchToStart();
                                     } catch (IOException e) {
-                                        // TODO Auto-generated catch block
                                         e.printStackTrace();
                                     }
                                 }

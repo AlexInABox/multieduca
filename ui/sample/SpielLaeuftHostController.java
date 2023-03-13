@@ -18,12 +18,13 @@ import java.util.ArrayList;
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
 
 public class SpielLaeuftHostController {
 
     private Stage stage;
     private Scene scene;
-    private static int roundIndex = 0;
+    private static int roundIndex = 1;
 
     @FXML
     private Label frageText;
@@ -64,6 +65,7 @@ public class SpielLaeuftHostController {
     @FXML
     void initialize() {
         quizName.setText("Quiz: " + HostscreenController.getName());
+        frageText.setText("Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
     }
 
 }

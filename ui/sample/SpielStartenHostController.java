@@ -31,23 +31,18 @@ import net.*;
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 //-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
+//-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
 
 public class SpielStartenHostController {
 
     @FXML
-    private Label hostIPAdresse;
+    private Label hostIPAdresse, quizName, quizFragenAnz;
 
     @FXML
     private Button playButton;
 
     @FXML
     private ListView<String> playerList;
-
-    @FXML
-    private Label quizFragenAnz;
-
-    @FXML
-    private Label quizName;
 
     private Stage stage;
     private Scene scene;
@@ -71,6 +66,7 @@ public class SpielStartenHostController {
         stage.setScene(scene);
         stage.show();
         host.startGame();
+        host.startRound();
     }
 
     // Methode um zum Hostscreen zurueck zukehren

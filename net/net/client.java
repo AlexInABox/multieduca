@@ -26,6 +26,7 @@ import java.util.HashMap;
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
  * 11.03 erstellen einer sendAnswer() Methode, Niklas Bamberg
  * 12.03 lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
+ * 13.03 entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
  */
 public class client {
     // dev variables
@@ -46,7 +47,6 @@ public class client {
     private static JSONObject question;
     private static boolean answeredRight;
     private static String[] playerList;
-    private static String[] playerPoints;
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
     private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
     // end of game related variables
@@ -136,34 +136,34 @@ public class client {
 
             String receivedMessage = bf.readLine();
 
-            if (receivedMessage.equals("START ROUND")) {
+            if (receivedMessage.equals("PLAYER LIST")) {
+                //receive the player list
+                String playerListString = bf.readLine();
+                //split the player list string into an array
+                playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
+                return 0;
+            } else if (receivedMessage.equals("START GAME")) {
+                return 1;
+            } else if (receivedMessage.equals("START ROUND")) {
                 // receive the question
                 question = new JSONObject(bf.readLine());
-                return 0;
+                return 2;
             } else if (receivedMessage.equals("RESULT")) {
                 //hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
                 answeredRight = Boolean.parseBoolean(bf.readLine());
                 rundenPunkte = Integer.parseInt(bf.readLine());
                 //erstellen der SpielerPunkteMap und der bestenliste
                 leseBestenliste();
-                return 1;
-            }  
-            //hier war mal eine else-if fuer "PLAYER LIST", ich glaube allerdings, dass diese in dieser Phase gar nicht mehr gesendet wird
-            else if (receivedMessage.equals("PLAYER POINTS")) {
-                // receive the player points
-                String playerPointsString = bf.readLine();
-                // split the player points string into an array
-                playerPoints = playerPointsString.split(",");
-                return 2;
-            } else if (receivedMessage.equals("END GAME")) {
+                return 3;
+            }  else if (receivedMessage.equals("END GAME")) {
                 leseBestenliste();
                 s.close();
-                return 3;
+                return 4;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 4;
+        return 5;
     }
 
     public void leseBestenliste() throws IOException {
@@ -227,11 +227,6 @@ public class client {
     // Gibt die Liste aller aktiven Spieler zurück
     public String[] getPlayerList() {
         return playerList;
-    }
-
-    // Gibt die Liste mit den Punkten aller aktiven Spieler zurück
-    public String[] getPlayerPoints() {
-        return playerPoints;
     }
 
     public JSONObject getQuestion() {
