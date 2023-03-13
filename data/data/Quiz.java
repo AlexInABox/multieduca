@@ -63,7 +63,7 @@ public class Quiz {
         int maxZeit = frage.getInt("zeit");
         int nAntworten = frage.getJSONArray("antworten").length();
         JSONArray loesungen = frage.getJSONArray("loesungen");
-        double punkteProRichtigeAntwort = (100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50)) / nAntworten;
+        double punkteProRichtigeAntwort = (100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50)) / loesungen.length();
         for (int i = 0; i < nAntworten; i++) {
 
             boolean istRichtig = false;
@@ -74,13 +74,13 @@ public class Quiz {
             }
 
             boolean wurdeAusgewaehlt = false;
-            for (int j = 0; j < eingaben.length; j++) {
-                if (i == eingaben[j]) {
+            for (int j : eingaben) {
+                if (i == j) {
                     wurdeAusgewaehlt = true;
                 }
             }
 
-            if ((istRichtig & wurdeAusgewaehlt) || (!istRichtig & !wurdeAusgewaehlt)) {
+            if ((istRichtig & wurdeAusgewaehlt)) {
                 output += punkteProRichtigeAntwort;
             }
         }
