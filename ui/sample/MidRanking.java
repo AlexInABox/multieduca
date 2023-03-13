@@ -1,11 +1,8 @@
 package sample;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
