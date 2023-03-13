@@ -22,8 +22,16 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/*
+ * Autoren: Moritz Oehme, Niklas Bamberg, Basim Bennaji
+ * Thema: Erstellen eines neuen Quiz bzw. der Datei, in der es gespeichert wird
+ * Erstellungsdatum: 09.02.2023
+ * Letzte Aenderung: 10.03.2023
+ * Change-Log:
+ * 
+ */
 //aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+//-arbeiten an verbindung der Teile
 
 public class SpielErstellenController {
 
@@ -31,6 +39,7 @@ public class SpielErstellenController {
     private Scene scene;
     private Quiz quiz = new Quiz();
 
+    //UI Elemente aus FXML-Datei
     @FXML
     private ResourceBundle resources;
 
@@ -53,10 +62,12 @@ public class SpielErstellenController {
 private List <Integer> richtigeAntworten = new ArrayList<>();
 
     // Informationen für .json Datei
+    //Gibt die Quizfrage als String zurück
     public String getFrage() {
         return frage.getText();
     }
 
+    //Gibt die 4 möglichen Antworten in einem Array zurück
     public String[] getAntworten() {
         String[] array = new String[4];
         array[0] = antwortA.getText();
@@ -66,35 +77,42 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
         return array;
     }
 
+    //Gibt die richtigen Antworten in einem Array zurück
+    //Antworten sind von 0-3 durchnummeriert
+    //Nummern der richtigen Antworten werden dem Array hinzugefügt
     public int[] getRichtigeAntworten() {
         int [] array = new int[richtigeAntworten.size()];
         for(int i = 0; i < richtigeAntworten.size(); i++) array[i] = richtigeAntworten.get(i);
         return array;
     }
     
+    //Liefert die Zeit, die bereitgestellt wird, um eine Frage zu beantworten
     public int getZeit() {
         return Integer.parseInt(zeit.getText());
     }
 
     // Button-Funktionen: richtige Antwort setzen
+    // Werden ausgeführt, wenn Checkboxen neben den Antwrten ausgewählt werden
     public void setA() {
-        //hier stand noch antwortA.getText() != "" zusaetzlich in der if, allerings finde ich,
-        //dass man auch eine richtige Antwort setzen koennen sollte, ohne eine Antwort eingegeben zu haben.
+        //Wenn die Box neben der Antwort A ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
         if(boxA.isSelected()) richtigeAntworten.add(0);
         else richtigeAntworten.remove((Integer) 0);
     }
 
     public void setB() {
+        //Wenn die Box neben der Antwort B ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
         if(boxB.isSelected()) richtigeAntworten.add(1);
         else richtigeAntworten.remove((Integer) 1);
     }
 
     public void setC() {
+        //Wenn die Box neben der Antwort C ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
         if(boxC.isSelected()) richtigeAntworten.add(2);
         else richtigeAntworten.remove((Integer) 2);
     }
 
     public void setD() {
+        //Wenn die Box neben der Antwort D ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
         if(boxD.isSelected()) richtigeAntworten.add(3);
         else richtigeAntworten.remove((Integer) 3);
     }
@@ -122,6 +140,7 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
         new animatefx.animation.FadeOut(msg).play();
     }
 
+    //Speichern des Quiz als json-Datei
     @FXML
     public void saveGame(ActionEvent event) throws IOException {
         if(quiz.getLength() != 0){
@@ -134,6 +153,8 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
         }
     }
 
+    //UI Wechsel zum vorherigen Screen(Hostscreen)
+    //Wird über den "zurück" Button ausgeführt
     @FXML
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
