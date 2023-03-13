@@ -13,19 +13,14 @@ import java.util.HashMap;
  * Ueberarbeitet: Niklas Bamberg
  * Datum: 2023-02-18
  *
- * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet
- * und
- * mit ihm über das Netzwerk kommuniziert.
+ * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet und mit ihm über das Netzwerk kommuniziert.
  * 
- * 03.03.2023: Funktionalität für kommunikation von Spielerlisten und
- * Punktelisten hinzugefügt.
- * (Alexander Betke)
- * 
+ * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
- * 
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
- * 11.03 erstellen einer sendAnswer() Methode, Niklas Bamberg
- * 12.03 lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
+ * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
+ * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
+ * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
  */
 public class client {
     // dev variables
@@ -96,6 +91,7 @@ public class client {
         }
     }
 
+    // Wartet auf eine Nachricht vom Host und gibt basierend auf dieser einen Bestätigungssignal, in Form eines Integers von 0-3, zurück
     public  int waitForGameStart() {
         try {
             String receivedMessage = bf.readLine();
@@ -127,10 +123,11 @@ public class client {
         return 3;
     }
 
+    // Verarbeitet die einzelnen Signale des Hosts während Spiel
     public int listenForEvent() {
         try {
             // wait for the round to start
-            // if the host send the start signal, the client will prepare to receive the
+            // if the host sends the start signal, the client will prepare to receive the
             // question
             // if the host send the end signal, the client will break the loop and end the
 
@@ -141,10 +138,10 @@ public class client {
                 question = new JSONObject(bf.readLine());
                 return 0;
             } else if (receivedMessage.equals("RESULT")) {
-                //hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
+                // hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
                 answeredRight = Boolean.parseBoolean(bf.readLine());
                 rundenPunkte = Integer.parseInt(bf.readLine());
-                //erstellen der SpielerPunkteMap und der bestenliste
+                // erstellen der SpielerPunkteMap und der bestenliste
                 leseBestenliste();
                 return 1;
             }  
@@ -166,6 +163,7 @@ public class client {
         return 4;
     }
 
+    // Liest die empfangenen Bestenlisten fügt sie im Spieler-Punkte Format in die jeweiligen Hashmaps ein
     public void leseBestenliste() throws IOException {
         String[] spielerPunkteArray = bf.readLine().split(" ");
         String[] bestenListenArray = bf.readLine().split(" ");
@@ -181,6 +179,7 @@ public class client {
         }
     }
 
+    // Schickt eigene Antwort und gebrauchte Zeit bis zum Antworten an Host 
     public void sendAnswer(ArrayList<Integer> antworten, double gebrauchteZeit) {
         try {
             // send the answer
@@ -197,7 +196,7 @@ public class client {
         }
     }
 
-    //Empfängt alle Metadaten des Quiz
+    // Empfängt alle Metadaten des Quiz
     private static void getQuizData() {
         try {
             if (bf.readLine().equals("QUIZ DATA")) {
@@ -233,27 +232,32 @@ public class client {
     public String[] getPlayerPoints() {
         return playerPoints;
     }
-
+    // Gibt aktuelle Frage zurück
     public JSONObject getQuestion() {
         return question;
     }
 
+    // Gibt Antwort, ob aktuelle Frage richtig beantwortet wurde
     public boolean answeredRight() {
         return answeredRight;
     }
 
+    // Gibt eigene Punkte für die aktuelle Runde zurück
     public int getRundenPunkte() {
         return rundenPunkte;
     }
 
+    // Gibt Hashmap mit allen Spieler im Spieler-Punkte Format zurück
     public HashMap<String, Integer> getSpielerPunkteMap() {
         return spielerPunkteMap;
     }
 
+    // Gibt Hashmap mit Bestenliste zurück
     public HashMap<Integer, String> getBestenliste() {
         return bestenliste;
     }
 
+    // Gibt eigenen Nickname zurück
     public String getName() {
         return nick;
     }
