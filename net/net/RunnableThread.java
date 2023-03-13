@@ -1,8 +1,5 @@
 package net;
-
-import data.*;
 import data.Quiz;
-import sample.*;
 import java.net.*;
 import java.util.HashMap;
 import java.io.*;
