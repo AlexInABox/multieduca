@@ -18,15 +18,10 @@ import java.util.HashMap;
  * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
-<<<<<<< HEAD
- * 11.03 erstellen einer sendAnswer() Methode, Niklas Bamberg
- * 12.03 lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
- * 13.03 entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
-=======
  * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
  * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
  * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
->>>>>>> afa39c9531de8bcc4a09231b1b71e09cc6199082
+ * 13.03 entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
  */
 public class client {
     // dev variables
@@ -50,12 +45,6 @@ public class client {
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
     private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
     // end of game related variables
-
-    /*
-     * public static void main(String[] args) { // dev function
-     * run(IP, UUID.randomUUID().toString().substring(0, 6));
-     * }
-     */
 
     public client() {
     }
@@ -94,38 +83,6 @@ public class client {
             System.out.println("Es konnte keine Verbindung hergestellt werden!");
             return false;
         }
-    }
-
-    // Wartet auf eine Nachricht vom Host und gibt basierend auf dieser einen Bestätigungssignal, in Form eines Integers von 0-3, zurück
-    public  int waitForGameStart() {
-        try {
-            String receivedMessage = bf.readLine();
-
-            //while waiting for the round to start the host can send either one of the following messages
-            //PLAYER LIST
-            //or
-            //START ROUND
-            //or
-            //END GAME
-            //if the host sends the PLAYER LIST signal the client will handle the incomming messages and return 0 to indicate that the client is still waiting for the game to start
-            //if the host sends the START ROUND signal the client will handle the incomming messages and return 1 to indicate that the game has started
-            //if the host sends the END GAME signal the client will handle the incomming messages and return 2 to indicate that the game has ended
-
-            if (receivedMessage.equals("PLAYER LIST")) {
-                //receive the player list
-                String playerListString = bf.readLine();
-                //split the player list string into an array
-                playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
-                return 0;
-            } else if (receivedMessage.equals("START GAME")) {
-                return 1;
-            } else if (receivedMessage.equals("END GAME")) {
-                return 2;
-            }
-        } catch (Exception e) {
-            System.out.println("Fehler beim Warten auf Spielstart");
-        }
-        return 3;
     }
 
     // Verarbeitet die einzelnen Signale des Hosts während Spiel
@@ -233,14 +190,7 @@ public class client {
         return playerList;
     }
 
-<<<<<<< HEAD
-=======
-    // Gibt die Liste mit den Punkten aller aktiven Spieler zurück
-    public String[] getPlayerPoints() {
-        return playerPoints;
-    }
     // Gibt aktuelle Frage zurück
->>>>>>> afa39c9531de8bcc4a09231b1b71e09cc6199082
     public JSONObject getQuestion() {
         return question;
     }
