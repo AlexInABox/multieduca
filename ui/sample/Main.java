@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import net.host;
+
 public class Main extends Application {
 
     @Override
@@ -15,6 +17,17 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() {
+        // executed when the application shuts down
+        System.out.println("Application closing...");
+        try {
+            host.endGame();
+        } catch (Exception e) {
+            System.out.println("No game running");
+        }
     }
 
     public static void main(String[] args) {

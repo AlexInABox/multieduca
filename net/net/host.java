@@ -44,6 +44,12 @@ public class host {
     }
 
     public static void startGame() {
+        //schließen des Serversockets, damit keine neuen Spieler mehr beitreten können
+        try {
+            ss.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         threadList.remove(threadList.size() - 1);
         try {
             for (RunnableThread thread : threadList) {
@@ -54,7 +60,8 @@ public class host {
         }
     }
 
-    public static void startRound() {
+    public static void startRound(int index) {
+        roundIndex = index;
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
         try {
@@ -102,6 +109,8 @@ public class host {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //löschen der Liste mit den Threads
+        threadList.clear();
     }
 
     public static ArrayList<RunnableThread> getThreadList() {
