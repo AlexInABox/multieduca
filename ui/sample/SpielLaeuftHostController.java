@@ -50,6 +50,10 @@ public class SpielLaeuftHostController {
     public SpielLaeuftHostController() throws IOException {
     }
 
+    public static void resetRoundIndex() {
+        roundIndex = 1;
+    }
+
     public void startRound(ActionEvent event) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -64,7 +68,7 @@ public class SpielLaeuftHostController {
                             }
                         });
                         host.endZwischenRanking();
-                        host.startRound();
+                        host.startRound(roundIndex);
                     } else {
                         host.endGame();
                         Platform.runLater(new Runnable() {
