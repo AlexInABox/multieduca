@@ -6,7 +6,7 @@
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  *      - TODO: Fortschrittbar zeigt den Fortschritt im Quiz grafisch dar
- *      - TODO: Timer fuer verbleibende Zeit
+ *      - Timer fuer verbleibende Zeit
  *      - Beim Auswaehlen einer Antwort werden die Antwortbuttons deaktiviert und es wird auf die weiteren Spieler/Host gewartet. 04.03.2023 20:23 ~basim
  *      - Vorlaeufige Methode fuer timer hinzugefuegt. 04.03.2023 20:45 ~basim
  *      - Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt. 04.03.2023 20:51 ~basim

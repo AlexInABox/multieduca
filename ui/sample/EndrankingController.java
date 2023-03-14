@@ -1,12 +1,12 @@
 /*
- * Autor: Basim Bennaji
+ * Autoren: Basim Bennaji, Niklas Bamberg
  * Thema: Methoden des Endrankings.
  * Erstellungsdatum: 05.03.2023
  * Letzte Aenderung: 05.03.2023 13:41
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  *      - Methode zum Wechsel zum Startscreens hinzugefuegt. 05.03.2023 ~basim
- *      - TODO: Methoden zum befuellen der Liste hinzugefuegt. 05.03.2023 ~basim
+ *      - Methoden zum befuellen der Liste hinzugefuegt. 12.03.2023 ~niklas
  */
 package sample;
 
@@ -53,7 +53,7 @@ public class EndrankingController {
         }
     }
 
-    // Methode aus InfoController
+    // Methode aus InfoController ~basim
     public void switchToHome (ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
