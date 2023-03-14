@@ -16,7 +16,8 @@ import java.net.URL;
  */
 
 public class utilities {
-    public static boolean checkForUpdate() {
+
+    public static String getCurrentVersion() {
         try {
             // get current version from file
             FileReader fr = new FileReader("version.txt");
@@ -24,21 +25,36 @@ public class utilities {
             String currentVersion = br.readLine();
             System.out.println("Current version: " + currentVersion);
             br.close();
+            return currentVersion;
+        } catch (Exception e) {
+            System.out.println("Error while getting current version: " + e);
+            return "Null";
+        }
+    }
 
+    public static String getLatestVersion() {
+        try {
             // get latest version
             URL url = new URL("https://raw.githubusercontent.com/AlexInABox/multieduca/main/version.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String latestVersion = in.readLine();
             in.close();
-            // compare versions
-            if (currentVersion.equals(latestVersion)) {
-                return false;
-            } else {
-                return true;
-            }
+            return latestVersion;
         } catch (Exception e) {
-            System.out.println("Error while checking for update: " + e);
+            System.out.println("Error while getting latest version: " + e);
+            return "Error";
+        }
+    }
+
+    public static boolean checkForUpdate() {
+        String currentVersion = getCurrentVersion();
+        String latestVersion = getLatestVersion();
+        if (currentVersion.equals(latestVersion)) {
+            System.out.println("No update available");
             return false;
+        } else {
+            System.out.println("Update available");
+            return true;
         }
     }
 }
