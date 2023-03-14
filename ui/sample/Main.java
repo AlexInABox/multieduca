@@ -32,6 +32,8 @@ public class Main extends Application {
                     "Möchtest du das Programm wirklich beenden? Jedglicher Fortschritt geht dabei verloren!",
                     ButtonType.YES,
                     ButtonType.NO);
+            alert.setTitle("Programm beenden...");
+            alert.setHeaderText("ACHTUNG!");
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.NO) {
