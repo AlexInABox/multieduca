@@ -24,7 +24,7 @@ public class MidRanking {
 				"-fx-background-color: #C92403; -fx-background-radius: 20");
 
     @FXML
-    private SVGPath ergebnisBild;
+    private SVGPath ergebnisC, ergebnisF;
 
     @FXML
     private Pane ergebnisPane;
@@ -83,11 +83,15 @@ public class MidRanking {
 
     void setzeRueckmeldung(boolean antowrt) {
         if (antowrt) {
+            // Format fuer richtige Antwort, gruen ~basim 14.03.2023 19:39
             ergebnisPane.setStyle(successStyle);
             ergebnisText.setText("korrekt!");
         } else {
+            // Format fuer falsche Antwort, rot und mit einem "X" ~basim 14.03.2023 19:39
             ergebnisPane.setStyle(errorStyle);
             ergebnisText.setText("falsch!");
+            ergebnisC.setVisible(false);
+            ergebnisF.setVisible(true);
         }
     }
 }

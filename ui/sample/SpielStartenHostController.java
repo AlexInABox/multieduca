@@ -68,6 +68,7 @@ public class SpielStartenHostController {
 
     // Button-FUnktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
+        SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -77,7 +78,7 @@ public class SpielStartenHostController {
             @Override
             public void run() {
                 host.startGame();
-                host.startRound();
+                host.startRound(0);
             }
         });
         thread.start();

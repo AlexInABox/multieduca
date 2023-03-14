@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.host;
+
 
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
@@ -28,6 +30,7 @@ public class Main extends Application {
     }
 
 
+
     //Pop-Up Fenster zum Bestätigen, wenn Spiel über x beendet wird
     public void beenden(Stage stage){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -39,6 +42,19 @@ public class Main extends Application {
         }
     }
     
+
+    @Override
+    public void stop() {
+        // executed when the application shuts down
+        System.out.println("Application closing...");
+        try {
+            host.endGame();
+        } catch (Exception e) {
+            System.out.println("No game running");
+        }
+    }
+
+
     public static void main(String[] args) {
         launch(args);
     }
