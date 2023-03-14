@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Autoren: Basim Bennaji
+   Thema: MidRanking
+   Erstellungsdatum: 10.03.2023
+   Letzte Aenderung: 10.03.2023 21:59
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Startscreens:
+         -Nur noch eine fxml Datein noetig fuer richtige und falsche Antworten
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Generelle Designsprache harmonischer gestaltet.
+         -Generelle Design aenderungen
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MidRanking">
+   <children>
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Label layoutX="321.0" layoutY="14.0" text="Ranking" textFill="WHITE" AnchorPane.topAnchor="22.0">
+         <font>
+            <Font name="Arial Bold" size="40.0" />
+         </font>
+      </Label>
+      <Pane layoutX="30.0" layoutY="98.0" prefHeight="430.0" prefWidth="450.0" style="-fx-background-color: #0B518F; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Label alignment="CENTER" layoutY="14.0" prefHeight="21.0" prefWidth="450.0" text="Aktuelles Podium" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Pane layoutX="60.0" layoutY="191.0" prefHeight="239.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte2" alignment="TOP_CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="20.0" prefWidth="106.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane layoutX="175.0" layoutY="102.0" prefHeight="328.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte1" alignment="TOP_CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="20.0" prefWidth="106.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane layoutX="290.0" layoutY="267.0" prefHeight="163.0" prefWidth="100.0" style="-fx-background-color: #1c87c9;">
+               <children>
+                  <Label fx:id="playerPunkte3" alignment="TOP_CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="20.0" prefWidth="106.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Label fx:id="player1" alignment="TOP_CENTER" layoutX="159.0" layoutY="82.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="player2" alignment="TOP_CENTER" layoutX="48.0" layoutY="171.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="player3" alignment="TOP_CENTER" layoutX="275.0" layoutY="246.0" prefHeight="20.0" prefWidth="130.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="ergebnisPane" layoutX="515.0" layoutY="85.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #03c988; -fx-background-radius: 20;" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Label alignment="CENTER" layoutY="22.0" prefHeight="27.0" prefWidth="250.0" text="Deine Antwort ist " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="ergebnisText" alignment="CENTER" layoutY="49.0" prefHeight="27.0" prefWidth="250.0" text="korrekt!" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <SVGPath fx:id="ergebnisBild" content="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48ZM364.25,186.29l-134.4,160a16,16,0,0,1-12,5.71h-.27a16,16,0,0,1-11.89-5.3l-57.6-64a16,16,0,1,1,23.78-21.4l45.29,50.32L339.75,165.71a16,16,0,0,1,24.5,20.58Z" fill="WHITE" layoutX="-131.0" layoutY="-117.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" />
+         </children>
+      </Pane>
+      <Pane layoutX="521.0" layoutY="313.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #00337c; -fx-background-radius: 20;" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="35.0">
+         <children>
+            <Label alignment="CENTER" layoutY="34.0" prefHeight="27.0" prefWidth="250.0" text="Deine Stats" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="ergebnisText1" layoutY="85.0" prefHeight="27.0" prefWidth="123.0" text="Position" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="ergebnisText11" layoutY="130.0" prefHeight="27.0" prefWidth="123.0" text="Punkte" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="punkte" alignment="CENTER" layoutX="123.0" layoutY="130.0" prefHeight="27.0" prefWidth="123.0" text="248" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </Label>
+            <Label fx:id="position" alignment="CENTER" layoutX="123.0" layoutY="85.0" prefHeight="27.0" prefWidth="123.0" text="1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <ProgressBar layoutX="14.0" layoutY="527.0" prefHeight="10.0" prefWidth="730.0" stylesheets="@../css/progbar.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+   </children>
+</AnchorPane>

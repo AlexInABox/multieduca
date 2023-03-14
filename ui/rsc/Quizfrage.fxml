@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
+   Thema: Quizfrage
+   Erstellungsdatum: 06.03.2023
+   Letzte Aenderung: 06.03.2023 20:38
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Neue version des alten Hostscreens:
+         -Groessres Fenster
+         -Design vereinheitlicht
+         -Buttongroesse aneinander angepasst
+         -Generelle Design Aenderungen
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.QuizfrageController">
+   <children>
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="208.0">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <Label fx:id="frageText" alignment="TOP_LEFT" layoutX="23.0" layoutY="23.0" prefHeight="200.0" prefWidth="620.0" text="F   R   A   G   E" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+      <SVGPath content="M256,48C141.12,48,48,141.12,48,256s93.12,208,208,208,208-93.12,208-208S370.88,48,256,48ZM173.67,162.34l105,71a32.5,32.5,0,0,1-37.25,53.26,33.21,33.21,0,0,1-8-8l-71-105a8.13,8.13,0,0,1,11.32-11.32ZM256,432C159,432,80,353.05,80,256a174.55,174.55,0,0,1,53.87-126.72,14.15,14.15,0,1,1,19.64,20.37A146.53,146.53,0,0,0,108.3,256c0,81.44,66.26,147.7,147.7,147.7S403.7,337.44,403.7,256c0-76.67-58.72-139.88-133.55-147V164a14.15,14.15,0,1,1-28.3,0V94.15A14.15,14.15,0,0,1,256,80C353.05,80,432,159,432,256S353.05,432,256,432Z" fill="WHITE" layoutX="431.0" layoutY="-213.0" scaleX="0.1" scaleY="0.1" scaleZ="0.1" AnchorPane.topAnchor="-165.0" />
+      <Label fx:id="timer" layoutX="708.0" layoutY="25.0" text="00:24" textFill="WHITE" AnchorPane.rightAnchor="25.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progbarFragen" layoutX="15.0" layoutY="518.0" prefHeight="20.0" prefWidth="500.0" progress="0.11" stylesheets="@../css/progbar.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="antC" onAction="#chooseC" alignment="CENTER" layoutX="25.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort C" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="antA" onAction="#chooseA" alignment="CENTER" layoutX="25.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort A" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="antB" onAction="#chooseB" alignment="CENTER" layoutX="405.0" layoutY="275.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort B" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="antD" onAction="#chooseD" alignment="CENTER" layoutX="405.0" layoutY="388.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="370.0" stylesheets="@../css/greenButton.css" text="Antwort D" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="antGeg" alignment="CENTER" layoutY="233.0" prefHeight="35.0" prefWidth="800.0" text="Antwort gesichert. Warten auf andere Spieler/Host" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

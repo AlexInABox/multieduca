@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Autor: Basim Bennaji
+   Thema: Infoscreen
+   Erstellungsdatum: 03.03.2023
+   Letzte Aenderung: 03.03.2023 17:28
+   Icons: https://ionic.io/ionicons
+   Change-Log:
+      Screen erstellt:
+         -Namen der Autoren
+         -Versionsnummer
+         -Datum der letzten Aenderung
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #13005a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InfoController">
+   <children>
+      <Pane layoutX="280.0" layoutY="218.0" prefHeight="210.0" prefWidth="260.0" style="-fx-background-color: #1c82ad; -fx-background-radius: 20;">
+         <effect>
+            <BoxBlur height="255.0" iterations="3" width="255.0" />
+         </effect>
+      </Pane>
+      <SVGPath content="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm48,226H216a16,16,0,0,1,0-32h28V244H228a16,16,0,0,1,0-32h32a16,16,0,0,1,16,16V332h28a16,16,0,0,1,0,32Z" fill="#03c988" layoutX="144.0" layoutY="-167.0" scaleX="0.3" scaleY="0.3" scaleZ="0.3">
+         <effect>
+            <BoxBlur />
+         </effect></SVGPath>
+      <Label fx:id="people1" alignment="CENTER" layoutY="255.0" lineSpacing="1.0" prefHeight="295.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="homebtn" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;" styleClass="back-button" stylesheets="@../css/button.css" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+      <Label fx:id="people2" alignment="CENTER" layoutX="400.0" layoutY="255.0" lineSpacing="1.0" prefHeight="295.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="182.0" prefHeight="21.0" prefWidth="800.0" text="Informatik LK Paulsen-Gymnasium und Fichtenberg-Oberschule 2022/2023" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="22.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="235.0" prefHeight="20.0" prefWidth="800.0" text="Erstellt von:" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="version" layoutX="14.0" layoutY="516.0" text="v.1.0.0" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="516.0" text="04.03.2023" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
