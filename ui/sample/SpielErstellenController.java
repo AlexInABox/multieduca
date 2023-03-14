@@ -30,6 +30,14 @@ import javafx.stage.Stage;
 //aenderungen:
 //-arbeiten an verbindung der Teile
 
+/**
+ * Autor: Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
+
 public class SpielErstellenController {
 
     private Stage stage;
