@@ -26,9 +26,29 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                    "Möchtest du das Programm wirklich beenden? Jedglicher Fortschritt geht dabei verloren!",
+                    ButtonType.YES,
+                    ButtonType.NO);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.NO) {
+                event.consume();
+            } else {
+                try {
+                    // executed when the application shuts down
+                    host.endGame();
+                } catch (Exception e) {
+                    System.out.println("No game running");
+                }
+            }
+        });
+
     }
 
-    @Override
+    /*@Override
     public void stop() {
         // executed when the application shuts down
         System.out.println("Application closing...");
@@ -38,6 +58,7 @@ public class Main extends Application {
             System.out.println("No game running");
         }
     }
+    */
 
     public static void main(String[] args) {
         launch(args);
