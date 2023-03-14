@@ -24,10 +24,10 @@ public class MidRanking {
 				"-fx-background-color: #C92403; -fx-background-radius: 20");
 
     @FXML
-    private SVGPath ergebnisBild;
+    private SVGPath ergebnisC, ergebnisF;
 
     @FXML
-    private Pane ergebnisC, ergebnisF;
+    private Pane ergebnisPane;
 
     @FXML
     private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position, punkte;
