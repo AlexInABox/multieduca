@@ -33,6 +33,14 @@ import net.*;
 //-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
 //-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
 
+/**
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
+ 
 public class SpielStartenHostController {
 
     @FXML
