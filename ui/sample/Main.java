@@ -1,7 +1,9 @@
 package sample;
 
+import java.io.FileReader;
 import java.util.function.Consumer;
 
+import data.utilities;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -35,29 +37,37 @@ public class Main extends Application {
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(event -> {
-            Alert alert = createAlertWithOptOut(AlertType.CONFIRMATION, "Programm beenden...",
-                    "ACHTUNG!", "Möchten Sie das Programm wirklich beenden?", "Nicht mehr fragen",
-                    (optOut) -> {
-                        if (optOut) {
-                            System.out.println("Opted out");
-                        }
-                    }, ButtonType.YES, ButtonType.NO);
-            alert.setTitle("Programm beenden...");
-            alert.setHeaderText("ACHTUNG!");
-            alert.showAndWait();
+            System.out.println(utilities.showExitAlert());
+            if (utilities.showExitAlert()) {
+                Alert alert = createAlertWithOptOut(AlertType.CONFIRMATION, "Programm beenden...",
+                        "ACHTUNG!", "Möchten Sie das Programm wirklich beenden?", "Nicht mehr fragen",
+                        (optOut) -> {
+                            if (optOut) {
+                                utilities.showExitAlert(false);
+                                System.out.println("Opted out");
+                            } else {
+                                utilities.showExitAlert(true);
+                                System.out.println("Opted in");
+                            }
+                        }, ButtonType.YES, ButtonType.NO);
+                alert.setTitle("Programm beenden...");
+                alert.setHeaderText("ACHTUNG!");
+                alert.showAndWait();
 
-            if (alert.getResult() == ButtonType.NO) {
-                event.consume();
-            } else {
-                try {
-                    // executed when the application shuts down
-                    host.endGame();
-                } catch (Exception e) {
-                    System.out.println("No game running");
+                if (alert.getResult() == ButtonType.NO) {
+                    event.consume();
+                } else {
+                    try {
+                        // executed when the application shuts down
+                        host.endGame();
+                    } catch (Exception e) {
+                        System.out.println("No game running");
+                    }
                 }
+            } else {
+                host.endGame();
             }
         });
-
     }
 
     /*@Override
