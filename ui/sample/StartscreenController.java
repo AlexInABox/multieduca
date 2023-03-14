@@ -12,22 +12,27 @@
  * 		JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
  * 		Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
  * 		Fehlermeldung bei ungueltigem Usernamen hinzugefuegt. ~Alexander Betke 14.03.2023 17:58
+ * 		Versions-Aktualitaet-Ueberpruefung hinzugefuegt (initialize()). ~Alexander Betke 14.03.2023 18:26
  */
 
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import net.client;
 
 import java.io.IOException;
+import data.utilities;
 
 public class StartscreenController {
 
@@ -197,6 +202,29 @@ public class StartscreenController {
 
 	public static client getClient() {
 		return client;
+	}
+
+	// check for new version and notify user on startup
+	@FXML
+	void initialize() {
+		Platform.runLater(new Runnable() {
+			public void run() {
+				try {
+					if (utilities.checkForUpdate()) {
+						// show update notification
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Update verfügbar");
+						alert.setHeaderText("Es ist ein Update verfügbar!");
+						alert.setContentText(
+								"Bitte laden Sie die neuste Version von https://github.com/alexinabox/multieduca/releases herunter.");
+						alert.showAndWait();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 	}
 
 	// in onLoginButtonClick eingebaut. ~basim 02.03.2023 22:53
