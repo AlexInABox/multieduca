@@ -13,6 +13,7 @@ import java.net.URL;
  * 
  * Change-Log:
  * 2023-03-14: Alexander Betke: checkForUpdate() hinzugefügt
+ * 2023-03-14: Alexander Betke: getCurrentVersion() und getLatestVersion() hinzugefügt
  */
 
 public class utilities {
