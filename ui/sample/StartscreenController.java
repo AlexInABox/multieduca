@@ -11,6 +11,7 @@
  *      Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt. ~basim 25.02.2023
  * 		JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
  * 		Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
+ * 		Fehlermeldung bei ungueltigem Usernamen hinzugefuegt. ~Alexander Betke 14.03.2023 17:58
  */
 
 package sample;
@@ -105,7 +106,25 @@ public class StartscreenController {
 			logInfo.setStyle(errorMessage);
 			userName.setStyle(sucessStyle);
 			new animatefx.animation.Shake(ipAdress).play();
-		} else {
+		} else
+		//Name ist zu kurz (mindestens 3 Zeichen) oder zu lang (maximal 15 Zeichen).
+		if (userName.getText().length() < 3 || userName.getText().length() > 15) {
+			userName.setStyle(errorStyle);
+			logInfo.setText("Name muss zwischen 3 und 15 Zeichen lang sein!");
+			logInfo.setStyle(errorMessage);
+			ipAdress.setStyle(sucessStyle);
+			new animatefx.animation.Shake(userName).play();
+		} else
+		//Name enthaelt Leerzeichen oder Komma.
+		if (userName.getText().contains(" ") || userName.getText().contains(",")) {
+			userName.setStyle(errorStyle);
+			logInfo.setText("Name darf keine Leerzeichen oder Kommas enthalten!");
+			logInfo.setStyle(errorMessage);
+			ipAdress.setStyle(sucessStyle);
+			new animatefx.animation.Shake(userName).play();
+		}
+
+		else {
 			// Keine Fehler.
 			client = new client();
 			if (client.establishConnection(ipAdress.getText(), userName.getText())) {
