@@ -1,11 +1,18 @@
 package sample;
 
+import java.util.function.Consumer;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import net.host;
 
@@ -28,10 +35,13 @@ public class Main extends Application {
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(event -> {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                    "Möchtest du das Programm wirklich beenden? Jedglicher Fortschritt geht dabei verloren!",
-                    ButtonType.YES,
-                    ButtonType.NO);
+            Alert alert = createAlertWithOptOut(AlertType.CONFIRMATION, "Programm beenden...",
+                    "ACHTUNG!", "Möchten Sie das Programm wirklich beenden?", "Nicht mehr fragen",
+                    (optOut) -> {
+                        if (optOut) {
+                            System.out.println("Opted out");
+                        }
+                    }, ButtonType.YES, ButtonType.NO);
             alert.setTitle("Programm beenden...");
             alert.setHeaderText("ACHTUNG!");
             alert.showAndWait();
@@ -64,5 +74,37 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Alert createAlertWithOptOut(AlertType type, String title, String headerText,
+            String message, String optOutMessage, Consumer<Boolean> optOutAction,
+            ButtonType... buttonTypes) {
+        Alert alert = new Alert(type);
+        // Need to force the alert to layout in order to grab the graphic,
+        // as we are replacing the dialog pane with a custom pane
+        alert.getDialogPane().applyCss();
+        Node graphic = alert.getDialogPane().getGraphic();
+        // Create a new dialog pane that has a checkbox instead of the hide/show details button
+        // Use the supplied callback for the action of the checkbox
+        alert.setDialogPane(new DialogPane() {
+            @Override
+            protected Node createDetailsButton() {
+                CheckBox optOut = new CheckBox();
+                optOut.setText(optOutMessage);
+                optOut.setOnAction(e -> optOutAction.accept(optOut.isSelected()));
+                return optOut;
+            }
+        });
+        alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
+        alert.getDialogPane().setContentText(message);
+        // Fool the dialog into thinking there is some expandable content
+        // a Group won't take up any space if it has no children
+        alert.getDialogPane().setExpandableContent(new Group());
+        alert.getDialogPane().setExpanded(true);
+        // Reset the dialog graphic using the default style
+        alert.getDialogPane().setGraphic(graphic);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        return alert;
     }
 }
