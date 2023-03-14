@@ -17,6 +17,12 @@ import net.client;
 
 public class MidRanking {
 
+    String successStyle = String.format(
+				"-fx-background-color: #03C988; -fx-background-radius: 20");
+
+    String errorStyle = String.format(
+				"-fx-background-color: #C92403; -fx-background-radius: 20");
+
     @FXML
     private SVGPath ergebnisBild;
 
@@ -77,8 +83,10 @@ public class MidRanking {
 
     void setzeRueckmeldung(boolean antowrt) {
         if (antowrt) {
+            ergebnisPane.setStyle(successStyle);
             ergebnisText.setText("korrekt!");
         } else {
+            ergebnisPane.setStyle(errorStyle);
             ergebnisText.setText("falsch!");
         }
     }

@@ -1,3 +1,13 @@
+/*
+ * Autor: Niklas Bamberg
+ * Thema: Methoden des Hostscreens.
+ * Erstellungsdatum: 27.02.2023
+ * Letzte Aenderung: 12.03.2023 13:41
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ * 
+ */
+
 package sample;
 
 import javafx.event.ActionEvent;
@@ -14,7 +24,7 @@ import java.io.IOException;
 import data.Quiz;
 
 //aenderungen:
-//-arbeiten an verbindung der Teile: Nikas Bamerg -02.03.2023
+//-arbeiten an verbindung der Teile: Nikas Bamberg -02.03.2023
 
 public class HostscreenController {
 
