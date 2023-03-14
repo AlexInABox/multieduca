@@ -6,10 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
-
 import data.Quiz;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /*
  * Autoren: Moritz Oehme, Niklas Bamberg, Basim Bennaji
@@ -56,11 +52,10 @@ public class SpielErstellenController {
     @FXML
     private Label msg;
 
-
     @FXML
     private TextField zeit;
 
-private List <Integer> richtigeAntworten = new ArrayList<>();
+    private List<Integer> richtigeAntworten = new ArrayList<>();
 
     // Informationen für .json Datei
     //Gibt die Quizfrage als String zurück
@@ -82,11 +77,12 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
     //Antworten sind von 0-3 durchnummeriert
     //Nummern der richtigen Antworten werden dem Array hinzugefügt
     public int[] getRichtigeAntworten() {
-        int [] array = new int[richtigeAntworten.size()];
-        for(int i = 0; i < richtigeAntworten.size(); i++) array[i] = richtigeAntworten.get(i);
+        int[] array = new int[richtigeAntworten.size()];
+        for (int i = 0; i < richtigeAntworten.size(); i++)
+            array[i] = richtigeAntworten.get(i);
         return array;
     }
-    
+
     //Liefert die Zeit, die bereitgestellt wird, um eine Frage zu beantworten
     public int getZeit() {
         return Integer.parseInt(zeit.getText());
@@ -96,31 +92,39 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
     // Werden ausgeführt, wenn Checkboxen neben den Antwrten ausgewählt werden
     public void setA() {
         //Wenn die Box neben der Antwort A ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
-        if(boxA.isSelected()) richtigeAntworten.add(0);
-        else richtigeAntworten.remove((Integer) 0);
+        if (boxA.isSelected())
+            richtigeAntworten.add(0);
+        else
+            richtigeAntworten.remove((Integer) 0);
     }
 
     public void setB() {
         //Wenn die Box neben der Antwort B ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
-        if(boxB.isSelected()) richtigeAntworten.add(1);
-        else richtigeAntworten.remove((Integer) 1);
+        if (boxB.isSelected())
+            richtigeAntworten.add(1);
+        else
+            richtigeAntworten.remove((Integer) 1);
     }
 
     public void setC() {
         //Wenn die Box neben der Antwort C ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
-        if(boxC.isSelected()) richtigeAntworten.add(2);
-        else richtigeAntworten.remove((Integer) 2);
+        if (boxC.isSelected())
+            richtigeAntworten.add(2);
+        else
+            richtigeAntworten.remove((Integer) 2);
     }
 
     public void setD() {
         //Wenn die Box neben der Antwort D ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
-        if(boxD.isSelected()) richtigeAntworten.add(3);
-        else richtigeAntworten.remove((Integer) 3);
+        if (boxD.isSelected())
+            richtigeAntworten.add(3);
+        else
+            richtigeAntworten.remove((Integer) 3);
     }
 
     @FXML
     void addFrage() {
-       //eigentliches Hinzufuegen der Frage
+        //eigentliches Hinzufuegen der Frage
         quiz.addFrage(getFrage(), getAntworten(), getRichtigeAntworten(), getZeit());
 
         //UI und Variablen zuruecksetzen:
@@ -144,7 +148,7 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
     //Speichern des Quiz als json-Datei
     @FXML
     public void saveGame(ActionEvent event) throws IOException {
-        if(quiz.getLength() != 0){
+        if (quiz.getLength() != 0) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Quiz Speichern");
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Quiz Datei", "*.json"));
@@ -167,7 +171,6 @@ private List <Integer> richtigeAntworten = new ArrayList<>();
 
     @FXML
     void initialize() {
-
 
     }
 
