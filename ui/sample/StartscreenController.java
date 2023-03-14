@@ -83,7 +83,7 @@ public class StartscreenController {
 			new animatefx.animation.Shake(ipAdress).play();
 		} else
 		// Name nicht eigegeben.
-		if (userName.getText().isEmpty()) {
+		if (userName.getText().trim().isEmpty()) {
 			userName.setStyle(errorStyle);
 			logInfo.setText("Name fehlt!");
 			logInfo.setStyle(errorMessage);
