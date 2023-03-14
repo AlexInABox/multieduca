@@ -27,7 +27,7 @@ public class MidRanking {
     private SVGPath ergebnisBild;
 
     @FXML
-    private Pane ergebnisPane;
+    private Pane ergebnisC, ergebnisF;
 
     @FXML
     private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position, punkte;
