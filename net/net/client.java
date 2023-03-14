@@ -223,4 +223,32 @@ public class client {
     public String getName() {
         return nick;
     }
+
+    public void gameEnded() {
+        try {
+            s.close();
+        } catch (Exception e) {
+            System.out.println("Socket konnte nicht geschlossen werden.");
+        }
+        //reset all variables
+        try {
+            bf.close();
+            pr.close();
+        } catch (Exception e) {
+            System.out.println("BufferedReader und PrintWriter konnten nicht geschlossen werden.");
+        }
+        try {
+            nick = "";
+            quizLength = "";
+            quizName = "";
+            playerList = new String[0];
+            question = new JSONObject();
+            answeredRight = false;
+            rundenPunkte = 0;
+            spielerPunkteMap.clear();
+            bestenliste.clear();
+        } catch (Exception e) {
+            System.out.println("Variablen konnten nicht zurückgesetzt werden.");
+        }
+    }
 }
