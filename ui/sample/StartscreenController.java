@@ -13,6 +13,7 @@
  * 		Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
  * 		Fehlermeldung bei ungueltigem Usernamen hinzugefuegt. ~Alexander Betke 14.03.2023 17:58
  * 		Versions-Aktualitaet-Ueberpruefung hinzugefuegt (initialize()). ~Alexander Betke 14.03.2023 18:26
+ * 		Fehlermeldung aktualsiert sich jetzt bei erneuter Eingabe ~Alexander Betke 14.03.2023 19:42
  */
 
 package sample;
@@ -56,6 +57,7 @@ public class StartscreenController {
 
 	@FXML
 	protected void onLoginButtonClick(ActionEvent event) throws InterruptedException, IOException {
+		logInfo.setText("");
 
 		// Formatierung fuer falsche und korrekte Eingaben
 		String sucessMessage = String.format("-fx-text-fill: #03C988");

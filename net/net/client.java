@@ -21,7 +21,8 @@ import java.util.HashMap;
  * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
  * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
  * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
- * 13.03 entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
+ * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
+ * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
  */
 public class client {
     // dev variables
@@ -99,7 +100,7 @@ public class client {
                 //receive the player list
                 String playerListString = bf.readLine();
                 //split the player list string into an array
-                playerList = playerListString.substring(1, playerListString.length() - 1).split(","); //remove the brackets from the string and split it into an array
+                playerList = playerListString.substring(1, playerListString.length() - 1).split(", "); //remove the brackets from the string and split it into an array
                 return 0;
             } else if (receivedMessage.equals("START GAME")) {
                 return 1;
