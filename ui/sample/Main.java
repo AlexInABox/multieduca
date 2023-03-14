@@ -17,15 +17,16 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 640, 400));
+        primaryStage.setTitle("Quiz Game");
+        primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
 
         stage.setOnCloseRequest(event -> beenden(stage));
     }
+
 
     //Pop-Up Fenster zum Bestätigen, wenn Spiel über x beendet wird
     public void beenden(Stage stage){
@@ -37,7 +38,7 @@ public class Main extends Application {
             stage.close();
         }
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }

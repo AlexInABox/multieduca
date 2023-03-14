@@ -1,0 +1,31 @@
+.list-cell {
+    -fx-background-color: transparent;
+}
+.list-view {
+    -fx-background-color: transparent;
+}
+.track-background {
+    -fx-background-color: transparent;
+}
+.decrement-button {
+    -fx-background-color: transparent;
+}
+.decrement-arrow {
+    -fx-background-color: #0b518f;
+}
+.increment-button {
+    -fx-background-color: transparent;
+}
+.increment-arrow {
+    -fx-background-color: #0b518f;
+}
+.track {
+    -fx-background-color: #0b518f;
+}
+.thumb {
+    -fx-background-color: #00337c;
+}
+.text {
+    -fx-fill: #ffffff;
+    -fx-font-size: 16px;
+}
