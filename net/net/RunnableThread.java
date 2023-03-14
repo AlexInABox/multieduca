@@ -1,4 +1,5 @@
 package net;
+
 import data.Quiz;
 import java.net.*;
 import java.util.HashMap;

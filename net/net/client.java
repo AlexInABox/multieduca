@@ -114,7 +114,7 @@ public class client {
                 // erstellen der SpielerPunkteMap und der bestenliste
                 leseBestenliste();
                 return 3;
-            }  else if (receivedMessage.equals("END GAME")) {
+            } else if (receivedMessage.equals("END GAME")) {
                 leseBestenliste();
                 s.close();
                 return 4;
@@ -149,8 +149,10 @@ public class client {
             // send the answer
             String antwortenString = "";
             for (int i = 0; i < antworten.size(); i++) {
-                if (i < (antworten.size()-1)) antwortenString += antworten.get(i).intValue() + " ";
-                else antwortenString += antworten.get(i).intValue();
+                if (i < (antworten.size() - 1))
+                    antwortenString += antworten.get(i).intValue() + " ";
+                else
+                    antwortenString += antworten.get(i).intValue();
             }
             pr.println(antwortenString);
             pr.println(gebrauchteZeit);
