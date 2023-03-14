@@ -83,11 +83,15 @@ public class MidRanking {
 
     void setzeRueckmeldung(boolean antowrt) {
         if (antowrt) {
+            // Format fuer richtige Antwort, gruen ~basim 14.03.2023 19:39
             ergebnisPane.setStyle(successStyle);
             ergebnisText.setText("korrekt!");
         } else {
+            // Format fuer falsche Antwort, rot und mit einem "X" ~basim 14.03.2023 19:39
             ergebnisPane.setStyle(errorStyle);
             ergebnisText.setText("falsch!");
+            ergebnisC.setVisible(false);
+            ergebnisF.setVisible(true);
         }
     }
 }
