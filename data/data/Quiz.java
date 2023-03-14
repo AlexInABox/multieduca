@@ -130,9 +130,9 @@ public class Quiz {
         
         /* Berechnung der Punktzahl. 
         *
-        * Wenn der Benutzer eine Antwortmoeglichkeit zurecht angeklickt oder zurecht nicht angeklickt hat, bekommt er dafuer Punkte.
-        * Die Punkte entsprechen jeweils maximal 100/nAntwortenstel.
-        * Die Punkte nehemen exponentiell mit der zur Beantwortung der Frage benoetigten Zeit ab. Maximal kann das die Punktzahl halbieren
+        * Wenn der Benutzer eine Antwortmoeglichkeit zurecht angeklickt hat, bekommt er dafuer Punkte.
+        * Die Punkte entsprechen jeweils maximal 100/AnzahDerGegebenenAntworten.
+        * Die Punkte nehmen exponentiell mit der zur Beantwortung der Frage benoetigten Zeit ab. Maximal kann das die Punktzahl halbieren
         */
         double punkteProRichtigeAntwort = (100 - (Math.pow(antwortZeit, 2) / Math.pow(maxZeit, 2) * 50)) / eingaben.length;
         
@@ -161,7 +161,7 @@ public class Quiz {
                 }
             }
             
-            // Wenn die aktuelle Antwortmoeglichkeit richtig ist und ausgewahlt wurde oder nicht richtig ist und nicht ausgewahlt wurde...
+            // Wenn die aktuelle Antwortmoeglichkeit richtig ist und ausgewahlt wurde...
             if ((istRichtig & wurdeAusgewaehlt)) {
                 
                 // ... wird 'output' um den Wert 'punkteProRichtigeAntwort' erhoeht
