@@ -50,16 +50,19 @@ public class SpielStartenHostController {
     // Networking-Variablen
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
 
+    //Diese Methode wird beim Laden des Bilschirms ausgefuehrt und belegt die UI-Elemente mit den richtigen Daten
     @FXML
     protected void initialize() throws IOException {
         hostIPAdresse.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
         quizName.setText(HostscreenController.getName());
         quizFragenAnz.setText("" + HostscreenController.getQuiz().getLength());
+        //hier wird der "Server" gestartet, sodass sich Spieler verbinden koennen
         host.initServer(playerList, HostscreenController.getQuiz());
     }
 
-    // Button-Funktion um zu Fragen-Screen zu wechseln
+    // Button-Funktion um zu das Spiel zu starten
     public void spielStarten(ActionEvent event) throws IOException {
+        //sind keine Spieler vorhanden, wird ein Fehler angezeigt und das Spiel wird nicht gestartet
         if (playerList.getItems().size() == 0) {
             //Draw a popup that informs the user that there are no players connected
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -69,6 +72,7 @@ public class SpielStartenHostController {
             alert.showAndWait();
             return;
         }
+        //ansonsten wird zum naechsten Bildschirm gewechselt
         SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
