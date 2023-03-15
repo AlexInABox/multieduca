@@ -8,6 +8,8 @@
  *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
  *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
+ *      - Der naechsteRundeButton ist nun deaktiviert, solange die Runde noch nicht beendet ist: Alexander Betke -15.03.2023
+ *
  */
 package sample;
 
