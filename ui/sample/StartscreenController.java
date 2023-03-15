@@ -185,7 +185,8 @@ public class StartscreenController {
 	public StartscreenController() throws IOException {
 
 	}
-
+	
+	// Methode um zum Hostfenster zu wechseln
 	public void switchToSpielHost(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -194,6 +195,7 @@ public class StartscreenController {
 		stage.show();
 	}
 
+	// Methode um zum Infofenster zu wechseln
 	public void switchToSpielInfo(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/rsc/info.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
