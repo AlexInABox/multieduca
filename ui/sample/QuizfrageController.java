@@ -11,6 +11,7 @@
  * 04.03: Vorlaeufige Methode fuer timer hinzugefuegt, Basim Bennaji
  * 04.03: Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt, Basim Bennaji
  * 04.03: Antwortbuttons und Frage werden deaktiviert nach Auswahl einer Antwort. Es erscheint eine Bestaetigungsnachricht ueber den Buttons, Basim Bennaji
+ * 11.03: Funktionalitaet der Progress Bar gewaehrleistet, Samuel Hoffleit
  * 11.03: Entfernen von unnoetigen Teilen, Fehlerbehebungen und einfuegen der eigentlichen Logik dieses Screens, Niklas Bamberg
  * 13.03: Anpassungen in warteAufEvent(), Niklas Bamberg
  */

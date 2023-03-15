@@ -7,6 +7,7 @@
  * Change-Log:
  * 04.03: Methode zum Nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden, Basim Bennaji
  * 04.03: Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert, Basim Bennaji
+ * 10.03: Quizname und Fragenanzahl werden angezeigt, Samuel Hoffleit
  * 11.03: Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize, Basim Bennaji
  * 13.03: Anpassung in initialize(), Niklas Bamberg
  */
