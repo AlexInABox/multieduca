@@ -2,7 +2,9 @@
 * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
 * Datum: 2022-02-13
 *
-* Zweck: 
+* Zweck: Diese Klasse regelt die Kommunikation mit den verschiedenen Spielern. Dabei wird natuerlich auf die Klasse
+*        RunnableThread zurueckgegriffen und die verschiedenen RunnableThreads werden in einer Liste gespeichert.
+*        Die hier bereitgestellten Methoden werden, hauptsaechlich von UI-Klassen aus aufgerufen.
 *
 * Change-Log:
 * 12.03: Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg
@@ -77,10 +79,12 @@ public class host {
         }
     }
 
+    //Diese Methode wird zum Beginn jeder Fragerunde aufgerufen und soll:
+    //1. Die Fragen an alle Spieler senden
+    //2. Die Antworten aller Spieler auslesen
+    //3. Die Bestenlise aktualisieren und an alle Spieler senden
     public static void startRound(int index, Button nextRoundButton) {
         roundIndex = index;
-        System.out.println("");
-        System.out.println("Starting round: " + (roundIndex + 1));
         try {
             //senden der Fragen an alle Spieler
             for (RunnableThread thread : threadList) {
@@ -92,16 +96,17 @@ public class host {
                 thread.getAnswer(roundIndex);
                 punkteMap.put(thread.getNick(), thread.getPunkte());
             }
+            //generieren der Bestenliste aus der punkteMap
             bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
             for (RunnableThread thread : threadList) {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
-            //unlock next round button for the host
-            System.out.println("Unlocking next round button");
+            //der Knopf zum starten der naechsten Runde wird wieder aktiviert, da 
+            //die aktuelle Runde beendet ist
             nextRoundButton.setDisable(false);
+            //der Rundenindex wird erhoeht damit die naechste Frage gesendet werden kann
             roundIndex++;
         } catch (Exception e) {
-            System.out.println("Error while starting round");
             nextRoundButton.setDisable(false);
             e.printStackTrace();
         }
