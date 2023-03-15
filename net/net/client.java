@@ -48,6 +48,7 @@ public class client {
     private static String[] playerList;
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
     private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
+    private int roundIndex = 0;
     //END Quiz relevante Variablen
 
     //Konstruktor
@@ -116,6 +117,7 @@ public class client {
             } else if (receivedMessage.equals("START ROUND")) {
                 // receive the question
                 question = new JSONObject(bf.readLine());
+                roundIndex++;
                 return 2;
             } else if (receivedMessage.equals("RESULT")) {
                 // hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
@@ -208,6 +210,7 @@ public class client {
             answeredRight = false;
             spielerPunkteMap.clear();
             bestenliste.clear();
+            roundIndex = 0;
         } catch (Exception e) {
             System.out.println("Variablen konnten nicht zurückgesetzt werden.");
         }
@@ -256,5 +259,9 @@ public class client {
     // Gibt eigenen Nickname zurück
     public String getName() {
         return nick;
+    }
+
+    public int getRoundIndex() {
+        return roundIndex;
     }
 }
