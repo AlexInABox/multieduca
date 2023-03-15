@@ -4,10 +4,10 @@
  * Erstellungsdatum: 09.02.2023
  * Letzte Aenderung: 10.03.2023
  * Change-Log:
- *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
- *      - Hinzufuegen der Variablen der UI-Elemente: Moritz Oehme
- *      - Get-Methoden zum zurueckgeben der Informationen fuer die Quiz-Datei: Moritz Oehme
- *      - Set-Methoden zum Auswaehlen der korrekten Antworten: Moritz Oehme
+ * 14.02: Hinzufuegen der Variablen der UI-Elemente, Moritz Oehme
+ * 28.02: Get-Methoden zum zurueckgeben der Informationen fuer die Quiz-Datei, Moritz Oehme
+ * 28.02: Set-Methoden zum Auswaehlen der korrekten Antworten, Moritz Oehme
+ * 02.03: Arbeiten an Verbindung der Teile, Niklas Bamberg
  */
 package sample;
 
