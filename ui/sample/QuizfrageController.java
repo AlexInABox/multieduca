@@ -97,6 +97,7 @@ public class QuizfrageController {
     @FXML
     void initialize() {
         c = StartscreenController.getClient();
+        progbarFragen.setProgress((double)c.getRoundIndex()/(double)Integer.parseInt(c.getQuizLength())); //Progressbar bekommt Wert.
         warteAufEvent();
     }
 
