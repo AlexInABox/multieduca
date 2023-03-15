@@ -44,12 +44,13 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-
+        //Sobald der Benutzer das Fenster schließt, wird die showExitAlert() Methode aufgerufen. Hier wird der Benutzer gefragt, ob er das Programm wirklich beenden möchte.
         primaryStage.setOnCloseRequest(event -> {
             System.out.println(utilities.showExitAlert());
             if (utilities.showExitAlert()) {
                 Alert alert = createAlertWithOptOut(AlertType.CONFIRMATION, "Programm beenden...",
                         "ACHTUNG!", "Möchten Sie das Programm wirklich beenden?", "Nicht mehr fragen",
+                        //Falls der Nutzer die Checkbox "Nicht mehr fragen" aktiviert, erscheint die Meldung nicht mehr, wenn der Benutzer in Zukunft das Fenster schließt.
                         (optOut) -> {
                             if (optOut) {
                                 utilities.showExitAlert(false);
@@ -79,16 +80,13 @@ public class Main extends Application {
         });
     }
 
+    //Diese Methode erstellt ein Pop-Up-Fenster, mit einer Checkbox. In unserem Kontext erstellt diese Methode ein Pop-Up-Fenster, welches den Benutzer fragt, ob er das Programm wirklich beenden möchte. Plus eine Checkbox, die den Benutzer fragt, ob er diese Meldung in Zukunft nicht mehr sehen möchte.
     public static Alert createAlertWithOptOut(AlertType type, String title, String headerText,
             String message, String optOutMessage, Consumer<Boolean> optOutAction,
             ButtonType... buttonTypes) {
         Alert alert = new Alert(type);
-        // Need to force the alert to layout in order to grab the graphic,
-        // as we are replacing the dialog pane with a custom pane
         alert.getDialogPane().applyCss();
         Node graphic = alert.getDialogPane().getGraphic();
-        // Create a new dialog pane that has a checkbox instead of the hide/show details button
-        // Use the supplied callback for the action of the checkbox
         alert.setDialogPane(new DialogPane() {
             @Override
             protected Node createDetailsButton() {
@@ -100,11 +98,8 @@ public class Main extends Application {
         });
         alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
         alert.getDialogPane().setContentText(message);
-        // Fool the dialog into thinking there is some expandable content
-        // a group won't take up any space if it has no children
         alert.getDialogPane().setExpandableContent(new Group());
         alert.getDialogPane().setExpanded(true);
-        // Reset the dialog graphic using the default style
         alert.getDialogPane().setGraphic(graphic);
         alert.setTitle(title);
         alert.setHeaderText(headerText);

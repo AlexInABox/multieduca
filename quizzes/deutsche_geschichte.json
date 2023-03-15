@@ -1,0 +1,145 @@
+[
+    {
+      "text": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+      "antworten": [
+        "Konrad Adenauer",
+        "Willy Brandt",
+        "Helmut Schmidt",
+        "Gerhard Schröder"
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "Welche Revolution fand 1989 in der DDR statt?",
+      "antworten": [
+        "Novemberrevolution",
+        "Weimarer Revolution",
+        "Märzrevolution",
+        "Friedliche Revolution"
+      ],
+      "loesungen": [
+        3
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "Wann wurde die Berliner Mauer gebaut?",
+      "antworten": [
+        "1949",
+        "1956",
+        "1961",
+        "1972"
+      ],
+      "loesungen": [
+        2
+      ],
+      "zeit": 15
+    },
+    {
+      "text": "Wer war der letzte Kaiser des Deutschen Reiches?",
+      "antworten": [
+        "Wilhelm II.",
+        "Franz Joseph I.",
+        "Nicholas II.",
+        "Edward VII."
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "Wann endete der Dreißigjährige Krieg?",
+      "antworten": [
+        "1618",
+        "1632",
+        "1648",
+        "1713"
+      ],
+      "loesungen": [
+        2
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "Welches Ereignis leitete den Beginn des Ersten Weltkriegs ein?",
+      "antworten": [
+        "Attentat von Sarajevo",
+        "Invasion Polens",
+        "Unterzeichnung des Vertrags von Versailles",
+        "Sturm auf die Bastille"
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "Wann wurde das Grundgesetz der Bundesrepublik Deutschland verabschiedet?",
+      "antworten": [
+        "1945",
+        "1949",
+        "1953",
+        "1961"
+      ],
+      "loesungen": [
+        1
+      ],
+      "zeit": 15
+    },
+    {
+      "text": "Welcher Krieg fand zwischen 1870 und 1871 statt?",
+      "antworten": [
+        "Erster Weltkrieg",
+        "Zweiter Weltkrieg",
+        "Deutsch-Französischer Krieg",
+        "Dreißigjähriger Krieg"
+      ],
+      "loesungen": [
+        2
+      ],
+      "zeit": 20
+    },
+    {
+      "text": "In welchem Jahr wurde Deutschland offiziell wiedervereinigt?",
+      "antworten": [
+        "1990",
+        "1989",
+        "1991",
+        "1992"
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 15
+    },
+    {
+      "text": "Welches Ereignis markierte das Ende des Zweiten Weltkriegs in Europa?",
+      "antworten": [
+        "Die Kapitulation Deutschlands",
+        "Die Landung der Alliierten in der Normandie",
+        "Der Bombenabwurf auf Hiroshima",
+        "Die Konferenz von Jalta"
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 12
+    },
+    {
+      "text": "Wann fiel die Berliner Mauer?",
+      "antworten": [
+        "1989",
+        "1991",
+        "1993",
+        "1987"
+      ],
+      "loesungen": [
+        0
+      ],
+      "zeit": 10
+    }
+  ]
