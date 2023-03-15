@@ -38,7 +38,7 @@ public class SpielLaeuftHostController {
     private Label frageText;
 
     @FXML
-    private Button nextButton;
+    public Button nextButton;
 
     @FXML
     private Label quizName;
@@ -51,16 +51,17 @@ public class SpielLaeuftHostController {
     }
 
     public void startRound(ActionEvent event) {
-        //lock next round button
-        nextButton.setDisable(true);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+
                     if (roundIndex < HostscreenController.getQuiz().getLength()) {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
+                                //lock next round button
+                                nextButton.setDisable(true);
                                 frageText.setText(
                                         "Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
                             }
@@ -104,6 +105,15 @@ public class SpielLaeuftHostController {
         nextButton.setDisable(true);
         quizName.setText("Quiz: " + HostscreenController.getName());
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                host.startGame();
+                host.startRound(0, nextButton);
+            }
+        });
+        thread.start();
     }
 
 }

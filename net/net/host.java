@@ -79,37 +79,7 @@ public class host {
         }
     }
 
-    //Diese Methode wird zum Beginn jeder Fragerunde aufgerufen und soll:
-    //Die Frage an alle Spieler senden
-    //Die Antworten der Spieler auslesen
-    //Die Bestenliste aktualisieren und an alle Spieler senden
-    public static void startRound(int index) {
-        roundIndex = index;
-        try {
-            //senden der Fragen an alle Spieler
-            for (RunnableThread thread : threadList) {
-                thread.sendQuestion(roundIndex);
-            }
-            //auslesen von Antworten und erstellen einer nickname, punkte map
-            punkteMap.clear();
-            for (RunnableThread thread : threadList) {
-                thread.getAnswer(roundIndex);
-                punkteMap.put(thread.getNick(), thread.getPunkte());
-            }
-            //generieren einer Bestenliste aus der punkteMap
-            bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
-            for (RunnableThread thread : threadList) {
-                thread.sendBestenliste(punkteMap, bestenliste);
-            }
-            //der Rundenindex wird erhoeht um bei der naechsten Runde die richtige Frage zu senden
-            roundIndex++;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void startRound(int index, Button nextRoundButton) {
-        nextRoundButton.setDisable(true);
         roundIndex = index;
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
@@ -129,9 +99,12 @@ public class host {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
             //unlock next round button for the host
+            System.out.println("Unlocking next round button");
             nextRoundButton.setDisable(false);
             roundIndex++;
         } catch (Exception e) {
+            System.out.println("Error while starting round");
+            nextRoundButton.setDisable(false);
             e.printStackTrace();
         }
     }
