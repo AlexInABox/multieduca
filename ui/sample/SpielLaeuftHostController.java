@@ -1,3 +1,14 @@
+/*
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Thema: 
+ * Erstellungsdatum: 023-03-09
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      - Arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+ *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
+ *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
+ */
 package sample;
 
 import javafx.application.Platform;
@@ -13,6 +24,7 @@ import javafx.stage.Stage;
 import net.host;
 
 import java.io.IOException;
+<<<<<<< HEAD
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -30,6 +42,9 @@ import java.io.IOException;
  *-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
 
+=======
+ 
+>>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class SpielLaeuftHostController {
 
     private Stage stage;

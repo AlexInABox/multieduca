@@ -1,3 +1,12 @@
+/*
+ * Autor: 
+ * Thema: Ranking zwischen den Fragen
+ * Erstellungsdatum: 
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      -
+ */
 package sample;
 
 import java.io.IOException;

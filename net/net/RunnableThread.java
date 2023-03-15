@@ -8,11 +8,11 @@
 *        aufgerufen.
 * Erstellungsdatum: 16.02.2023
 * Change-Log:
-*   Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
-*   Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
-*   Diverse Fehlerbehebungen, Alexander Betke - 11.03
-*   kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
-*   hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
+*      - Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
+*      - Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
+*      - Diverse Fehlerbehebungen, Alexander Betke - 11.03
+*      - kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
+*      - hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
 */
 package net;
 

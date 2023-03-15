@@ -1,13 +1,3 @@
-package net;
-
-import java.net.*;
-
-import org.json.JSONObject;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /**
  * Autor: Alexander Betke
  * Ueberarbeitet: Niklas Bamberg
@@ -18,7 +8,7 @@ import java.util.HashMap;
  *        einem entsprechenden UI-Bildschirm auf einen Button wie "verbinden" klickt.
  *        Dieses Client-Objekt wird dann von UI-Bildschirmen aus verwendet und stellt zu diesem Zweck diverse Methoden
  *        bereit die Daten an den Spielhost senden und Daten empfangen koennen.
- * 
+ * Change-Log:
  * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
@@ -28,6 +18,16 @@ import java.util.HashMap;
  * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
  * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
  */
+package net;
+
+import java.net.*;
+
+import org.json.JSONObject;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class client {
 
     //Die Kommunikation mit dem Host erfolgt ueber sog. Sockets (hier Socket s).

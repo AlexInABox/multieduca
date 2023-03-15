@@ -5,17 +5,16 @@
  * Letzte Aenderung: 05.03.2023
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * 		Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt ~basim:
- *      Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander. ~basim 23.02.2023
- *      Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt. ~basim 24.02.2023 16:16
- *      Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt. ~basim 25.02.2023
- * 		JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
- * 		Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
- * 		Fehlermeldung bei ungueltigem Usernamen hinzugefuegt. ~Alexander Betke 14.03.2023 17:58
- * 		Versions-Aktualitaet-Ueberpruefung hinzugefuegt (initialize()). ~Alexander Betke 14.03.2023 18:26
- * 		Fehlermeldung aktualsiert sich jetzt bei erneuter Eingabe ~Alexander Betke 14.03.2023 19:42
+ * 		- Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt ~basim:
+ *      - Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander. ~basim 23.02.2023
+ *      - Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt. ~basim 24.02.2023 16:16
+ *      - Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt. ~basim 25.02.2023
+ * 		- JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben. ~alexander 05.03.2023
+ * 		- Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert. ~basim 09.03.2023 20:15
+ * 		- Fehlermeldung bei ungueltigem Usernamen hinzugefuegt. ~Alexander Betke 14.03.2023 17:58
+ * 		- Versions-Aktualitaet-Ueberpruefung hinzugefuegt (initialize()). ~Alexander Betke 14.03.2023 18:26
+ * 		- Fehlermeldung aktualsiert sich jetzt bei erneuter Eingabe ~Alexander Betke 14.03.2023 19:42
  */
-
 package sample;
 
 import javafx.application.Platform;
@@ -34,6 +33,7 @@ import net.client;
 
 import java.io.IOException;
 import data.utilities;
+<<<<<<< HEAD
 
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
@@ -43,6 +43,9 @@ import data.utilities;
  * Zweck: 
  */
 
+=======
+ 
+>>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class StartscreenController {
 
 	private Stage stage;

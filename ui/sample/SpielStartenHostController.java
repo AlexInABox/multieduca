@@ -5,8 +5,12 @@
  * Letzte Aenderung: 04.03.2023 23:51
  * Icons: https://ionic.io/ionicons
  * Change-Log:
+ *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51 ~basim
  *      - Verbund von Netzwerk und UI. 04.03.2023 23:51 ~Alexander Betke
+ *      - Aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
+ *      - Kuerzungen und eine Aenderung in spielStarten(): Niklas Bamberg -13.03.2023
+ *      - Behebung von fehlern, welche ein irresponsives Verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
 package sample;
 
@@ -26,6 +30,7 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 
 import net.*;
+<<<<<<< HEAD
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -41,6 +46,9 @@ import net.*;
  * Zweck: 
  */
 
+=======
+ 
+>>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class SpielStartenHostController {
 
     @FXML
