@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
+
 //Da die Threads die verwendet werden sollen ein sog. Runnable-Referenz-Objekt bekommen muessen, implementiert
 //RunnableThread das Runnable-Interface.
 public class RunnableThread implements Runnable {
@@ -69,9 +70,6 @@ public class RunnableThread implements Runnable {
             //accept mit dem aktuellen Thread verbunden hat. Der neue wartet dann ebenfalls in accept().
             //in host.java mehr zu dieser Logik...
             host.createNewThread(playerList, quiz);
-            //ausserdem werden, ueber die host-Klasse, allen Spielern die neue Spielerliste zugesendet, da es ja
-            //einen neuen Spieler gibt.
-            host.refreshPlayerList(playerList);
 
             //Initialisierung der Netzwerkvariablen
             InputStreamReader in = new InputStreamReader(s.getInputStream());
@@ -83,6 +81,10 @@ public class RunnableThread implements Runnable {
             Platform.runLater(() -> playerList.getItems().add(nick));
 
             sendQuizData();
+
+            //ausserdem werden, ueber die host-Klasse, allen Spielern die neue Spielerliste zugesendet, da es ja
+            //einen neuen Spieler gibt.
+            host.refreshPlayerList(playerList);
         } catch (Exception e) {
             e.printStackTrace();
         }
