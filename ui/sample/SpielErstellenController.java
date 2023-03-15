@@ -6,7 +6,7 @@
  * Change-Log:
  *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - Hinzufuegen der Variablen der UI-Elemente: Moritz Oehme
- *      - Get-Methoden zum zurueckgeben der Informationen für die Quiz-Datei: Moritz Oehme
+ *      - Get-Methoden zum zurueckgeben der Informationen fuer die Quiz-Datei: Moritz Oehme
  *      - Set-Methoden zum Auswaehlen der korrekten Antworten: Moritz Oehme
  */
 package sample;
@@ -36,7 +36,7 @@ public class SpielErstellenController {
     private Scene scene;
     private Quiz quiz = new Quiz();
 
-    //UI Elemente aus FXML-Datei
+    //Variablen fuer UI Elemente aus FXML-Datei
     @FXML
     private ResourceBundle resources;
 
@@ -57,13 +57,13 @@ public class SpielErstellenController {
 
     private List<Integer> richtigeAntworten = new ArrayList<>();
 
-    // Informationen für .json Datei
-    //Gibt die Quizfrage als String zurück
+    // Informationen fuer .json Datei
+    //Gibt die Quizfrage als String zurueck
     public String getFrage() {
         return frage.getText();
     }
 
-    //Gibt die 4 möglichen Antworten in einem Array zurück
+    //Gibt die 4 moeglichen Antworten in einem Array zurueck
     public String[] getAntworten() {
         String[] array = new String[4];
         array[0] = antwortA.getText();
@@ -73,9 +73,9 @@ public class SpielErstellenController {
         return array;
     }
 
-    //Gibt die richtigen Antworten in einem Array zurück
+    //Gibt die richtigen Antworten in einem Array zurueck
     //Antworten sind von 0-3 durchnummeriert
-    //Nummern der richtigen Antworten werden dem Array hinzugefügt
+    //Nummern der richtigen Antworten werden dem Array hinzugefuegt
     public int[] getRichtigeAntworten() {
         int[] array = new int[richtigeAntworten.size()];
         for (int i = 0; i < richtigeAntworten.size(); i++)
@@ -89,9 +89,9 @@ public class SpielErstellenController {
     }
 
     // Button-Funktionen: richtige Antwort setzen
-    // Werden ausgeführt, wenn Checkboxen neben den Antwrten ausgewählt werden
+    // Werden ausgefuehrt, wenn Checkboxen neben den Antwrten ausgewaehlt werden
     public void setA() {
-        //Wenn die Box neben der Antwort A ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
+        //Wenn die Box neben der Antwort A ausgewaehlt ist, wird diese den richtigen Antworten hinzugefuegt
         if (boxA.isSelected())
             richtigeAntworten.add(0);
         else
@@ -99,7 +99,7 @@ public class SpielErstellenController {
     }
 
     public void setB() {
-        //Wenn die Box neben der Antwort B ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
+        //Wenn die Box neben der Antwort B ausgewaehlt ist, wird diese den richtigen Antworten hinzugefuegt
         if (boxB.isSelected())
             richtigeAntworten.add(1);
         else
@@ -107,7 +107,7 @@ public class SpielErstellenController {
     }
 
     public void setC() {
-        //Wenn die Box neben der Antwort C ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
+        //Wenn die Box neben der Antwort C ausgewaehlt ist, wird diese den richtigen Antworten hinzugefuegt
         if (boxC.isSelected())
             richtigeAntworten.add(2);
         else
@@ -115,7 +115,7 @@ public class SpielErstellenController {
     }
 
     public void setD() {
-        //Wenn die Box neben der Antwort D ausgewählt ist, wird diese den richtigen Antworten hinzugefügt
+        //Wenn die Box neben der Antwort D ausgewaehlt ist, wird diese den richtigen Antworten hinzugefuegt
         if (boxD.isSelected())
             richtigeAntworten.add(3);
         else
@@ -139,7 +139,6 @@ public class SpielErstellenController {
         boxD.setSelected(false);
         richtigeAntworten.clear();
 
-        // ~basim 10.03.2023
         msg.setVisible(true);
         new animatefx.animation.FadeIn(msg).play();
         new animatefx.animation.FadeOut(msg).play();
@@ -159,7 +158,7 @@ public class SpielErstellenController {
     }
 
     //UI Wechsel zum vorherigen Screen(Hostscreen)
-    //Wird über den "zurück" Button ausgeführt
+    //Wird ueber den "zurueck" Button ausgefuehrt
     @FXML
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));

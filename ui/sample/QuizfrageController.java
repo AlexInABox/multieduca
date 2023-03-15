@@ -17,28 +17,29 @@
 
  package sample;
 
- import java.io.IOException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
- import java.util.ResourceBundle;
+import java.util.ResourceBundle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
- import javafx.fxml.FXML;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
- import javafx.scene.control.Label;
- import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import net.client;
  
  public class QuizfrageController {
- 
+    
+    //Variablen fuer Elemente aus FXML-Datei
      @FXML
      private ResourceBundle resources;
  
@@ -57,10 +58,10 @@ import net.client;
     private Stage stage;
     private Scene scene;
 
-     private ArrayList<Integer> gegebeneAntworten = new ArrayList<Integer>();
-     private client c;
-     private int gebrauchteZeit;
-     private long rundenStartZeit;
+    private ArrayList<Integer> gegebeneAntworten = new ArrayList<Integer>();
+    private client c;
+    private int gebrauchteZeit;
+    private long rundenStartZeit;
  
      // vorlaeufige Methode fuer den timer.
      public void timer(int sek) {

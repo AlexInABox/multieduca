@@ -5,7 +5,7 @@
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - Arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+ *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
  *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
@@ -31,6 +31,7 @@ public class SpielLaeuftHostController {
     private Scene scene;
     private static int roundIndex = 1;
 
+    //Variablen fuer Elemente aus FXML-Datei
     @FXML
     private Label frageText;
 
@@ -40,13 +41,14 @@ public class SpielLaeuftHostController {
     @FXML
     private Label quizName;
 
+
     public SpielLaeuftHostController() throws IOException {
     }
 
     public static void resetRoundIndex() {
         roundIndex = 1;
     }
-
+    //Methode zum Starten einer Runde
     public void startRound(ActionEvent event) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -84,7 +86,7 @@ public class SpielLaeuftHostController {
         });
         thread.start();
     }
-
+    //Wechselt zum Hostscreen
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

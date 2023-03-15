@@ -31,6 +31,7 @@ public class EndrankingController {
     private Stage stage;
     private Scene scene;
 
+    //UI-Elemente aus FXML-Datei
     @FXML
     private ResourceBundle resources;
 

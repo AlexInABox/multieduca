@@ -1,5 +1,5 @@
 /*
- * Autor: 
+ * Autor: Basim Bennaji
  * Thema: Ranking zwischen den Fragen
  * Erstellungsdatum: 
  * Letzte Aenderung:
@@ -31,7 +31,7 @@ public class MidRanking {
 
     String errorStyle = String.format(
 				"-fx-background-color: #C92403; -fx-background-radius: 20");
-
+    //Variablen fuer Elemente aus FXML-Datei
     @FXML
     private SVGPath ergebnisC, ergebnisF;
 
@@ -41,8 +41,10 @@ public class MidRanking {
     @FXML
     private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position, punkte;
 
+
     private client c;
 
+    
     @FXML
     void initialize() {
         c = StartscreenController.getClient();

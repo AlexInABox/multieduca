@@ -33,6 +33,7 @@ import net.*;
  
 public class SpielStartenHostController {
 
+    //Variablen fuer Elemente aus der FXML-Datei
     @FXML
     private Label hostIPAdresse, quizName, quizFragenAnz;
 
@@ -41,6 +42,7 @@ public class SpielStartenHostController {
 
     @FXML
     private ListView<String> playerList;
+
 
     private Stage stage;
     private Scene scene;
@@ -56,7 +58,7 @@ public class SpielStartenHostController {
         host.initServer(playerList, HostscreenController.getQuiz());
     }
 
-    // Button-FUnktion um zu Fragen-Screen zu wechseln
+    // Button-Funktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
         SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
