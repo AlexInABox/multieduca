@@ -132,9 +132,12 @@ public class StartscreenController {
 		}
 
 		else {
-			// Keine Fehler.
+			// ist die IP-Adresse formal gueltig, wird ein neuer client erstellt
 			client = new client();
+			//es wird versucht sich mit dem angegebenen Host zu verbinden
 			if (client.establishConnection(ipAdress.getText(), userName.getText())) {
+				//liefert die establishConnection-Methode true zurueck, so wurde die Verbindung erfolgreich
+				//hergestellt und es kommt zum Wechsel zum SpielWarten-Fenster.
 				logInfo.setText("Erfolgreich angemeldet!");
 				logInfo.setStyle(sucessMessage);
 				userName.setStyle(sucessStyle);
@@ -146,8 +149,7 @@ public class StartscreenController {
 				stage.setScene(scene);
 				stage.show();
 			} else {
-				// Host konnte nicht gefunden werden.
-				//client = new client(); 
+				//sonst wird mitgeteilt, dass der Host nicht gefunden werden konnte.
 				ipAdress.setStyle(errorStyle);
 				logInfo.setText("Host konnte nicht gefunden werden!");
 				logInfo.setStyle(errorMessage);
