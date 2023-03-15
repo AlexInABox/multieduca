@@ -25,21 +25,6 @@ import net.host;
 
 import java.io.IOException;
 
-//aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
-//kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
-//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
-
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Aenderungen:
- *-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
- *-kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
- *-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
- */
 public class SpielLaeuftHostController {
 
     private Stage stage;
