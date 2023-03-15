@@ -36,21 +36,16 @@ public class SpielLaeuftHostController {
     private Label frageText;
 
     @FXML
-    private static Button nextButton;
+    private Button nextButton;
 
     @FXML
     private Label quizName;
-
 
     public SpielLaeuftHostController() throws IOException {
     }
 
     public static void resetRoundIndex() {
         roundIndex = 1;
-    }
-
-    public static void unlockNextRoundButton() {
-        nextButton.setDisable(false);
     }
 
     public void startRound(ActionEvent event) {
@@ -69,7 +64,7 @@ public class SpielLaeuftHostController {
                             }
                         });
                         host.endZwischenRanking();
-                        host.startRound(roundIndex);
+                        host.startRound(roundIndex, nextButton);
                     } else {
                         host.endGame();
                         Platform.runLater(new Runnable() {
@@ -92,6 +87,7 @@ public class SpielLaeuftHostController {
         });
         thread.start();
     }
+
     //Wechselt zum Hostscreen
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
@@ -103,6 +99,7 @@ public class SpielLaeuftHostController {
 
     @FXML
     void initialize() {
+        nextButton.setDisable(true);
         quizName.setText("Quiz: " + HostscreenController.getName());
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
     }

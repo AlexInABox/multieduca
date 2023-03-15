@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -57,7 +58,6 @@ public class SpielStartenHostController {
     @FXML
     private ListView<String> playerList;
 
-
     private Stage stage;
     private Scene scene;
 
@@ -74,6 +74,15 @@ public class SpielStartenHostController {
 
     // Button-Funktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
+        if (playerList.getItems().size() == 0) {
+            //Draw a popup that informs the user that there are no players connected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fehler");
+            alert.setHeaderText("Keine Spieler verbunden");
+            alert.setContentText("Es sind keine Spieler verbunden. Bitte warten Sie bis sich ein Spieler verbindet.");
+            alert.showAndWait();
+            return;
+        }
         SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
