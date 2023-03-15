@@ -10,6 +10,7 @@ Funktionen
  - Die Anwendung ist einfach zu bedienen und benutzerfreundlich.
 
 Wie man es benutzt
+
 Quiz erstellen
  - Klicken Sie auf die Schaltfläche "Quiz erstellen".
  - Geben Sie für die Frage den Wortlaut und die möglichen Antworten ein.
