@@ -51,7 +51,7 @@ public class SpielLaeuftHostController {
     private Label frageText;
 
     @FXML
-    private Button nextButton;
+    private static Button nextButton;
 
     @FXML
     private Label quizName;
@@ -63,8 +63,14 @@ public class SpielLaeuftHostController {
     public static void resetRoundIndex() {
         roundIndex = 1;
     }
-    //Methode zum Starten einer Runde
+
+    public static void unlockNextRoundButton() {
+        nextButton.setDisable(false);
+    }
+
     public void startRound(ActionEvent event) {
+        //lock next round button
+        nextButton.setDisable(true);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
