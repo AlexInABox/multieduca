@@ -40,7 +40,7 @@ import net.*;
  *
  * Zweck: 
  */
- 
+
 public class SpielStartenHostController {
 
     @FXML
@@ -69,7 +69,7 @@ public class SpielStartenHostController {
     // Button-FUnktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
         SpielLaeuftHostController.resetRoundIndex();
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -86,7 +86,7 @@ public class SpielStartenHostController {
 
     // Methode um zum Hostscreen zurueck zukehren
     public void switchToHost(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -170,7 +170,7 @@ public class SpielErstellenController {
     //Wird über den "zurück" Button ausgeführt
     @FXML
     public void switchToHostscreen(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

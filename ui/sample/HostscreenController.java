@@ -42,11 +42,11 @@ public class HostscreenController {
     }
 
     public void switchToStartpage(ActionEvent event) throws IOException {
-        switchScreen("../rsc/Startscreen.fxml", event);
+        switchScreen("/rsc/Startscreen.fxml", event);
     }
 
     public void switchToSpielErstellen(ActionEvent event) throws IOException {
-        switchScreen("../rsc/SpielErstellen.fxml", event);
+        switchScreen("/rsc/SpielErstellen.fxml", event);
     }
 
     public void openFile(ActionEvent event) throws IOException {
@@ -59,7 +59,7 @@ public class HostscreenController {
         quizName = quizDatei.getName().replaceAll(".json", "");
 
         // umschalten auf Beitritts-screen
-        switchScreen("../rsc/SpielStartenHost.fxml", event);
+        switchScreen("/rsc/SpielStartenHost.fxml", event);
     }
 
     public static Quiz getQuiz() {

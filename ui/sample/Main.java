@@ -30,7 +30,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         primaryStage.setTitle("Multieduca");
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
