@@ -138,8 +138,11 @@ public class client {
 
     // Liest die empfangenen Bestenlisten fügt sie im Spieler-Punkte Format in die jeweiligen Hashmaps ein
     public void leseBestenliste() throws IOException {
+        //Da die beiden Maps vor dem Versenden durch den Host in Stringform dargestellt werden mussten,
+        //muessen sie hier wieder zu den eigentliche Hashmaps konvertiert werden.
         String[] spielerPunkteArray = bf.readLine().split(" ");
         String[] bestenListenArray = bf.readLine().split(" ");
+        //Die Maps werden geleert und mit den neuen Werten befuellt.
         spielerPunkteMap.clear();
         bestenliste.clear();
         for (String spielerPunkteEintrag : spielerPunkteArray) {
