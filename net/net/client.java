@@ -8,6 +8,7 @@
  *        einem entsprechenden UI-Bildschirm auf einen Button wie "verbinden" klickt.
  *        Dieses Client-Objekt wird dann von UI-Bildschirmen aus verwendet und stellt zu diesem Zweck diverse Methoden
  *        bereit die Daten an den Spielhost senden und Daten empfangen koennen.
+ * 
  * Change-Log:
  * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
@@ -16,7 +17,8 @@
  * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
  * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
  * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
- * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
+ * 14.03: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
+ * 15.03: Finale auskommentierung, Alexander Betke
  */
 package net;
 
