@@ -32,21 +32,6 @@ import java.util.ArrayList;
 
 import net.*;
 
-//aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
-//-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
-//-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
-//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
-//-die runde wird nun nicht mehr gestartet solange die SpielerListe leer ist: Alexander Betke -15.03.2023
-
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
-
 public class SpielStartenHostController {
 
     //Variablen fuer Elemente aus der FXML-Datei
