@@ -34,11 +34,11 @@ public class HostscreenController {
     }
     //Wechselt zurueck zum Screen der Startseite
     public void switchToStartpage(ActionEvent event) throws IOException {
-        switchScreen("../rsc/Startscreen.fxml", event);
+        switchScreen("/rsc/Startscreen.fxml", event);
     }
     //Wechselt zum Screen zum Spiel-Erstellen
     public void switchToSpielErstellen(ActionEvent event) throws IOException {
-        switchScreen("../rsc/SpielErstellen.fxml", event);
+        switchScreen("/rsc/SpielErstellen.fxml", event);
     }
     //Oeffnet ein Fenster, mit welchem eine Quiz-Datei aus dem Dateien-Manager ins Spiel geladen werden kann
     public void openFile(ActionEvent event) throws IOException {
@@ -50,8 +50,8 @@ public class HostscreenController {
         quiz = new Quiz(quizDatei);
         quizName = quizDatei.getName().replaceAll(".json", ""); //Sorgt dafuer, dass die Datei-Endung .son nicht als Quizname im Spiel angezeigt wird
 
-        // Umschalten auf Beitritts-Screen
-        switchScreen("../rsc/SpielStartenHost.fxml", event);
+        // umschalten auf Beitritts-screen
+        switchScreen("/rsc/SpielStartenHost.fxml", event);
     }
     //Liefert das Quizobjekt
     public static Quiz getQuiz() {

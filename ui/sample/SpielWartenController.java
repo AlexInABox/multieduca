@@ -27,6 +27,13 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import net.client;
 
+/**
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Ueberarbeitet:
+ * Datum: 2023-03-09
+ *
+ * Zweck: 
+ */
 public class SpielWartenController {
 
     private Stage stage;
@@ -44,15 +51,15 @@ public class SpielWartenController {
     private client client;
 
     public void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    
+
     private void switchToStart() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -60,7 +67,7 @@ public class SpielWartenController {
     }
 
     private void switchToGame() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Quizfrage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Quizfrage.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
