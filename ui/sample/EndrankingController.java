@@ -5,8 +5,8 @@
  * Letzte Aenderung: 05.03.2023 13:41
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - Methode zum Wechsel zum Startscreens hinzugefuegt. 05.03.2023 ~basim
- *      - Methoden zum befuellen der Liste hinzugefuegt. 12.03.2023 ~niklas
+ * 05.03: Methode zum Wechsel zum Startscreens hinzugefuegt, Basim Bennaji
+ * 12.03: Methoden zum befuellen der Liste hinzugefuegt, Niklas Bamberg
  */
 package sample;
 

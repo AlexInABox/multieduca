@@ -4,8 +4,8 @@
  * Erstellungsdatum: 05.03.2023
  * Letzte Aenderung: 05.03.2023 14:02
  * Change-Log:
- *      - Attribute hinzugefuegt. 05.03.2023 14:00
- *      - Get'er und Set'er generiert.  05.03.2023 14:02
+ * 05.03: Attribute hinzugefuegt, Basim Bennaji
+ * 05.03: Get'er und Set'er generiert, Basim Bennaji
  */
 
 package sample;

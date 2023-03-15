@@ -6,13 +6,13 @@
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  *      - TODO: Fortschrittbar zeigt den Fortschritt im Quiz grafisch dar
- *      - Timer fuer verbleibende Zeit
- *      - Beim Auswaehlen einer Antwort werden die Antwortbuttons deaktiviert und es wird auf die weiteren Spieler/Host gewartet. 04.03.2023 20:23 ~basim
- *      - Vorlaeufige Methode fuer timer hinzugefuegt. 04.03.2023 20:45 ~basim
- *      - Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt. 04.03.2023 20:51 ~basim
- *      - Antwortbuttons und Frage werden deaktiviert nach Auswahl einer Antwort. Es erscheint eine Bestaetigungsnachricht ueber den Buttons. 04.03.2023 21:20 ~basim
- *      - Entfernen von unnoetigen Teilen, Fehlerbehebungen und einfuegen der eigentlichen Logik dieses Screens, Niklas Bamberg 11.03.2023 
- *      - Anpassungen in warteAufEvent() 13.03.2023 ~Niklas Bamberg
+ * Timer fuer verbleibende Zeit
+ * 04.03: Beim Auswaehlen einer Antwort werden die Antwortbuttons deaktiviert und es wird auf die weiteren Spieler/Host gewartet, Basim Bennaji
+ * 04.03: Vorlaeufige Methode fuer timer hinzugefuegt, Basim Bennaji
+ * 04.03: Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt, Basim Bennaji
+ * 04.03: Antwortbuttons und Frage werden deaktiviert nach Auswahl einer Antwort. Es erscheint eine Bestaetigungsnachricht ueber den Buttons, Basim Bennaji
+ * 11.03: Entfernen von unnoetigen Teilen, Fehlerbehebungen und einfuegen der eigentlichen Logik dieses Screens, Niklas Bamberg
+ * 13.03: Anpassungen in warteAufEvent(), Niklas Bamberg
  */
 
 package sample;
