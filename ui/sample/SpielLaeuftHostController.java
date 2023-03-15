@@ -105,6 +105,8 @@ public class SpielLaeuftHostController {
         stage.show();
     }
 
+    //diese Methode wird beim Laden des Bildschirms ausgefuehrt und soll die UI initialisieren
+    //und die erste Runde starten
     @FXML
     void initialize() {
         //Der nextButton ist zu Beginn deaktiviert, da die Runde direkt gestartet wird
@@ -113,6 +115,9 @@ public class SpielLaeuftHostController {
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
 
         //Hier wird die erste Runde gestartet
+        //Hier wird ein Thread erstellt der die Runde starten soll und parallel zum JavaFX-Thread
+        //welcher fuer die UI zustaendig ist laufen soll, um ein einfrieren des Programms zu verhindern.
+        //Denn ist der JavaFX Thread blockiert (durch Warten oder aehnliches), reagiert die UI nicht mehr
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
