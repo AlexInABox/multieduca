@@ -102,9 +102,18 @@ public class SpielLaeuftHostController {
 
     @FXML
     void initialize() {
-        nextButton.setDisable(false);
+        nextButton.setDisable(true);
         quizName.setText("Quiz: " + HostscreenController.getName());
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                host.startGame();
+                host.startRound(0, nextButton);
+            }
+        });
+        thread.start();
     }
 
 }

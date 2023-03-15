@@ -75,14 +75,6 @@ public class SpielStartenHostController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                host.startGame();
-                host.startRound(0);
-            }
-        });
-        thread.start();
     }
 
     // Methode um zum Hostscreen zurueck zukehren

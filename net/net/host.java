@@ -63,31 +63,6 @@ public class host {
         }
     }
 
-    public static void startRound(int index) {
-        roundIndex = index;
-        System.out.println("");
-        System.out.println("Starting round: " + (roundIndex + 1));
-        try {
-            //senden der Fragen an alle Spieler
-            for (RunnableThread thread : threadList) {
-                thread.sendQuestion(roundIndex);
-            }
-            //auslesen von Antworten und erstellen einer nickname, punkte map
-            punkteMap.clear();
-            for (RunnableThread thread : threadList) {
-                thread.getAnswer(roundIndex);
-                punkteMap.put(thread.getNick(), thread.getPunkte());
-            }
-            bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
-            for (RunnableThread thread : threadList) {
-                thread.sendBestenliste(punkteMap, bestenliste);
-            }
-            roundIndex++;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void startRound(int index, Button nextRoundButton) {
         roundIndex = index;
         System.out.println("");
