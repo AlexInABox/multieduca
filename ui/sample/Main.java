@@ -1,3 +1,12 @@
+/*
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Thema: 
+ * Erstellungsdatum: 2023-03-09
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      -
+ */
 package sample;
 
 import java.io.FileReader;
@@ -17,14 +26,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import net.host;
-
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
 
 public class Main extends Application {
 

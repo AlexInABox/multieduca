@@ -1,3 +1,14 @@
+/*
+ * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+ * Thema: 
+ * Erstellungsdatum: 2022-02-13
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      - Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
+ *      - kleinere Kuerzungen, Niklas Bamberg - 13.03
+ */
+
 package net;
 
 import java.net.*;
@@ -9,14 +20,6 @@ import data.Quiz;
 import javafx.scene.control.ListView;
 
 import java.io.*;
-
-/*
- * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
- * Datum: 2022-02-13
- * 
- * hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
- * kleinere Kuerzungen, Niklas Bamberg - 13.03
- */
 
 public class host {
 

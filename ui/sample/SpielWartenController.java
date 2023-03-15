@@ -5,14 +5,11 @@
  * Letzte Aenderung: 04.03.2023 19:13
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      Methode zum nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden. 04.03.2023 ~basim
- * 
- *      Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
- * 
- *      Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize. 11.03.2023 ~Alexander Betke
- *      Anpassung in initialize(). 13.03.2023 ~Niklas Bamberg
+ *      - Methode zum Nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden. 04.03.2023 ~basim
+ *      - Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
+ *      - Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize. 11.03.2023 ~Alexander Betke
+ *      - Anpassung in initialize(). 13.03.2023 ~Niklas Bamberg
  */
-
 package sample;
 
 import java.io.IOException;
@@ -30,14 +27,6 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import net.client;
 
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
- 
 public class SpielWartenController {
 
     private Stage stage;

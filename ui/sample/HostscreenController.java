@@ -1,13 +1,12 @@
 /*
- * Autor: Niklas Bamberg
+ * Autor: Niklas Bamberg, Samuel Hoffleit, Basim Bennaji, Moritz Oehme
  * Thema: Methoden des Hostscreens.
  * Erstellungsdatum: 27.02.2023
  * Letzte Aenderung: 12.03.2023 13:41
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * 
+ *      - 
  */
-
 package sample;
 
 import javafx.event.ActionEvent;
@@ -23,13 +22,6 @@ import java.io.IOException;
 
 import data.Quiz;
 
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
 public class HostscreenController {
 
     private Stage stage;

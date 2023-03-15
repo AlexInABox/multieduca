@@ -5,8 +5,8 @@
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *  -Funktion switchToHome hinzugefuegt. 04.03.2023 ~basim
- *  -Labels werden mit den Namen der Autoren initializiert. 04.03.2023 ~basim
+ *      -Funktion switchToHome hinzugefuegt. 04.03.2023 ~Basim Bennaji
+ *      -Labels werden mit den Namen der Autoren initializiert. 04.03.2023 ~Basim Bennaji
  */
 package sample;
 
