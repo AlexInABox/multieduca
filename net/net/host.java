@@ -22,7 +22,6 @@ import java.util.Map;
 import data.Quiz;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import sample.SpielLaeuftHostController;
 
 import java.io.*;
 
