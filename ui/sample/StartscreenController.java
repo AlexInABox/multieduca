@@ -46,7 +46,7 @@ public class StartscreenController {
 
 	private Stage stage;
 	private Scene scene;
-
+	//Variablen fuer Elemente aus FXML-Datei
 	@FXML
 	private TextField ipAdress;
 

@@ -5,9 +5,11 @@
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - Arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+ *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
  *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
+ *      - Der naechsteRundeButton ist nun deaktiviert, solange die Runde noch nicht beendet ist: Alexander Betke -15.03.2023
+ *
  */
 package sample;
 
@@ -25,27 +27,13 @@ import net.host;
 
 import java.io.IOException;
 
-//aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
-//kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
-//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
-
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Aenderungen:
- *-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
- *-kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
- *-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
- */
 public class SpielLaeuftHostController {
 
     private Stage stage;
     private Scene scene;
     private static int roundIndex = 1;
 
+    //Variablen fuer Elemente aus FXML-Datei
     @FXML
     private Label frageText;
 
@@ -63,6 +51,8 @@ public class SpielLaeuftHostController {
     }
 
     public void startRound(ActionEvent event) {
+        //lock next round button
+        nextButton.setDisable(true);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -76,7 +66,7 @@ public class SpielLaeuftHostController {
                             }
                         });
                         host.endZwischenRanking();
-                        host.startRound(roundIndex);
+                        host.startRound(roundIndex, nextButton);
                     } else {
                         host.endGame();
                         Platform.runLater(new Runnable() {
@@ -100,6 +90,7 @@ public class SpielLaeuftHostController {
         thread.start();
     }
 
+    //Wechselt zum Hostscreen
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -110,6 +101,7 @@ public class SpielLaeuftHostController {
 
     @FXML
     void initialize() {
+        nextButton.setDisable(true);
         quizName.setText("Quiz: " + HostscreenController.getName());
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
     }

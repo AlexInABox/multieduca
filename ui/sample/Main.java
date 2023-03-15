@@ -1,6 +1,6 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: 
+ * Thema: Main Klasse
  * Erstellungsdatum: 2023-03-09
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
@@ -109,7 +109,7 @@ public class Main extends Application {
         alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
         alert.getDialogPane().setContentText(message);
         // Fool the dialog into thinking there is some expandable content
-        // a Group won't take up any space if it has no children
+        // a group won't take up any space if it has no children
         alert.getDialogPane().setExpandableContent(new Group());
         alert.getDialogPane().setExpanded(true);
         // Reset the dialog graphic using the default style

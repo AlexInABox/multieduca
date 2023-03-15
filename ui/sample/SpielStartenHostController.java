@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -36,6 +37,7 @@ import net.*;
 //-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
 //-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
 //-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
+//-die runde wird nun nicht mehr gestartet solange die SpielerListe leer ist: Alexander Betke -15.03.2023
 
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
@@ -47,6 +49,7 @@ import net.*;
 
 public class SpielStartenHostController {
 
+    //Variablen fuer Elemente aus der FXML-Datei
     @FXML
     private Label hostIPAdresse, quizName, quizFragenAnz;
 
@@ -70,8 +73,17 @@ public class SpielStartenHostController {
         host.initServer(playerList, HostscreenController.getQuiz());
     }
 
-    // Button-FUnktion um zu Fragen-Screen zu wechseln
+    // Button-Funktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
+        if (playerList.getItems().size() == 0) {
+            //Draw a popup that informs the user that there are no players connected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fehler");
+            alert.setHeaderText("Keine Spieler verbunden");
+            alert.setContentText("Es sind keine Spieler verbunden. Bitte warten Sie bis sich ein Spieler verbindet.");
+            alert.showAndWait();
+            return;
+        }
         SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

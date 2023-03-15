@@ -38,7 +38,7 @@ public class SpielWartenController {
 
     private Stage stage;
     private Scene scene;
-
+    //Variablen fuer Elemente aus FXML-Datei
     @FXML
     private Button backButton;
 

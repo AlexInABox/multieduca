@@ -7,6 +7,7 @@
  * Change-Log:
  *      - Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
  *      - kleinere Kuerzungen, Niklas Bamberg - 13.03
+ *      - anpassen der Parameterliste fuer die Funktion startRound, um den naechstenRundeButton zu deaktivieren, Alexander Betke - 15.03
  */
 
 package net;
@@ -17,7 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import data.Quiz;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import sample.SpielLaeuftHostController;
 
 import java.io.*;
 
@@ -79,6 +82,34 @@ public class host {
             for (RunnableThread thread : threadList) {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
+            roundIndex++;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void startRound(int index, Button nextRoundButton) {
+        nextRoundButton.setDisable(true);
+        roundIndex = index;
+        System.out.println("");
+        System.out.println("Starting round: " + (roundIndex + 1));
+        try {
+            //senden der Fragen an alle Spieler
+            for (RunnableThread thread : threadList) {
+                thread.sendQuestion(roundIndex);
+            }
+            //auslesen von Antworten und erstellen einer nickname, punkte map
+            punkteMap.clear();
+            for (RunnableThread thread : threadList) {
+                thread.getAnswer(roundIndex);
+                punkteMap.put(thread.getNick(), thread.getPunkte());
+            }
+            bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
+            for (RunnableThread thread : threadList) {
+                thread.sendBestenliste(punkteMap, bestenliste);
+            }
+            //unlock next round button for the host
+            nextRoundButton.setDisable(false);
             roundIndex++;
         } catch (Exception e) {
             e.printStackTrace();
