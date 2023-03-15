@@ -13,27 +13,26 @@ Wie man es benutzt
 Quiz erstellen
  - Klicken Sie auf die Schaltfläche "Quiz erstellen".
  - Geben Sie für die Frage den Wortlaut und die möglichen Antworten ein.
- - Wählen Sie die richtige Antwort aus.
- - Klicken Sie auf den Pfeil unten rechts um eine neue Frage hinzuzufügen.
- - Klicken Sie auf "Quiz erstellen".
+ - Wählen Sie die richtigen Antworten aus.
+ - Klicken Sie auf "Hinzufügen" um die neue Frage hinzuzufügen.
+ - Klicken Sie auf "Speichern".
  - Wählen sie einen Speicherort und einen passenden Namen für ihre Quizdatei aus.
 
 Quiz hosten:
  - Klicken Sie auf die Schaltfläche "Quiz hosten".
- - Wählen Sie die Datei mit ihrem entsprechenden Quiz aus dem Verzeichniss.
- - Ihre IP-Adresse wird ihnen nun angezeigt. Leiten Sie diese an alle Teilnehmer weiter
+ - Laden Sie die gewuenschte Quiz-Datei aus ihrem Dateisystem.
+ - Ihre IP-Adresse wird ihnen nun angezeigt. Leiten Sie diese an alle Teilnehmer weiter.
 
 Quiz teilnehmen
- - Klicken Sie auf die Schaltfläche "Quiz beitreten".
+ - Wenn Sie das Programm starten sehen SIe 2 Eingabefelder
  - Geben Sie die IP-Adresse des Hosts ein.
- - Geben Sie Ihren Namen ein.
+ - Geben Sie einen gewuenschten Namen ein.
  - Klicken Sie auf "Quiz beitreten".
  - Warten Sie, bis der Host das Quiz startet.
  - Beantworten Sie die Fragen so schnell wie möglich, um Punkte zu sammeln.
 
 Systemanforderungen
  - Internetverbindung
- - Windows
  - Farbmonitor
- - Erweiterte deutsche Tastatur
- - Maus, graphische Benutzungsoberfläche (GUI)
+ - Tastatur
+ - Maus
