@@ -5,7 +5,7 @@
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -
+ *      - logik beim schließen des Programms hinzugefügt: ALexander Betke - 15.03.2023
  */
 package sample;
 
