@@ -27,7 +27,6 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import net.client;
 
-<<<<<<< HEAD
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
  * Ueberarbeitet:
@@ -35,9 +34,6 @@ import net.client;
  *
  * Zweck: 
  */
-
-=======
->>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class SpielWartenController {
 
     private Stage stage;

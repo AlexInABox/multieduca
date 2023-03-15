@@ -33,7 +33,6 @@ import net.client;
 
 import java.io.IOException;
 import data.utilities;
-<<<<<<< HEAD
 
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
@@ -43,9 +42,6 @@ import data.utilities;
  * Zweck: 
  */
 
-=======
- 
->>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class StartscreenController {
 
 	private Stage stage;

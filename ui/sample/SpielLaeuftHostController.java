@@ -24,7 +24,6 @@ import javafx.stage.Stage;
 import net.host;
 
 import java.io.IOException;
-<<<<<<< HEAD
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -41,10 +40,6 @@ import java.io.IOException;
  *-kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
  *-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
-
-=======
- 
->>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class SpielLaeuftHostController {
 
     private Stage stage;

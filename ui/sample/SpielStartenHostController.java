@@ -30,7 +30,6 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 
 import net.*;
-<<<<<<< HEAD
 
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
@@ -46,9 +45,6 @@ import net.*;
  * Zweck: 
  */
 
-=======
- 
->>>>>>> b8f1d104fd924443363c879619a84d6c22c1f29c
 public class SpielStartenHostController {
 
     @FXML
