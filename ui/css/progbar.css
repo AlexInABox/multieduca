@@ -1,10 +1,10 @@
 /*
- * Autoren: 
+ * Autor: Basim Bennaji
  * Thema: Design für Leiste, die den Fortschritt anzeigt
- * Erstellungsdatum: 13.02.2023
- * Letzte Aenderung: 13.02.2023 12:25
+ * Erstellungsdatum: 13.03.2023
+ * Letzte Aenderung: 13.03.2023 12:25
  * Change-Log:
- * 13.02: Design fuer Progressbar
+ *  -Design fuer Progressbar. ~basim 07.03.2023
  */
 .bar {
     -fx-background-color: #1c82ad;
