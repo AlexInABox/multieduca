@@ -89,7 +89,6 @@ public class host {
     }
 
     public static void startRound(int index, Button nextRoundButton) {
-        nextRoundButton.setDisable(true);
         roundIndex = index;
         System.out.println("");
         System.out.println("Starting round: " + (roundIndex + 1));
@@ -109,9 +108,12 @@ public class host {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
             //unlock next round button for the host
+            System.out.println("Unlocking next round button");
             nextRoundButton.setDisable(false);
             roundIndex++;
         } catch (Exception e) {
+            System.out.println("Error while starting round");
+            nextRoundButton.setDisable(false);
             e.printStackTrace();
         }
     }
