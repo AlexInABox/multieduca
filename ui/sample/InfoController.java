@@ -1,6 +1,6 @@
 /*
  * Autor: Basim Bennaji
- * Thema: Autoren des Programms (Credits).
+ * Thema: Es werden alle Mitarbeiter an dem Projekt aufgelistet.
  * Erstellungsdatum: 03.03.2023
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
@@ -11,19 +11,13 @@
 package sample;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-
-import javax.swing.Action;
-
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -46,6 +40,8 @@ public class InfoController {
     @FXML
     private Label version;
 
+    //Methode zur Rueckkehr zum Startscreen
+    //wird nach einem entsprechenden Button-Click ausgefuehrt
     public void switchToHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

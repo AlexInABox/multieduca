@@ -1,6 +1,6 @@
 /*
- * Autor: Basim Bennaji
- * Thema: Screen der Frage
+ * Autor: Niklas Bamberg, Basim Bennaji
+ * Thema: Logik zum beantworten einer Frage
  * Erstellungsdatum: 04.03.2023
  * Letzte Aenderung: 04.03.2023 21:20
  * Icons: https://ionic.io/ionicons
@@ -39,6 +39,7 @@ import net.client;
 
 public class QuizfrageController {
 
+    //UI-Elemente werden aus FXML-Datei ausgelesen
     @FXML
     private ResourceBundle resources;
 
@@ -57,14 +58,20 @@ public class QuizfrageController {
     private Stage stage;
     private Scene scene;
 
+    //in dieser Antworten Liste werden die Antworten gespeichert, die der Spieler ausgewaehlt hat
     private ArrayList<Integer> gegebeneAntworten = new ArrayList<Integer>();
     private client c;
+
+    //Variablen die zur Ermittlung der Antwortzeit dienen
     private int gebrauchteZeit;
     private long rundenStartZeit;
 
-    // vorlaeufige Methode fuer den timer.
+    //Die Methode Timer wird aufgerufen, sobald die Frage angezeigt wird
+    //sie hat den zweck einerseits die verbleibende Zeit anzuzeigen und andererseits
+    //die Antworten des Spielers zu senden, sobald die Zeit abgelaufen ist.
     public void timer(int sek) {
         int restSek = sek;
+        //hier wird der uebergebenen Sekundenzahl entsprechendend lange gewartet
         while (restSek > 0) {
             int min = restSek / 60;
             int sekuebrig = restSek % 60;
@@ -85,16 +92,25 @@ public class QuizfrageController {
         warteAufEvent();
     }
 
+    //Methode die bei Wechsel auf diesen Bildschirm aufgerufen wird
+    //sie initialisiert das benoetigte client Objekt und wechselt in die folgende Methode
     @FXML
     void initialize() {
         c = StartscreenController.getClient();
         warteAufEvent();
     }
 
+    //Diese Methode baut auf der listenForEvent() Methode des clients auf.
+    //Sie soll auf die moeglichen Ereignisse angemessen reagieren.
     public void warteAufEvent() {
+        //in listenForEvent() wird auf Signal des Hosts gewartet und das entsprechende Event
+        //wird als int zurueckgegeben
         int event = c.listenForEvent();
+        //fuer verschiedene Events wird unterschiedlich reagiert:
         switch (event) {
             case 2:
+                //2 bedeutet einen Rundenstart
+                //es werden Fragen und Antworten angezeigt und der Timer gestartet
                 rundenStartZeit = System.currentTimeMillis();
                 Thread zeitThread = new Thread(new Runnable() {
                     public void run() {
@@ -111,13 +127,18 @@ public class QuizfrageController {
                 antD.setText(antworten.getString(3));
                 break;
             case 3:
+                //3 bedeutet das Anzeigen des Zwischenrankings
+                //das Platform.runLater() ist notwendig, da man sonst keine Aenderungen an UI-Elementen
+                //vornehmen kann
                 Platform.runLater(new Runnable() {
                     public void run() {
-                        switchScreen("/rsc/MidRanking.fxml"); //hier muss statt zum Startscreen zum zwischenrankingscreen gewechselt werden
+                        //es wird auf den entsprechenden Bildschirm gewechselt
+                        switchScreen("/rsc/MidRanking.fxml");
                     }
                 });
                 break;
             case 4:
+                //4 bedeutet das Anzeigen des Endrankings
                 Platform.runLater(new Runnable() {
                     public void run() {
                         switchScreen("/rsc/Endranking.fxml");
@@ -127,6 +148,9 @@ public class QuizfrageController {
         }
     }
 
+    //die folgenden 4 Methoden werden aufgerufen, sobald ein Spieler eine Antwort auswaehlt
+    //dabei wird die entsprechende Antwort in die gegebeneAntworten Liste geschrieben
+    //und die Antwortzeit wird gesetzt bzw falls bereits vorhanden ueberschrieben
     public void chooseA(ActionEvent e) {
         gebrauchteZeit = (int) (System.currentTimeMillis() - rundenStartZeit) / 1000;
         gegebeneAntworten.add(0);
@@ -151,6 +175,8 @@ public class QuizfrageController {
         antD.setDisable(true);
     }
 
+    //diese Methode realisiert den Wechsel auf einen anderen Bildschirm unter Angabe
+    //der entsprechenden FXML-Datei
     private void switchScreen(String fxml) {
         Parent root;
         try {
