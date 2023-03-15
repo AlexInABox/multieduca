@@ -1,3 +1,14 @@
+/*
+ * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+ * Thema: 
+ * Erstellungsdatum: 2022-02-13
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      - Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
+ *      - kleinere Kuerzungen, Niklas Bamberg - 13.03
+ */
+
 package net;
 
 import java.net.*;
@@ -10,19 +21,10 @@ import javafx.scene.control.ListView;
 
 import java.io.*;
 
-/*
- * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
- * Datum: 2022-02-13
- * 
- * hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
- * kleinere Kuerzungen, Niklas Bamberg - 13.03
- */
-
 public class host {
 
     private static ServerSocket ss;
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
-    private static Quiz quiz;
     private static HashMap<String, Integer> punkteMap = new HashMap<String, Integer>();
     private static HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
 
@@ -30,14 +32,12 @@ public class host {
 
     public static void initServer(ListView<String> playerList, Quiz quizArg) throws IOException {
         //dem RunnableThread wird die Playerliste uebergeben, damit er den Playernamen dort hinzufuegen kann
-        quiz = quizArg;
+        Quiz quiz = quizArg;
         ss = new ServerSocket(2594);
-        RunnableThread t = new RunnableThread(ss, quiz, playerList);
-        threadList.add(t);
-        t.start();
+        createNewThread(playerList, quiz);
     }
 
-    public static void createNewThread(ListView<String> playerList) {
+    public static void createNewThread(ListView<String> playerList, Quiz quiz) {
         RunnableThread t = new RunnableThread(ss, quiz, playerList);
         threadList.add(t);
         t.start();

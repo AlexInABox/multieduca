@@ -1,3 +1,19 @@
+
+/*
+* Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+* Zweck: Ein RunnableThread soll sich mit einem Spieler (genauer: mit einem client) verbinden und mit ihm kommunizieren.
+*        Da sich mit dem Spielhost aber mehr als nur ein Spieler verbinden koennen soll und parallel mit allen Spielern
+*        kommuniziert werden muss, wird hier auf sog. Threads zurueckgegriffen. Diese Threads werden in der Klasse host
+*        erstellt und von dort aus werden auch die verschiedenen Methoden zur Kommunikation, die diese Klasse bereitstellt,
+*        aufgerufen.
+* Erstellungsdatum: 16.02.2023
+* Change-Log:
+*      - Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
+*      - Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
+*      - Diverse Fehlerbehebungen, Alexander Betke - 11.03
+*      - kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
+*      - hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
+*/
 package net;
 
 import data.Quiz;
@@ -11,70 +27,71 @@ import org.json.JSONObject;
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
 
-/*
-* Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
-* Datum: 2022-02-16
-* 
-* ...
-*Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
-*Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
-*Diverse Fehlerbehebungen, Alexander Betke - 11.03
-*kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
-*hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
-*/
-
+//Da die Threads die verwendet werden sollen ein sog. Runnable-Referenz-Objekt bekommen muessen, implementiert
+//RunnableThread das Runnable-Interface.
 public class RunnableThread implements Runnable {
 
+    //Wie in client.java beschrieben, wird die Kommunikation ueber Sockets realisiert. Hier wird außerdem ein ServerSocket
+    //verwendet
     private static ServerSocket ss;
     private static Socket s;
-
-    private String nick;
-    //UI-Element
-    private ListView<String> playerList;
-
-    public int punkte;
-
-    private Quiz quiz;
-
+    //auch hier dienen BufferedReader und PrintWriter zum lesen bzw schreiben von Daten
     private BufferedReader bf;
     private PrintWriter pr;
 
+    //Diese Variablen speichern die Daten vom verbundenen Spieler
+    private String nick;
+    public int punkte;
+
+    //Das Quiz mit all seinen Fragen wird gespeichert, um entsprechende Fragen zu versenden und die Antworten zu verarbeiten
+    private Quiz quiz;
+
+    //UI-Element zur Anzeige der Spieler im Wartebilschirm
+    private ListView<String> playerList;
+
+    //Konstruktor zur Erstellung eines neuen RunnableThreads, dabei muessen ein ServerSocket Objekt, logischerweise
+    //das Quiz und das gerade beschriebene UI-Element uebergeben werden
     RunnableThread(ServerSocket server, Quiz quiz, ListView<String> playerList) {
         ss = server;
         this.quiz = quiz;
         this.playerList = playerList;
     }
 
+    //Die Methode run() muss hier, wegen des Runnable-Interfaces, implementiert werden. Sie wird, aehnlich wie eine
+    //main-Methode, beim Start eines Threads ausgefuehrt.
+    //hier werden oben deklarierten Variablen zur Netzwerk-Kommunikation initialisiert und es findet eine erste
+    //Kommunikation mit dem Spieler statt.
     public void run() {
         try {
+            //Die Methode accept() wartet, bis sich ein Spieler mit dem Server verbindet. Dann wird der Socket s initialisiert
             s = ss.accept();
-            host.createNewThread(playerList);
 
+            //Dieser Methodenaufruf sorgt dafuer, dass ein neuer RunnableThread erstellt wird, sobald sich ein Spieler ueber
+            //accept mit dem aktuellen Thread verbunden hat. Der neue wartet dann ebenfalls in accept().
+            //in host.java mehr zu dieser Logik...
+            host.createNewThread(playerList, quiz);
+
+            //Initialisierung der Netzwerkvariablen
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             bf = new BufferedReader(in);
             pr = new PrintWriter(s.getOutputStream());
-            System.out.println("New connection established");
-            System.out.println("Creating a new thread");
 
-            nick = bf.readLine(); // the first message is the name of the player
+            //der Name des Spielers wird hier ausgelesen und in der UI-Spielerliste hinzugefuegt
+            nick = bf.readLine();
             Platform.runLater(() -> playerList.getItems().add(nick));
+
             sendQuizData();
 
-            regClient(s);
+            //ausserdem werden, ueber die host-Klasse, allen Spielern die neue Spielerliste zugesendet, da es ja
+            //einen neuen Spieler gibt.
             host.refreshPlayerList(playerList);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    //ueberfluessig
-    private void regClient(Socket s) {
-        String ip = s.getInetAddress().toString();
-        System.out.println("Client \"" + nick + "\" connected from " + ip);
-    }
-
+    //hier mit Uebergabe des RunnableThread-Objekts (mit 'this') ein neuer Thread erstellt und gestartet.
     public void start() {
-        System.out.println("Starting new Thread");
         Thread t = new Thread(this);
         t.start();
     }
@@ -105,7 +122,6 @@ public class RunnableThread implements Runnable {
         //hier werden die Ergebnisse der aktuellen Runde an die Spieler gesendet
         pr.println("RESULT");
         pr.println(ergebnis);
-        pr.println(rundenPunkte);
         pr.flush();
     }
 
@@ -118,10 +134,7 @@ public class RunnableThread implements Runnable {
             mapString += key + "," + punkteMap.get(key) + " ";
         for (int key : bestenliste.keySet())
             bestenlistenString += key + "," + bestenliste.get(key) + " ";
-        System.out.println(mapString);
-        //pr.println(mapString.strip()); 
-        //pr.println(bestenlistenString.strip());
-        pr.println(mapString.substring(0, mapString.length() - 1)); //strip() entfernt hier das letzte Leerzeichen  //strip() ersetzt durch substring()
+        pr.println(mapString.substring(0, mapString.length() - 1));
         pr.println(bestenlistenString.substring(0, bestenlistenString.length() - 1));
         pr.flush();
     }

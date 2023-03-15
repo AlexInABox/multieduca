@@ -1,3 +1,23 @@
+/**
+ * Autor: Alexander Betke
+ * Ueberarbeitet: Niklas Bamberg
+ * Datum: 2023-02-18
+ *
+ * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet und mit ihm über das Netzwerk kommuniziert.
+ *        Dabei wird ein Objekt, dieser Klasse erstellt, wenn ein Spieler IP und Nutzername eingetragen hat und auf 
+ *        einem entsprechenden UI-Bildschirm auf einen Button wie "verbinden" klickt.
+ *        Dieses Client-Objekt wird dann von UI-Bildschirmen aus verwendet und stellt zu diesem Zweck diverse Methoden
+ *        bereit die Daten an den Spielhost senden und Daten empfangen koennen.
+ * Change-Log:
+ * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
+ * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
+ * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
+ * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
+ * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
+ * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
+ * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
+ * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
+ */
 package net;
 
 import java.net.*;
@@ -8,44 +28,23 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Autor: Alexander Betke
- * Ueberarbeitet: Niklas Bamberg
- * Datum: 2023-02-18
- *
- * Zweck: Dieses Programm ist ein Client, der sich mit einem Server verbindet und mit ihm über das Netzwerk kommuniziert.
- * 
- * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
- * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
- * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
- * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
- * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
- * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
- * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
- * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
- */
 public class client {
-    // dev variables
-    // private static final String IP = "localhost";
-    // end of dev variables
 
-    // networking related variables
+    //Die Kommunikation mit dem Host erfolgt ueber sog. Sockets (hier Socket s).
     private static Socket s;
+    //Dabei werden Daten mit einem Printwriter (hier PrintWriter pr) gesendet...
     private static PrintWriter pr;
+    //...und mit einem BufferedReader (hier BufferedReader bf) empfangen.
     private static BufferedReader bf;
-    // end of networking related variables
 
-    // game related variables
     private static String quizLength;
     private static String quizName;
     private static String nick;
-    private static int rundenPunkte = 0;
     private static JSONObject question;
     private static boolean answeredRight;
     private static String[] playerList;
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
     private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
-    // end of game related variables
 
     public client() {
     }
@@ -111,7 +110,6 @@ public class client {
             } else if (receivedMessage.equals("RESULT")) {
                 // hier werden die Ergebnisse, in Form der Punkte der letzten Runde, einem Boolean ob, man die Frage, zumindest teilweise richtig beantwortet hat und einer der Map mit allen Spielern und dazu gehoerigen Punkten empfangen
                 answeredRight = Boolean.parseBoolean(bf.readLine());
-                rundenPunkte = Integer.parseInt(bf.readLine());
                 // erstellen der SpielerPunkteMap und der bestenliste
                 leseBestenliste();
                 return 3;
@@ -205,11 +203,6 @@ public class client {
         return answeredRight;
     }
 
-    // Gibt eigene Punkte für die aktuelle Runde zurück
-    public int getRundenPunkte() {
-        return rundenPunkte;
-    }
-
     // Gibt Hashmap mit allen Spieler im Spieler-Punkte Format zurück
     public HashMap<String, Integer> getSpielerPunkteMap() {
         return spielerPunkteMap;
@@ -245,7 +238,6 @@ public class client {
             playerList = new String[0];
             question = new JSONObject();
             answeredRight = false;
-            rundenPunkte = 0;
             spielerPunkteMap.clear();
             bestenliste.clear();
         } catch (Exception e) {

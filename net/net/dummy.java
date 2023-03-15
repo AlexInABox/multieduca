@@ -1,3 +1,11 @@
+/*
+ * Autor: 
+ * Thema: 
+ * Erstellungsdatum: 
+ * Letzte Aenderung:
+ * Change-Log:
+ *      -
+ */
 package net;
 
 import org.json.*;
