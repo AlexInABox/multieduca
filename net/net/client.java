@@ -8,6 +8,7 @@
  *        einem entsprechenden UI-Bildschirm auf einen Button wie "verbinden" klickt.
  *        Dieses Client-Objekt wird dann von UI-Bildschirmen aus verwendet und stellt zu diesem Zweck diverse Methoden
  *        bereit die Daten an den Spielhost senden und Daten empfangen koennen.
+ * 
  * Change-Log:
  * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
@@ -16,7 +17,8 @@
  * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg
  * 13.03: Hinzufügen der Methodenkommentierung und Vereinheitlichung des Layouts, Rosan Sharma 
  * 13.03: entfernen der waitForGameStart() Methode und andere Kuerzungen, Niklas Bamberg
- * 14.01: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
+ * 14.03: Behebung eines Konvertierungsfehlers der Spielerliste in der listenForEvent() Methode, Alexander Betke
+ * 15.03: Finale auskommentierung, Alexander Betke
  */
 package net;
 
@@ -37,6 +39,7 @@ public class client {
     //...und mit einem BufferedReader (hier BufferedReader bf) empfangen.
     private static BufferedReader bf;
 
+    //Quiz relevante Variablen
     private static String quizLength;
     private static String quizName;
     private static String nick;
@@ -45,11 +48,13 @@ public class client {
     private static String[] playerList;
     private HashMap<String, Integer> spielerPunkteMap = new HashMap<String, Integer>();
     private HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
+    //END Quiz relevante Variablen
 
+    //Konstruktor
     public client() {
     }
 
-    // Startet den Client und führt ihn aus
+    // Stellt die Verbindung zum Host her, sendet den Nickname und empfaengt essentielle Metadaten des Quiz
     public boolean establishConnection(String ip, String nickname) {
         try {
             // set the nickname
@@ -57,9 +62,9 @@ public class client {
 
             s = new Socket();
 
-            s.connect(new InetSocketAddress(ip, 2594), 1000); // 1000ms timeout -> throws exception if timeout is exceeded
+            s.connect(new InetSocketAddress(ip, 2594), 1000); // Wartet 1000ms auf eine erfolgreiche Verbindung. Bei Timeout wird eine Exception geworfen
 
-            if (s.isConnected()) { // if the connection was established
+            if (s.isConnected()) { //Wenn die Verbindung erfolgreich war:
                 pr = new PrintWriter(s.getOutputStream());
                 InputStreamReader in = new InputStreamReader(s.getInputStream());
                 bf = new BufferedReader(in);
@@ -71,7 +76,7 @@ public class client {
                 getQuizData();
 
                 return true;
-            } else { // if the connection could not be established
+            } else { //Wenn die Verbindung nicht erfolgreich war:
                 try {
                     s.close();
                 } catch (Exception e) {
@@ -85,21 +90,26 @@ public class client {
         }
     }
 
-    // Verarbeitet die einzelnen Signale des Hosts während Spiel
+    // Verarbeitet die einzelnen Signale des Hosts während Spiel und gibt diese als Integer an das GUI zurück
     public int listenForEvent() {
         try {
-            // wait for the round to start
-            // if the host sends the start signal, the client will prepare to receive the
-            // question
-            // if the host send the end signal, the client will break the loop and end the
+            /* 
+            *  Hier wird auf die Signale des Hosts gewartet und entsprechend reagiert:
+            *   PLAYER LIST: die Spielerliste wird empfangen und in ein Array gespeichert
+            *   START GAME: das Spiel startet
+            *   START ROUND: die Frage wird empfangen und in einem JSONObject gespeichert
+            *   RESULT: die Ergebnisse der letzten Runde werden empfangen und in einer Map gespeichert
+            *   END GAME: das Spiel endet
+            *   END ZWISCHENRANKING: Der Zwischenranking Bildschirm wird geschlossen
+            */
 
             String receivedMessage = bf.readLine();
 
             if (receivedMessage.equals("PLAYER LIST")) {
-                //receive the player list
+                //Empfangen der Spielerliste
                 String playerListString = bf.readLine();
-                //split the player list string into an array
-                playerList = playerListString.substring(1, playerListString.length() - 1).split(", "); //remove the brackets from the string and split it into an array
+                //Konvertieren der Spielerliste in ein Array
+                playerList = playerListString.substring(1, playerListString.length() - 1).split(", "); //Das erste und letzte Zeichen sind die eckigen Klammern, welche entfernt werden müssen
                 return 0;
             } else if (receivedMessage.equals("START GAME")) {
                 return 1;
@@ -142,10 +152,9 @@ public class client {
         }
     }
 
-    // Schickt eigene Antwort und gebrauchte Zeit bis zum Antworten an Host 
+    // Schickt die eigene Antwort und gebrauchte Zeit, bis zum Antworten, an Host
     public void sendAnswer(ArrayList<Integer> antworten, double gebrauchteZeit) {
         try {
-            // send the answer
             String antwortenString = "";
             for (int i = 0; i < antworten.size(); i++) {
                 if (i < (antworten.size() - 1))
@@ -170,6 +179,34 @@ public class client {
             }
         } catch (Exception e) {
             System.out.println("QUIZ DATA konnte nicht gelesen werden.");
+        }
+    }
+
+    // Beeendet das Spiel, schließt alle Verbindungen und setzt alle Variablen auf ihren Anfangswert zurück
+    public void gameEnded() {
+        try {
+            s.close();
+        } catch (Exception e) {
+            System.out.println("Socket konnte nicht geschlossen werden.");
+        }
+        //reset all variables
+        try {
+            bf.close();
+            pr.close();
+        } catch (Exception e) {
+            System.out.println("BufferedReader und PrintWriter konnten nicht geschlossen werden.");
+        }
+        try {
+            nick = "";
+            quizLength = "";
+            quizName = "";
+            playerList = new String[0];
+            question = new JSONObject();
+            answeredRight = false;
+            spielerPunkteMap.clear();
+            bestenliste.clear();
+        } catch (Exception e) {
+            System.out.println("Variablen konnten nicht zurückgesetzt werden.");
         }
     }
 
@@ -216,32 +253,5 @@ public class client {
     // Gibt eigenen Nickname zurück
     public String getName() {
         return nick;
-    }
-
-    public void gameEnded() {
-        try {
-            s.close();
-        } catch (Exception e) {
-            System.out.println("Socket konnte nicht geschlossen werden.");
-        }
-        //reset all variables
-        try {
-            bf.close();
-            pr.close();
-        } catch (Exception e) {
-            System.out.println("BufferedReader und PrintWriter konnten nicht geschlossen werden.");
-        }
-        try {
-            nick = "";
-            quizLength = "";
-            quizName = "";
-            playerList = new String[0];
-            question = new JSONObject();
-            answeredRight = false;
-            spielerPunkteMap.clear();
-            bestenliste.clear();
-        } catch (Exception e) {
-            System.out.println("Variablen konnten nicht zurückgesetzt werden.");
-        }
     }
 }

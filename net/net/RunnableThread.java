@@ -1,18 +1,20 @@
-
-/*
+/**
 * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+* Datum: 16.02.2023
+*
 * Zweck: Ein RunnableThread soll sich mit einem Spieler (genauer: mit einem client) verbinden und mit ihm kommunizieren.
 *        Da sich mit dem Spielhost aber mehr als nur ein Spieler verbinden koennen soll und parallel mit allen Spielern
 *        kommuniziert werden muss, wird hier auf sog. Threads zurueckgegriffen. Diese Threads werden in der Klasse host
 *        erstellt und von dort aus werden auch die verschiedenen Methoden zur Kommunikation, die diese Klasse bereitstellt,
 *        aufgerufen.
-* Erstellungsdatum: 16.02.2023
+*
 * Change-Log:
-*      - Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
-*      - Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
-*      - Diverse Fehlerbehebungen, Alexander Betke - 11.03
-*      - kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
-*      - hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
+* 06.03: Ergaenzungen für UI-Aenderungen, Niklas Bamberg
+* 09.03: Unterstützung mehrerer gegebener Antworten, Niklas Bamberg
+* 11.03: Diverse Fehlerbehebungen, Alexander Betke
+* 11.03: kleine Anpassungen in getAnswer(), Niklas Bamberg
+* 12.03: hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg
+* 15.03: Finale Auskommentierung, Alexander Betke
 */
 package net;
 
