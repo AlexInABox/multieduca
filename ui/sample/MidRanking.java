@@ -1,5 +1,5 @@
 /*
- * Autor: Basim Bennaji
+ * Autor: Niklas Bamberg, Basim Bennaji
  * Thema: Ranking zwischen den Fragen
  * Erstellungsdatum: 
  * Letzte Aenderung:
@@ -32,6 +32,7 @@ public class MidRanking {
     String errorStyle = String.format(
             "-fx-background-color: #C92403; -fx-background-radius: 20");
 
+    //UI-Elemente werden aus FXML-Datei ausgelesen
     @FXML
     private SVGPath ergebnisC, ergebnisF;
 
@@ -42,13 +43,16 @@ public class MidRanking {
     private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position,
             punkte;
 
-
+    //auch hier wird das client Objekt benoetigt
     private client c;
 
-    
+    //In der zum Laden ausgefuehrten initialize()-Methode werden dem client die vom Host erhaltenen Ranking-Daten
+    //entnommen und in die entsprechenden UI-Elemente eingetragen.
     @FXML
     void initialize() {
+        //client Objekt wird aus StartscreenController bezogen
         c = StartscreenController.getClient();
+        //im folgenden geschieht das Auslesen und Eintragen der Daten in die UI-Elemente
         setzeRueckmeldung(c.answeredRight());
         HashMap<String, Integer> spielerPunkteMap = c.getSpielerPunkteMap();
         HashMap<Integer, String> bestenliste = c.getBestenliste();
@@ -65,15 +69,23 @@ public class MidRanking {
         position.setText(bestenliste.entrySet().stream().filter(entry -> entry.getValue().equals(c.getName()))
                 .map(Map.Entry::getKey).findFirst().get().toString());
         punkte.setText(spielerPunkteMap.get(c.getName()).toString());
+
+        //ist das Abgeschlossen, so wird, wie in QuizfrageController.java mit der listenForEvent()
+        //Methode auf Nachricht vom Host gewartet und entsprechend reagiert.
+        //das warten geschieht parallel in einem neuen Thread, da JavaFX aufgrund des wartens sonst die UI einfriert.
+        //hier wird wie in QuizfrageController.java erneut auf Plattform.runLater() zurueckgegriffen, um
+        //das Aendern der UI-Elemente zu ermoeglichen.
         new Thread(() -> {
             int event = c.listenForEvent();
             switch (event) {
                 case 5:
+                    //case 5 bedeutet, dass eine neue Frage gestellt wurde, daher wird zum Fragenfenster gewechselt...
                     Platform.runLater(() -> {
                         switchScreen("/rsc/Quizfrage.fxml");
                     });
                     break;
                 case 4:
+                    //case 4 bedeutet, dass das Spiel beendet wurde, daher wird zum Endranking gewechselt...
                     Platform.runLater(() -> {
                         switchScreen("/rsc/Endranking.fxml");
                     });
@@ -82,6 +94,7 @@ public class MidRanking {
         }).start();
     }
 
+    //Diese Methode wechselt unter Angabe des Pfades zur FXML-Datei zum entsprechenden Fenster
     void switchScreen(String fxml) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
@@ -94,6 +107,7 @@ public class MidRanking {
         }
     }
 
+    //Diese Methode aendert die UI-Elemente entsprechend der Richtigkeit der Antwort des Spielers
     void setzeRueckmeldung(boolean antowrt) {
         if (antowrt) {
             // Format fuer richtige Antwort, gruen ~basim 14.03.2023 19:39
