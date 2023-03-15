@@ -1,6 +1,6 @@
 /*
  * Autor: Niklas Bamberg, Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: Diese Klasse stellt Methoden zur Bedienung des Hostscreens bereit. Daz gehört das Laden einer Quiz-Datei und das Weiterleiten auf den Screen zum Erstellen eines neuen Quiz.
+ * Thema: Diese Klasse stellt Methoden zur Bedienung des Hostscreens bereit. Daz gehoert das Laden einer Quiz-Datei und das Weiterleiten auf den Screen zum Erstellen eines neuen Quiz.
  * Erstellungsdatum: 27.02.2023
  * Letzte Aenderung: 12.03.2023 13:41
  * Icons: https://ionic.io/ionicons
