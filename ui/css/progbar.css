@@ -1,3 +1,10 @@
+/*
+ * Autoren: 
+ * Thema: Design für Leiste, die den Fortschritt anzeigt
+ * Erstellungsdatum: 13.02.2023
+ * Change-Log:
+ * 13.02: Design fuer Progressbar
+ */
 .bar {
     -fx-background-color: #1c82ad;
 }

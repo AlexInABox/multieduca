@@ -1,3 +1,10 @@
+/*
+ * Autoren: Samuel Hoffleit, Moritz Oehme
+ * Thema: Einheitliches Design für alle grünen Buttons
+ * Erstellungsdatum: 06.02.2023
+ * Change-Log:
+ * 06.02: Design fuer Button (+Hover und Text Design) 
+ */
 .button {
   -fx-background-color: #03C988;
   -fx-background-radius: 20;

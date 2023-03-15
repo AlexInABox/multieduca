@@ -1,3 +1,10 @@
+/*
+ * Autoren: 
+ * Thema: Generelles Design fuer alle TextFields
+ * Erstellungsdatum: 13.03.2023
+ * Change-Log:
+ * 13.02: Farb- und Textdesign fuer TextField
+ */
 .text-field {
 -fx-background-color: #00337C;
 -fx-background-radius: 20;
