@@ -2,6 +2,7 @@ package data;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -56,6 +57,32 @@ public class utilities {
         } else {
             System.out.println("Update available");
             return true;
+        }
+    }
+
+    public static boolean showExitAlert() {
+        try {
+            // get optout value from file
+            FileReader fr = new FileReader("optout.txt");
+            BufferedReader br = new BufferedReader(fr);
+            Boolean optout = Boolean.valueOf(br.readLine());
+            br.close();
+            return optout;
+        } catch (Exception e) {
+            System.out.println("Error while getting optout value: " + e);
+            return false;
+        }
+    }
+
+    public static void showExitAlert(Boolean optout) {
+        try {
+            //write optout value to file
+            FileWriter fw = new FileWriter("optout.txt");
+            fw.write(optout.toString());
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Error while writing optout value: " + e);
+
         }
     }
 }

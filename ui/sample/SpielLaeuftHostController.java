@@ -1,3 +1,14 @@
+/*
+ * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * Thema: 
+ * Erstellungsdatum: 023-03-09
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      - Arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
+ *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
+ *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
+ */
 package sample;
 
 import javafx.application.Platform;
@@ -14,12 +25,10 @@ import net.host;
 
 import java.io.IOException;
 
-
 //aenderungen:
 //-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
 //kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
 //-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
-
 
 /**
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
@@ -31,7 +40,6 @@ import java.io.IOException;
  *-kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
  *-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
- 
 public class SpielLaeuftHostController {
 
     private Stage stage;
@@ -93,7 +101,7 @@ public class SpielLaeuftHostController {
     }
 
     public void switchToHostscreen(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

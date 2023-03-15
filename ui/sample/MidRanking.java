@@ -1,3 +1,12 @@
+/*
+ * Autor: 
+ * Thema: Ranking zwischen den Fragen
+ * Erstellungsdatum: 
+ * Letzte Aenderung:
+ * Icons: https://ionic.io/ionicons
+ * Change-Log:
+ *      -
+ */
 package sample;
 
 import java.io.IOException;
@@ -18,10 +27,10 @@ import net.client;
 public class MidRanking {
 
     String successStyle = String.format(
-				"-fx-background-color: #03C988; -fx-background-radius: 20");
+            "-fx-background-color: #03C988; -fx-background-radius: 20");
 
     String errorStyle = String.format(
-				"-fx-background-color: #C92403; -fx-background-radius: 20");
+            "-fx-background-color: #C92403; -fx-background-radius: 20");
 
     @FXML
     private SVGPath ergebnisC, ergebnisF;
@@ -30,7 +39,8 @@ public class MidRanking {
     private Pane ergebnisPane;
 
     @FXML
-    private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position, punkte;
+    private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position,
+            punkte;
 
     private client c;
 
@@ -50,19 +60,20 @@ public class MidRanking {
             player3.setText(bestenliste.get(3));
             playerPunkte3.setText(spielerPunkteMap.get(bestenliste.get(3)).toString());
         }
-        position.setText(bestenliste.entrySet().stream().filter(entry -> entry.getValue().equals(c.getName())).map(Map.Entry::getKey).findFirst().get().toString());
+        position.setText(bestenliste.entrySet().stream().filter(entry -> entry.getValue().equals(c.getName()))
+                .map(Map.Entry::getKey).findFirst().get().toString());
         punkte.setText(spielerPunkteMap.get(c.getName()).toString());
         new Thread(() -> {
             int event = c.listenForEvent();
-            switch(event) {
+            switch (event) {
                 case 5:
                     Platform.runLater(() -> {
-                        switchScreen("../rsc/Quizfrage.fxml");
+                        switchScreen("/rsc/Quizfrage.fxml");
                     });
                     break;
                 case 4:
                     Platform.runLater(() -> {
-                        switchScreen("../rsc/Endranking.fxml");
+                        switchScreen("/rsc/Endranking.fxml");
                     });
                     break;
             }
@@ -95,4 +106,3 @@ public class MidRanking {
         }
     }
 }
-

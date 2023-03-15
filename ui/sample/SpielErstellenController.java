@@ -1,3 +1,14 @@
+/*
+ * Autoren: Moritz Oehme, Niklas Bamberg, Basim Bennaji
+ * Thema: Erstellen eines neuen Quiz bzw. der Datei, in der es gespeichert wird
+ * Erstellungsdatum: 09.02.2023
+ * Letzte Aenderung: 10.03.2023
+ * Change-Log:
+ *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
+ *      - Hinzufuegen der Variablen der UI-Elemente: Moritz Oehme
+ *      - Get-Methoden zum zurueckgeben der Informationen für die Quiz-Datei: Moritz Oehme
+ *      - Set-Methoden zum Auswaehlen der korrekten Antworten: Moritz Oehme
+ */
 package sample;
 
 import java.io.File;
@@ -18,25 +29,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-/*
- * Autoren: Moritz Oehme, Niklas Bamberg, Basim Bennaji
- * Thema: Erstellen eines neuen Quiz bzw. der Datei, in der es gespeichert wird
- * Erstellungsdatum: 09.02.2023
- * Letzte Aenderung: 10.03.2023
- * Change-Log:
- * 
- */
-//aenderungen:
-//-arbeiten an verbindung der Teile
-
-/**
- * Autor: Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
 
 public class SpielErstellenController {
 
@@ -170,7 +162,7 @@ public class SpielErstellenController {
     //Wird über den "zurück" Button ausgeführt
     @FXML
     public void switchToHostscreen(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

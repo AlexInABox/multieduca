@@ -5,14 +5,11 @@
  * Letzte Aenderung: 04.03.2023 19:13
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      Methode zum nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden. 04.03.2023 ~basim
- * 
- *      Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
- * 
- *      Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize. 11.03.2023 ~Alexander Betke
- *      Anpassung in initialize(). 13.03.2023 ~Niklas Bamberg
+ *      - Methode zum Nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden. 04.03.2023 ~basim
+ *      - Die get'er und set'er fuer die Labels, bsp. quizFragenAnz, werden erst nach dem Funktionstests des Prgramms implementiert. 04.03.2023 ~basim
+ *      - Erweiterung dieser Klasse um die Methoden switchToStart, switchToGame und initialize. 11.03.2023 ~Alexander Betke
+ *      - Anpassung in initialize(). 13.03.2023 ~Niklas Bamberg
  */
-
 package sample;
 
 import java.io.IOException;
@@ -37,7 +34,6 @@ import net.client;
  *
  * Zweck: 
  */
- 
 public class SpielWartenController {
 
     private Stage stage;
@@ -55,15 +51,15 @@ public class SpielWartenController {
     private client client;
 
     public void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    
+
     private void switchToStart() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Startscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -71,7 +67,7 @@ public class SpielWartenController {
     }
 
     private void switchToGame() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Quizfrage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Quizfrage.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

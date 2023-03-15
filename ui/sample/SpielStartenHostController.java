@@ -5,8 +5,12 @@
  * Letzte Aenderung: 04.03.2023 23:51
  * Icons: https://ionic.io/ionicons
  * Change-Log:
+ *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
  *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51 ~basim
  *      - Verbund von Netzwerk und UI. 04.03.2023 23:51 ~Alexander Betke
+ *      - Aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
+ *      - Kuerzungen und eine Aenderung in spielStarten(): Niklas Bamberg -13.03.2023
+ *      - Behebung von fehlern, welche ein irresponsives Verhalten des Programms verursachten: Alexander Betke -13.03.2023
  */
 package sample;
 
@@ -40,7 +44,7 @@ import net.*;
  *
  * Zweck: 
  */
- 
+
 public class SpielStartenHostController {
 
     @FXML
@@ -69,7 +73,7 @@ public class SpielStartenHostController {
     // Button-FUnktion um zu Fragen-Screen zu wechseln
     public void spielStarten(ActionEvent event) throws IOException {
         SpielLaeuftHostController.resetRoundIndex();
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/SpielLaeuftHost.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -86,7 +90,7 @@ public class SpielStartenHostController {
 
     // Methode um zum Hostscreen zurueck zukehren
     public void switchToHost(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../rsc/Hostscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
