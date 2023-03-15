@@ -28,7 +28,7 @@ public class InfoController {
 
     private Stage stage;
     private Scene scene;
-
+    //Variablen fuer Elemente aus FXML-Datei
     @FXML
     private Button homebtn;
 

@@ -1,5 +1,5 @@
 /*
- * Autor: 
+ * Autor: Basim Bennaji
  * Thema: Ranking zwischen den Fragen
  * Erstellungsdatum: 
  * Letzte Aenderung:
@@ -42,8 +42,10 @@ public class MidRanking {
     private Label ergebnisText, player1, player2, player3, playerPunkte1, playerPunkte2, playerPunkte3, position,
             punkte;
 
+
     private client c;
 
+    
     @FXML
     void initialize() {
         c = StartscreenController.getClient();
