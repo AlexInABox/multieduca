@@ -1,10 +1,11 @@
 /*
- * Autoren: 
+ * Autor: Basim Bennaji
  * Thema: Generelles Design fuer alle TextFields
  * Erstellungsdatum: 13.03.2023
  * Letzte Aenderung: 13.08.2023 12:16
  * Change-Log:
- * 13.02: Farb- und Textdesign fuer TextField
+ *  -Farb- und Textdesign fuer TextField. ~basim 13.03.2023
+ *  -Design wird fuer Textfelder im Spielerstellenscreen verwendet. ~basim 13.03.2023
  */
 .text-field {
 -fx-background-color: #00337C;
