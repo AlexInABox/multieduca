@@ -8,7 +8,7 @@
  * 23.02: Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt, Basim Bennaji
  * 23.02: Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander, Basim Bennaji
  * 24.02: Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt, Basim Bennaji
- * 25.02: Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt, Basim Bennaji
+ * 25.02: Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefuegt, Basim Bennaji
  * 05.03: JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben, Basim Bennaji
  * 09.03: Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert, Basim Bennaji
  * 14.03: Fehlermeldung bei ungueltigem Usernamen hinzugefuegt, Alexander Betke
