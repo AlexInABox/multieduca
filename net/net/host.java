@@ -1,6 +1,8 @@
 /*
  * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
- * Thema: 
+ * Thema: Diese Klasse regelt die Kommunikation mit den verschiedenen Spielern. Dabei wird natuerlich auf die Klasse
+ *        RunnableThread zurueckgegriffen und die verschiedenen RunnableThreads werden in einer Liste gespeichert.
+ *        Die hier bereitgestellten Methoden werden, hauptsaechlich von UI-Klassen aus aufgerufen.
  * Erstellungsdatum: 2022-02-13
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
@@ -26,34 +28,48 @@ import java.io.*;
 
 public class host {
 
+    //ServerSocket um die Verbindung mit den Spielern aufzubauen
     private static ServerSocket ss;
+    //dies ist die oben beschriebene Liste, in der die RunnableThreads gespeichert werden
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
+
+    //diese beiden Maps werden benutzt, um den aktuellen Spielstand zu, in Form von Bestenlisten zu speichern.
     private static HashMap<String, Integer> punkteMap = new HashMap<String, Integer>();
     private static HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
 
+    //der Rundenindex gibt an, in der wievielten Runde im Quiz man sich befindet
     private static int roundIndex = 0;
 
+    //Mit dieser Methode wird der ServerSocket initialisiert
     public static void initServer(ListView<String> playerList, Quiz quizArg) throws IOException {
         //dem RunnableThread wird die Playerliste uebergeben, damit er den Playernamen dort hinzufuegen kann
         Quiz quiz = quizArg;
         ss = new ServerSocket(2594);
+        //hier wird die Methode createNewThread einmal aufgerufen danach wird diese in RunnableThread aufgerufen
+        //unzwar jedes mal wenn sich ein Spieler verbunden hat. Somit wird eine dynamische Anzahl der Spieler
+        //moeglich und man muss nicht schon vorher angeben wie viele Spieler maximal teilnehmen duerfen.
         createNewThread(playerList, quiz);
     }
 
+    //Diese Methode erstellt einen neuen RunnableThread und fuegt ihn der Liste hinzu.
     public static void createNewThread(ListView<String> playerList, Quiz quiz) {
         RunnableThread t = new RunnableThread(ss, quiz, playerList);
         threadList.add(t);
         t.start();
     }
 
+    //diese Methode fuehrt einige notwendige Operationen zum Spielstart aus und wird durch
+    //entsprechenden Button-Click aufgerufen
     public static void startGame() {
-        //schließen des Serversockets, damit keine neuen Spieler mehr beitreten können
+        //schließen des Serversockets, damit keine neuen Spieler mehr beitreten koennen
         try {
             ss.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //der letzte Thread in der Liste wird entfernt, da sich mit diesem kein Spieler verbunden hat
         threadList.remove(threadList.size() - 1);
+        //Jeder Thread wird aufgefordert den Spielern den Spielstart zu vermitteln
         try {
             for (RunnableThread thread : threadList) {
                 thread.startGame();
@@ -63,10 +79,12 @@ public class host {
         }
     }
 
+    //Diese Methode wird zum Beginn jeder Fragerunde aufgerufen und soll:
+    //Die Frage an alle Spieler senden
+    //Die Antworten der Spieler auslesen
+    //Die Bestenliste aktualisieren und an alle Spieler senden
     public static void startRound(int index) {
         roundIndex = index;
-        System.out.println("");
-        System.out.println("Starting round: " + (roundIndex + 1));
         try {
             //senden der Fragen an alle Spieler
             for (RunnableThread thread : threadList) {
@@ -78,10 +96,12 @@ public class host {
                 thread.getAnswer(roundIndex);
                 punkteMap.put(thread.getNick(), thread.getPunkte());
             }
+            //generieren einer Bestenliste aus der punkteMap
             bestenliste = generiereBestenliste((HashMap<String, Integer>) punkteMap.clone());
             for (RunnableThread thread : threadList) {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
+            //der Rundenindex wird erhoeht um bei der naechsten Runde die richtige Frage zu senden
             roundIndex++;
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,6 +136,7 @@ public class host {
         }
     }
 
+    //Diese Methode soll jedem Spieler das ende der Zwischenrankingphase mitteilen
     public static void endZwischenRanking() {
         try {
             for (RunnableThread thread : threadList) {
@@ -126,12 +147,14 @@ public class host {
         }
     }
 
+    //Diese Methode sendet allen Spielern die aktuelle Spielerliste
     public static void refreshPlayerList(ListView<String> playerList) {
         for (RunnableThread thread : threadList) {
             thread.refreshPlayerList(playerList);
         }
     }
 
+    //Diese Methode wird zum Spielende aufgerufen und soll allen Spielern entsprechendes mitteilen
     public static void endGame() {
         try {
             for (RunnableThread thread : threadList) {
@@ -144,10 +167,14 @@ public class host {
         threadList.clear();
     }
 
+    //Methode zum erhalten der Threadliste
     public static ArrayList<RunnableThread> getThreadList() {
         return threadList;
     }
 
+    //Diese Methode generiert ausgehend von einer Map mit Spielern und Punkten eine nach Punkten geordnete Map
+    //der Art <Platz, Spielername>
+    //Diese dient dann dem Zweck entsprechende Rankings zu ermoeglichen
     static HashMap<Integer, String> generiereBestenliste(HashMap<String, Integer> spielerPunkteMap) {
         HashMap<Integer, String> bestenliste = new HashMap<Integer, String>();
         int i = 1;
