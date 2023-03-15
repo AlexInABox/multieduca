@@ -7,6 +7,7 @@
  * Change-Log:
  *      - Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
  *      - kleinere Kuerzungen, Niklas Bamberg - 13.03
+ *      - anpassen der Parameterliste fuer die Funktion startRound, um den naechstenRundeButton zu deaktivieren, Alexander Betke - 15.03
  */
 
 package net;
