@@ -5,13 +5,12 @@
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -Funktion switchToHome hinzugefuegt. 04.03.2023 ~Basim Bennaji
- *      -Labels werden mit den Namen der Autoren initializiert. 04.03.2023 ~Basim Bennaji
+ * 04.03: Funktion switchToHome hinzugefuegt, Basim Bennaji
+ * 04.03: Labels werden mit den Namen der Autoren initializiert, Basim Bennaji
  */
 package sample;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
