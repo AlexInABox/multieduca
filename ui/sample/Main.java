@@ -1,11 +1,12 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: Ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet
+ * Thema: Es handelt sch um eine ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet.
  * Erstellungsdatum: 2023-03-09
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * 15.03: logik beim schließen des Programms hinzugefügt, ALexander Betke
+ * 09.03: Start-Methode erstellt. Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * 15.03: Logik beim Schließen des Programms hinzugefuegt. ALexander Betke
  */
 package sample;
 

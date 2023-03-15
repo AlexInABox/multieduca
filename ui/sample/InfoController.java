@@ -1,6 +1,6 @@
 /*
  * Autor: Basim Bennaji
- * Thema: Es werden alle Mitarbeiter an dem Projekt aufgelistet.
+ * Thema: Diese Klassse ermoeglicht es, alle Mitarbeiter des Projekts darzustellen.
  * Erstellungsdatum: 03.03.2023
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons

@@ -1,6 +1,6 @@
 /*
  * Autor: Niklas Bamberg, Basim Bennaji
- * Thema: Logik zum beantworten einer Frage
+ * Thema: Diese Klasse stellt Methoden rund um die Beantwort einer Quizfrage bereit. Dazu gehoeren unter anderem das direkte Auswaehlen einer Antwort sowie ein ablaufender Timer.
  * Erstellungsdatum: 04.03.2023
  * Letzte Aenderung: 04.03.2023 21:20
  * Icons: https://ionic.io/ionicons

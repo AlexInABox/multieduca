@@ -1,7 +1,7 @@
 /*
  * Autoren: Moritz Oehme, Samuel Hoffleit, Basim Bennaji
- * Thema: Methoden des Startscreens.
- * Erstellungsdatum: 23.02.2023 (?)
+ * Thema: Diese Klasse stellt Methoden zur Bedienung des Startscreens bereit. Dazu gehören Funktionen wie das direkte Beitreten zu einem gehosteten Spieles oder das Navigieren zum Host-Screen. 
+ * Erstellungsdatum: 23.02.2023
  * Letzte Aenderung: 05.03.2023
  * Icons: https://ionic.io/ionicons
  * Change-Log:

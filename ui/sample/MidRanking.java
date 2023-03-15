@@ -1,11 +1,11 @@
 /*
  * Autor: Niklas Bamberg, Basim Bennaji
- * Thema: Ranking zwischen den Fragen
- * Erstellungsdatum: 
- * Letzte Aenderung:
+ * Thema: Diese Klasse stellt Methoden zur Darstellung eines Rankings zwischen den einzelen Fragen bereit.
+ * Erstellungsdatum: 06.03.2023
+ * Letzte Aenderung: 09.03.2023
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -
+ *  
  */
 package sample;
 

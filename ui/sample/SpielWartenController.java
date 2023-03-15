@@ -1,6 +1,6 @@
 /*
  * Autor: Basim Bennaji
- * Thema: Methoden des Wartescreens.
+ * Thema: Diese Klasse stellt Methoden zur Darstellung eines Warte-Screens fuer einen Spieler, der einem Quiz-Spiel beigetreten ist, bereit.
  * Erstellungsdatum: 04.03.2023
  * Letzte Aenderung: 04.03.2023 19:13
  * Icons: https://ionic.io/ionicons

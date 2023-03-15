@@ -1,12 +1,12 @@
 /*
  * Autoren: Basim Bennaji, Niklas Bamberg
- * Thema: Darstellung eines Endrankings nach dem Spiel
+ * Thema: Diese Klasse stellt Methoden zur Darstellung eines Endrankings nach dem Abschluss des Spiels bereit.
  * Erstellungsdatum: 05.03.2023
  * Letzte Aenderung: 05.03.2023 13:41
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * 05.03: Methode zum Wechsel zum Startscreens hinzugefuegt, Basim Bennaji
- * 12.03: Methoden zum befuellen der Liste hinzugefuegt, Niklas Bamberg
+ * 05.03: Methode zum Wechsel zum Startscreen hinzugefuegt, Basim Bennaji
+ * 12.03: Methoden zum Befuellen der Liste hinzugefuegt, Niklas Bamberg
  */
 package sample;
 
