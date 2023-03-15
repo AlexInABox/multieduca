@@ -5,12 +5,12 @@
  * Letzte Aenderung: 04.03.2023 23:51
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
- *      - FXML Elemente mit dem neuen Design wurden hinzugefuegt. 04.03.2023 23:51 ~basim
- *      - Verbund von Netzwerk und UI. 04.03.2023 23:51 ~Alexander Betke
- *      - Aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
- *      - Kuerzungen und eine Aenderung in spielStarten(): Niklas Bamberg -13.03.2023
- *      - Behebung von fehlern, welche ein irresponsives Verhalten des Programms verursachten: Alexander Betke -13.03.2023
+ * 02.03: Arbeiten an Verbindung der Teile, Niklas Bamberg 
+ * 04.03: FXML Elemente mit dem neuen Design wurden hinzugefuegt, Basim Bennaji
+ * 04.03: Verbund von Netzwerk und UI, Alexander Betke
+ * 06.03: Aktualisierung von UI-Elementen, Niklas Bamberg, Samuel Hoffleit, Moritz Oehme
+ * 13.03: Kuerzungen und eine Aenderung in spielStarten(), Niklas Bamberg
+ * 13.03: Behebung von fehlern, welche ein irresponsives Verhalten des Programms verursachten, Alexander Betke
  */
 package sample;
 
@@ -32,21 +32,6 @@ import java.util.ArrayList;
 
 import net.*;
 
-//aenderungen:
-//-arbeiten an verbindung der Teile: Niklas Bamberg -02.03.2023
-//-aktualisierung von UI-Elementen: Niklas Bamberg, Samuel Hoffleit, Moritz Oehme -06.03.2023
-//-kuerzungen und eine aendeung in spielStarten(): Niklas Bamberg -13.03.2023
-//-behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
-//-die runde wird nun nicht mehr gestartet solange die SpielerListe leer ist: Alexander Betke -15.03.2023
-
-/**
- * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Ueberarbeitet:
- * Datum: 2023-03-09
- *
- * Zweck: 
- */
-
 public class SpielStartenHostController {
 
     //Variablen fuer Elemente aus der FXML-Datei
@@ -65,16 +50,19 @@ public class SpielStartenHostController {
     // Networking-Variablen
     private static ArrayList<RunnableThread> threadList = new ArrayList<RunnableThread>();
 
+    //Diese Methode wird beim Laden des Bilschirms ausgefuehrt und belegt die UI-Elemente mit den richtigen Daten
     @FXML
     protected void initialize() throws IOException {
         hostIPAdresse.setText("IP-Adresse: " + InetAddress.getLocalHost().getHostAddress());
         quizName.setText(HostscreenController.getName());
         quizFragenAnz.setText("" + HostscreenController.getQuiz().getLength());
+        //hier wird der "Server" gestartet, sodass sich Spieler verbinden koennen
         host.initServer(playerList, HostscreenController.getQuiz());
     }
 
-    // Button-Funktion um zu Fragen-Screen zu wechseln
+    // Button-Funktion um zu das Spiel zu starten
     public void spielStarten(ActionEvent event) throws IOException {
+        //sind keine Spieler vorhanden, wird ein Fehler angezeigt und das Spiel wird nicht gestartet
         if (playerList.getItems().size() == 0) {
             //Draw a popup that informs the user that there are no players connected
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,20 +72,13 @@ public class SpielStartenHostController {
             alert.showAndWait();
             return;
         }
+        //ansonsten wird zum naechsten Bildschirm gewechselt
         SpielLaeuftHostController.resetRoundIndex();
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/SpielLaeuftHost.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                host.startGame();
-                host.startRound(0);
-            }
-        });
-        thread.start();
     }
 
     // Methode um zum Hostscreen zurueck zukehren

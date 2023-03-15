@@ -1,3 +1,11 @@
+/*
+ * Autoren: Samuel Hoffleit, Moritz Oehme
+ * Thema: Einheitliches Design für alle roten Buttons
+ * Erstellungsdatum: 06.02.2023
+ * Letzte Aenderung: 06.02.2023 12:10
+ * Change-Log:
+ * 06.02: Design fuer Button (+Hover) 
+ */
 .button {
   -fx-background-color: #F05454;
   -fx-background-radius: 10;

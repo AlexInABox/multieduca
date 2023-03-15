@@ -1,15 +1,14 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: Main Klasse
+ * Thema: Ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet
  * Erstellungsdatum: 2023-03-09
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -
+ * 15.03: logik beim schließen des Programms hinzugefügt, ALexander Betke
  */
 package sample;
 
-import java.io.FileReader;
 import java.util.function.Consumer;
 
 import data.utilities;
@@ -27,21 +26,30 @@ import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import net.host;
 
+//Main erbt hier von der Klasse Application, um eine JavaFX-Anwendung zu erstellen
 public class Main extends Application {
+
+    public static void main(String[] args) {
+        //es wird die launch() Methode aus Application aufgerufen, welche wiederum die start() Methode aufruft
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //hier wird der erste UI-Bildschirm (der Startscreen) geladen.
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
-        primaryStage.setTitle("Multieduca");
+        primaryStage.setTitle("Knowledge Knockout");
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
 
+        //Sobald der Benutzer das Fenster schließt, wird die showExitAlert() Methode aufgerufen. Hier wird der Benutzer gefragt, ob er das Programm wirklich beenden möchte.
         primaryStage.setOnCloseRequest(event -> {
             System.out.println(utilities.showExitAlert());
             if (utilities.showExitAlert()) {
                 Alert alert = createAlertWithOptOut(AlertType.CONFIRMATION, "Programm beenden...",
                         "ACHTUNG!", "Möchten Sie das Programm wirklich beenden?", "Nicht mehr fragen",
+                        //Falls der Nutzer die Checkbox "Nicht mehr fragen" aktiviert, erscheint die Meldung nicht mehr, wenn der Benutzer in Zukunft das Fenster schließt.
                         (optOut) -> {
                             if (optOut) {
                                 utilities.showExitAlert(false);
@@ -71,32 +79,13 @@ public class Main extends Application {
         });
     }
 
-    /*@Override
-    public void stop() {
-        // executed when the application shuts down
-        System.out.println("Application closing...");
-        try {
-            host.endGame();
-        } catch (Exception e) {
-            System.out.println("No game running");
-        }
-    }
-    */
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+    //Diese Methode erstellt ein Pop-Up-Fenster, mit einer Checkbox. In unserem Kontext erstellt diese Methode ein Pop-Up-Fenster, welches den Benutzer fragt, ob er das Programm wirklich beenden möchte. Plus eine Checkbox, die den Benutzer fragt, ob er diese Meldung in Zukunft nicht mehr sehen möchte.
     public static Alert createAlertWithOptOut(AlertType type, String title, String headerText,
             String message, String optOutMessage, Consumer<Boolean> optOutAction,
             ButtonType... buttonTypes) {
         Alert alert = new Alert(type);
-        // Need to force the alert to layout in order to grab the graphic,
-        // as we are replacing the dialog pane with a custom pane
         alert.getDialogPane().applyCss();
         Node graphic = alert.getDialogPane().getGraphic();
-        // Create a new dialog pane that has a checkbox instead of the hide/show details button
-        // Use the supplied callback for the action of the checkbox
         alert.setDialogPane(new DialogPane() {
             @Override
             protected Node createDetailsButton() {
@@ -108,11 +97,8 @@ public class Main extends Application {
         });
         alert.getDialogPane().getButtonTypes().addAll(buttonTypes);
         alert.getDialogPane().setContentText(message);
-        // Fool the dialog into thinking there is some expandable content
-        // a group won't take up any space if it has no children
         alert.getDialogPane().setExpandableContent(new Group());
         alert.getDialogPane().setExpanded(true);
-        // Reset the dialog graphic using the default style
         alert.getDialogPane().setGraphic(graphic);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
