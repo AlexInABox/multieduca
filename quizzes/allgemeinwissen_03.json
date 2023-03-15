@@ -1,0 +1,132 @@
+[
+  {
+    "text": "Wie nennt man eine Zahl, die nur aus 0 und 1 besteht?",
+    "antworten": [
+      "Binärzahl",
+      "Hexadezimalzahl",
+      "Dezimalzahl",
+      "Oktalzahl"
+    ],
+    "loesungen": [
+      0
+    ],
+    "zeit": 10
+  },
+  {
+    "text": "Welches Betriebssystem wird auf einem iPhone verwendet?",
+    "antworten": [
+      "macOS",
+      "Windows",
+      "iOS",
+      "Android"
+    ],
+    "loesungen": [
+      2
+    ],
+    "zeit": 15
+  },
+  {
+    "text": "Wie nennt man eine Technologie, bei der Daten drahtlos über kurze Strecken (in beide Richtungen!) ausgetauscht werden?",
+    "antworten": [
+      "NFC",
+      "GPS",
+      "Bluetooth",
+      "Wi-Fi"
+    ],
+    "loesungen": [
+      2
+    ],
+    "zeit": 10
+  },
+  {
+    "text": "Welche Firma hat den ersten kommerziell erfolgreichen Personal Computer entwickelt?",
+    "antworten": [
+      "IBM",
+      "Apple",
+      "Microsoft",
+      "HP"
+    ],
+    "loesungen": [
+      0
+    ],
+    "zeit": 15
+  },
+  {
+    "text": "Welches Protokoll wird verwendet, um Webseiten im Internet zu übertragen/aufzurufen?",
+    "antworten": [
+      "FTP",
+      "SMTP",
+      "HTTP",
+      "SSH"
+    ],
+    "loesungen": [
+      2
+    ],
+    "zeit": 10
+  },
+  {
+    "text": "Welches Unternehmen ist der größte Anbieter von Cloud-Computing-Diensten?",
+    "antworten": [
+      "Amazon",
+      "Microsoft",
+      "Google",
+      "IBM"
+    ],
+    "loesungen": [
+      0
+    ],
+    "zeit": 15
+  },
+  {
+    "text": "Wofür steht Internet Protocol?",
+    "antworten": [
+      "TCP",
+      "UDP",
+      "IP",
+      "FTP"
+    ],
+    "loesungen": [
+      0
+    ],
+    "zeit": 10
+  },
+  {
+    "text": "Welche Datenstruktur wird verwendet, um eine Hierarchie von Objekten darzustellen?",
+    "antworten": [
+      "Array",
+      "Liste",
+      "Baum",
+      "Graph"
+    ],
+    "loesungen": [
+      2
+    ],
+    "zeit": 15
+  },
+  {
+    "text": "Welches Sprache wird verwendet, um Webseiten zu erstellen?",
+    "antworten": [
+      "C",
+      "C++",
+      "Java",
+      "HTML"
+    ],
+    "loesungen": [
+      3
+    ],
+    "zeit": 10
+  },
+  {
+    "text": "Welches Protokoll wird verwendet, um E-Mails zu versenden?",
+    "antworten": [
+      "SMTP",
+      "HTTP",
+      "FTP",
+      "SSH"
+    ],
+    "loesungen": [
+      0
+    ],
+    "zeit": 10
+  }
+]
