@@ -18,6 +18,7 @@ import java.util.Map;
 
 import data.Quiz;
 import javafx.scene.control.ListView;
+import sample.SpielLaeuftHostController;
 
 import java.io.*;
 
@@ -79,6 +80,8 @@ public class host {
             for (RunnableThread thread : threadList) {
                 thread.sendBestenliste(punkteMap, bestenliste);
             }
+            //unlock next round button for the host
+            SpielLaeuftHostController.unlockNextRoundButton();
             roundIndex++;
         } catch (Exception e) {
             e.printStackTrace();
