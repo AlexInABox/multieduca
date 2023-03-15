@@ -1,0 +1,1 @@
+java --module-path lib/javafx-sdk-19.0.2.1/lib --add-modules javafx.controls,javafx.fxml --enable-preview -jar KnowledgeKnockout.jar
