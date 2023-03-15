@@ -1,12 +1,12 @@
 /*
- * Autoren: 
+ * Autoren: Basim Bennaji, Moritz Oehme, Samuel Hoffleit
  * Thema: Einheitliches Design für mehrere Buttons
- * Erstellungsdatum: 02.02.2023
+ * Erstellungsdatum: 05.03.2023
  * Change-Log:
- * 02.02: Design (+Hover-Design) fuer Info-Button
- * 02.02: Design (+Hover-Design) fuer Back-Button
- * 02.02. Design (+Hover-Design) fuer Play-Button
- * 02.02. Design (+Hover-Design) fuer Home-Button
+ *  -Design (+Hover-Design) fuer Info-Button. ~basim, moritz, samuel 05.03.2023
+ *  -Design (+Hover-Design) fuer Back-Button. ~basim, moritz, samuel 05.03.2023
+ *  -Design (+Hover-Design) fuer Play-Button. ~basim, moritz, samuel 05.03.2023
+ *  -Design (+Hover-Design) fuer Home-Button. ~basim, moritz, samuel 05.03.2023
  */
 .info-button {
     -fx-background-color: #03C988;
