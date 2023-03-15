@@ -5,10 +5,11 @@
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - Arbeiten an Verbindung der Teile: Niklas Bamberg -02.03.2023
- *      - Kleine Aenderungen in initialize() und von roundIndex: Niklas Bamberg - 13.03.2023
- *      - Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten: Alexander Betke -13.03.2023
- *      - Der naechsteRundeButton ist nun deaktiviert, solange die Runde noch nicht beendet ist: Alexander Betke -15.03.2023
+ * 02.03: Arbeiten an Verbindung der Teile, Niklas Bamberg
+ * 13.03: Kleine Aenderungen in initialize() und von roundIndex, Niklas Bamberg
+ * 13.03: Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten, Alexander Betke
+ * 15.03: Der naechsteRundeButton ist nun deaktiviert, solange die Runde noch nicht beendet ist, Alexander Betke
+ * 15.03: finale Auskommentierung, Alexander Betke
  *
  */
 package sample;
@@ -38,7 +39,7 @@ public class SpielLaeuftHostController {
     private Label frageText;
 
     @FXML
-    private Button nextButton;
+    public Button nextButton;
 
     @FXML
     private Label quizName;
@@ -50,24 +51,29 @@ public class SpielLaeuftHostController {
         roundIndex = 1;
     }
 
+    // Methode, welche die naechste Runde startet
     public void startRound(ActionEvent event) {
-        //lock next round button
-        nextButton.setDisable(true);
+        //Zuerst wird ein neuer Thread erstellt, um die Runde zu starten und zu verhindern, dass das Programm einfriert
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    //Solange die Runde nicht die letzte ist, wird die Runde gestartet
                     if (roundIndex < HostscreenController.getQuiz().getLength()) {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
+                                //lock next round button
+                                nextButton.setDisable(true);
                                 frageText.setText(
                                         "Frage " + (roundIndex + 1) + "/" + HostscreenController.getQuiz().getLength());
                             }
                         });
+                        //Wir beenden das Zwischenranking und starten die naechste Runde
                         host.endZwischenRanking();
                         host.startRound(roundIndex, nextButton);
                     } else {
+                        //Wenn die Runde die letzte ist, wird das Spiel beendet
                         host.endGame();
                         Platform.runLater(new Runnable() {
                             @Override
@@ -90,7 +96,7 @@ public class SpielLaeuftHostController {
         thread.start();
     }
 
-    //Wechselt zum Hostscreen
+    //Eine Methode, welche zum Hostscreen wechselt
     public void switchToHostscreen(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -99,11 +105,27 @@ public class SpielLaeuftHostController {
         stage.show();
     }
 
+    //diese Methode wird beim Laden des Bildschirms ausgefuehrt und soll die UI initialisieren
+    //und die erste Runde starten
     @FXML
     void initialize() {
+        //Der nextButton ist zu Beginn deaktiviert, da die Runde direkt gestartet wird
         nextButton.setDisable(true);
         quizName.setText("Quiz: " + HostscreenController.getName());
         frageText.setText("Frage " + roundIndex + "/" + HostscreenController.getQuiz().getLength());
+
+        //Hier wird die erste Runde gestartet
+        //Hier wird ein Thread erstellt der die Runde starten soll und parallel zum JavaFX-Thread
+        //welcher fuer die UI zustaendig ist laufen soll, um ein einfrieren des Programms zu verhindern.
+        //Denn ist der JavaFX Thread blockiert (durch Warten oder aehnliches), reagiert die UI nicht mehr
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                host.startGame();
+                host.startRound(0, nextButton);
+            }
+        });
+        thread.start();
     }
 
 }

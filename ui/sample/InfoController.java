@@ -1,17 +1,16 @@
 /*
  * Autor: Basim Bennaji
- * Thema: Autoren des Programms (Credits).
+ * Thema: Es werden alle Mitarbeiter an dem Projekt aufgelistet.
  * Erstellungsdatum: 03.03.2023
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -Funktion switchToHome hinzugefuegt. 04.03.2023 ~Basim Bennaji
- *      -Labels werden mit den Namen der Autoren initializiert. 04.03.2023 ~Basim Bennaji
+ * 04.03: Funktion switchToHome hinzugefuegt, Basim Bennaji
+ * 04.03: Labels werden mit den Namen der Autoren initializiert, Basim Bennaji
  */
 package sample;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +40,8 @@ public class InfoController {
     @FXML
     private Label version;
 
+    //Methode zur Rueckkehr zum Startscreen
+    //wird nach einem entsprechenden Button-Click ausgefuehrt
     public void switchToHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

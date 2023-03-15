@@ -1,18 +1,20 @@
-
-/*
+/**
 * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+* Datum: 16.02.2023
+*
 * Zweck: Ein RunnableThread soll sich mit einem Spieler (genauer: mit einem client) verbinden und mit ihm kommunizieren.
 *        Da sich mit dem Spielhost aber mehr als nur ein Spieler verbinden koennen soll und parallel mit allen Spielern
 *        kommuniziert werden muss, wird hier auf sog. Threads zurueckgegriffen. Diese Threads werden in der Klasse host
 *        erstellt und von dort aus werden auch die verschiedenen Methoden zur Kommunikation, die diese Klasse bereitstellt,
 *        aufgerufen.
-* Erstellungsdatum: 16.02.2023
+*
 * Change-Log:
-*      - Ergaenzungen für UI-Aenderungen, Niklas Bamberg - 06.03
-*      - Unterstützung mehrerer gegebener Antworten, Niklas Bamberg - 09.03
-*      - Diverse Fehlerbehebungen, Alexander Betke - 11.03
-*      - kleine Anpassungen in getAnswer(), Niklas Bamberg - 11.03
-*      - hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg - 12.03
+* 06.03: Ergaenzungen für UI-Aenderungen, Niklas Bamberg
+* 09.03: Unterstützung mehrerer gegebener Antworten, Niklas Bamberg
+* 11.03: Diverse Fehlerbehebungen, Alexander Betke
+* 11.03: kleine Anpassungen in getAnswer(), Niklas Bamberg
+* 12.03: hinzufuegen des sendes einer spieler,punkte-Map, Niklas Bamberg
+* 15.03: Finale Auskommentierung, Alexander Betke
 */
 package net;
 
@@ -90,12 +92,19 @@ public class RunnableThread implements Runnable {
         }
     }
 
-    //hier mit Uebergabe des RunnableThread-Objekts (mit 'this') ein neuer Thread erstellt und gestartet.
+    //hier wird mit Uebergabe des RunnableThread-Objekts (mit 'this') ein neuer Thread erstellt und gestartet.
     public void start() {
         Thread t = new Thread(this);
         t.start();
     }
 
+    //die folgenden Methoden realisieren die eigentliche Kommunikation.
+    //soll etwas an den Client gesendet werden, geschieht das mit pr.println(). Damit der Client auch mit
+    //dem erhaltenen umgehen kann, wird vor der eigentlichen Versendung der Daten, das entsprehende Ereignis
+    //definiert, z.B. "START ROUND" oder "RESULT" zum Start einer neuen Runde oder zum Senden der Ergebnisse.
+
+    //Diese Methode sendet die aktuelle Frage in Form eines JSON-Objekts an den Spieler.
+    //Somit wird eine Fragerunde gestartet und die Spieler gelangen in einen entsprechenden Bildschirm.
     public void sendQuestion(int roundIndex) throws IOException, JSONException, InterruptedException {
         JSONObject frage = quiz.getFrage(roundIndex);
         pr.println("START ROUND");
@@ -103,10 +112,11 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    //Diese Methode wartet auf die Antwort des Spielers und wertet diese dann, in Form von Punkten, aus.
     public void getAnswer(int roundIndex) throws IOException, JSONException, InterruptedException {
         JSONObject frage = quiz.getFrage(roundIndex);
-        //Auslesen des Antwort-Arrays
-        String[] antwortString = bf.readLine().split(" ");
+        //hier geschieht das Auslesen der Antworten und die Umwandlung in ein entsprechendes int-Array
+        String[] antwortString = bf.readLine().split(" "); //die readLine() Methode wartet auf eine Antwort des Spielers.
         int[] antworten = new int[antwortString.length];
         for (int i = 0; i < antworten.length; i++) {
             if (!antwortString[i].equals(""))
@@ -115,6 +125,7 @@ public class RunnableThread implements Runnable {
                 antworten[i] = -1;
         }
         double zeit = Double.parseDouble(bf.readLine());
+        //die ausgelesenen Antwort-Daten werden genutzt um die Punkte fuer die aktuelle Runde zu berechnen
         int rundenPunkte = Quiz.genPunkte(frage, antworten, zeit);
         punkte += rundenPunkte;
         boolean ergebnis = rundenPunkte > 0;
@@ -125,7 +136,10 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
-    //hier wird der Spielstand des gesamten Spiels, in Form einer Bestenliste, an die Spieler gesendet
+    //im Anschluss an die getAnswer() Methode wird diese Methode in der host-Klasse aufgerufen, um dem Spieler
+    //den Spielstand, in Form von Bestenlisten, mitzuteilen, damit dieser ein entsprechendes Zwischenranking / Endranking
+    //angezeigt bekommt.
+    //Die Bestenliste und die Information welcher Spieler wie viele Punkte hat, werden als HashMaps implementiert.
     public void sendBestenliste(HashMap<String, Integer> punkteMap, HashMap<Integer, String> bestenliste) {
         //Umwandlung der HashMap in einen String, der Art: "Name1,Punkte1 Name2,Punkte2 ..."
         String mapString = "";
@@ -134,11 +148,13 @@ public class RunnableThread implements Runnable {
             mapString += key + "," + punkteMap.get(key) + " ";
         for (int key : bestenliste.keySet())
             bestenlistenString += key + "," + bestenliste.get(key) + " ";
-        pr.println(mapString.substring(0, mapString.length() - 1));
+        //senden der generierten Strings 
+        pr.println(mapString.substring(0, mapString.length() - 1)); //substring() soll das letzte Leerzeichen entfernen
         pr.println(bestenlistenString.substring(0, bestenlistenString.length() - 1));
         pr.flush();
     }
 
+    //Diese Methode teilt dem Spieler den Namen des Quiz und die Fragenanzahl mit.
     public void sendQuizData() {
         pr.println("QUIZ DATA");
         pr.println(quiz.getLength());
@@ -146,22 +162,27 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    //diese Methode teilt dem Spieler das Ende des Spiels mit und sendet ihm die Bestenliste.
     public void endGame(HashMap<String, Integer> punkMap, HashMap<Integer, String> bestenliste) {
         pr.println("END GAME");
         sendBestenliste(punkMap, bestenliste);
         pr.flush();
     }
 
+    //Diese Methode vermittelt dem Spieler, dass das Spiel begonnen hat
     public void startGame() {
         pr.println("START GAME");
         pr.flush();
     }
 
+    //Diese Methode vermittelt dem Spieler, dass die naechste Runde beginnt und die aktuell angezeigten
+    //Zwischenrankings nicht mehr angezeigt werden sollen.
     public void endZwischenRanking() {
         pr.println("END ZWISCHENRANKING");
         pr.flush();
     }
 
+    //Wird ausgefuehrt, wenn sich ein neuer Spieler verbindet und teilt dem Spieler alle anderen Spieler mit.
     public void refreshPlayerList(ListView<String> playerList) {
         this.playerList = playerList;
         pr.println("PLAYER LIST");
@@ -169,10 +190,12 @@ public class RunnableThread implements Runnable {
         pr.flush();
     }
 
+    //Methode zum Abfragen des Spielernamens
     public String getNick() {
         return nick;
     }
 
+    //Methode zum Abfragen der Punkte
     public int getPunkte() {
         return punkte;
     }

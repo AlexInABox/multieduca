@@ -5,11 +5,10 @@
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -
+ * 15.03: logik beim schließen des Programms hinzugefügt, ALexander Betke
  */
 package sample;
 
-import java.io.FileReader;
 import java.util.function.Consumer;
 
 import data.utilities;
