@@ -1,14 +1,14 @@
-/*
- * Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
- * Thema: 
- * Erstellungsdatum: 2022-02-13
- * Letzte Aenderung:
- * Icons: https://ionic.io/ionicons
- * Change-Log:
- *      - Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg - 12.03
- *      - kleinere Kuerzungen, Niklas Bamberg - 13.03
- *      - anpassen der Parameterliste fuer die Funktion startRound, um den naechstenRundeButton zu deaktivieren, Alexander Betke - 15.03
- */
+/**
+* Autor: Alexander Betke, Jonas Lossin, Rosan Sharma, Maximilian Gombala, Niklas Bamberg
+* Datum: 2022-02-13
+*
+* Zweck: 
+*
+* Change-Log:
+* 12.03: Hinzufuegen von von Erstellen und Senden einer spieler,punkte-Map, Niklas Bamberg
+* 13.03: kleinere Kuerzungen, Niklas Bamberg
+* 15.03: anpassen der Parameterliste fuer die Funktion startRound, um den naechstenRundeButton zu deaktivieren, Alexander Betke
+*/
 
 package net;
 
