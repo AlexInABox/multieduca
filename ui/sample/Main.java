@@ -1,6 +1,6 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: Main Klasse
+ * Thema: Ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet
  * Erstellungsdatum: 2023-03-09
  * Letzte Aenderung:
  * Icons: https://ionic.io/ionicons
@@ -26,15 +26,23 @@ import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import net.host;
 
+//Main erbt hier von der Klasse Application, um eine JavaFX-Anwendung zu erstellen
 public class Main extends Application {
+
+    public static void main(String[] args) {
+        //es wird die launch() Methode aus Application aufgerufen, welche wiederum die start() Methode aufruft
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //hier wird der erste UI-Bildschirm (der Startscreen) geladen.
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         primaryStage.setTitle("Knowledge Knockout");
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
+
 
         primaryStage.setOnCloseRequest(event -> {
             System.out.println(utilities.showExitAlert());
@@ -68,22 +76,6 @@ public class Main extends Application {
                 host.endGame();
             }
         });
-    }
-
-    /*@Override
-    public void stop() {
-        // executed when the application shuts down
-        System.out.println("Application closing...");
-        try {
-            host.endGame();
-        } catch (Exception e) {
-            System.out.println("No game running");
-        }
-    }
-    */
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
     public static Alert createAlertWithOptOut(AlertType type, String title, String headerText,
