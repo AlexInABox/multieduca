@@ -22,7 +22,7 @@ public class utilities {
     public static String getCurrentVersion() {
         try {
             // get current version from file
-            FileReader fr = new FileReader("version.txt");
+            FileReader fr = new FileReader("data/data/misc/version.txt");
             BufferedReader br = new BufferedReader(fr);
             String currentVersion = br.readLine();
             System.out.println("Current version: " + currentVersion);
@@ -63,7 +63,7 @@ public class utilities {
     public static boolean showExitAlert() {
         try {
             // get optout value from file
-            FileReader fr = new FileReader("optout.txt");
+            FileReader fr = new FileReader("data/data/misc/optout.txt");
             BufferedReader br = new BufferedReader(fr);
             Boolean optout = Boolean.valueOf(br.readLine());
             br.close();
@@ -77,7 +77,7 @@ public class utilities {
     public static void showExitAlert(Boolean optout) {
         try {
             //write optout value to file
-            FileWriter fw = new FileWriter("optout.txt");
+            FileWriter fw = new FileWriter("data/data/misc/optout.txt");
             fw.write(optout.toString());
             fw.close();
         } catch (Exception e) {
