@@ -10,6 +10,7 @@ Funktionen
  - Die Anwendung ist einfach zu bedienen und benutzerfreundlich.
 
 Wie man es benutzt
+
 Quiz erstellen
  - Klicken Sie auf die Schaltfläche "Quiz erstellen".
  - Geben Sie für die Frage den Wortlaut und die möglichen Antworten ein.
@@ -32,6 +33,7 @@ Quiz teilnehmen
  - Beantworten Sie die Fragen so schnell wie möglich, um Punkte zu sammeln.
 
 Systemanforderungen
+ - Java 11 oder NIEDRIGER (höhere Versionen müssen unter Windows laufen und die BAT-Datei ausführen)
  - Internetverbindung
  - Farbmonitor
  - Tastatur
