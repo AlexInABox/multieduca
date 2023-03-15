@@ -37,7 +37,8 @@ public class utilities {
     public static String getLatestVersion() {
         try {
             // get latest version
-            URL url = new URL("https://raw.githubusercontent.com/AlexInABox/multieduca/main/version.txt");
+            URL url = new URL(
+                    "https://raw.githubusercontent.com/AlexInABox/multieduca/main/data/data/misc/version.txt");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String latestVersion = in.readLine();
             in.close();
