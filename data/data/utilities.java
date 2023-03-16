@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import net.arikia.dev.drpc.DiscordRPC;
+import net.arikia.dev.drpc.DiscordRichPresence;
+
 /**
  * Autor: Alexander Betke
  * Datum: 2023-03-14
@@ -88,5 +91,40 @@ public class utilities {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void createNewDiscordPresence() {
+        //get current time in epoch
+        long Time = System.currentTimeMillis() / 1000;
+        DiscordRichPresence rich = new DiscordRichPresence.Builder("Currently doing nothing")
+                .setDetails("").setStartTimestamps(Time).build();
+        DiscordRPC.discordUpdatePresence(rich);
+        System.out.println("Presence updated");
+    }
+
+    public static void createNewDiscordPresence(String description, String details) {
+        long Time = System.currentTimeMillis() / 1000;
+        DiscordRichPresence rich = new DiscordRichPresence.Builder(description).setDetails(details)
+                .setStartTimestamps(Time).build();
+        DiscordRPC.discordUpdatePresence(rich);
+        System.out.println("Presence updated");
+    }
+
+    public static void createNewDiscordPresence(String description, String details, String largeImageKey) {
+        long Time = System.currentTimeMillis() / 1000;
+        DiscordRichPresence rich = new DiscordRichPresence.Builder(description).setDetails(details)
+                .setBigImage(largeImageKey, "").setStartTimestamps(Time).build();
+        DiscordRPC.discordUpdatePresence(rich);
+        System.out.println("Presence updated");
+    }
+
+    public static void createNewDiscordPresence(String description, String details, String largeImageKey,
+            String largeImageText, String smallImageKey, String smallImageText) {
+        long Time = System.currentTimeMillis() / 1000;
+        DiscordRichPresence rich = new DiscordRichPresence.Builder(description).setDetails(details)
+                .setBigImage(largeImageKey, largeImageText).setSmallImage(smallImageKey, smallImageText)
+                .setStartTimestamps(Time).build();
+        DiscordRPC.discordUpdatePresence(rich);
+        System.out.println("Presence updated");
     }
 }

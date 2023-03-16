@@ -11,6 +11,7 @@
 package sample;
 
 import java.util.function.Consumer;
+import java.util.logging.Handler;
 
 import data.utilities;
 import javafx.application.Application;
@@ -26,11 +27,23 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import net.host;
+import net.arikia.dev.drpc.DiscordEventHandlers;
+import net.arikia.dev.drpc.DiscordRPC;
+import net.arikia.dev.drpc.DiscordRichPresence;
 
 //Main erbt hier von der Klasse Application, um eine JavaFX-Anwendung zu erstellen
 public class Main extends Application {
 
     public static void main(String[] args) {
+        try {
+            // executed when the application starts
+            DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
+                System.out.println("Ready!");
+            }).build();
+            DiscordRPC.discordInitialize("1085963379379810375", handlers, true);
+        } catch (Exception e) {
+            System.out.println("Discord not found");
+        }
         //es wird die launch() Methode aus Application aufgerufen, welche wiederum die start() Methode aufruft
         launch(args);
     }
@@ -69,12 +82,14 @@ public class Main extends Application {
                 } else {
                     try {
                         // executed when the application shuts down
+                        DiscordRPC.discordShutdown();
                         host.endGame();
                     } catch (Exception e) {
                         System.out.println("No game running");
                     }
                 }
             } else {
+                DiscordRPC.discordShutdown();
                 host.endGame();
             }
         });

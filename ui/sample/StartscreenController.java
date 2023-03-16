@@ -33,8 +33,9 @@ import javafx.stage.Stage;
 import net.client;
 
 import java.io.IOException;
-import data.utilities;
+import java.util.SimpleTimeZone;
 
+import data.utilities;
 
 public class StartscreenController {
 
@@ -188,7 +189,7 @@ public class StartscreenController {
 	public StartscreenController() throws IOException {
 
 	}
-	
+
 	// Methode um zum Hostfenster zu wechseln
 	public void switchToSpielHost(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/rsc/Hostscreen.fxml"));
@@ -226,6 +227,7 @@ public class StartscreenController {
 								"Bitte laden Sie die neuste Version von https://github.com/alexinabox/multieduca/releases herunter.");
 						alert.showAndWait();
 					}
+					utilities.createNewDiscordPresence("Startbildschirm", "Auf dem Startbildschirm.", "logo");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
