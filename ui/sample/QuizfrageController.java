@@ -2,11 +2,10 @@
  * Autor: Niklas Bamberg, Basim Bennaji
  * Thema: Diese Klasse stellt Methoden rund um die Beantwort einer Quizfrage bereit. Dazu gehoeren unter anderem das direkte Auswaehlen einer Antwort sowie ein ablaufender Timer.
  * Erstellungsdatum: 04.03.2023
- * Letzte Aenderung: 04.03.2023 21:20
+ * Letzte Aenderung: 13.03.2023 21:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      - TODO: Fortschrittbar zeigt den Fortschritt im Quiz grafisch dar
- * Timer fuer verbleibende Zeit
+ * 04.03: Timer fuer verbleibende Zeit, Basim Bennaji
  * 04.03: Beim Auswaehlen einer Antwort werden die Antwortbuttons deaktiviert und es wird auf die weiteren Spieler/Host gewartet, Basim Bennaji
  * 04.03: Vorlaeufige Methode fuer timer hinzugefuegt, Basim Bennaji
  * 04.03: Set'er fuer Frage und Antwortmoeglichkeiten hinzugefuegt, Basim Bennaji

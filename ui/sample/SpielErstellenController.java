@@ -2,7 +2,7 @@
  * Autoren: Moritz Oehme, Niklas Bamberg, Basim Bennaji
  * Thema: Diese Klasse stellt Methoden zur Erstellung eines neuen Quiz bzw. der Datei, in der ein neues Quiz gespeichert wird, bereit.
  * Erstellungsdatum: 09.02.2023
- * Letzte Aenderung: 10.03.2023
+ * Letzte Aenderung: 10.03.2023 19:32
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 14.02: Hinzufuegen der Variablen der UI-Elemente, Moritz Oehme
@@ -123,7 +123,7 @@ public class SpielErstellenController {
         else
             richtigeAntworten.remove((Integer) 3);
     }
-
+    //Hinzufuegen einer neuen Frage
     @FXML
     void addFrage() {
         //eigentliches Hinzufuegen der Frage
@@ -140,7 +140,7 @@ public class SpielErstellenController {
         boxC.setSelected(false);
         boxD.setSelected(false);
         richtigeAntworten.clear();
-
+        //Graphisches Design bzw. Animationen
         msg.setVisible(true);
         new animatefx.animation.FadeIn(msg).play();
         new animatefx.animation.FadeOut(msg).play();

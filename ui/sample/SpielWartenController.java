@@ -2,7 +2,7 @@
  * Autor: Basim Bennaji
  * Thema: Diese Klasse stellt Methoden zur Darstellung eines Warte-Screens fuer einen Spieler, der einem Quiz-Spiel beigetreten ist, bereit.
  * Erstellungsdatum: 04.03.2023
- * Letzte Aenderung: 04.03.2023 19:13
+ * Letzte Aenderung: 13.03.2023 19:13
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 04.03: Methode zum Nachfuellen der Liste mit neuen Spieler muss noch geschrieben werden, Basim Bennaji
@@ -44,6 +44,7 @@ public class SpielWartenController {
 
     private client client;
 
+    //Wechselt zum Start-Screen
     public void switchToStart(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -51,7 +52,7 @@ public class SpielWartenController {
         stage.setScene(scene);
         stage.show();
     }
-
+    //Wechselt zum Start-Screen
     private void switchToStart() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Startscreen.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
@@ -59,7 +60,7 @@ public class SpielWartenController {
         stage.setScene(scene);
         stage.show();
     }
-
+    //Wechselt zu Quiz-Frage-Screen
     private void switchToGame() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/rsc/Quizfrage.fxml"));
         stage = (Stage) backButton.getScene().getWindow();

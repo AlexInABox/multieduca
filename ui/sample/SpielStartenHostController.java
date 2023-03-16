@@ -1,8 +1,8 @@
 /*
  * Autoren: Moritz Oehme, Samuel Hoffleit, Basim Bennaji, Niklas Bamberg
  * Thema: Diese Klasse stellt Methoden bereit, die es dem Host ermoeglichen, ein Quiz-Spiel zu starten.
- * Erstellungsdatum: 23.02.2023 (?)
- * Letzte Aenderung: 04.03.2023 23:51
+ * Erstellungsdatum: 23.02.2023
+ * Letzte Aenderung: 13.03.2023 23:51
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 02.03: Arbeiten an Verbindung der Teile, Niklas Bamberg 

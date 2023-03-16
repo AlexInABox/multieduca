@@ -50,7 +50,8 @@ public class InfoController {
         stage.show();
 
     }
-
+    //Wird ausgefuehrt, wenn Screen geoeffnet wird
+    //Zeigt Namensliste als Text in Labels an
     @FXML
     void initialize() {
 

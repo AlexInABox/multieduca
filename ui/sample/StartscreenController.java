@@ -2,7 +2,7 @@
  * Autoren: Moritz Oehme, Samuel Hoffleit, Basim Bennaji
  * Thema: Diese Klasse stellt Methoden zur Bedienung des Startscreens bereit. Dazu gehören Funktionen wie das direkte Beitreten zu einem gehosteten Spieles oder das Navigieren zum Host-Screen. 
  * Erstellungsdatum: 23.02.2023
- * Letzte Aenderung: 05.03.2023
+ * Letzte Aenderung: 14.03.2023 17:37
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 23.02: Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt, Basim Bennaji
@@ -234,14 +234,4 @@ public class StartscreenController {
 
 	}
 
-	// in onLoginButtonClick eingebaut. ~basim 02.03.2023 22:53
-	// public void switchToSpielWarten(ActionEvent event) throws IOException{
-	// Parent root =
-	// FXMLLoader.load(getClass().getResource("/rsc/SpielWarten.fxml"));
-	// stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	// scene = new Scene(root);
-	// stage.setScene(scene);
-	// stage.show();
-
-	// }
 }
