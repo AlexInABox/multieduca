@@ -12,6 +12,8 @@
  * Change-Log:
  * 03.03: Funktionalität für Kmmunikation von Spielerlisten und Punktelisten hinzugefügt, Alexander Betke
  * 06.03: Anfaengliche Aenderungen fuer UI, Niklas Bamberg und Alexander Betke
+ * 09.03: Quizname und Quizfragenanzahl werden empfangen und ausgewertet, Samuel Hoffleit
+ * 09.03: Ueberprueft maximal 1000ms, ob eine IP-Adresse erreichbar ist, Samuel Hoffleit
  * 11.03: Diverse Optimierungen und Fehlerbehebungen, Alexander Betke
  * 11.03: Erstellen einer sendAnswer() Methode, Niklas Bamberg
  * 12.03: Lesen der spieler,punkte-Map und entsprechende get-Methode, Niklas Bamberg

@@ -1,11 +1,12 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: Ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet
- * Erstellungsdatum: 2023-03-09
- * Letzte Aenderung:
+ * Thema: Es handelt sch um eine ausfuehrbare Main-Klasse, die die JavaFX-Anwendung startet.
+ * Erstellungsdatum: 09.03.2023
+ * Letzte Aenderung: 15.03.2023 18:20
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- * 15.03: logik beim schließen des Programms hinzugefügt, ALexander Betke
+ * 09.03: Start-Methode erstellt. Samuel Hoffleit, Basim Bennaji, Moritz Oehme
+ * 15.03: Logik beim Schließen des Programms hinzugefuegt. ALexander Betke
  */
 package sample;
 
@@ -43,7 +44,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-        //Sobald der Benutzer das Fenster schließt, wird die showExitAlert() Methode aufgerufen. Hier wird der Benutzer gefragt, ob er das Programm wirklich beenden möchte.
+        //Sobald der Benutzer das Fenster schließt, wird die showExitAlert() Methode aufgerufen. Hier wird der Benutzer gefragt, ob er das Programm wirklich beenden moechte.
         primaryStage.setOnCloseRequest(event -> {
             System.out.println(utilities.showExitAlert());
             if (utilities.showExitAlert()) {
@@ -79,7 +80,7 @@ public class Main extends Application {
         });
     }
 
-    //Diese Methode erstellt ein Pop-Up-Fenster, mit einer Checkbox. In unserem Kontext erstellt diese Methode ein Pop-Up-Fenster, welches den Benutzer fragt, ob er das Programm wirklich beenden möchte. Plus eine Checkbox, die den Benutzer fragt, ob er diese Meldung in Zukunft nicht mehr sehen möchte.
+    //Diese Methode erstellt ein Pop-Up-Fenster, mit einer Checkbox. In unserem Kontext erstellt diese Methode ein Pop-Up-Fenster, welches den Benutzer fragt, ob er das Programm wirklich beenden moechte. Plus eine Checkbox, die den Benutzer fragt, ob er diese Meldung in Zukunft nicht mehr sehen moechte.
     public static Alert createAlertWithOptOut(AlertType type, String title, String headerText,
             String message, String optOutMessage, Consumer<Boolean> optOutAction,
             ButtonType... buttonTypes) {

@@ -2,12 +2,12 @@
 
 <!--
    Autoren: Basim Bennaji, aufbauend auf die urspruengliche Version von Moritz Oehme und Samuel Hoffleit.
-   Thema: Warteraum fuer Host
+   Thema: Graphische Oberflaeche fuer die Warteraum-Ansicht des Hosts, in welcher er das Spiel starten kann.
    Erstellungsdatum: 04.03.2023
    Letzte Aenderung: 04.03.2023 21:09
    Icons: https://ionic.io/ionicons
    Change-Log:
-      Neue version des alten Startscreens:
+   04.03: Neue version des alten Startscreens: - Basim Bennaji
          -Groessres Fenster
          -Design vereinheitlicht
          -Generelle Designsprache harmonischer gestaltet.

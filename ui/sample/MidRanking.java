@@ -1,11 +1,12 @@
 /*
  * Autor: Niklas Bamberg, Basim Bennaji
- * Thema: Ranking zwischen den Fragen
- * Erstellungsdatum: 
- * Letzte Aenderung:
+ * Thema: Diese Klasse stellt Methoden zur Darstellung eines Rankings zwischen den einzelen Fragen bereit.
+ * Erstellungsdatum: 06.03.2023
+ * Letzte Aenderung: 09.03.2023 11:14
  * Icons: https://ionic.io/ionicons
  * Change-Log:
- *      -
+ * 06.03: Uebetragung der Ranking Daten in UI-Elemente durch initialize-Methode, Niklas Bamberg
+ * 09.03: Anpassung des graphischen Designs zur Korrektheit der Antwort, Basim Bennaji
  */
 package sample;
 
@@ -26,9 +27,11 @@ import net.client;
 
 public class MidRanking {
 
+    //Komponenten fuer graphisches Design
+    //Style, wenn Antwort richtig
     String successStyle = String.format(
             "-fx-background-color: #03C988; -fx-background-radius: 20");
-
+    //Style, wenn Antwort falsch
     String errorStyle = String.format(
             "-fx-background-color: #C92403; -fx-background-radius: 20");
 

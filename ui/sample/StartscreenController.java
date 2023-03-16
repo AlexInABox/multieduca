@@ -1,16 +1,17 @@
 /*
  * Autoren: Moritz Oehme, Samuel Hoffleit, Basim Bennaji
- * Thema: Methoden des Startscreens.
- * Erstellungsdatum: 23.02.2023 (?)
- * Letzte Aenderung: 05.03.2023
+ * Thema: Diese Klasse stellt Methoden zur Bedienung des Startscreens bereit. Dazu gehören Funktionen wie das direkte Beitreten zu einem gehosteten Spieles oder das Navigieren zum Host-Screen. 
+ * Erstellungsdatum: 23.02.2023
+ * Letzte Aenderung: 14.03.2023 17:37
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 23.02: Methoden onLoginButtonClick und ipMoeglich wurden erstellt und hinzugefuegt, Basim Bennaji
  * 23.02: Namen- und IP-Adressenfeld sollen ROT markiert werden und schutteln wenn das Feld leer ist. Auch unabhaengig voneinander, Basim Bennaji
  * 24.02: Animationen Folge wurde verbessert. Farbe der Fehlernachrricht (logInfo) eingestellt. Gruene Farbe fuer richtige Eingaben wurde entfernt, Basim Bennaji
- * 25.02: Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefügt, Basim Bennaji
+ * 25.02: Methode zur ueberpruefung der Gueltigkeit der eingegebenen IP-Adresse wurde hinzugefuegt, Basim Bennaji
  * 05.03: JAVA-8 versionsinkompatibilitaeten (String.isBlank() => String.isEmpty()) behoben, Basim Bennaji
  * 09.03: Shake-Animation fuer den Fall, dass der Host nicht existiert hinzugefuegt und die dazugehoerige Errornachricht konkreter formuliert, Basim Bennaji
+ * 14.03: Bugfix: Name bestehend aus ausschließlich leerzeichen wird nicht mehr akzeptiert, Samuel Hoffleit
  * 14.03: Fehlermeldung bei ungueltigem Usernamen hinzugefuegt, Alexander Betke
  * 14.03: Versions-Aktualitaet-Ueberpruefung hinzugefuegt (initialize()), Alexander Betke
  * 14.03: Fehlermeldung aktualsiert sich jetzt bei erneuter Eingabe, Alexander Betke
@@ -233,14 +234,4 @@ public class StartscreenController {
 
 	}
 
-	// in onLoginButtonClick eingebaut. ~basim 02.03.2023 22:53
-	// public void switchToSpielWarten(ActionEvent event) throws IOException{
-	// Parent root =
-	// FXMLLoader.load(getClass().getResource("/rsc/SpielWarten.fxml"));
-	// stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	// scene = new Scene(root);
-	// stage.setScene(scene);
-	// stage.show();
-
-	// }
 }

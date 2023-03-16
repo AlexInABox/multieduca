@@ -10,7 +10,8 @@ import java.net.URL;
  * Autor: Alexander Betke
  * Datum: 2023-03-14
  *
- * Zweck: Diese Klasse beinhaltet Methoden, die von mehreren Klassen verwendet werden.
+ * Zweck: Diese Klasse beinhaltet Methoden, fuer die Pruefung auf ein Update und die Anzeige einer
+ *        Meldung wenn man das Programm schliesst.
  * 
  * Change-Log:
  * 2023-03-14: Alexander Betke: checkForUpdate() hinzugefügt
@@ -19,6 +20,7 @@ import java.net.URL;
 
 public class utilities {
 
+    //Diese Methode liest die eigene Version aus der Datei "version.txt" aus und gibt sie als String zurueck.
     public static String getCurrentVersion() {
         try {
             // get current version from file
@@ -34,6 +36,7 @@ public class utilities {
         }
     }
 
+    //Diese Methode liest die neueste Version der Datei von GitHub aus und gibt sie als String zurueck.
     public static String getLatestVersion() {
         try {
             // get latest version
@@ -49,18 +52,19 @@ public class utilities {
         }
     }
 
+    //vergleicht die beiden Versionen und gibt true zurueck, wenn eine neue Version verfuegbar ist.
     public static boolean checkForUpdate() {
         String currentVersion = getCurrentVersion();
         String latestVersion = getLatestVersion();
         if (currentVersion.equals(latestVersion)) {
-            System.out.println("No update available");
             return false;
         } else {
-            System.out.println("Update available");
             return true;
         }
     }
 
+    //gibt zurueck, ob der Benutzer die Meldung beim Schliessen des Programms sehen will oder nicht.
+    //true = ja, false = nein
     public static boolean showExitAlert() {
         try {
             // get optout value from file
@@ -70,11 +74,11 @@ public class utilities {
             br.close();
             return optout;
         } catch (Exception e) {
-            System.out.println("Error while getting optout value: " + e);
             return false;
         }
     }
 
+    //legt fest, ob der Benutzer die Meldung beim Schliessen des Programms sehen will oder nicht.
     public static void showExitAlert(Boolean optout) {
         try {
             //write optout value to file
@@ -82,8 +86,7 @@ public class utilities {
             fw.write(optout.toString());
             fw.close();
         } catch (Exception e) {
-            System.out.println("Error while writing optout value: " + e);
-
+            e.printStackTrace();
         }
     }
 }
