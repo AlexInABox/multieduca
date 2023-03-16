@@ -33,7 +33,7 @@ Quiz teilnehmen
  - Beantworten Sie die Fragen so schnell wie möglich, um Punkte zu sammeln.
 
 Systemanforderungen
- - Java 11 oder NIEDRIGER (höhere Versionen müssen unter Windows laufen und die BAT-Datei ausführen)
+ - Java
  - Internetverbindung
  - Farbmonitor
  - Tastatur
