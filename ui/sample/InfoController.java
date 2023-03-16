@@ -1,6 +1,6 @@
 /*
  * Autor: Basim Bennaji
- * Thema: Es werden alle Mitarbeiter an dem Projekt aufgelistet.
+ * Thema: Diese Klassse ermoeglicht es, alle Mitarbeiter des Projekts darzustellen.
  * Erstellungsdatum: 03.03.2023
  * Letzte Aenderung: 04.03.2023 01:20
  * Icons: https://ionic.io/ionicons
@@ -50,7 +50,8 @@ public class InfoController {
         stage.show();
 
     }
-
+    //Wird ausgefuehrt, wenn Screen geoeffnet wird
+    //Zeigt Namensliste als Text in Labels an
     @FXML
     void initialize() {
 

@@ -1,8 +1,8 @@
 /*
  * Autor: Samuel Hoffleit, Basim Bennaji, Moritz Oehme
- * Thema: 
- * Erstellungsdatum: 023-03-09
- * Letzte Aenderung:
+ * Thema: Diese Klasse stellt Methoden fuer den Host bereit, um ein laufendes Spiel zu steuern. 
+ * Erstellungsdatum: 09.03.2023
+ * Letzte Aenderung: 15.03.2023 19:14
  * Icons: https://ionic.io/ionicons
  * Change-Log:
  * 02.03: Arbeiten an Verbindung der Teile, Niklas Bamberg
@@ -10,7 +10,6 @@
  * 13.03: Behebung von fehlern, welche ein irresponsives verhalten des Programms verursachten, Alexander Betke
  * 15.03: Der naechsteRundeButton ist nun deaktiviert, solange die Runde noch nicht beendet ist, Alexander Betke
  * 15.03: finale Auskommentierung, Alexander Betke
- *
  */
 package sample;
 
@@ -47,6 +46,7 @@ public class SpielLaeuftHostController {
     public SpielLaeuftHostController() throws IOException {
     }
 
+    //Setzt den Zaehler roundIndex zurueck
     public static void resetRoundIndex() {
         roundIndex = 1;
     }
